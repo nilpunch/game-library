@@ -3,9 +3,8 @@ using UnityEngine;
 
 namespace PhysicsSample
 {
-    public interface IPhysicalObject : IEquatable<IPhysicalObject>
+    public interface IPhysicalObject
     {
-        Guid Id { get; }
         string Tag { get; }
         
         ICollidingShell Shell { get; }
@@ -13,6 +12,7 @@ namespace PhysicsSample
         Vector3 Velocity { get; }
         Vector3 Position { get; }
 
-        void AddVelocity(Vector3 velocity);
+        void ApplyPhysics(Vector3 newVelocity, Vector3 newPosition);
+        void AddVelocityChange(Vector3 velocity);
     }
 }

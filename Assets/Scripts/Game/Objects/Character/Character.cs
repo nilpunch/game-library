@@ -4,16 +4,13 @@ namespace PhysicsSample
 {
     public class Character : ICharacter
     {
-        private readonly IPhysicalObject _physicalObject;
-        private readonly IPhysicWorldAssociations<ICharacter> _charactersAssociations;
+        private readonly ICollideObjects<ICharacter> _charactersAssociations;
         
         private int _health;
 
-        public Character(int health, IPhysicalObject physicalObject, IPhysicWorldAssociations<ICharacter> charactersAssociations)
+        public Character(int health, IPhysicalObject physicalObject)
         {
             _health = health;
-            _physicalObject = physicalObject;
-            _charactersAssociations = charactersAssociations;
         }
 
         public bool CanExecuteFrame { get; private set; }
@@ -24,12 +21,6 @@ namespace PhysicsSample
         {
             if (!CanExecuteFrame)
                 throw new Exception();
-            
-            if (!IsAlive)
-            {
-                CanExecuteFrame = false;
-                _charactersAssociations.Remove(_physicalObject);
-            }
         }
 
         public void Damage(int damage)
@@ -38,6 +29,7 @@ namespace PhysicsSample
                 throw new Exception();
 
             _health -= damage;
+            CanExecuteFrame = false;
         }
     }
 }

@@ -1,18 +1,14 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace PhysicsSample
 {
     public class PhysicalObject : IPhysicalObject
     {
-        public PhysicalObject(Guid id, string tag, ICollidingShell shell)
+        public PhysicalObject(string tag, ICollidingShell shell)
         {
-            Id = id;
             Tag = tag;
             Shell = shell;
         }
-        
-        public Guid Id { get; }
         
         public string Tag { get; }
         
@@ -20,26 +16,17 @@ namespace PhysicsSample
         
         public Vector3 Velocity { get; private set; }
         
-        public Vector3 Position { get; }
+        public Vector3 Position { get; private set; }
         
-        public void AddVelocity(Vector3 velocity)
+        public void ApplyPhysics(Vector3 newVelocity, Vector3 newPosition)
         {
-            Velocity += velocity;
+            Velocity = newVelocity;
+            Position = newPosition;
         }
 
-        public override bool Equals(object obj)
+        public void AddVelocityChange(Vector3 velocity)
         {
-            return Equals(obj as IPhysicalObject);
-        }
-
-        public bool Equals(IPhysicalObject other)
-        {
-            return Id.Equals(other.Id);
-        }
-
-        public override int GetHashCode()
-        {
-            return Id.GetHashCode();
+            throw new System.NotImplementedException();
         }
     }
 }

@@ -4,5 +4,8 @@
     {
         void Add(IPhysicalObject physicalObject);
         void Remove(IPhysicalObject physicalObject);
+        
+        void AddInteraction(IPhysicalObjectsInteraction physicalObjectsInteraction);
+        void RemoveInteraction(IPhysicalObjectsInteraction physicalObjectsInteraction);
     }
 }

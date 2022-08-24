@@ -1,7 +1,9 @@
 ﻿namespace PhysicsSample
 {
-    public interface IGameLoop : IFrameExecution
+    public interface IGameLoop
     {
+        void ExecuteFrame(long elapsedtime);
+        
         void Add(IFrameExecution frameExecution);
         void Remove(IFrameExecution frameExecution);
     }

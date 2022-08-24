@@ -2,16 +2,12 @@
 
 namespace PhysicsSample
 {
-    public class GameLoop : IGameLoop
+    public class GameLoop : IGameLoop, IActualization
     {
         private readonly List<IFrameExecution> _frameExecutions = new();
-        
-        public bool CanExecuteFrame => true;
-        
+
         public void ExecuteFrame(long time)
         {
-            _frameExecutions.RemoveAll(execution => !execution.CanExecuteFrame);
-
             foreach (var frameExecution in _frameExecutions)
             {
                 frameExecution.ExecuteFrame(time);
@@ -26,6 +22,11 @@ namespace PhysicsSample
         public void Remove(IFrameExecution frameExecution)
         {
             _frameExecutions.Remove(frameExecution);
+        }
+
+        public void RemoveAllInactual()
+        {
+            _frameExecutions.RemoveAll(frameExecution => !frameExecution.CanExecuteFrame);
         }
     }
 }

@@ -1,9 +1,7 @@
 ﻿namespace PhysicsSample
 {
-    public interface IFrameExecution
+    public interface IFrameExecution : IReadOnlyFrameExecution
     {
-        bool CanExecuteFrame { get; }
-        
         void ExecuteFrame(long time);
     }
 }

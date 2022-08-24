@@ -13,7 +13,7 @@ namespace PhysicsSample
             _collisionsLibrary = collisionsLibrary;
         }
         
-        public Collision Collide(ICollidingShell collidingShell)
+        public Collision CollideWith(ICollidingShell collidingShell)
         {
             return collidingShell.CollideAgainstSphere(_shell);
         }

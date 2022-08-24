@@ -1,6 +1,6 @@
 ﻿namespace PhysicsSample
 {
-    public interface IReadOnlyPhysicWorldAssociations<T>
+    public interface IReadOnlyCollideObjects<T>
     {
         bool HasAssociatedObject(IPhysicalObject physicalObject);
         T GetAssociatedObject(IPhysicalObject physicalObject);
