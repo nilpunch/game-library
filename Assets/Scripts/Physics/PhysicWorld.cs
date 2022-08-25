@@ -55,7 +55,7 @@ namespace PhysicsSample
         {
             Collision collision = new Collision();
             
-            foreach (var simulatedObject in _physicObjects.Where(obj => !obj.Equals(physicalObject)))
+            foreach (var simulatedObject in _physicObjects.Where(obj => !obj.Equals(physicalObject) && obj.Tag == againstTagged))
                 collision = collision.Merge(simulatedObject.Shell.CollideWith(physicalObject.Shell));
 
             return collision;
