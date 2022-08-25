@@ -2,12 +2,12 @@ namespace PhysicsSample
 {
     public class PhysicalObjectsInteraction<TFirst, TSecond> : IPhysicalObjectsInteraction
     {
-        private readonly IReadOnlyCollideObjects<TFirst> _firstObject;
-        private readonly IReadOnlyCollideObjects<TSecond> _secondObjects;
+        private readonly IReadOnlyPhysicWorldObjects<TFirst> _firstObject;
+        private readonly IReadOnlyPhysicWorldObjects<TSecond> _secondObjects;
         private readonly IObjectsInteraction<TFirst, TSecond> _objectsInteraction;
 
-        public PhysicalObjectsInteraction(IReadOnlyCollideObjects<TFirst> firstObject,
-            IReadOnlyCollideObjects<TSecond> secondObjects,
+        public PhysicalObjectsInteraction(IReadOnlyPhysicWorldObjects<TFirst> firstObject,
+            IReadOnlyPhysicWorldObjects<TSecond> secondObjects,
             IObjectsInteraction<TFirst, TSecond> objectsInteraction)
         {
             _firstObject = firstObject;

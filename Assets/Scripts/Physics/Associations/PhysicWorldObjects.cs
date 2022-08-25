@@ -3,25 +3,24 @@ using System.Linq;
 
 namespace PhysicsSample
 {
-    public class CollideObjects<T> : ICollideObjects<T>, IActualization where T : IReadOnlyFrameExecution
+    public class PhysicWorldObjects<TAssociation> : IPhysicWorldObjects<TAssociation> where TAssociation : IReadOnlyFrameExecution
     {
-        private readonly IPhysicWorld _physicWorld;
-
-        private struct PhysicAssociation
+        private struct PhysicalAssociation
         {
-            public PhysicAssociation(T associated, IPhysicalObject physicalObject)
+            public PhysicalAssociation(TAssociation associated, IPhysicalObject physicalObject)
             {
                 PhysicalObject = physicalObject;
                 Object = associated;
             }
 
-            public T Object { get; }
+            public TAssociation Object { get; }
             public IPhysicalObject PhysicalObject { get; }
         }
-        
-        private readonly List<PhysicAssociation> _physicAssociations = new();
 
-        public CollideObjects(IPhysicWorld physicWorld)
+        private readonly List<PhysicalAssociation> _physicAssociations = new();
+        private readonly IPhysicWorld _physicWorld;
+
+        public PhysicWorldObjects(IPhysicWorld physicWorld)
         {
             _physicWorld = physicWorld;
         }
@@ -31,18 +30,18 @@ namespace PhysicsSample
             return _physicAssociations.Any(association => association.PhysicalObject == physicalObject);
         }
 
-        public T GetAssociatedObject(IPhysicalObject physicalObject)
+        public TAssociation GetAssociatedObject(IPhysicalObject physicalObject)
         {
             return _physicAssociations.First(association => association.PhysicalObject == physicalObject).Object;
         }
 
-        public void Add(T associatedObject, IPhysicalObject physicalObject)
+        public void Add(TAssociation associatedObject, IPhysicalObject physicalObject)
         {
             _physicWorld.Add(physicalObject);
-            _physicAssociations.Add(new PhysicAssociation(associatedObject, physicalObject));
+            _physicAssociations.Add(new PhysicalAssociation(associatedObject, physicalObject));
         }
 
-        public void Remove(T associatedObject)
+        public void Remove(TAssociation associatedObject)
         {
             foreach (var association in _physicAssociations)
             {

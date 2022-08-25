@@ -1,6 +1,6 @@
 ﻿namespace PhysicsSample
 {
-    public interface IGameLoop
+    public interface IGameLoop : IActualization
     {
         void ExecuteFrame(long elapsedtime);
         

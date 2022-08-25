@@ -11,7 +11,7 @@
         
         public bool CanExecuteFrame => true;
         
-        public void ExecuteFrame(long time)
+        public void ExecuteFrame(long elapsedTime)
         {
             _weapon.Shoot();
         }

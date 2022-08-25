@@ -17,26 +17,23 @@ namespace PhysicsSample
             _liveTime = liveTime;
             _physicalObject = physicalObject;
             
-            CanExecuteFrame = true;
             CanDamage = true;
         }
 
-        public bool CanExecuteFrame { get; private set; }
+        public bool CanExecuteFrame => CanDamage;
         
         public bool CanDamage { get; private set; }
 
-        public void ExecuteFrame(long time)
+        public void ExecuteFrame(long elapsedTime)
         {
             if (!CanExecuteFrame)
                 throw new Exception();
 
             if (_creationTime == -1)
-                _creationTime = time;
+                _creationTime = elapsedTime;
 
-            bool livetimeExpired = time > _creationTime + _liveTime;
-            
-            if (!CanDamage || livetimeExpired)
-                DestroySelf();
+            if (elapsedTime > _creationTime + _liveTime)
+                CanDamage = false;
         }
 
         public void Throw(Vector3 velocity)
@@ -49,14 +46,9 @@ namespace PhysicsSample
             if (!CanDamage)
                 throw new Exception();
             
-            character.Damage(_damage);
+            character.TakeDamage(_damage);
 
             CanDamage = false;
-        }
-
-        private void DestroySelf()
-        {
-            CanExecuteFrame = false;
         }
     }
 }

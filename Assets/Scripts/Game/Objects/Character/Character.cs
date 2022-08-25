@@ -4,7 +4,7 @@ namespace PhysicsSample
 {
     public class Character : ICharacter
     {
-        private readonly ICollideObjects<ICharacter> _charactersAssociations;
+        private readonly IPhysicWorldObjects<ICharacter> _charactersAssociations;
         
         private int _health;
 
@@ -17,13 +17,13 @@ namespace PhysicsSample
         
         public bool IsAlive => _health > 0;
 
-        public void ExecuteFrame(long time)
+        public void ExecuteFrame(long elapsedTime)
         {
             if (!CanExecuteFrame)
                 throw new Exception();
         }
 
-        public void Damage(int damage)
+        public void TakeDamage(int damage)
         {
             if (!IsAlive)
                 throw new Exception();

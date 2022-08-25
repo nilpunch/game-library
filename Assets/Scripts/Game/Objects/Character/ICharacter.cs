@@ -3,6 +3,6 @@
     public interface ICharacter : IFrameExecution
     {
         bool IsAlive { get; }
-        void Damage(int damage);
+        void TakeDamage(int damage);
     }
 }

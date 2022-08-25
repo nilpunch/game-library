@@ -5,9 +5,9 @@ namespace PhysicsSample
     public class BulletFactory : IBulletFactory
     {
         private readonly IGameLoop _gameLoop;
-        private readonly ICollideObjects<IBullet> _bulletsWorld;
+        private readonly IPhysicWorldObjects<IBullet> _bulletsWorld;
 
-        public BulletFactory(IGameLoop gameLoop, ICollideObjects<IBullet> bulletsWorld)
+        public BulletFactory(IGameLoop gameLoop, IPhysicWorldObjects<IBullet> bulletsWorld)
         {
             _gameLoop = gameLoop;
             _bulletsWorld = bulletsWorld;

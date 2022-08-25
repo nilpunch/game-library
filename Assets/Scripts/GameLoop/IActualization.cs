@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PhysicsSample
+﻿namespace PhysicsSample
 {
     public interface IActualization
     {

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PhysicsSample
+﻿namespace PhysicsSample
 {
     public class GameSample
     {
@@ -9,27 +7,29 @@ namespace PhysicsSample
 
         public GameSample()
         {
-            var gameLoop = new GameLoop();
+            _gameLoop = new GameLoop();
             
             // Add physics world
             var physicWorld = new PhysicWorld();
-            gameLoop.Add(new ConstantExecutionTimeStep(physicWorld, 20));
+            _gameLoop.Add(new ConstantExecutionTimeStep(physicWorld, 20));
 
-            var charactersAssociations = new CollideObjects<ICharacter>(physicWorld);
-            var bulletsAssiciations = new CollideObjects<IBullet>(physicWorld);
+            // Link concrete objects to its physical representation
+            var charactersWrold = new PhysicWorldObjects<ICharacter>(physicWorld);
+            var bulletsWrold = new PhysicWorldObjects<IBullet>(physicWorld);
 
             physicWorld.AddInteraction(
-                new PhysicalObjectsInteraction<IBullet, ICharacter>(bulletsAssiciations, charactersAssociations, new BulletEnemyInteraction()));
+                new PhysicalObjectsInteraction<IBullet, ICharacter>(bulletsWrold, charactersWrold, new BulletEnemyInteraction()));
             
             // Add some characters
-            gameLoop.Add(new CharactersFactory(gameLoop, charactersAssociations).Create(health: 10));
+            _gameLoop.Add(new CharactersFactory(_gameLoop, charactersWrold).Create(health: 10));
             
             // Add player that shoots weapon
-            gameLoop.Add(new Player(new Weapon(bulletsDamage: 1, bulletsLiveTime: 100, new BulletFactory(gameLoop, bulletsAssiciations))));
+            _gameLoop.Add(new Player(new Weapon(bulletsDamage: 1, bulletsLiveTime: 100, new BulletFactory(_gameLoop, bulletsWrold))));
             
-            _gameLoop = gameLoop;
             _actualization = new ActualizationGroup(new IActualization[]
-                { gameLoop, bulletsAssiciations, charactersAssociations });
+            {
+                _gameLoop, bulletsWrold, charactersWrold
+            });
         }
         
         public void ExecuteFrame(long time)

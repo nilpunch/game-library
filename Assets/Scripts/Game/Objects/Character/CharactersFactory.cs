@@ -5,9 +5,9 @@ namespace PhysicsSample
     public class CharactersFactory : ICharactersFactory
     {
         private readonly IGameLoop _gameLoop;
-        private readonly ICollideObjects<ICharacter> _charactersWorld;
+        private readonly IPhysicWorldObjects<ICharacter> _charactersWorld;
 
-        public CharactersFactory(IGameLoop gameLoop, ICollideObjects<ICharacter> charactersWorld)
+        public CharactersFactory(IGameLoop gameLoop, IPhysicWorldObjects<ICharacter> charactersWorld)
         {
             _gameLoop = gameLoop;
             _charactersWorld = charactersWorld;

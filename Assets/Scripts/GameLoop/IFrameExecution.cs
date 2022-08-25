@@ -2,6 +2,6 @@
 {
     public interface IFrameExecution : IReadOnlyFrameExecution
     {
-        void ExecuteFrame(long time);
+        void ExecuteFrame(long elapsedTime);
     }
 }

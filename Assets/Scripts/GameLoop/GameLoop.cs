@@ -2,7 +2,7 @@
 
 namespace PhysicsSample
 {
-    public class GameLoop : IGameLoop, IActualization
+    public class GameLoop : IGameLoop
     {
         private readonly List<IFrameExecution> _frameExecutions = new();
 

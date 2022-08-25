@@ -1,7 +1,6 @@
 namespace PhysicsSample
 {
-    public interface IPhysicalObjectsInteraction
+    public interface IPhysicalObjectsInteraction : IObjectsInteraction<IPhysicalObject, IPhysicalObject>
     {
-        void Interact(IPhysicalObject first, IPhysicalObject second, Collision collision);
     }
 }

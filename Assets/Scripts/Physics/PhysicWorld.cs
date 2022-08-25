@@ -11,7 +11,7 @@ namespace PhysicsSample
 
         public bool CanExecuteFrame => true;
 
-        public void ExecuteFrame(long time)
+        public void ExecuteFrame(long elapsedTime)
         {
             // TODO:
             // 1. Broad colliders

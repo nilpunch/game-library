@@ -18,14 +18,14 @@ namespace PhysicsSample
         
         public bool CanExecuteFrame { get; private set; }
         
-        public void ExecuteFrame(long time)
+        public void ExecuteFrame(long elapsedTime)
         {
             if (!CanExecuteFrame)
                 throw new Exception();
             
-            long deltaTime = time - _lastExecutionStepTime;
+            long deltaTime = elapsedTime - _lastExecutionStepTime;
             
-            long executionsCount = deltaTime % time;
+            long executionsCount = deltaTime % elapsedTime;
 
             for (int frame = 0; frame < executionsCount; frame++)
             {

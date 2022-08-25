@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace PhysicsSample
+﻿namespace PhysicsSample
 {
     public class BoxCollidingShell : ICollidingShell
     {
