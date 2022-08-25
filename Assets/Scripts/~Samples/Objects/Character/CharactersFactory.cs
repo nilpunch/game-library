@@ -5,9 +5,9 @@ namespace PhysicsSample
     public class CharactersFactory : ICharactersFactory
     {
         private readonly IGameLoop _gameLoop;
-        private readonly IPhysicWorldObjects<ICharacter> _charactersWorld;
+        private readonly IPhysicWorldAssociations<ICharacter> _charactersWorld;
 
-        public CharactersFactory(IGameLoop gameLoop, IPhysicWorldObjects<ICharacter> charactersWorld)
+        public CharactersFactory(IGameLoop gameLoop, IPhysicWorldAssociations<ICharacter> charactersWorld)
         {
             _gameLoop = gameLoop;
             _charactersWorld = charactersWorld;
@@ -21,7 +21,7 @@ namespace PhysicsSample
             ICharacter character = new Character(health, physicalObject);
             
             _gameLoop.Add(character);
-            _charactersWorld.Add(character, physicalObject);
+            _charactersWorld.Add(physicalObject, character);
             
             return character;
         }

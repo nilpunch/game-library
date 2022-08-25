@@ -6,22 +6,17 @@ namespace PhysicsSample
     {
         private readonly List<IFrameExecution> _frameExecutions = new();
 
-        public void ExecuteFrame(long time)
+        public void ExecuteFrame(long elapsedTime)
         {
             foreach (var frameExecution in _frameExecutions)
             {
-                frameExecution.ExecuteFrame(time);
+                frameExecution.ExecuteFrame(elapsedTime);
             }
         }
 
         public void Add(IFrameExecution frameExecution)
         {
             _frameExecutions.Add(frameExecution);
-        }
-
-        public void Remove(IFrameExecution frameExecution)
-        {
-            _frameExecutions.Remove(frameExecution);
         }
 
         public void RemoveAllInactual()

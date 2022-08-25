@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace PhysicsSample
 {
@@ -19,12 +20,12 @@ namespace PhysicsSample
             // 3. Solve collisiions
             // 4. Interact objects
 
-            var physicalObjectsCollisions = new (IPhysicalObject, IPhysicalObject, Collision)[0];
+            var physicalObjectsCollisions = new (IPhysicalObject first, IPhysicalObject second, Collision collision)[0];
             foreach (var physicalObjectsCollision in physicalObjectsCollisions)
             {
                 foreach (var physicalObjectsInteraction in _physicalObjectsInteractions)
                 {
-                    physicalObjectsInteraction.Interact(physicalObjectsCollision.Item1, physicalObjectsCollision.Item2, physicalObjectsCollision.Item3);
+                    physicalObjectsInteraction.Interact(physicalObjectsCollision.first, physicalObjectsCollision.second, physicalObjectsCollision.collision);
                 }
             }
             
@@ -59,6 +60,11 @@ namespace PhysicsSample
                 collision = collision.Merge(simulatedObject.Shell.CollideWith(physicalObject.Shell));
 
             return collision;
+        }
+
+        public Collision Raycast(Vector3 from, Vector3 direction, string againstTagged)
+        {
+            throw new NotImplementedException();
         }
     }
 }

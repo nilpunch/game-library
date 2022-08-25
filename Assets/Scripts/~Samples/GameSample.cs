@@ -13,22 +13,22 @@
             var physicWorld = new PhysicWorld();
             _gameLoop.Add(new ConstantExecutionTimeStep(physicWorld, 20));
 
-            // Link concrete objects to its physical representation
-            var charactersWrold = new PhysicWorldObjects<ICharacter>(physicWorld);
-            var bulletsWrold = new PhysicWorldObjects<IBullet>(physicWorld);
+            // Link physical representation to game objects
+            var charactersWorld = new PhysicWorldAssociations<ICharacter>(physicWorld);
+            var bulletsWorld = new PhysicWorldAssociations<IBullet>(physicWorld);
 
             physicWorld.AddInteraction(
-                new PhysicalObjectsInteraction<IBullet, ICharacter>(bulletsWrold, charactersWrold, new BulletEnemyInteraction()));
+                new PhysicalObjectsInteraction<IBullet, ICharacter>(bulletsWorld, charactersWorld, new BulletEnemyInteraction()));
             
             // Add some characters
-            _gameLoop.Add(new CharactersFactory(_gameLoop, charactersWrold).Create(health: 10));
+            _gameLoop.Add(new CharactersFactory(_gameLoop, charactersWorld).Create(health: 10));
             
             // Add player that shoots weapon
-            _gameLoop.Add(new Player(new Weapon(bulletsDamage: 1, bulletsLiveTime: 100, new BulletFactory(_gameLoop, bulletsWrold))));
+            _gameLoop.Add(new Player(new Weapon(1, 100, new BulletFactory(_gameLoop, bulletsWorld))));
             
             _actualization = new ActualizationGroup(new IActualization[]
             {
-                _gameLoop, bulletsWrold, charactersWrold
+                _gameLoop, bulletsWorld, charactersWorld
             });
         }
         

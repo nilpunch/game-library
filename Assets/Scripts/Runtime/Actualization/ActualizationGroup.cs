@@ -13,7 +13,7 @@ namespace PhysicsSample
         {
             foreach (var actualization in _actualizations)
             {
-                RemoveAllInactual();
+                actualization.RemoveAllInactual();
             }
         }
     }

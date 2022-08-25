@@ -5,9 +5,9 @@ namespace PhysicsSample
     public class BulletFactory : IBulletFactory
     {
         private readonly IGameLoop _gameLoop;
-        private readonly IPhysicWorldObjects<IBullet> _bulletsWorld;
+        private readonly IPhysicWorldAssociations<IBullet> _bulletsWorld;
 
-        public BulletFactory(IGameLoop gameLoop, IPhysicWorldObjects<IBullet> bulletsWorld)
+        public BulletFactory(IGameLoop gameLoop, IPhysicWorldAssociations<IBullet> bulletsWorld)
         {
             _gameLoop = gameLoop;
             _bulletsWorld = bulletsWorld;
@@ -21,7 +21,7 @@ namespace PhysicsSample
             IBullet bullet = new Bullet(damage, liveTime, physicalObject);
             
             _gameLoop.Add(bullet);
-            _bulletsWorld.Add(bullet, physicalObject);
+            _bulletsWorld.Add(physicalObject, bullet);
             
             return bullet;
         }

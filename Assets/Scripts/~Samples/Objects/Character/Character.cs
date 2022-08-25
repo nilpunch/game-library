@@ -4,7 +4,7 @@ namespace PhysicsSample
 {
     public class Character : ICharacter
     {
-        private readonly IPhysicWorldObjects<ICharacter> _charactersAssociations;
+        private readonly IPhysicWorldAssociations<ICharacter> _charactersPhysicWorldAssociations;
         
         private int _health;
 
