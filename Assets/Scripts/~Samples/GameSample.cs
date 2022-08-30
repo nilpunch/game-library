@@ -21,7 +21,7 @@
                 new PhysicalObjectsInteraction<IBullet, ICharacter>(bulletsWorld, charactersWorld, new BulletEnemyInteraction()));
             
             // Add some characters
-            _gameLoop.Add(new CharactersFactory(_gameLoop, charactersWorld).Create(health: 10));
+            new CharactersFactory(_gameLoop, charactersWorld).Create(10);
             
             // Add player that shoots weapon
             _gameLoop.Add(new Player(new Weapon(1, 100, new BulletFactory(_gameLoop, bulletsWorld))));

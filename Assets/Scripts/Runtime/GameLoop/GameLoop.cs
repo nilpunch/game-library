@@ -1,27 +1,39 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace PhysicsSample
 {
     public class GameLoop : IGameLoop
     {
-        private readonly List<IFrameExecution> _frameExecutions = new();
+        private readonly List<IGameObject> _gameObjects = new();
+        private readonly HashSet<IGameObject> _objectsToAdd = new();
+        private readonly HashSet<IGameObject> _objectsToRemove = new();
 
         public void ExecuteFrame(long elapsedTime)
         {
-            foreach (var frameExecution in _frameExecutions)
+            _gameObjects.AddRange(_objectsToAdd);
+            _objectsToAdd.Clear();
+
+            foreach (var gameObject in _objectsToRemove)
+                _gameObjects.Remove(gameObject);
+            _objectsToRemove.Clear();
+            
+            foreach (var gameObject in _gameObjects)
             {
-                frameExecution.ExecuteFrame(elapsedTime);
+                if (gameObject.IsActual)
+                    gameObject.ExecuteFrame(elapsedTime);
             }
         }
 
-        public void Add(IFrameExecution frameExecution)
+        public void Add(IGameObject gameObject)
         {
-            _frameExecutions.Add(frameExecution);
+            _objectsToAdd.Add(gameObject);
         }
 
         public void RemoveAllInactual()
         {
-            _frameExecutions.RemoveAll(frameExecution => !frameExecution.CanExecuteFrame);
+            foreach (var gameObject in _gameObjects.Where(gameObject => !gameObject.IsActual))
+                _objectsToRemove.Add(gameObject);
         }
     }
 }

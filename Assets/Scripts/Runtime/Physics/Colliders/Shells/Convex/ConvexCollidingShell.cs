@@ -11,7 +11,7 @@
             _collisionsLibrary = collisionsLibrary;
         }
         
-        public Collision CollideWith(ICollidingShell collidingShell)
+        public Collision Fallback(ICollidingShell collidingShell)
         {
             return collidingShell.CollideAgainstConvex(_shell);
         }

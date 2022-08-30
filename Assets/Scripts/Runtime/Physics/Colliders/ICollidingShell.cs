@@ -2,7 +2,7 @@
 {
     public interface ICollidingShell
     {
-        Collision CollideWith(ICollidingShell collidingShell);
+        Collision Fallback(ICollidingShell collidingShell);
 
         Collision CollideAgainstBox(IBoxShell boxShell);
         Collision CollideAgainstSphere(ISphereShell sphereShell);

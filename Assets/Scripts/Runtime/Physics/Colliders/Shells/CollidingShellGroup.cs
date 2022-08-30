@@ -9,12 +9,12 @@
             _collidingShells = collidingShells;
         }
         
-        public Collision CollideWith(ICollidingShell collidingShell)
+        public Collision Fallback(ICollidingShell collidingShell)
         {
             Collision collision = new Collision();
             
             foreach (var shell in _collidingShells) 
-                collision = collision.Merge(shell.CollideWith(collidingShell));
+                collision = collision.Merge(shell.Fallback(collidingShell));
 
             return collision;
         }

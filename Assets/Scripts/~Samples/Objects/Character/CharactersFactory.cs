@@ -18,7 +18,7 @@ namespace PhysicsSample
             IPhysicalObject physicalObject = new PhysicalObject("Character",
                 new SphereCollidingShell(new SphereShell(Vector3.zero, 10f), new CollisionsLibrary()));
 
-            ICharacter character = new Character(health, physicalObject);
+            ICharacter character = new Character(health);
             
             _gameLoop.Add(character);
             _charactersWorld.Add(physicalObject, character);

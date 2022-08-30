@@ -2,7 +2,7 @@
 
 namespace PhysicsSample
 {
-    public interface IBullet : IFrameExecution
+    public interface IBullet : IGameObject
     {
         bool CanDamage { get; }
 

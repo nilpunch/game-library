@@ -2,7 +2,7 @@
 {
     public interface IReadOnlyAssociations<in TKey, out TAssociation>
     {
-        bool HasAssociatedObject(TKey key);
-        TAssociation GetAssociatedObject(TKey key);
+        bool HasAssociation(TKey key);
+        TAssociation GetAssociation(TKey key);
     }
 }

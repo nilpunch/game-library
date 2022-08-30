@@ -1,6 +1,6 @@
 ﻿namespace PhysicsSample
 {
-    public class Player : IFrameExecution
+    public class Player : IGameObject
     {
         private readonly IWeapon _weapon;
 
@@ -9,7 +9,7 @@
             _weapon = weapon;
         }
         
-        public bool CanExecuteFrame => true;
+        public bool IsActual => true;
         
         public void ExecuteFrame(long elapsedTime)
         {

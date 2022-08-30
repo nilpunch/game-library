@@ -17,9 +17,9 @@ namespace PhysicsSample
         
         public void Interact(IPhysicalObject first, IPhysicalObject second, Collision collision)
         {
-            if (_firstObjects.HasAssociatedObject(first) && _secondObjects.HasAssociatedObject(second))
+            if (_firstObjects.HasAssociation(first) && _secondObjects.HasAssociation(second))
             {
-                _objectsInteraction.Interact(_firstObjects.GetAssociatedObject(first), _secondObjects.GetAssociatedObject(second), collision);
+                _objectsInteraction.Interact(_firstObjects.GetAssociation(first), _secondObjects.GetAssociation(second), collision);
             }
         }
     }

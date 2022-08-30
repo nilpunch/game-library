@@ -1,9 +1,9 @@
-﻿namespace PhysicsSample
+﻿using System;
+
+namespace PhysicsSample
 {
-    public interface IGameLoop : IActualization
+    public interface IGameLoop : IFrameExecution, IActualization
     {
-        void ExecuteFrame(long elapsedTime);
-        
-        void Add(IFrameExecution frameExecution);
+        void Add(IGameObject gameObject);
     }
 }

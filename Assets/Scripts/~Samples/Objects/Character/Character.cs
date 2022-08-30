@@ -4,22 +4,20 @@ namespace PhysicsSample
 {
     public class Character : ICharacter
     {
-        private readonly IPhysicWorldAssociations<ICharacter> _charactersPhysicWorldAssociations;
-        
         private int _health;
 
-        public Character(int health, IPhysicalObject physicalObject)
+        public Character(int health)
         {
             _health = health;
         }
 
-        public bool CanExecuteFrame { get; private set; }
+        public bool IsActual => IsAlive;
         
         public bool IsAlive => _health > 0;
 
         public void ExecuteFrame(long elapsedTime)
         {
-            if (!CanExecuteFrame)
+            if (!IsActual)
                 throw new Exception();
         }
 
@@ -29,7 +27,6 @@ namespace PhysicsSample
                 throw new Exception();
 
             _health -= damage;
-            CanExecuteFrame = false;
         }
     }
 }

@@ -20,13 +20,13 @@ namespace PhysicsSample
             CanDamage = true;
         }
 
-        public bool CanExecuteFrame => CanDamage;
+        public bool IsActual => CanDamage;
         
         public bool CanDamage { get; private set; }
 
         public void ExecuteFrame(long elapsedTime)
         {
-            if (!CanExecuteFrame)
+            if (!IsActual)
                 throw new Exception();
 
             if (_creationTime == -1)

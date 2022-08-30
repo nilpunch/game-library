@@ -2,25 +2,25 @@
 
 namespace PhysicsSample
 {
-    public class ConstantExecutionTimeStep : IFrameExecution
+    public class ConstantExecutionTimeStep : IGameObject
     {
-        private readonly IFrameExecution _frameExecution;
+        private readonly IGameObject _frameExecution;
         private readonly long _timeStep;
 
         private long _lastExecutionStepTime;
 
-        public ConstantExecutionTimeStep(IFrameExecution frameExecution, long timeStep)
+        public ConstantExecutionTimeStep(IGameObject frameExecution, long timeStep)
         {
             _frameExecution = frameExecution;
             _timeStep = timeStep;
-            CanExecuteFrame = true;
+            IsActual = true;
         }
         
-        public bool CanExecuteFrame { get; private set; }
+        public bool IsActual { get; private set; }
         
         public void ExecuteFrame(long elapsedTime)
         {
-            if (!CanExecuteFrame)
+            if (!IsActual)
                 throw new Exception();
             
             long deltaTime = elapsedTime - _lastExecutionStepTime;
@@ -29,13 +29,13 @@ namespace PhysicsSample
 
             for (int frame = 0; frame < executionsCount; frame++)
             {
-                if (_frameExecution.CanExecuteFrame)
+                if (_frameExecution.IsActual)
                 {
                     _frameExecution.ExecuteFrame(_lastExecutionStepTime + _timeStep * (frame + 1));
                 }
                 else
                 {
-                    CanExecuteFrame = false;
+                    IsActual = false;
                     return;
                 }
             }

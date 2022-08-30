@@ -1,6 +1,6 @@
 ﻿namespace PhysicsSample
 {
-    public interface IPhysicWorld : ICollisions, IFrameExecution
+    public interface IPhysicWorld : ICollisions, IGameObject
     {
         void Add(IPhysicalObject physicalObject);
         void Remove(IPhysicalObject physicalObject);

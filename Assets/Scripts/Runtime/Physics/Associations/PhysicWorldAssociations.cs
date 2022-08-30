@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace PhysicsSample
 {
-    public class PhysicWorldAssociations<TAssociation> : IPhysicWorldAssociations<TAssociation> where TAssociation : IReadOnlyFrameExecution
+    public class PhysicWorldAssociations<TAssociation> : IPhysicWorldAssociations<TAssociation> where TAssociation : IActuality
     {
         private struct PhysicalAssociation
         {
@@ -25,12 +25,12 @@ namespace PhysicsSample
             _physicWorld = physicWorld;
         }
         
-        public bool HasAssociatedObject(IPhysicalObject physicalObject)
+        public bool HasAssociation(IPhysicalObject physicalObject)
         {
             return _physicAssociations.Any(association => association.PhysicalObject == physicalObject);
         }
 
-        public TAssociation GetAssociatedObject(IPhysicalObject physicalObject)
+        public TAssociation GetAssociation(IPhysicalObject physicalObject)
         {
             return _physicAssociations.First(association => association.PhysicalObject == physicalObject).Object;
         }
@@ -41,17 +41,23 @@ namespace PhysicsSample
             _physicAssociations.Add(new PhysicalAssociation(physicalObject, associatedObject));
         }
 
+        public void Remove(IPhysicalObject key)
+        {
+            _physicWorld.Remove(key);
+            _physicAssociations.RemoveAll(association => association.PhysicalObject == key);
+        }
+
         public void RemoveAllInactual()
         {
             foreach (var association in _physicAssociations)
             {
-                if (!association.Object.CanExecuteFrame)
+                if (!association.Object.IsActual)
                 {
                     _physicWorld.Remove(association.PhysicalObject);
                 }
             }
             
-            _physicAssociations.RemoveAll(association => !association.Object.CanExecuteFrame);
+            _physicAssociations.RemoveAll(association => !association.Object.IsActual);
         }
     }
 }
