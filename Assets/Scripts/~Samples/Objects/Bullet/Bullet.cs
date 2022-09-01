@@ -33,7 +33,7 @@ namespace PhysicsSample
                 _creationTime = elapsedTime;
 
             if (elapsedTime > _creationTime + _liveTime)
-                CanDamage = false;
+                Destroy();
         }
 
         public void Throw(Vector3 velocity)
@@ -48,7 +48,13 @@ namespace PhysicsSample
             
             character.TakeDamage(_damage);
 
+            Destroy();
+        }
+
+        private void Destroy()
+        {
             CanDamage = false;
+            _physicalObject.Destroy();
         }
     }
 }

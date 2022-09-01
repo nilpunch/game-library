@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace PhysicsSample
 {
@@ -8,25 +9,26 @@ namespace PhysicsSample
         {
             Tag = tag;
             Shell = shell;
-        }
-        
-        public string Tag { get; }
-        
-        public ICollidingShell Shell { get; }
-        
-        public Vector3 Velocity { get; private set; }
-        
-        public Vector3 Position { get; private set; }
-        
-        public void ApplyPhysics(Vector3 newVelocity, Vector3 newPosition)
-        {
-            Velocity = newVelocity;
-            Position = newPosition;
+            IsExist = true;
         }
 
+        public bool IsExist { get; private set; }
+        
+        public string Tag { get; }
+
+        public ICollidingShell Shell { get; }
+        
         public void AddVelocityChange(Vector3 velocity)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void Destroy()
+        {
+            if (IsExist == false)
+                throw new Exception();
+            
+            IsExist = false;
         }
     }
 }

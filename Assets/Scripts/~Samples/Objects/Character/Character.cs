@@ -4,11 +4,14 @@ namespace PhysicsSample
 {
     public class Character : ICharacter
     {
+        private readonly IPhysicalObject _physicalObject;
+        
         private int _health;
 
-        public Character(int health)
+        public Character(int health, IPhysicalObject physicalObject)
         {
             _health = health;
+            _physicalObject = physicalObject;
         }
 
         public bool IsActual => IsAlive;
@@ -27,6 +30,9 @@ namespace PhysicsSample
                 throw new Exception();
 
             _health -= damage;
+            
+            if (!IsAlive)
+                _physicalObject.Destroy();
         }
     }
 }

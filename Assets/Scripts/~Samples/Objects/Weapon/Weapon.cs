@@ -8,16 +8,28 @@ namespace PhysicsSample
         private readonly long _bulletsLiveTime;
         private readonly IBulletFactory _bulletFactory;
 
+        private readonly IGameObjectsLoop _gameObjectsLoop;
+        
         public Weapon(int bulletsDamage, long bulletsLiveTime, IBulletFactory bulletFactory)
         {
             _bulletsDamage = bulletsDamage;
             _bulletsLiveTime = bulletsLiveTime;
             _bulletFactory = bulletFactory;
+
+            _gameObjectsLoop = new GameObjectsLoop();
         }
 
         public void Shoot()
         {
-            _bulletFactory.Create(_bulletsDamage, _bulletsLiveTime).Throw(Vector3.forward);
+            var bullet = _bulletFactory.Create(_bulletsDamage, _bulletsLiveTime);
+            bullet.Throw(Vector3.forward);
+            
+            _gameObjectsLoop.Add(bullet);
+        }
+
+        public void ExecuteFrame(long elapsedTime)
+        {
+            _gameObjectsLoop.ExecuteFrame(elapsedTime);
         }
     }
 }

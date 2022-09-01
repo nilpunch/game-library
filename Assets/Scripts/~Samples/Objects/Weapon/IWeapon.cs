@@ -1,6 +1,6 @@
 ﻿namespace PhysicsSample
 {
-    public interface IWeapon
+    public interface IWeapon : IFrameExecution
     {
         void Shoot();
     }

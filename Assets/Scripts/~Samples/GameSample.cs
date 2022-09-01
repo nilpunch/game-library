@@ -2,39 +2,35 @@
 {
     public class GameSample
     {
-        private readonly IActualization _actualization;
-        private readonly IGameLoop _gameLoop;
+        private readonly IFrameExecution _gameLoop;
 
         public GameSample()
         {
-            _gameLoop = new GameLoop();
-            
-            // Add physics world
-            var physicWorld = new PhysicWorld();
-            _gameLoop.Add(new ConstantExecutionTimeStep(physicWorld, 20));
+            var characterLinks = new PhysicWorldLinks<ICharacter>();
+            var bulletLinks = new PhysicWorldLinks<IBullet>();
 
-            // Link physical representation to game objects
-            var charactersWorld = new PhysicWorldAssociations<ICharacter>(physicWorld);
-            var bulletsWorld = new PhysicWorldAssociations<IBullet>(physicWorld);
-
-            physicWorld.AddInteraction(
-                new PhysicalObjectsInteraction<IBullet, ICharacter>(bulletsWorld, charactersWorld, new BulletEnemyInteraction()));
-            
-            // Add some characters
-            new CharactersFactory(_gameLoop, charactersWorld).Create(10);
-            
-            // Add player that shoots weapon
-            _gameLoop.Add(new Player(new Weapon(1, 100, new BulletFactory(_gameLoop, bulletsWorld))));
-            
-            _actualization = new ActualizationGroup(new IActualization[]
+            var physicWorld = new PhysicWorld(new IPhysicalObjectsInteraction[]
             {
-                _gameLoop, bulletsWorld, charactersWorld
+                new PhysicalObjectsInteraction<IBullet, ICharacter>(bulletLinks, characterLinks, new BulletEnemyInteraction())
+            });
+            
+            var gameObjectsLoop = new GameObjectsLoop(new IGameObject[]
+            {
+                new CharactersFactory(physicWorld, characterLinks).Create(10),
+                new Player(new Weapon(1, 100, new BulletFactory(physicWorld, bulletLinks))),
+            });
+            
+            _gameLoop = new GameLoop(new IFrameExecution[]
+            {
+                new ConstantExecutionTimeStep(physicWorld, 20),
+                gameObjectsLoop,
+                characterLinks,
+                bulletLinks,
             });
         }
         
         public void ExecuteFrame(long time)
         {
-            _actualization.RemoveAllInactual();
             _gameLoop.ExecuteFrame(time);
         }
     }

@@ -10,10 +10,19 @@ namespace PhysicsSample
         private readonly List<IPhysicalObject> _physicObjects = new();
         private readonly List<IPhysicalObjectsInteraction> _physicalObjectsInteractions = new();
 
-        public bool IsActual => true;
-
+        public PhysicWorld()
+        {
+        }
+        
+        public PhysicWorld(IPhysicalObjectsInteraction[] interactions)
+        {
+            _physicalObjectsInteractions = interactions.ToList();
+        }
+        
         public void ExecuteFrame(long elapsedTime)
         {
+            _physicObjects.RemoveAll(physicObject => !physicObject.IsExist);
+
             // TODO:
             // 1. Broad colliders
             // 2. Collect collisions

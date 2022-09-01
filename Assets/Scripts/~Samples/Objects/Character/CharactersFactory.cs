@@ -4,13 +4,13 @@ namespace PhysicsSample
 {
     public class CharactersFactory : ICharactersFactory
     {
-        private readonly IGameLoop _gameLoop;
-        private readonly IPhysicWorldAssociations<ICharacter> _charactersWorld;
+        private readonly IPhysicWorld _physicsWorld;
+        private readonly IPhysicWorldLinks<ICharacter> _links;
 
-        public CharactersFactory(IGameLoop gameLoop, IPhysicWorldAssociations<ICharacter> charactersWorld)
+        public CharactersFactory(IPhysicWorld physicsWorld, IPhysicWorldLinks<ICharacter> links)
         {
-            _gameLoop = gameLoop;
-            _charactersWorld = charactersWorld;
+            _physicsWorld = physicsWorld;
+            _links = links;
         }
         
         public ICharacter Create(int health)
@@ -18,10 +18,10 @@ namespace PhysicsSample
             IPhysicalObject physicalObject = new PhysicalObject("Character",
                 new SphereCollidingShell(new SphereShell(Vector3.zero, 10f), new CollisionsLibrary()));
 
-            ICharacter character = new Character(health);
+            ICharacter character = new Character(health, physicalObject);
             
-            _gameLoop.Add(character);
-            _charactersWorld.Add(physicalObject, character);
+            _physicsWorld.Add(physicalObject);
+            _links.Link(physicalObject, character);
             
             return character;
         }

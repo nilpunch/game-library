@@ -8,11 +8,13 @@
         {
             _weapon = weapon;
         }
-        
+
         public bool IsActual => true;
-        
+
         public void ExecuteFrame(long elapsedTime)
         {
+            _weapon.ExecuteFrame(elapsedTime);
+
             _weapon.Shoot();
         }
     }

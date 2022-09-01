@@ -4,13 +4,13 @@ namespace PhysicsSample
 {
     public class BulletFactory : IBulletFactory
     {
-        private readonly IGameLoop _gameLoop;
-        private readonly IPhysicWorldAssociations<IBullet> _bulletsWorld;
+        private readonly IPhysicWorld _physicWorld;
+        private readonly IPhysicWorldLinks<IBullet> _links;
 
-        public BulletFactory(IGameLoop gameLoop, IPhysicWorldAssociations<IBullet> bulletsWorld)
+        public BulletFactory(IPhysicWorld physicWorld, IPhysicWorldLinks<IBullet> links)
         {
-            _gameLoop = gameLoop;
-            _bulletsWorld = bulletsWorld;
+            _physicWorld = physicWorld;
+            _links = links;
         }
         
         public IBullet Create(int damage, long liveTime)
@@ -20,8 +20,8 @@ namespace PhysicsSample
 
             IBullet bullet = new Bullet(damage, liveTime, physicalObject);
             
-            _gameLoop.Add(bullet);
-            _bulletsWorld.Add(physicalObject, bullet);
+            _physicWorld.Add(physicalObject);
+            _links.Link(physicalObject, bullet);
             
             return bullet;
         }
