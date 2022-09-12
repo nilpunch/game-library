@@ -16,7 +16,7 @@ namespace PhysicsSample
             _bulletsLiveTime = bulletsLiveTime;
             _bulletFactory = bulletFactory;
 
-            _gameObjectsLoop = new GameObjectsLoop();
+            _gameObjectsLoop = new GameObjectsGroup();
         }
 
         public void Shoot()

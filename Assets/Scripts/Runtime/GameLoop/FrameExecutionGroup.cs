@@ -1,10 +1,10 @@
 ﻿namespace PhysicsSample
 {
-    public class GameLoop : IFrameExecution
+    public class FrameExecutionGroup : IFrameExecution
     {
         private readonly IFrameExecution[] _frameExecutions;
 
-        public GameLoop(IFrameExecution[] frameExecutions)
+        public FrameExecutionGroup(IFrameExecution[] frameExecutions)
         {
             _frameExecutions = frameExecutions;
         }

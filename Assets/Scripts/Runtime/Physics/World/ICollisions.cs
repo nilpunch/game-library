@@ -4,8 +4,10 @@ namespace PhysicsSample
 {
     public interface ICollisions
     {
-        Collision CalculateCollision(IPhysicalObject physicalObject, string againstTagged);
+        Collision CalculateCollision(IPhysicalObject physicalObject);
 
-        Collision Raycast(Vector3 from, Vector3 direction, string againstTagged);
+        Interaction[] AllInteractions();
+        
+        Collision Raycast(Vector3 from, Vector3 direction);
     }
 }

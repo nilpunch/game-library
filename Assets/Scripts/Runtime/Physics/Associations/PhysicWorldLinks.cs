@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace PhysicsSample
 {
-    public class PhysicWorldLinks<TAssociation> : IPhysicWorldLinks<TAssociation> where TAssociation : IActuality
+    public class PhysicWorldLinks<TAssociation> : IFrameExecution, IPhysicWorldLinks<TAssociation> where TAssociation : IActuality
     {
         private struct Association
         {
@@ -37,6 +37,11 @@ namespace PhysicsSample
         public void Unlink(IPhysicalObject key)
         {
             _physicAssociations.RemoveAll(association => association.PhysicalObject == key);
+        }
+
+        public void UnlinkAllInactual()
+        {
+            _physicAssociations.RemoveAll(association => !association.Associated.IsActual || !association.PhysicalObject.IsExist);
         }
 
         public void ExecuteFrame(long elapsedTime)

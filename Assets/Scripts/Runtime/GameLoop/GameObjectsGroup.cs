@@ -3,15 +3,15 @@ using System.Linq;
 
 namespace PhysicsSample
 {
-    public class GameObjectsLoop : IGameObjectsLoop
+    public class GameObjectsGroup : IGameObjectsLoop
     {
         private readonly List<IGameObject> _gameObjects = new();
 
-        public GameObjectsLoop()
+        public GameObjectsGroup()
         {
         }
 
-        public GameObjectsLoop(IGameObject[] gameObjects)
+        public GameObjectsGroup(IGameObject[] gameObjects)
         {
             _gameObjects = gameObjects.ToList();
         }

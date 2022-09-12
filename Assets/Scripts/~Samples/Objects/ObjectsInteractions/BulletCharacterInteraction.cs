@@ -1,6 +1,6 @@
 ﻿namespace PhysicsSample
 {
-    public class BulletEnemyInteraction : IObjectsInteraction<IBullet, ICharacter>
+    public class BulletCharacterInteraction : IObjectsInteraction<IBullet, ICharacter>
     {
         public void Interact(IBullet bullet, ICharacter character, Collision collision)
         {

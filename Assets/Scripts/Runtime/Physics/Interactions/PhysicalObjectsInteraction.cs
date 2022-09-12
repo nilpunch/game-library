@@ -1,25 +1,30 @@
 namespace PhysicsSample
 {
-    public class PhysicalObjectsInteraction<TFirst, TSecond> : IPhysicalObjectsInteraction
+    public class PhysicalObjectsInteraction<TFirst, TSecond> : IFrameExecution
     {
-        private readonly IReadOnlyPhysicWorldLinks<TFirst> _firstLinks;
-        private readonly IReadOnlyPhysicWorldLinks<TSecond> _secondLinks;
+        private readonly ICollisions _collisions;
+        private readonly IPhysicWorldLinks<TFirst> _firstLinks;
+        private readonly IPhysicWorldLinks<TSecond> _secondLinks;
         private readonly IObjectsInteraction<TFirst, TSecond> _objectsInteraction;
 
-        public PhysicalObjectsInteraction(IReadOnlyPhysicWorldLinks<TFirst> firstLinks,
-            IReadOnlyPhysicWorldLinks<TSecond> secondLinks,
+        public PhysicalObjectsInteraction(ICollisions collisions, IPhysicWorldLinks<TFirst> firstLinks,
+            IPhysicWorldLinks<TSecond> secondLinks,
             IObjectsInteraction<TFirst, TSecond> objectsInteraction)
         {
+            _collisions = collisions;
             _firstLinks = firstLinks;
             _secondLinks = secondLinks;
             _objectsInteraction = objectsInteraction;
         }
-        
-        public void Interact(IPhysicalObject first, IPhysicalObject second, Collision collision)
+
+        public void ExecuteFrame(long elapsedTime)
         {
-            if (_firstLinks.HasLink(first) && _secondLinks.HasLink(second))
+            foreach (var interaction in _collisions.AllInteractions())
             {
-                _objectsInteraction.Interact(_firstLinks.Get(first), _secondLinks.Get(second), collision);
+                if (_firstLinks.HasLink(interaction.First) && _secondLinks.HasLink(interaction.Second))
+                {
+                    _objectsInteraction.Interact(_firstLinks.Get(interaction.First), _secondLinks.Get(interaction.Second), interaction.Collision);
+                }
             }
         }
     }

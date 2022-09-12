@@ -6,26 +6,29 @@
 
         public GameSample()
         {
+            var physicWorld = new PhysicWorld();
+            
             var characterLinks = new PhysicWorldLinks<ICharacter>();
             var bulletLinks = new PhysicWorldLinks<IBullet>();
 
-            var physicWorld = new PhysicWorld(new IPhysicalObjectsInteraction[]
-            {
-                new PhysicalObjectsInteraction<IBullet, ICharacter>(bulletLinks, characterLinks, new BulletEnemyInteraction())
-            });
-            
-            var gameObjectsLoop = new GameObjectsLoop(new IGameObject[]
+            var gameObjectsLoop = new GameObjectsGroup(new IGameObject[]
             {
                 new CharactersFactory(physicWorld, characterLinks).Create(10),
                 new Player(new Weapon(1, 100, new BulletFactory(physicWorld, bulletLinks))),
             });
-            
-            _gameLoop = new GameLoop(new IFrameExecution[]
+
+            var physicsLoop = new ConstantExecutionTimeStep(new FrameExecutionGroup(new IFrameExecution[]
             {
-                new ConstantExecutionTimeStep(physicWorld, 20),
-                gameObjectsLoop,
+                physicWorld,
                 characterLinks,
                 bulletLinks,
+                new PhysicalObjectsInteraction<IBullet, ICharacter>(physicWorld, bulletLinks, characterLinks, new BulletCharacterInteraction())
+            }), 20);
+            
+            _gameLoop = new FrameExecutionGroup(new IFrameExecution[]
+            {
+                physicsLoop,
+                gameObjectsLoop,
             });
         }
         
