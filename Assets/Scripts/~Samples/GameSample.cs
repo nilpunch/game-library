@@ -1,4 +1,4 @@
-﻿namespace PhysicsSample
+﻿namespace GameLibrary
 {
     public class GameSample
     {
@@ -7,7 +7,7 @@
         public GameSample()
         {
             var physicWorld = new PhysicWorld();
-            
+
             var characterLinks = new PhysicWorldLinks<ICharacter>();
             var bulletLinks = new PhysicWorldLinks<IBullet>();
 
@@ -22,16 +22,17 @@
                 physicWorld,
                 characterLinks,
                 bulletLinks,
-                new PhysicalObjectsInteraction<IBullet, ICharacter>(physicWorld, bulletLinks, characterLinks, new BulletCharacterInteraction())
+                new PhysicalObjectsInteraction<IBullet, ICharacter>(physicWorld, bulletLinks, characterLinks,
+                    new BulletCharacterInteraction())
             }), 20);
-            
+
             _gameLoop = new FrameExecutionGroup(new IFrameExecution[]
             {
                 physicsLoop,
                 gameObjectsLoop,
             });
         }
-        
+
         public void ExecuteFrame(long time)
         {
             _gameLoop.ExecuteFrame(time);

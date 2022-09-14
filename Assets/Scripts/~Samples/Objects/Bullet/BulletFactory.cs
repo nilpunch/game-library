@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace PhysicsSample
+﻿namespace GameLibrary
 {
     public class BulletFactory : IBulletFactory
     {
@@ -12,17 +10,18 @@ namespace PhysicsSample
             _physicWorld = physicWorld;
             _links = links;
         }
-        
+
         public IBullet Create(int damage, long liveTime)
         {
-            IPhysicalObject physicalObject = new PhysicalObject("Bullet",
-                new SphereCollidingShell(new SphereShell(Vector3.zero, 1f), new CollisionsLibrary()));
+            IPhysicalObject physicalObject =
+                new PhysicalObject(new SphereCollidingShell(new SphereShell(Vector3.Zero, new FloatingPoint()),
+                    new CollisionsLibrary()));
 
             IBullet bullet = new Bullet(damage, liveTime, physicalObject);
-            
+
             _physicWorld.Add(physicalObject);
             _links.Link(physicalObject, bullet);
-            
+
             return bullet;
         }
     }

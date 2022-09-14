@@ -1,4 +1,4 @@
-﻿namespace PhysicsSample
+﻿namespace GameLibrary
 {
     public class BulletCharacterInteraction : IObjectsInteraction<IBullet, ICharacter>
     {

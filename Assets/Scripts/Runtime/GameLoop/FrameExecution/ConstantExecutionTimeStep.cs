@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace PhysicsSample
+namespace GameLibrary
 {
     public class ConstantExecutionTimeStep : IFrameExecution
     {
@@ -14,11 +14,11 @@ namespace PhysicsSample
             _frameExecution = frameExecution;
             _timeStep = timeStep;
         }
-        
+
         public void ExecuteFrame(long elapsedTime)
         {
             long deltaTime = elapsedTime - _lastExecutionStepTime;
-            
+
             long executionsCount = deltaTime % elapsedTime;
 
             for (int frame = 0; frame < executionsCount; frame++)

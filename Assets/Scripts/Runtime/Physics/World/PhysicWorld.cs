@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
-namespace PhysicsSample
+
+namespace GameLibrary
 {
     public class PhysicWorld : IPhysicWorld
     {
@@ -17,7 +17,7 @@ namespace PhysicsSample
             // 1. Broad colliders
             // 2. Collect collisions
             // 3. Solve collisions
-            
+
             throw new NotImplementedException();
         }
 
@@ -34,7 +34,7 @@ namespace PhysicsSample
         public Collision CalculateCollision(IPhysicalObject physicalObject)
         {
             Collision collision = new Collision();
-            
+
             foreach (var simulatedObject in _physicObjects.Where(obj => !obj.Equals(physicalObject)))
                 collision = collision.Merge(simulatedObject.Shell.Fallback(physicalObject.Shell));
 

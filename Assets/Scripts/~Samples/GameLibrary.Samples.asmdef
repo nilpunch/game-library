@@ -1,0 +1,16 @@
+{
+    "name": "GameLibrary.Samples",
+    "rootNamespace": "",
+    "references": [
+        "GUID:68a5edc33be920448a67913e5348c97e"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}

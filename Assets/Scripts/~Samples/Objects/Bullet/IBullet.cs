@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace PhysicsSample
+﻿namespace GameLibrary
 {
     public interface IBullet : IGameObject
     {

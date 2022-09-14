@@ -1,11 +1,11 @@
 ﻿using System;
 
-namespace PhysicsSample
+namespace GameLibrary
 {
     public class Character : ICharacter
     {
         private readonly IPhysicalObject _physicalObject;
-        
+
         private int _health;
 
         public Character(int health, IPhysicalObject physicalObject)
@@ -15,7 +15,7 @@ namespace PhysicsSample
         }
 
         public bool IsActual => IsAlive;
-        
+
         public bool IsAlive => _health > 0;
 
         public void ExecuteFrame(long elapsedTime)
@@ -30,7 +30,7 @@ namespace PhysicsSample
                 throw new Exception();
 
             _health -= damage;
-            
+
             if (!IsAlive)
                 _physicalObject.Destroy();
         }

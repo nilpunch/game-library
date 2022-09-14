@@ -1,7 +1,7 @@
 ﻿using System;
-using UnityEngine;
 
-namespace PhysicsSample
+
+namespace GameLibrary
 {
     public class Bullet : IBullet
     {
@@ -10,18 +10,18 @@ namespace PhysicsSample
         private readonly IPhysicalObject _physicalObject;
 
         private long _creationTime = -1;
-        
+
         public Bullet(int damage, long liveTime, IPhysicalObject physicalObject)
         {
             _damage = damage;
             _liveTime = liveTime;
             _physicalObject = physicalObject;
-            
+
             CanDamage = true;
         }
 
         public bool IsActual => CanDamage;
-        
+
         public bool CanDamage { get; private set; }
 
         public void ExecuteFrame(long elapsedTime)
@@ -40,12 +40,12 @@ namespace PhysicsSample
         {
             _physicalObject.AddVelocityChange(velocity);
         }
-        
+
         public void Damage(ICharacter character)
         {
             if (!CanDamage)
                 throw new Exception();
-            
+
             character.TakeDamage(_damage);
 
             Destroy();

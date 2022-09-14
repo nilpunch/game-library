@@ -1,6 +1,4 @@
-using UnityEngine;
-
-namespace PhysicsSample
+namespace GameLibrary
 {
     public class Weapon : IWeapon
     {
@@ -9,7 +7,7 @@ namespace PhysicsSample
         private readonly IBulletFactory _bulletFactory;
 
         private readonly IGameObjectsLoop _gameObjectsLoop;
-        
+
         public Weapon(int bulletsDamage, long bulletsLiveTime, IBulletFactory bulletFactory)
         {
             _bulletsDamage = bulletsDamage;
@@ -22,8 +20,8 @@ namespace PhysicsSample
         public void Shoot()
         {
             var bullet = _bulletFactory.Create(_bulletsDamage, _bulletsLiveTime);
-            bullet.Throw(Vector3.forward);
-            
+            bullet.Throw(Vector3.Forward);
+
             _gameObjectsLoop.Add(bullet);
         }
 
