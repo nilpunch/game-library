@@ -8,28 +8,30 @@
         {
             var physicWorld = new PhysicWorld();
 
-            var characterLinks = new PhysicWorldLinks<ICharacter>();
-            var bulletLinks = new PhysicWorldLinks<IBullet>();
+            var physicalCharacters = new PhysicWorldObjects<ICharacter>();
+            var physicalBullets = new PhysicWorldObjects<IBullet>();
 
-            var gameObjectsLoop = new GameObjectsGroup(new IGameObject[]
-            {
-                new CharactersFactory(physicWorld, characterLinks).Create(10),
-                new Player(new Weapon(1, 100, new BulletFactory(physicWorld, bulletLinks))),
-            });
+            var bulletCharacterInteractions = new PhysicalInteractions<IBullet, ICharacter>(physicWorld, 
+                physicalBullets,
+                physicalCharacters,
+                new BulletCharacterInteraction());
+            
+            var mainGameObjectsLoop = new GameObjectsGroup();
+            mainGameObjectsLoop.Add(new CharactersFactory(physicWorld, physicalCharacters).Create(10));
+            mainGameObjectsLoop.Add(new Player(new Weapon(1, 100, new BulletFactory(mainGameObjectsLoop, physicWorld, physicalBullets))));
 
-            var physicsLoop = new ConstantExecutionTimeStep(new FrameExecutionGroup(new IFrameExecution[]
+            var mainPhysicsLoop = new ConstantExecutionTimeStep(new FrameExecutionGroup(new IFrameExecution[]
             {
                 physicWorld,
-                characterLinks,
-                bulletLinks,
-                new PhysicalObjectsInteraction<IBullet, ICharacter>(physicWorld, bulletLinks, characterLinks,
-                    new BulletCharacterInteraction())
+                physicalCharacters,
+                physicalBullets,
+                bulletCharacterInteractions
             }), 20);
 
             _gameLoop = new FrameExecutionGroup(new IFrameExecution[]
             {
-                physicsLoop,
-                gameObjectsLoop,
+                mainPhysicsLoop,
+                mainGameObjectsLoop,
             });
         }
 

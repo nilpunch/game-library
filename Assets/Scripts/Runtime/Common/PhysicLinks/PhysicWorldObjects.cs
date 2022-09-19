@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace GameLibrary
 {
-    public class PhysicWorldLinks<TAssociation> : IFrameExecution, IPhysicWorldLinks<TAssociation>
+    public class PhysicWorldObjects<TAssociation> : IFrameExecution, IPhysicWorldObjects<TAssociation>
         where TAssociation : IActuality
     {
         private struct Association

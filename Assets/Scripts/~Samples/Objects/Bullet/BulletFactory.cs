@@ -2,13 +2,15 @@
 {
     public class BulletFactory : IBulletFactory
     {
+        private readonly IGameObjectsLoop _gameObjectsLoop;
         private readonly IPhysicWorld _physicWorld;
-        private readonly IPhysicWorldLinks<IBullet> _links;
+        private readonly IPhysicWorldObjects<IBullet> _worldObjects;
 
-        public BulletFactory(IPhysicWorld physicWorld, IPhysicWorldLinks<IBullet> links)
+        public BulletFactory(IGameObjectsLoop gameObjectsLoop, IPhysicWorld physicWorld, IPhysicWorldObjects<IBullet> worldObjects)
         {
+            _gameObjectsLoop = gameObjectsLoop;
             _physicWorld = physicWorld;
-            _links = links;
+            _worldObjects = worldObjects;
         }
 
         public IBullet Create(int damage, long liveTime)
@@ -20,7 +22,8 @@
             IBullet bullet = new Bullet(damage, liveTime, physicalObject);
 
             _physicWorld.Add(physicalObject);
-            _links.Link(physicalObject, bullet);
+            _gameObjectsLoop.Add(bullet);
+            _worldObjects.Link(physicalObject, bullet);
 
             return bullet;
         }

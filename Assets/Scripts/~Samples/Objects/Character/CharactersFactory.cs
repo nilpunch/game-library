@@ -3,12 +3,12 @@
     public class CharactersFactory : ICharactersFactory
     {
         private readonly IPhysicWorld _physicsWorld;
-        private readonly IPhysicWorldLinks<ICharacter> _links;
+        private readonly IPhysicWorldObjects<ICharacter> _worldObjects;
 
-        public CharactersFactory(IPhysicWorld physicsWorld, IPhysicWorldLinks<ICharacter> links)
+        public CharactersFactory(IPhysicWorld physicsWorld, IPhysicWorldObjects<ICharacter> worldObjects)
         {
             _physicsWorld = physicsWorld;
-            _links = links;
+            _worldObjects = worldObjects;
         }
 
         public ICharacter Create(int health)
@@ -20,7 +20,7 @@
             ICharacter character = new Character(health, physicalObject);
 
             _physicsWorld.Add(physicalObject);
-            _links.Link(physicalObject, character);
+            _worldObjects.Link(physicalObject, character);
 
             return character;
         }
