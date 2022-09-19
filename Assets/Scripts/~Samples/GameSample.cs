@@ -18,7 +18,7 @@
             
             var mainGameObjectsLoop = new GameObjectsGroup();
             mainGameObjectsLoop.Add(new CharactersFactory(physicWorld, physicalCharacters).Create(10));
-            mainGameObjectsLoop.Add(new Player(new Weapon(1, 100, new BulletFactory(mainGameObjectsLoop, physicWorld, physicalBullets))));
+            mainGameObjectsLoop.Add(new Player(new Weapon(1, 100, new BulletFactory(physicWorld, physicalBullets))));
 
             var mainPhysicsLoop = new ConstantExecutionTimeStep(new FrameExecutionGroup(new IFrameExecution[]
             {
