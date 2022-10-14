@@ -3,9 +3,9 @@
     public class HitScanWeapon : IWeapon
     {
         private readonly int _shootDamage;
-        private readonly IConcreteCollisionWorld<ICharacter> _collisionsWorld;
+        private readonly ICollisionsWorld<ICharacter> _collisionsWorld;
 
-        public HitScanWeapon(int shootDamage, IConcreteCollisionWorld<ICharacter> collisionsWorld)
+        public HitScanWeapon(int shootDamage, ICollisionsWorld<ICharacter> collisionsWorld)
         {
             _shootDamage = shootDamage;
             _collisionsWorld = collisionsWorld;

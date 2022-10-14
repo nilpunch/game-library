@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary
 {
-    public struct ConcreteRaycastHit<TConcrete>
+    public struct RaycastHit<TConcrete>
     {
         public bool Occure { get; }
         

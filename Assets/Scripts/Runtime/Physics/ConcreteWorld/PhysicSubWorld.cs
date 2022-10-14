@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GameLibrary
 {
-    public class ConcretePhysicWorld<TConcrete> : IConcretePhysicWorld<TConcrete> where TConcrete : IAlive
+    public class PhysicSubWorld<TConcrete> : IPhysicSubWorld<TConcrete> where TConcrete : IAlive
     {
         private struct PhysicalLink
         {
@@ -19,11 +19,11 @@ namespace GameLibrary
         }
 
         private readonly List<PhysicalLink> _physicalLinks = new();
-        private readonly List<ConcreteInteraction<TConcrete>> _interactions = new();
+        private readonly List<Interaction<TConcrete>> _interactions = new();
 
         private readonly IPhysicWorld _originalWorld;
 
-        public ConcretePhysicWorld(IPhysicWorld originalWorld)
+        public PhysicSubWorld(IPhysicWorld originalWorld)
         {
             _originalWorld = originalWorld;
         }
@@ -46,17 +46,17 @@ namespace GameLibrary
                 !association.Concrete.IsAlive || !association.PhysicalObject.IsAlive);
         }
 
-        public ConcreteInteraction<TConcrete>[] AllInteractions()
+        public Interaction<TConcrete>[] AllInteractions()
         {
             throw new NotImplementedException();
         }
 
-        public ConcreteInteraction<TConcrete>[] InteractionsWith(IPhysicalObject physicalObject)
+        public Interaction<TConcrete>[] InteractionsWith(IPhysicalObject physicalObject)
         {
             throw new NotImplementedException();
         }
 
-        public ConcreteRaycastHit<TConcrete> Raycast(Vector3 from, Vector3 direction)
+        public RaycastHit<TConcrete> Raycast(Vector3 from, Vector3 direction)
         {
             RaycastHit raycastHit = _originalWorld.Raycast(from, direction);
 
@@ -64,7 +64,7 @@ namespace GameLibrary
             
             if (raycastHit.Occure && HasLinkedObject(raycastHit.PhysicalObject))
             {
-                return new ConcreteRaycastHit<TConcrete>();
+                return new RaycastHit<TConcrete>();
             }
         }
 

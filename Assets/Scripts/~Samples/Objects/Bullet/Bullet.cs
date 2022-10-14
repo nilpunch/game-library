@@ -9,11 +9,11 @@ namespace GameLibrary
         private readonly int _damage;
         private readonly long _liveTime;
         private readonly IPhysicalObject _physicalObject;
-        private readonly IConcreteCollisionWorld<ICharacter> _charactersToHit;
+        private readonly ICollisionsWorld<ICharacter> _charactersToHit;
 
         private long _creationTime = -1;
 
-        public Bullet(int damage, long liveTime, IPhysicalObject physicalObject, IConcreteCollisionWorld<ICharacter> charactersToHit)
+        public Bullet(int damage, long liveTime, IPhysicalObject physicalObject, ICollisionsWorld<ICharacter> charactersToHit)
         {
             _damage = damage;
             _liveTime = liveTime;
@@ -37,12 +37,12 @@ namespace GameLibrary
                 return;
             }
 
-            var characterInteractions = _charactersToHit.InteractionsWith(_physicalObject);
+            var interactedCharacters = _charactersToHit.InteractionsWith(_physicalObject);
 
-            if (characterInteractions.Length == 0) 
+            if (interactedCharacters.Length == 0) 
                 return;
             
-            var character = characterInteractions.First().FirstObject;
+            var character = interactedCharacters.First().Object;
             if (character.IsAlive)
                 character.TakeDamage(_damage);
 

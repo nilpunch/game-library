@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary
 {
-    public interface IConcretePhysicWorld<TConcrete> : IConcreteCollisionWorld<TConcrete>
+    public interface IPhysicSubWorld<TConcrete> : ICollisionsWorld<TConcrete>
     {
         void Add(IPhysicalObject physicalObject, TConcrete concreteObject);
         void Remove(IPhysicalObject physicalObject);

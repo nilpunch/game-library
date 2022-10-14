@@ -8,8 +8,8 @@
         {
             var physicWorld = new PhysicWorld();
 
-            var charactersPhysicWorld = new ConcretePhysicWorld<ICharacter>(physicWorld);
-            var bulletsPhysicWorld = new ConcretePhysicWorld<IBullet>(physicWorld);
+            var charactersPhysicWorld = new PhysicSubWorld<ICharacter>(physicWorld);
+            var bulletsPhysicWorld = new PhysicSubWorld<IBullet>(physicWorld);
 
             var bulletsLoop = new GameObjectsGroup();
             

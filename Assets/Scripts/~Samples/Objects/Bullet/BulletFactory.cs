@@ -3,13 +3,13 @@
     public class BulletFactory : IBulletFactory
     {
         private readonly IGameObjectsGroup _bulletsLoop;
-        private readonly IConcretePhysicWorld<IBullet> _bulletsWorld;
-        private readonly IConcreteCollisionWorld<ICharacter> _charactersCollisions;
+        private readonly IPhysicSubWorld<IBullet> _bulletsSubWorld;
+        private readonly ICollisionsWorld<ICharacter> _charactersCollisions;
 
-        public BulletFactory(IGameObjectsGroup bulletsLoop, IConcretePhysicWorld<IBullet> bulletsWorld, IConcreteCollisionWorld<ICharacter> charactersCollisions)
+        public BulletFactory(IGameObjectsGroup bulletsLoop, IPhysicSubWorld<IBullet> bulletsSubWorld, ICollisionsWorld<ICharacter> charactersCollisions)
         {
             _bulletsLoop = bulletsLoop;
-            _bulletsWorld = bulletsWorld;
+            _bulletsSubWorld = bulletsSubWorld;
             _charactersCollisions = charactersCollisions;
         }
 
@@ -22,7 +22,7 @@
             IBullet bullet = new Bullet(damage, liveTime, physicalObject, _charactersCollisions);
 
             _bulletsLoop.Add(bullet);
-            _bulletsWorld.Add(physicalObject, bullet);
+            _bulletsSubWorld.Add(physicalObject, bullet);
 
             return bullet;
         }
