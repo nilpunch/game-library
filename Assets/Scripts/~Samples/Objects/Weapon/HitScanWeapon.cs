@@ -3,25 +3,22 @@
     public class HitScanWeapon : IWeapon
     {
         private readonly int _shootDamage;
-        private readonly ICollisionsWorld _collisionsWorld;
-        private readonly IReadOnlyPhysicWorldObjects<ICharacter> _charactersToHit;
+        private readonly IConcreteCollisionWorld<ICharacter> _collisionsWorld;
 
-        public HitScanWeapon(int shootDamage, ICollisionsWorld collisionsWorld,
-            IReadOnlyPhysicWorldObjects<ICharacter> charactersToHit)
+        public HitScanWeapon(int shootDamage, IConcreteCollisionWorld<ICharacter> collisionsWorld)
         {
             _shootDamage = shootDamage;
             _collisionsWorld = collisionsWorld;
-            _charactersToHit = charactersToHit;
         }
 
         public void Shoot()
         {
             var hit = _collisionsWorld.Raycast(Vector3.Zero, Vector3.Forward);
 
-            if (!hit.Occure || !_charactersToHit.HasLink(hit.PhysicalObject))
+            if (!hit.Occure)
                 return;
 
-            var character = _charactersToHit.Get(hit.PhysicalObject);
+            var character = hit.Object;
             
             if (character.IsAlive)
                 character.TakeDamage(_shootDamage);

@@ -8,23 +8,20 @@
         {
             var physicWorld = new PhysicWorld();
 
-            var physicalCharacters = new PhysicWorldObjects<ICharacter>();
-            var physicalBullets = new PhysicWorldObjects<IBullet>();
-
-            var bulletCharacterInteractions = new InteractionsFilter<IBullet, ICharacter>(physicWorld, 
-                physicalBullets,
-                physicalCharacters,
-                new BulletCharacterInteraction());
+            var charactersPhysicWorld = new ConcretePhysicWorld<ICharacter>(physicWorld);
+            var bulletsPhysicWorld = new ConcretePhysicWorld<IBullet>(physicWorld);
 
             var bulletsLoop = new GameObjectsGroup();
+            
             var playersLoop = new GameObjectsGroup(new IGameObject[]
             {
-                new Player(new ProjectileWeapon(1, 100, new BulletFactory(bulletsLoop, physicWorld, physicalBullets))),
-                new Player(new HitScanWeapon(1, physicWorld, physicalCharacters)),
+                new Player(new ProjectileWeapon(1, 100, new BulletFactory(bulletsLoop, bulletsPhysicWorld, charactersPhysicWorld))),
+                new Player(new HitScanWeapon(1, charactersPhysicWorld)),
             });
+            
             var charactersLoop = new GameObjectsGroup(new IGameObject[]
             {
-                new CharactersFactory(physicWorld, physicalCharacters).Create(10),
+                new CharactersFactory(charactersPhysicWorld).Create(10),
             });
 
             var mainGameObjectsLoop = new SimulationTickGroup(new ISimulationTick[]
@@ -36,10 +33,7 @@
 
             var mainPhysicsLoop = new ConstantExecutionTimeStep(new SimulationTickGroup(new ISimulationTick[]
             {
-                physicWorld,
-                physicalCharacters,
-                physicalBullets,
-                bulletCharacterInteractions
+                physicWorld
             }), 20);
 
             _gameLoop = new SimulationTickGroup(new ISimulationTick[]

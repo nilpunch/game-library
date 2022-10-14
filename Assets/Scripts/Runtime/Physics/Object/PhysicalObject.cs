@@ -7,10 +7,10 @@ namespace GameLibrary
         public PhysicalObject(ICollidingShell shell)
         {
             Shell = shell;
-            IsExist = true;
+            IsAlive = true;
         }
 
-        public bool IsExist { get; private set; }
+        public bool IsAlive { get; private set; }
 
         public ICollidingShell Shell { get; }
 
@@ -21,10 +21,10 @@ namespace GameLibrary
 
         public void Destroy()
         {
-            if (IsExist == false)
+            if (IsAlive == false)
                 throw new Exception();
 
-            IsExist = false;
+            IsAlive = false;
         }
     }
 }

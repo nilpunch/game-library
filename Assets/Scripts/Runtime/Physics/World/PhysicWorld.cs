@@ -8,10 +8,11 @@ namespace GameLibrary
     public class PhysicWorld : IPhysicWorld
     {
         private readonly List<IPhysicalObject> _physicObjects = new();
+        private readonly List<Interaction> _interactions = new();
 
         public void ExecuteTick(long elapsedMilliseconds)
         {
-            _physicObjects.RemoveAll(physicObject => !physicObject.IsExist);
+            _physicObjects.RemoveAll(physicObject => !physicObject.IsAlive);
 
             // TODO:
             // 1. Broad colliders

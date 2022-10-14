@@ -22,10 +22,10 @@ namespace GameLibrary
         {
             foreach (var interaction in _collisionsWorld.AllInteractions())
             {
-                if (_firstWorldObjects.HasLink(interaction.First) && _secondWorldObjects.HasLink(interaction.Second))
+                if (_firstWorldObjects.HasLinkedObject(interaction.First) && _secondWorldObjects.HasLinkedObject(interaction.Second))
                 {
-                    _objectsInteraction.Interact(_firstWorldObjects.Get(interaction.First),
-                        _secondWorldObjects.Get(interaction.Second), interaction.Collision);
+                    _objectsInteraction.Interact(_firstWorldObjects.GetLinkedObject(interaction.First),
+                        _secondWorldObjects.GetLinkedObject(interaction.Second), interaction.Collision);
                 }
             }
         }

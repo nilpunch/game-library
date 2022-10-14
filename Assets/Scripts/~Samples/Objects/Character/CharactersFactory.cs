@@ -2,13 +2,11 @@
 {
     public class CharactersFactory : ICharactersFactory
     {
-        private readonly IPhysicWorld _physicsWorld;
-        private readonly IPhysicWorldObjects<ICharacter> _worldObjects;
+        private readonly IConcretePhysicWorld<ICharacter> _charactersWorld;
 
-        public CharactersFactory(IPhysicWorld physicsWorld, IPhysicWorldObjects<ICharacter> worldObjects)
+        public CharactersFactory(IConcretePhysicWorld<ICharacter> charactersWorld)
         {
-            _physicsWorld = physicsWorld;
-            _worldObjects = worldObjects;
+            _charactersWorld = charactersWorld;
         }
 
         public ICharacter Create(int health)
@@ -19,8 +17,7 @@
 
             ICharacter character = new Character(health, physicalObject);
 
-            _physicsWorld.Add(physicalObject);
-            _worldObjects.Link(physicalObject, character);
+            _charactersWorld.Add(physicalObject, character);
 
             return character;
         }

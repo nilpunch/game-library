@@ -1,12 +1,10 @@
 ﻿namespace GameLibrary
 {
-    public interface IPhysicalObject
+    public interface IPhysicalObject : IAlive
     {
         ICollidingShell Shell { get; }
 
         void AddVelocityChange(Vector3 velocity);
-
-        bool IsExist { get; }
 
         void Destroy();
     }

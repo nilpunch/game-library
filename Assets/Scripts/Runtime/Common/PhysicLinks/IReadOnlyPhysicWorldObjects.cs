@@ -1,8 +1,8 @@
 namespace GameLibrary
 {
-    public interface IReadOnlyPhysicWorldObjects<TLink>
+    public interface IReadOnlyPhysicWorldObjects<TLinkedObject>
     {
-        bool HasLink(IPhysicalObject key);
-        TLink Get(IPhysicalObject key);
+        bool HasLinkedObject(IPhysicalObject physicalObject);
+        TLinkedObject GetLinkedObject(IPhysicalObject physicalObject);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 
 namespace GameLibrary
@@ -8,21 +9,19 @@ namespace GameLibrary
         private readonly int _damage;
         private readonly long _liveTime;
         private readonly IPhysicalObject _physicalObject;
+        private readonly IConcreteCollisionWorld<ICharacter> _charactersToHit;
 
         private long _creationTime = -1;
 
-        public Bullet(int damage, long liveTime, IPhysicalObject physicalObject)
+        public Bullet(int damage, long liveTime, IPhysicalObject physicalObject, IConcreteCollisionWorld<ICharacter> charactersToHit)
         {
             _damage = damage;
             _liveTime = liveTime;
             _physicalObject = physicalObject;
-
-            CanDamage = true;
+            _charactersToHit = charactersToHit;
         }
 
-        public bool IsAlive => CanDamage;
-
-        public bool CanDamage { get; private set; }
+        public bool IsAlive { get; private set; }
 
         public void ExecuteTick(long elapsedMilliseconds)
         {
@@ -33,7 +32,21 @@ namespace GameLibrary
                 _creationTime = elapsedMilliseconds;
 
             if (elapsedMilliseconds > _creationTime + _liveTime)
-                Destroy();
+            {
+                DestroySelf();
+                return;
+            }
+
+            var characterInteractions = _charactersToHit.InteractionsWith(_physicalObject);
+
+            if (characterInteractions.Length == 0) 
+                return;
+            
+            var character = characterInteractions.First().FirstObject;
+            if (character.IsAlive)
+                character.TakeDamage(_damage);
+
+            DestroySelf();
         }
 
         public void Throw(Vector3 velocity)
@@ -41,19 +54,9 @@ namespace GameLibrary
             _physicalObject.AddVelocityChange(velocity);
         }
 
-        public void Damage(ICharacter character)
+        private void DestroySelf()
         {
-            if (!CanDamage)
-                throw new Exception();
-
-            character.TakeDamage(_damage);
-
-            Destroy();
-        }
-
-        private void Destroy()
-        {
-            CanDamage = false;
+            IsAlive = false;
             _physicalObject.Destroy();
         }
     }

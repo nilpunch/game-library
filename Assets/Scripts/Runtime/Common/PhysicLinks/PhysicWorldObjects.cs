@@ -20,30 +20,30 @@ namespace GameLibrary
 
         private readonly List<Association> _physicAssociations = new();
 
-        public bool HasLink(IPhysicalObject physicalObject)
+        public bool HasLinkedObject(IPhysicalObject physicalObject)
         {
             return _physicAssociations.Any(association => association.PhysicalObject == physicalObject);
         }
 
-        public TAssociation Get(IPhysicalObject physicalObject)
+        public TAssociation GetLinkedObject(IPhysicalObject physicalObject)
         {
             return _physicAssociations.First(association => association.PhysicalObject == physicalObject).Associated;
         }
 
-        public void Link(IPhysicalObject physicalObject, TAssociation associatedObject)
+        public void Link(IPhysicalObject physicalObject, TAssociation linkedObject)
         {
-            _physicAssociations.Add(new Association(physicalObject, associatedObject));
+            _physicAssociations.Add(new Association(physicalObject, linkedObject));
         }
 
-        public void Unlink(IPhysicalObject key)
+        public void Unlink(IPhysicalObject physicalObject)
         {
-            _physicAssociations.RemoveAll(association => association.PhysicalObject == key);
+            _physicAssociations.RemoveAll(association => association.PhysicalObject == physicalObject);
         }
 
         public void ExecuteTick(long elapsedMilliseconds)
         {
             _physicAssociations.RemoveAll(association =>
-                !association.Associated.IsAlive || !association.PhysicalObject.IsExist);
+                !association.Associated.IsAlive || !association.PhysicalObject.IsAlive);
         }
     }
 }
