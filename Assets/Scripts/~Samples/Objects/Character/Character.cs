@@ -14,13 +14,11 @@ namespace GameLibrary
             _physicalObject = physicalObject;
         }
 
-        public bool IsActual => IsAlive;
-
         public bool IsAlive => _health > 0;
 
-        public void ExecuteFrame(long elapsedTime)
+        public void ExecuteTick(long elapsedMilliseconds)
         {
-            if (!IsActual)
+            if (!IsAlive)
                 throw new Exception();
         }
 

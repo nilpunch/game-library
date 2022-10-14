@@ -2,7 +2,7 @@
 
 namespace GameLibrary
 {
-    public interface IGameObjectsLoop : IFrameExecution
+    public interface IGameObjectsGroup : ISimulationTick
     {
         void Add(IGameObject gameObject);
         void Remove(IGameObject gameObject);

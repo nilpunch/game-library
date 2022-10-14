@@ -9,7 +9,7 @@ namespace GameLibrary
     {
         private readonly List<IPhysicalObject> _physicObjects = new();
 
-        public void ExecuteFrame(long elapsedTime)
+        public void ExecuteTick(long elapsedMilliseconds)
         {
             _physicObjects.RemoveAll(physicObject => !physicObject.IsExist);
 
@@ -46,7 +46,7 @@ namespace GameLibrary
             throw new NotImplementedException();
         }
 
-        public Collision Raycast(Vector3 from, Vector3 direction)
+        public RaycastHit Raycast(Vector3 from, Vector3 direction)
         {
             throw new NotImplementedException();
         }

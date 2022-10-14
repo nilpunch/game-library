@@ -1,6 +1,9 @@
 namespace GameLibrary
 {
-    public interface IGameObject : IFrameExecution, IActuality
+    /// <summary>
+    /// Simulation object with short lifetime.
+    /// </summary>
+    public interface IGameObject : ISimulationTick, IAlive
     {
     }
 }

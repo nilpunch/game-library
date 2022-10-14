@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace GameLibrary
 {
-    public class GameObjectsGroup : IGameObjectsLoop
+    public class GameObjectsGroup : IGameObjectsGroup
     {
         private readonly List<IGameObject> _gameObjects = new();
 
@@ -16,14 +16,14 @@ namespace GameLibrary
             _gameObjects = gameObjects.ToList();
         }
 
-        public void ExecuteFrame(long elapsedTime)
+        public void ExecuteTick(long elapsedMilliseconds)
         {
-            _gameObjects.RemoveAll(gameObject => !gameObject.IsActual);
+            _gameObjects.RemoveAll(gameObject => !gameObject.IsAlive);
 
             foreach (var gameObject in _gameObjects)
             {
-                if (gameObject.IsActual)
-                    gameObject.ExecuteFrame(elapsedTime);
+                if (gameObject.IsAlive)
+                    gameObject.ExecuteTick(elapsedMilliseconds);
             }
         }
 

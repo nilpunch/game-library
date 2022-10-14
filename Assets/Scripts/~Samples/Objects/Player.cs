@@ -9,12 +9,10 @@
             _weapon = weapon;
         }
 
-        public bool IsActual => true;
+        public bool IsAlive => true;
 
-        public void ExecuteFrame(long elapsedTime)
+        public void ExecuteTick(long elapsedMilliseconds)
         {
-            _weapon.ExecuteFrame(elapsedTime);
-
             _weapon.Shoot();
         }
     }

@@ -3,8 +3,8 @@ using System.Linq;
 
 namespace GameLibrary
 {
-    public class PhysicWorldObjects<TAssociation> : IFrameExecution, IPhysicWorldObjects<TAssociation>
-        where TAssociation : IActuality
+    public class PhysicWorldObjects<TAssociation> : ISimulationTick, IPhysicWorldObjects<TAssociation>
+        where TAssociation : IAlive
     {
         private struct Association
         {
@@ -40,10 +40,10 @@ namespace GameLibrary
             _physicAssociations.RemoveAll(association => association.PhysicalObject == key);
         }
 
-        public void ExecuteFrame(long elapsedTime)
+        public void ExecuteTick(long elapsedMilliseconds)
         {
             _physicAssociations.RemoveAll(association =>
-                !association.Associated.IsActual || !association.PhysicalObject.IsExist);
+                !association.Associated.IsAlive || !association.PhysicalObject.IsExist);
         }
     }
 }

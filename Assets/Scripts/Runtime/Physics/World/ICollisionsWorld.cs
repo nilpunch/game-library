@@ -6,6 +6,6 @@
         
         Collision CalculateCollision(IPhysicalObject physicalObject);
 
-        Collision Raycast(Vector3 from, Vector3 direction);
+        RaycastHit Raycast(Vector3 from, Vector3 direction);
     }
 }

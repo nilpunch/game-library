@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary
 {
-    public interface IWeapon : IFrameExecution
+    public interface IWeapon
     {
         void Shoot();
     }

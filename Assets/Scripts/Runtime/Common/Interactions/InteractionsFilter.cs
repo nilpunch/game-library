@@ -1,13 +1,13 @@
 namespace GameLibrary
 {
-    public class PhysicalInteractions<TFirst, TSecond> : IFrameExecution
+    public class InteractionsFilter<TFirst, TSecond> : ISimulationTick
     {
         private readonly ICollisionsWorld _collisionsWorld;
         private readonly IReadOnlyPhysicWorldObjects<TFirst> _firstWorldObjects;
         private readonly IReadOnlyPhysicWorldObjects<TSecond> _secondWorldObjects;
         private readonly IObjectsInteraction<TFirst, TSecond> _objectsInteraction;
 
-        public PhysicalInteractions(ICollisionsWorld collisionsWorld, 
+        public InteractionsFilter(ICollisionsWorld collisionsWorld, 
             IReadOnlyPhysicWorldObjects<TFirst> firstWorldObjects,
             IReadOnlyPhysicWorldObjects<TSecond> secondWorldObjects,
             IObjectsInteraction<TFirst, TSecond> objectsInteraction)
@@ -18,7 +18,7 @@ namespace GameLibrary
             _objectsInteraction = objectsInteraction;
         }
 
-        public void ExecuteFrame(long elapsedTime)
+        public void ExecuteTick(long elapsedMilliseconds)
         {
             foreach (var interaction in _collisionsWorld.AllInteractions())
             {

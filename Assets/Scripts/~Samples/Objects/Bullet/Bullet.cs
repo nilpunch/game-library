@@ -20,19 +20,19 @@ namespace GameLibrary
             CanDamage = true;
         }
 
-        public bool IsActual => CanDamage;
+        public bool IsAlive => CanDamage;
 
         public bool CanDamage { get; private set; }
 
-        public void ExecuteFrame(long elapsedTime)
+        public void ExecuteTick(long elapsedMilliseconds)
         {
-            if (!IsActual)
+            if (!IsAlive)
                 throw new Exception();
 
             if (_creationTime == -1)
-                _creationTime = elapsedTime;
+                _creationTime = elapsedMilliseconds;
 
-            if (elapsedTime > _creationTime + _liveTime)
+            if (elapsedMilliseconds > _creationTime + _liveTime)
                 Destroy();
         }
 
