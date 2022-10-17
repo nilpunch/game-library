@@ -8,14 +8,22 @@
         {
             var physicWorld = new PhysicWorld();
 
-            var charactersPhysicWorld = new PhysicSubWorld<ICharacter>(physicWorld);
-            var bulletsPhysicWorld = new PhysicSubWorld<IBullet>(physicWorld);
+            var charactersPhysicWorld = new SubPhysicWorld<ICharacter>(physicWorld);
+            var bulletsPhysicWorld = new SubPhysicWorld<IBullet>(physicWorld);
 
+            // This must go in it's own separate contract, without ISimulationTick use
+            var cleanDeadObjects = new SimulationTickGroup(new ISimulationTick[]
+            {
+                charactersPhysicWorld,
+                bulletsPhysicWorld,
+            });
+
+            // Run bullets in outer loop. It's can be done in local composition too.
             var bulletsLoop = new GameObjectsGroup();
             
             var playersLoop = new GameObjectsGroup(new IGameObject[]
             {
-                new Player(new ProjectileWeapon(1, 100, new BulletFactory(bulletsLoop, bulletsPhysicWorld, charactersPhysicWorld))),
+                new Player(new ProjectileWeapon(1, new BulletFactory(bulletsLoop, bulletsPhysicWorld, charactersPhysicWorld))),
                 new Player(new HitScanWeapon(1, charactersPhysicWorld)),
             });
             
@@ -26,15 +34,15 @@
 
             var mainGameObjectsLoop = new SimulationTickGroup(new ISimulationTick[]
             {
+                cleanDeadObjects,
                 bulletsLoop,
                 playersLoop,
                 charactersLoop,
             });
 
-            var mainPhysicsLoop = new ConstantExecutionTimeStep(new SimulationTickGroup(new ISimulationTick[]
-            {
-                physicWorld
-            }), 20);
+            // Technically, application should run whole simulation with fixed time step,
+            // but this example contains proof that game loops can be separated in terms of time step.
+            var mainPhysicsLoop = new ConstantExecutionTimeStep(physicWorld, 20);
 
             _gameLoop = new SimulationTickGroup(new ISimulationTick[]
             {

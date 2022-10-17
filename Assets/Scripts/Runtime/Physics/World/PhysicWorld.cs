@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace GameLibrary
 {
-    public class PhysicWorld : IPhysicWorld
+    public class PhysicWorld : IPhysicWorld, ISimulationTick
     {
         private readonly List<IPhysicalObject> _physicObjects = new();
         private readonly List<Interaction> _interactions = new();
@@ -32,14 +32,14 @@ namespace GameLibrary
             _physicObjects.Remove(physicalObject);
         }
 
-        public Collision CalculateCollision(IPhysicalObject physicalObject)
+        public Interaction[] InteractWith(IPhysicalObject physicalObject)
         {
             Collision collision = new Collision();
 
             foreach (var simulatedObject in _physicObjects.Where(obj => !obj.Equals(physicalObject)))
                 collision = collision.Merge(simulatedObject.Shell.Fallback(physicalObject.Shell));
 
-            return collision;
+            return Array.Empty<Interaction>();
         }
 
         public Interaction[] AllInteractions()

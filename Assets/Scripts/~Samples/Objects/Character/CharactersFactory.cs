@@ -2,11 +2,11 @@
 {
     public class CharactersFactory : ICharactersFactory
     {
-        private readonly IPhysicSubWorld<ICharacter> _charactersSubWorld;
+        private readonly IPhysicWorld<ICharacter> _charactersWorld;
 
-        public CharactersFactory(IPhysicSubWorld<ICharacter> charactersSubWorld)
+        public CharactersFactory(IPhysicWorld<ICharacter> charactersWorld)
         {
-            _charactersSubWorld = charactersSubWorld;
+            _charactersWorld = charactersWorld;
         }
 
         public ICharacter Create(int health)
@@ -17,7 +17,7 @@
 
             ICharacter character = new Character(health, physicalObject);
 
-            _charactersSubWorld.Add(physicalObject, character);
+            _charactersWorld.Add(physicalObject, character);
 
             return character;
         }

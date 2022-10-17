@@ -4,7 +4,7 @@
     {
         Interaction[] AllInteractions();
         
-        Collision CalculateCollision(IPhysicalObject physicalObject);
+        Interaction[] InteractWith(IPhysicalObject physicalObject);
 
         RaycastHit Raycast(Vector3 from, Vector3 direction);
     }
