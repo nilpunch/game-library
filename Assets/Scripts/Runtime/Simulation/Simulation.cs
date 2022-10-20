@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary
 {
-    public class Simulation<TModel, TSnapshot> : ISimulation<TModel, TSnapshot> where TModel : IModel<TSnapshot>
+    public class Simulation<TModel, TSnapshot> : ISimulation<TModel>, ISimulationTick where TModel : IModel<TSnapshot>
     {
         private readonly TModel _model;
 
@@ -11,12 +11,12 @@
         
         public void AddCommand(long tickNumber, ICommand<TModel> command)
         {
-            throw new System.NotImplementedException();
+            command.Execute(_model);
         }
 
         public void ExecuteTick(long elapsedMilliseconds)
         {
-            throw new System.NotImplementedException();
+            _model.ExecuteTick(elapsedMilliseconds);
         }
     }
 }

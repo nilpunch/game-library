@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary
 {
-    public interface ISimulation<out TModel, TSnapshot> : ISimulationTick where TModel : IModel<TSnapshot>
+    public interface ISimulation<out TModel>
     {
         void AddCommand(long tickNumber, ICommand<TModel> command);
     }
