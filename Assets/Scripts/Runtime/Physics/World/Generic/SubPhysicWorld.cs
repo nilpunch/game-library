@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GameLibrary
 {
-    public class SubPhysicWorld<TConcrete> : IPhysicWorld<TConcrete>, ISimulationTick where TConcrete : IAlive
+    public class SubPhysicWorld<TConcrete> : IPhysicWorld<TConcrete>, IGraveyard where TConcrete : IAlive
     {
         private readonly List<PhysicalPair<TConcrete>> _physicalPairs = new();
         private readonly List<Interaction<TConcrete>> _interactions = new();
@@ -30,7 +30,11 @@ namespace GameLibrary
         
         public void ExecuteTick(long elapsedMilliseconds)
         {
-            // Removing all dead
+            throw new NotImplementedException();
+        }
+
+        public void ForgetDeadObjects()
+        {
             _physicalPairs.RemoveAll(association =>
                 !association.Concrete.IsAlive || !association.PhysicalObject.IsAlive);
         }

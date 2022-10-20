@@ -11,35 +11,33 @@
 
             var charactersPhysicWorld = new SubPhysicWorld<ICharacter>(physicWorld);
             var bulletsPhysicWorld = new SubPhysicWorld<IBullet>(physicWorld);
-
-            // This must go in it's own separate contract, without ISimulationTick use
-            var cleanDeadObjects = new SimulationTickGroup(new ISimulationTick[]
-            {
-                charactersPhysicWorld,
-                bulletsPhysicWorld,
-            });
-
-            // Run bullets in outer loop. It's can be done in local composition too.
-            var bulletsLoop = new GameObjectsGroup();
             
+            var bulletsGroup = new GameObjectsGroup();
             var characterFactory = new CharacterFactory(charactersPhysicWorld);
-            var charactersLoop = new GameObjectsGroup(new IGameObject[]
+
+            var charactersGroup = new GameObjectsGroup(new IGameObject[]
             {
-                characterFactory.Create(10, new ProjectileWeapon(1, new BulletFactory(bulletsLoop, bulletsPhysicWorld, charactersPhysicWorld))),
+                characterFactory.Create(10, new ProjectileWeapon(1, 
+                    new BulletFactory(bulletsGroup, bulletsPhysicWorld, charactersPhysicWorld))),
                 characterFactory.Create(10, new HitScanWeapon(1, charactersPhysicWorld)),
             });
-
-            var mainGameObjectsLoop = new SimulationTickGroup(new ISimulationTick[]
-            {
-                cleanDeadObjects,
-                bulletsLoop,
-                charactersLoop,
-            });
-
+            
             _gameLoop = new SimulationTickGroup(new ISimulationTick[]
             {
+                new SimulationTickGroup(new ISimulationTick[]
+                {
+                    new CleanupGraveyardTick(physicWorld),
+                    new CleanupGraveyardTick(charactersPhysicWorld),
+                    new CleanupGraveyardTick(bulletsPhysicWorld),
+                    new CleanupGraveyardTick(charactersGroup)
+                }),
+                
                 physicWorld,
-                mainGameObjectsLoop,
+                new SimulationTickGroup(new ISimulationTick[]
+                {
+                    bulletsGroup,
+                    charactersGroup,
+                })
             });
         }
 

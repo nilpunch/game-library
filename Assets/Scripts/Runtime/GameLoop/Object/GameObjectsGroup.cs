@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace GameLibrary
 {
-    public class GameObjectsGroup : IGameObjectsGroup
+    public class GameObjectsGroup : IGameObjectsGroup, ISimulationTick, IGraveyard
     {
         private readonly List<IGameObject> _gameObjects = new();
 
@@ -18,8 +18,6 @@ namespace GameLibrary
 
         public void ExecuteTick(long elapsedMilliseconds)
         {
-            _gameObjects.RemoveAll(gameObject => !gameObject.IsAlive);
-
             foreach (var gameObject in _gameObjects)
             {
                 if (gameObject.IsAlive)
@@ -35,6 +33,11 @@ namespace GameLibrary
         public void Remove(IGameObject gameObject)
         {
             _gameObjects.Remove(gameObject);
+        }
+
+        public void ForgetDeadObjects()
+        {
+            _gameObjects.RemoveAll(gameObject => !gameObject.IsAlive);
         }
     }
 }

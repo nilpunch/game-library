@@ -5,15 +5,13 @@ using System.Linq;
 
 namespace GameLibrary
 {
-    public class PhysicWorld : IPhysicWorld, ISimulationTick
+    public class PhysicWorld : IPhysicWorld, ISimulationTick, IGraveyard
     {
         private readonly List<IPhysicalObject> _physicObjects = new();
         private readonly List<Interaction> _interactions = new();
 
         public void ExecuteTick(long elapsedMilliseconds)
         {
-            _physicObjects.RemoveAll(physicObject => !physicObject.IsAlive);
-
             // TODO:
             // 1. Broad colliders
             // 2. Collect collisions
@@ -30,6 +28,11 @@ namespace GameLibrary
         public void Remove(IPhysicalObject physicalObject)
         {
             _physicObjects.Remove(physicalObject);
+        }
+
+        public void ForgetDeadObjects()
+        {
+            _physicObjects.RemoveAll(physicObject => !physicObject.IsAlive);
         }
 
         public Interaction[] InteractWith(IPhysicalObject physicalObject)
