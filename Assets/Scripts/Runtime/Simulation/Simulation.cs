@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary
 {
-    public class Simulation<TModel, TSnapshot> : ISimulation<TModel>, ISimulationTick where TModel : IModel<TSnapshot>
+    public class Simulation<TModel, TSnapshot> : ISimulation<TModel>, ISimulationTick where TModel : ISimulationModel<TSnapshot>
     {
         private readonly TModel _model;
 

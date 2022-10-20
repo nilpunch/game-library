@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary
 {
-    public interface IModel<TSnapshot> : ISimulationTick
+    public interface ISimulationModel<TSnapshot> : ISimulationTick
     {
         TSnapshot MakeSnapshot();
         void RestoreSnapshot(TSnapshot snapshot);

@@ -10,14 +10,14 @@
             var simulation = new Simulation<Model, ModelSnapshot>(model);
             
             var player = new Player<Model>();
-            var server = new Server<Model>();
+            var remoteServer = new RemoteServer<Model>();
             
             _gameLoop = new SimulationTickGroup(new ISimulationTick[]
             {
                 new ConstantExecutionTimeStep(new SimulationTickGroup(new ISimulationTick[]
                 {
                     new ExecuteCommands<Model>(player, simulation), // TODO: Send commands to server
-                    new ExecuteCommands<Model>(server, simulation),
+                    new ExecuteCommands<Model>(remoteServer, simulation),
                     simulation,
                 }), timeStep: 20),
                 

@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary.Sample
 {
-    public class Model : IModel<ModelSnapshot>, IVisualisation
+    public class Model : ISimulationModel<ModelSnapshot>, IVisualisation
     {
         private readonly ISimulationTick _gameLoop;
         private readonly IVisualisation _visualisation;
@@ -22,22 +22,17 @@
             // Run bullets in outer loop. It's can be done in local composition too.
             var bulletsLoop = new GameObjectsGroup();
             
-            var playersLoop = new GameObjectsGroup(new IGameObject[]
-            {
-                new Player(new ProjectileWeapon(1, new BulletFactory(bulletsLoop, bulletsPhysicWorld, charactersPhysicWorld))),
-                new Player(new HitScanWeapon(1, charactersPhysicWorld)),
-            });
-            
+            var characterFactory = new CharacterFactory(charactersPhysicWorld);
             var charactersLoop = new GameObjectsGroup(new IGameObject[]
             {
-                new CharactersFactory(charactersPhysicWorld).Create(10),
+                characterFactory.Create(10, new ProjectileWeapon(1, new BulletFactory(bulletsLoop, bulletsPhysicWorld, charactersPhysicWorld))),
+                characterFactory.Create(10, new HitScanWeapon(1, charactersPhysicWorld)),
             });
 
             var mainGameObjectsLoop = new SimulationTickGroup(new ISimulationTick[]
             {
                 cleanDeadObjects,
                 bulletsLoop,
-                playersLoop,
                 charactersLoop,
             });
 

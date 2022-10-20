@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary.Sample
 {
-    public class Server<TModel> : ICommandsSource<TModel>
+    public class RemoteServer<TModel> : ICommandsSource<TModel>
     {
         public bool HasCommands { get; }
         
