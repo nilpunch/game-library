@@ -2,6 +2,6 @@
 {
     public interface ISimulation<out TModel>
     {
-        void AddCommand(long tickNumber, ICommand<TModel> command);
+        void AddCommand(long tickNumber, ICommand<TModel> command, bool isPrediction = false);
     }
 }

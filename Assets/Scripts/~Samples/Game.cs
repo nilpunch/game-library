@@ -8,16 +8,19 @@
         {
             var model = new Model();
             var simulation = new Simulation<Model, ModelSnapshot>(model);
-            
-            var player = new Player<Model>();
+
             var remoteServer = new RemoteServer<Model>();
             
+            var remotePlayers = new RemotePlayersPrediction<Model>(remoteServer); // Will repeat last players commands
+            var player = new Player<Model>();
+
             _gameLoop = new SimulationTickGroup(new ISimulationTick[]
             {
                 new ConstantExecutionTimeStep(new SimulationTickGroup(new ISimulationTick[]
                 {
-                    new ExecuteCommands<Model>(player, simulation), // TODO: Send commands to server
-                    new ExecuteCommands<Model>(remoteServer, simulation),
+                    new PredictCommands<Model>(remotePlayers, simulation),
+                    new PredictCommandsAndSendToServer<Model>(player, simulation, remoteServer),
+                    new ApplyCommands<Model>(remoteServer, simulation),
                     simulation,
                 }), timeStep: 20),
                 

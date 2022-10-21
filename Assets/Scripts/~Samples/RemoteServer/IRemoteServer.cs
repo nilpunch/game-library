@@ -2,6 +2,6 @@
 {
     public interface IRemoteServer<TModel>
     {
-        public void SendCommand(ICommand<TModel> command);
+        public void SendCommand(long timeMilliseconds, ICommand<TModel> command);
     }
 }

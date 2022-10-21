@@ -9,7 +9,7 @@
             _model = model;
         }
         
-        public void AddCommand(long tickNumber, ICommand<TModel> command)
+        public void AddCommand(long tickNumber, ICommand<TModel> command, bool isPrediction)
         {
             command.Execute(_model);
         }

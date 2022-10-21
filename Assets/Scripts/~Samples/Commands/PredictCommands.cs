@@ -5,7 +5,7 @@
         private readonly ICommandsSource<TModel> _commandsSource;
         private readonly ISimulation<TModel> _simulation;
 
-        public PredictAndSendToServer(ICommandsSource<TModel> commandsSource, ISimulation<TModel> simulation)
+        public PredictCommands(ICommandsSource<TModel> commandsSource, ISimulation<TModel> simulation)
         {
             _commandsSource = commandsSource;
             _simulation = simulation;

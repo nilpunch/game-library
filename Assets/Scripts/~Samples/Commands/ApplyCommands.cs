@@ -1,11 +1,11 @@
 ﻿namespace GameLibrary.Sample
 {
-    public class ExecuteCommands<TModel> : ISimulationTick
+    public class ApplyCommands<TModel> : ISimulationTick
     {
         private readonly ICommandsSource<TModel> _commandsSource;
         private readonly ISimulation<TModel> _simulation;
 
-        public ExecuteCommands(ICommandsSource<TModel> commandsSource, ISimulation<TModel> simulation)
+        public ApplyCommands(ICommandsSource<TModel> commandsSource, ISimulation<TModel> simulation)
         {
             _commandsSource = commandsSource;
             _simulation = simulation;

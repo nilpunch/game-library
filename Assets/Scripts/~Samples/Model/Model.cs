@@ -1,6 +1,7 @@
 ﻿namespace GameLibrary.Sample
 {
-    public class Model : ISimulationModel<ModelSnapshot>, IVisualisation
+    public class Model : ISimulationModel<ModelSnapshot>, IVisualisation,
+        ICharacterMovement
     {
         private readonly ISimulationTick _gameLoop;
         private readonly IVisualisation _visualisation;
@@ -59,6 +60,11 @@
         public void Render(long elapsedMilliseconds)
         {
             _visualisation.Render(elapsedMilliseconds);
+        }
+
+        public void Move(long characterId, Vector3 input)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
