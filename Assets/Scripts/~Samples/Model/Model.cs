@@ -47,12 +47,12 @@
             _gameLoop.ExecuteTick(elapsedMilliseconds);
         }
 
-        public ModelSnapshot MakeSnapshot()
+        public ModelSnapshot TakeSnapshot()
         {
             throw new System.NotImplementedException();
         }
 
-        public void RestoreSnapshot(ModelSnapshot snapshot)
+        public void ApplySnapshot(ModelSnapshot snapshot)
         {
             throw new System.NotImplementedException();
         }
