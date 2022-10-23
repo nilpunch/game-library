@@ -2,7 +2,11 @@
     "name": "GameLibrary.Samples",
     "rootNamespace": "",
     "references": [
-        "GUID:68a5edc33be920448a67913e5348c97e"
+        "GUID:68a5edc33be920448a67913e5348c97e",
+        "GUID:bacda8cf4a62d3d44966d55cb2641097",
+        "GUID:664f3adabac4d7546b8853ca5f3e472f",
+        "GUID:c0bfff2a2092ce249bf64b833062e882",
+        "GUID:5b5c2ddac3d78c6448ceadc2240ac25b"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

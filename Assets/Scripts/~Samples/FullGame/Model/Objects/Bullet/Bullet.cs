@@ -2,22 +2,24 @@
 using System.Linq;
 
 
-namespace GameLibrary.Sample.FullGame
+namespace GameLibrary.Sample
 {
     public class Bullet : IBullet
     {
         private readonly int _damage;
         private readonly IPhysicalObject _physicalObject;
+        private readonly IBulletView _view;
         private readonly ICollisionsWorld<ICharacter> _charactersToHit;
 
-        public Bullet(int damage, IPhysicalObject physicalObject, ICollisionsWorld<ICharacter> charactersToHit)
+        public Bullet(int damage, IPhysicalObject physicalObject, IBulletView view, ICollisionsWorld<ICharacter> charactersToHit)
         {
             _damage = damage;
             _physicalObject = physicalObject;
+            _view = view;
             _charactersToHit = charactersToHit;
         }
 
-        public bool IsAlive { get; private set; }
+        public bool IsAlive { get; private set; } = true;
 
         public void ExecuteTick(long elapsedMilliseconds)
         {
@@ -44,6 +46,7 @@ namespace GameLibrary.Sample.FullGame
         {
             IsAlive = false;
             _physicalObject.Destroy();
+            _view.Destroy();
         }
     }
 }

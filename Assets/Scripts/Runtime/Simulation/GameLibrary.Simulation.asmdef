@@ -1,0 +1,17 @@
+{
+    "name": "GameLibrary.Simulation",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bacda8cf4a62d3d44966d55cb2641097",
+        "GUID:664f3adabac4d7546b8853ca5f3e472f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}

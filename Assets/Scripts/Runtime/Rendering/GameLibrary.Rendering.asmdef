@@ -1,0 +1,16 @@
+{
+    "name": "GameLibrary.Rendering",
+    "rootNamespace": "",
+    "references": [
+        "GUID:bacda8cf4a62d3d44966d55cb2641097"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": true
+}

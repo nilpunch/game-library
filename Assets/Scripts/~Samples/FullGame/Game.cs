@@ -1,4 +1,6 @@
-﻿namespace GameLibrary.Sample.FullGame
+﻿using GameLibrary.Rendering;
+
+namespace GameLibrary.Sample
 {
     public class Game : ISimulationTick
     {
@@ -6,26 +8,19 @@
 
         public Game()
         {
-            var model = new Model();
-            var simulation = new Simulation<Model, ModelSnapshot>(model);
+            var graphicLibrary = new FakeGraphicLibrary();
 
-            var remoteServer = new RemoteServer<Model>();
+            var viewLibrary = new ViewLibrary(graphicLibrary);
             
-            var remotePlayers = new RemotePlayersPrediction<Model>(remoteServer); // Will repeat last players commands
-            var player = new Player<Model>();
+            var model = new Model(viewLibrary);
+            
+            var simulation = new Simulation<Model, ModelSnapshot>(model);
 
             _gameLoop = new SimulationTickGroup(new ISimulationTick[]
             {
-                new ConstantExecutionTimeStep(new SimulationTickGroup(new ISimulationTick[]
-                {
-                    new PredictCommands<Model>(remotePlayers, simulation),
-                    new PredictCommandsAndSendToServer<Model>(player, simulation, remoteServer),
-                    new ApplyCommands<Model>(remoteServer, simulation),
-                    simulation,
-                }), timeStep: 20),
-                
-                // Variable execution step for visualisation, so no framerate cap :)
-                new VisualisationTick(model)
+                simulation,
+                new CleanupDeadTick(graphicLibrary),
+                new RenderTick(graphicLibrary),
             });
         }
         

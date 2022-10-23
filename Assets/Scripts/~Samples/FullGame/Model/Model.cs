@@ -1,15 +1,17 @@
-﻿namespace GameLibrary.Sample.FullGame
+﻿using GameLibrary.Rendering;
+
+namespace GameLibrary.Sample
 {
-    public class Model : ISimulationModel<ModelSnapshot>, IVisualisation
+    public class Model : ISimulationModel<ModelSnapshot>
     {
         private readonly ISimulationTick _gameLoop;
-        private readonly IVisualisation _visualisation;
 
-        public Model()
+        public Model(IViewLibrary viewLibrary)
         {
-            // All view's to render
-            var liveVisualisations = new AliveVisualisationGroup();
-
+            // Views
+            var characterViewFactory = viewLibrary.CharacterViewFactory();
+            var bulletViewFactory = viewLibrary.BulletViewFactory();
+            
             // Physics
             var physicWorld = new PhysicWorld();
             var charactersPhysicWorld = new SubPhysicWorld<ICharacter>(physicWorld);
@@ -17,11 +19,11 @@
             // Game Objects
             var bulletsGameObjects = new GameObjectsGroup();
             
-            var characterFactory = new CharacterFactory(charactersPhysicWorld, new CharacterViewFactory(liveVisualisations));
+            var characterFactory = new CharacterFactory(charactersPhysicWorld, characterViewFactory);
             var charactersGameObjects = new GameObjectsGroup(new IGameObject[]
             {
                 characterFactory.Create(10, new ProjectileWeapon(1, 
-                    new BulletFactory(bulletsGameObjects, physicWorld, charactersPhysicWorld))),
+                    new BulletFactory(bulletsGameObjects, physicWorld, charactersPhysicWorld, bulletViewFactory))),
                 characterFactory.Create(10, new HitScanWeapon(1, charactersPhysicWorld)),
             });
 
@@ -31,7 +33,6 @@
                 new CleanupDeadTick(physicWorld),
                 new CleanupDeadTick(charactersPhysicWorld),
                 new CleanupDeadTick(charactersGameObjects),
-                new CleanupDeadTick(liveVisualisations)
             });
             
             _gameLoop = new SimulationTickGroup(new ISimulationTick[]
@@ -41,18 +42,11 @@
                 bulletsGameObjects,
                 charactersGameObjects
             });
-
-            _visualisation = liveVisualisations;
         }
 
         public void ExecuteTick(long elapsedMilliseconds)
         {
             _gameLoop.ExecuteTick(elapsedMilliseconds);
-        }
-
-        public void Render(long elapsedMilliseconds)
-        {
-            _visualisation.Render(elapsedMilliseconds);
         }
 
         public ModelSnapshot TakeSnapshot()

@@ -1,4 +1,4 @@
-﻿namespace GameLibrary.Sample.FullGame
+﻿namespace GameLibrary.Sample
 {
     public struct ModelSnapshot
     {
