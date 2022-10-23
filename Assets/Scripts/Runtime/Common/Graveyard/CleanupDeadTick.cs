@@ -1,10 +1,10 @@
 ﻿namespace GameLibrary
 {
-    public class CleanupGraveyardTick : ISimulationTick
+    public class CleanupDeadTick : ISimulationTick
     {
         private readonly IDeadStorage _deadStorage;
 
-        public CleanupGraveyardTick(IDeadStorage deadStorage)
+        public CleanupDeadTick(IDeadStorage deadStorage)
         {
             _deadStorage = deadStorage;
         }

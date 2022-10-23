@@ -28,10 +28,10 @@
             // Cleanup all dead objects
             var cleanup = new SimulationTickGroup(new ISimulationTick[]
             {
-                new CleanupGraveyardTick(physicWorld),
-                new CleanupGraveyardTick(charactersPhysicWorld),
-                new CleanupGraveyardTick(charactersGameObjects),
-                new CleanupGraveyardTick(liveVisualisations)
+                new CleanupDeadTick(physicWorld),
+                new CleanupDeadTick(charactersPhysicWorld),
+                new CleanupDeadTick(charactersGameObjects),
+                new CleanupDeadTick(liveVisualisations)
             });
             
             _gameLoop = new SimulationTickGroup(new ISimulationTick[]
