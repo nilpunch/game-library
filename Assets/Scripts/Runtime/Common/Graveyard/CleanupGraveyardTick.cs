@@ -2,16 +2,16 @@
 {
     public class CleanupGraveyardTick : ISimulationTick
     {
-        private readonly IGraveyard _graveyard;
+        private readonly IDeadStorage _deadStorage;
 
-        public CleanupGraveyardTick(IGraveyard graveyard)
+        public CleanupGraveyardTick(IDeadStorage deadStorage)
         {
-            _graveyard = graveyard;
+            _deadStorage = deadStorage;
         }
         
         public void ExecuteTick(long elapsedMilliseconds)
         {
-            _graveyard.ForgetDeadObjects();
+            _deadStorage.CleanupDeadObjects();
         }
     }
 }

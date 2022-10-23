@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GameLibrary
 {
-    public class SubPhysicWorld<TConcrete> : IPhysicWorld<TConcrete>, IGraveyard where TConcrete : IAlive
+    public class SubPhysicWorld<TConcrete> : IPhysicWorld<TConcrete>, IDeadStorage where TConcrete : IAlive
     {
         private readonly List<PhysicalPair<TConcrete>> _physicalPairs = new();
         private readonly List<Interaction<TConcrete>> _interactions = new();
@@ -33,7 +33,7 @@ namespace GameLibrary
             throw new NotImplementedException();
         }
 
-        public void ForgetDeadObjects()
+        public void CleanupDeadObjects()
         {
             _physicalPairs.RemoveAll(association =>
                 !association.Concrete.IsAlive || !association.PhysicalObject.IsAlive);

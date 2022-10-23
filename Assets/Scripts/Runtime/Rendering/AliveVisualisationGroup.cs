@@ -3,13 +3,7 @@ using System.Linq;
 
 namespace GameLibrary
 {
-    public interface IAliveVisualisationGroup
-    {
-        void Add(IAliveVisualisation gameObject);
-        void Remove(IAliveVisualisation gameObject);
-    }
-
-    public class AliveVisualisationGroup : IVisualisation, IGraveyard, IAliveVisualisationGroup
+    public class AliveVisualisationGroup : IAliveVisualisationGroup, IVisualisation, IDeadStorage
     {
         private readonly List<IAliveVisualisation> _visualisations = new();
 
@@ -40,7 +34,7 @@ namespace GameLibrary
             _visualisations.Remove(gameObject);
         }
 
-        public void ForgetDeadObjects()
+        public void CleanupDeadObjects()
         {
             _visualisations.RemoveAll(visualisation => !visualisation.IsAlive);
         }

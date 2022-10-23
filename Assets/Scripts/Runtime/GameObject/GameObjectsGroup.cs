@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace GameLibrary
 {
-    public class GameObjectsGroup : IGameObjectsGroup, ISimulationTick, IGraveyard
+    public class GameObjectsGroup : IGameObjectsGroup, ISimulationTick, IDeadStorage
     {
         private readonly List<IGameObject> _gameObjects = new();
 
@@ -35,7 +35,7 @@ namespace GameLibrary
             _gameObjects.Remove(gameObject);
         }
 
-        public void ForgetDeadObjects()
+        public void CleanupDeadObjects()
         {
             _gameObjects.RemoveAll(gameObject => !gameObject.IsAlive);
         }

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace GameLibrary
 {
-    public class PhysicWorld : IPhysicWorld, ISimulationTick, IGraveyard
+    public class PhysicWorld : IPhysicWorld, ISimulationTick, IDeadStorage
     {
         private readonly List<IPhysicalObject> _physicObjects = new();
         private readonly List<Interaction> _interactions = new();
@@ -30,7 +30,7 @@ namespace GameLibrary
             _physicObjects.Remove(physicalObject);
         }
 
-        public void ForgetDeadObjects()
+        public void CleanupDeadObjects()
         {
             _physicObjects.RemoveAll(physicObject => !physicObject.IsAlive);
         }
