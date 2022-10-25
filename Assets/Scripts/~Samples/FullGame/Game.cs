@@ -1,4 +1,5 @@
-﻿using GameLibrary.Rendering;
+﻿using GameLibrary.Lifetime;
+using GameLibrary.Rendering;
 
 namespace GameLibrary.Sample
 {
@@ -14,7 +15,7 @@ namespace GameLibrary.Sample
             
             var model = new Model(viewLibrary);
             
-            var simulation = new Simulation<Model, ModelSnapshot>(model);
+            var simulation = new DeterministicSimulation<Model, ModelSnapshot>(model);
 
             _gameLoop = new SimulationTickGroup(new ISimulationTick[]
             {

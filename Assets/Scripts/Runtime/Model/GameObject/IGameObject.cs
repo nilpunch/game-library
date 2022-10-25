@@ -1,3 +1,5 @@
+using GameLibrary.Lifetime;
+
 namespace GameLibrary
 {
     /// <summary>

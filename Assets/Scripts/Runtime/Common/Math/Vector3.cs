@@ -1,4 +1,4 @@
-﻿namespace GameLibrary
+﻿namespace GameLibrary.Math
 {
     public struct Vector3
     {

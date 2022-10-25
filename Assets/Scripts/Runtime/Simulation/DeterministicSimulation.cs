@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace GameLibrary
 {
-    public class Simulation<TModel, TSnapshot> : ISimulation<TModel>, ISimulationTick where TModel : ISimulationModel<TSnapshot>
+    public class DeterministicSimulation<TModel, TSnapshot> : ISimulation<TModel>, ISimulationTick where TModel : ISimulationModel<TSnapshot>
     {
         private readonly long _tickIntervalMilliseconds;
         private readonly long _rollbackHistoryMilliseconds;
@@ -13,7 +13,7 @@ namespace GameLibrary
         private readonly Dictionary<long, TSnapshot> _modelSnapshots = new();
         private readonly Dictionary<long, List<ICommand<TModel>>> _commandTimeline = new();
 
-        public Simulation(TModel model, long tickIntervalMilliseconds = 20, long rollbackHistoryMilliseconds = 60000)
+        public DeterministicSimulation(TModel model, long tickIntervalMilliseconds = 20, long rollbackHistoryMilliseconds = 60000)
         {
             _model = model;
             _tickIntervalMilliseconds = tickIntervalMilliseconds;

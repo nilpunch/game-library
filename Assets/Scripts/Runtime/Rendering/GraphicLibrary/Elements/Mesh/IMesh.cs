@@ -1,4 +1,6 @@
-﻿namespace GameLibrary.Rendering
+﻿using GameLibrary.Lifetime;
+
+namespace GameLibrary.Rendering
 {
 	public interface IMesh : IAlive
 	{

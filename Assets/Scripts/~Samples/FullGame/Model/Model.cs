@@ -1,4 +1,5 @@
-﻿using GameLibrary.Rendering;
+﻿using GameLibrary.Lifetime;
+using GameLibrary.Rendering;
 
 namespace GameLibrary.Sample
 {

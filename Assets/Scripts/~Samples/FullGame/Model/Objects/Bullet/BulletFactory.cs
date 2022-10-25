@@ -1,4 +1,6 @@
-﻿namespace GameLibrary.Sample
+﻿using GameLibrary.Math;
+
+namespace GameLibrary.Sample
 {
     public class BulletFactory : IBulletFactory
     {

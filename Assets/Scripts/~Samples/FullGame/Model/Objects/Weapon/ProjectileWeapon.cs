@@ -1,3 +1,5 @@
+using GameLibrary.Math;
+
 namespace GameLibrary.Sample
 {
     public class ProjectileWeapon : IWeapon

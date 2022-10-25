@@ -1,4 +1,6 @@
-﻿namespace GameLibrary
+﻿using GameLibrary.Math;
+
+namespace GameLibrary
 {
     public interface ICollisionsWorld
     {

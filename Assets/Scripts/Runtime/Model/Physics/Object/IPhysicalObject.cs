@@ -1,4 +1,7 @@
-﻿namespace GameLibrary
+﻿using GameLibrary.Lifetime;
+using GameLibrary.Math;
+
+namespace GameLibrary
 {
     public interface IPhysicalObject : IAlive
     {

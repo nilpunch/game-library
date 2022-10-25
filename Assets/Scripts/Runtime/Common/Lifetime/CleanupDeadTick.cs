@@ -1,4 +1,4 @@
-﻿namespace GameLibrary
+﻿namespace GameLibrary.Lifetime
 {
     public class CleanupDeadTick : ISimulationTick
     {
