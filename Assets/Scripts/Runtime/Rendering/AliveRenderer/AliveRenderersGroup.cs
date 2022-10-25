@@ -4,7 +4,7 @@ using GameLibrary.Lifetime;
 
 namespace GameLibrary.Rendering
 {
-    public class AliveRenderersGroup : IAliveRenderersGroup, IRenderer, IDeadStorage
+    public class AliveRenderersGroup : IAliveRenderersGroup, IRenderer, IDeadObjectsStorage
     {
         private readonly List<IAliveRenderer> _renderers = new();
 

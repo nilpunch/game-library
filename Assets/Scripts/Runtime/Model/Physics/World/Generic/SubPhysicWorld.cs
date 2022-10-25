@@ -6,7 +6,7 @@ using GameLibrary.Math;
 
 namespace GameLibrary
 {
-    public class SubPhysicWorld<TConcrete> : IPhysicWorld<TConcrete>, IDeadStorage where TConcrete : IAlive
+    public class SubPhysicWorld<TConcrete> : IPhysicWorld<TConcrete>, IDeadObjectsStorage where TConcrete : IAlive
     {
         private readonly List<PhysicalPair<TConcrete>> _physicalPairs = new();
         private readonly List<Interaction<TConcrete>> _interactions = new();

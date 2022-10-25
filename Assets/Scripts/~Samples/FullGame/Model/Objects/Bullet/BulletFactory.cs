@@ -24,7 +24,7 @@ namespace GameLibrary.Sample
                 new PhysicalObject(new SphereCollidingShell(new SphereShell(Vector3.Zero, new FloatingPoint()),
                     new CollisionsLibrary()));
 
-            IBullet bullet = new Bullet(damage, physicalObject, _bulletViewFactory.Create(), _charactersCollisions);
+            var bullet = new Bullet(damage, physicalObject, _bulletViewFactory.Create(), _charactersCollisions);
 
             _bulletsLoop.Add(bullet);
             _physicWorld.Add(physicalObject);

@@ -5,7 +5,7 @@ using GameLibrary.Math;
 
 namespace GameLibrary.Sample
 {
-    public class Bullet : IBullet
+    public class Bullet : IBullet, IGameObject
     {
         private readonly int _damage;
         private readonly IPhysicalObject _physicalObject;
@@ -22,7 +22,7 @@ namespace GameLibrary.Sample
 
         public bool IsAlive { get; private set; } = true;
 
-        public void ExecuteTick(long elapsedMilliseconds)
+        public void Step(long elapsedMilliseconds)
         {
             if (!IsAlive)
                 throw new Exception();

@@ -1,21 +1,19 @@
-﻿using System;
-
-namespace GameLibrary
+﻿namespace GameLibrary
 {
-    public class ConstantExecutionTimeStep : ISimulationTick
+    public class ConstantExecutionTimeStep : ISimulationObject
     {
-        private readonly ISimulationTick _simulationTick;
+        private readonly ISimulationObject _simulationObject;
         private readonly long _timeStep;
 
         private long _lastExecutionStepTime;
 
-        public ConstantExecutionTimeStep(ISimulationTick simulationTick, long timeStep)
+        public ConstantExecutionTimeStep(ISimulationObject simulationObject, long timeStep)
         {
-            _simulationTick = simulationTick;
+            _simulationObject = simulationObject;
             _timeStep = timeStep;
         }
 
-        public void ExecuteTick(long elapsedMilliseconds)
+        public void Step(long elapsedMilliseconds)
         {
             long deltaTime = elapsedMilliseconds - _lastExecutionStepTime;
 
@@ -23,7 +21,7 @@ namespace GameLibrary
 
             for (int frame = 0; frame < executionsCount; frame++)
             {
-                _simulationTick.ExecuteTick(_lastExecutionStepTime + _timeStep * (frame + 1));
+                _simulationObject.Step(_lastExecutionStepTime + _timeStep * (frame + 1));
             }
 
             _lastExecutionStepTime += _timeStep * executionsCount;

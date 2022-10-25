@@ -20,7 +20,7 @@ namespace GameLibrary.Sample
 
         public bool IsAlive => _health > 0;
 
-        public void ExecuteTick(long elapsedMilliseconds)
+        public void Step(long elapsedMilliseconds)
         {
             if (!IsAlive)
                 throw new Exception();

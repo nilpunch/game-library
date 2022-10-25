@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary.Sample
 {
-    public class PredictCommandsAndSendToServer<TModel> : ISimulationTick
+    public class PredictCommandsAndSendToServer<TModel> : ISimulationObject
     {
         private readonly ICommandsSource<TModel> _commandsSource;
         private readonly ISimulation<TModel> _simulation;
@@ -13,7 +13,7 @@
             _remoteServer = remoteServer;
         }
         
-        public void ExecuteTick(long elapsedMilliseconds)
+        public void Step(long elapsedMilliseconds)
         {
             while (_commandsSource.HasCommands)
             {

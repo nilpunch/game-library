@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary.Sample
 {
-    public class PredictCommands<TModel> : ISimulationTick
+    public class PredictCommands<TModel> : ISimulationObject
     {
         private readonly ICommandsSource<TModel> _commandsSource;
         private readonly ISimulation<TModel> _simulation;
@@ -11,7 +11,7 @@
             _simulation = simulation;
         }
         
-        public void ExecuteTick(long elapsedMilliseconds)
+        public void Step(long elapsedMilliseconds)
         {
             while (_commandsSource.HasCommands)
             {

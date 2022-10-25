@@ -1,8 +1,6 @@
-﻿using GameLibrary.Lifetime;
-
-namespace GameLibrary.Rendering
+﻿namespace GameLibrary.Rendering
 {
-	public class FakeGraphicLibrary : IGraphicLibrary, IRenderer, IDeadStorage
+	public class FakeGraphicLibrary : IGraphicLibrary, IRenderer
 	{
 		private readonly AliveRenderersGroup _aliveRenderersGroup;
 		
@@ -23,12 +21,9 @@ namespace GameLibrary.Rendering
 
 		public void Render(long elapsedMilliseconds)
 		{
-			_aliveRenderersGroup.Render(elapsedMilliseconds);
-		}
-
-		public void CleanupDeadObjects()
-		{
 			_aliveRenderersGroup.CleanupDeadObjects();
+			
+			_aliveRenderersGroup.Render(elapsedMilliseconds);
 		}
 	}
 }

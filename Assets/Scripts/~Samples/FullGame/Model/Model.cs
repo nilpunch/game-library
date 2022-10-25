@@ -1,11 +1,10 @@
 ﻿using GameLibrary.Lifetime;
-using GameLibrary.Rendering;
 
 namespace GameLibrary.Sample
 {
     public class Model : ISimulationModel<ModelSnapshot>
     {
-        private readonly ISimulationTick _gameLoop;
+        private readonly ISimulationObject _gameLoop;
 
         public Model(IViewLibrary viewLibrary)
         {
@@ -29,14 +28,14 @@ namespace GameLibrary.Sample
             });
 
             // Cleanup all dead objects
-            var cleanup = new SimulationTickGroup(new ISimulationTick[]
+            var cleanup = new SimulationObjectGroup(new ISimulationObject[]
             {
-                new CleanupDeadTick(physicWorld),
-                new CleanupDeadTick(charactersPhysicWorld),
-                new CleanupDeadTick(charactersGameObjects),
+                new CleanupDeadObjects(physicWorld),
+                new CleanupDeadObjects(charactersPhysicWorld),
+                new CleanupDeadObjects(charactersGameObjects),
             });
             
-            _gameLoop = new SimulationTickGroup(new ISimulationTick[]
+            _gameLoop = new SimulationObjectGroup(new ISimulationObject[]
             {
                 cleanup,
                 physicWorld,
@@ -45,9 +44,9 @@ namespace GameLibrary.Sample
             });
         }
 
-        public void ExecuteTick(long elapsedMilliseconds)
+        public void Step(long elapsedMilliseconds)
         {
-            _gameLoop.ExecuteTick(elapsedMilliseconds);
+            _gameLoop.Step(elapsedMilliseconds);
         }
 
         public ModelSnapshot TakeSnapshot()

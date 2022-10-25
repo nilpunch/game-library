@@ -1,11 +1,11 @@
-﻿using GameLibrary.Lifetime;
-using GameLibrary.Rendering;
+﻿using GameLibrary.Rendering;
+using GameLibrary.GameLoop;
 
 namespace GameLibrary.Sample
 {
-    public class Game : ISimulationTick
+    public class Game : IGameLoop
     {
-        private readonly ISimulationTick _gameLoop;
+        private readonly IGameLoop _gameLoop;
 
         public Game()
         {
@@ -17,17 +17,16 @@ namespace GameLibrary.Sample
             
             var simulation = new DeterministicSimulation<Model, ModelSnapshot>(model);
 
-            _gameLoop = new SimulationTickGroup(new ISimulationTick[]
+            _gameLoop = new GameLoopsGroup(new IGameLoop[]
             {
                 simulation,
-                new CleanupDeadTick(graphicLibrary),
-                new RenderTick(graphicLibrary),
+                new RenderingLoop(graphicLibrary),
             });
         }
         
-        public void ExecuteTick(long elapsedMilliseconds)
+        public void Update(long elapsedMilliseconds)
         {
-            _gameLoop.ExecuteTick(elapsedMilliseconds);
+            _gameLoop.Update(elapsedMilliseconds);
         }
     }
 }

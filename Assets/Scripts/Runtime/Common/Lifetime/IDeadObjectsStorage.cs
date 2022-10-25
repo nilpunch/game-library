@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary.Lifetime
 {
-    public interface IDeadStorage
+    public interface IDeadObjectsStorage
     {
         void CleanupDeadObjects();
     }

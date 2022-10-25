@@ -2,7 +2,8 @@
     "name": "GameLibrary.Model",
     "rootNamespace": "",
     "references": [
-        "GUID:bacda8cf4a62d3d44966d55cb2641097"
+        "GUID:bacda8cf4a62d3d44966d55cb2641097",
+        "GUID:5a6ced66bd728f0469364087fc6c69b1"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

@@ -2,7 +2,9 @@
     "name": "GameLibrary.Rendering",
     "rootNamespace": "",
     "references": [
-        "GUID:bacda8cf4a62d3d44966d55cb2641097"
+        "GUID:bacda8cf4a62d3d44966d55cb2641097",
+        "GUID:8cc674f58f9b5f147993da7907d9687a",
+        "GUID:5a6ced66bd728f0469364087fc6c69b1"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

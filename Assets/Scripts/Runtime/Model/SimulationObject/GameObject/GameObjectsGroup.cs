@@ -4,7 +4,7 @@ using GameLibrary.Lifetime;
 
 namespace GameLibrary
 {
-    public class GameObjectsGroup : IGameObjectsGroup, ISimulationTick, IDeadStorage
+    public class GameObjectsGroup : IGameObjectsGroup, ISimulationObject, IDeadObjectsStorage
     {
         private readonly List<IGameObject> _gameObjects = new();
 
@@ -17,12 +17,12 @@ namespace GameLibrary
             _gameObjects = gameObjects.ToList();
         }
 
-        public void ExecuteTick(long elapsedMilliseconds)
+        public void Step(long elapsedMilliseconds)
         {
             foreach (var gameObject in _gameObjects)
             {
                 if (gameObject.IsAlive)
-                    gameObject.ExecuteTick(elapsedMilliseconds);
+                    gameObject.Step(elapsedMilliseconds);
             }
         }
 

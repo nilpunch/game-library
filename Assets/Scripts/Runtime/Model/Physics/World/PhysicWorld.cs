@@ -7,12 +7,12 @@ using GameLibrary.Math;
 
 namespace GameLibrary
 {
-    public class PhysicWorld : IPhysicWorld, ISimulationTick, IDeadStorage
+    public class PhysicWorld : IPhysicWorld, ISimulationObject, IDeadObjectsStorage
     {
         private readonly List<IPhysicalObject> _physicObjects = new();
         private readonly List<Interaction> _interactions = new();
 
-        public void ExecuteTick(long elapsedMilliseconds)
+        public void Step(long elapsedMilliseconds)
         {
             // TODO:
             // 1. Broad colliders

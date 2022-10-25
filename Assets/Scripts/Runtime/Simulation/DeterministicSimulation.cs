@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using GameLibrary.GameLoop;
 
 namespace GameLibrary
 {
-    public class DeterministicSimulation<TModel, TSnapshot> : ISimulation<TModel>, ISimulationTick where TModel : ISimulationModel<TSnapshot>
+    public class DeterministicSimulation<TModel, TSnapshot> : ISimulation<TModel>, IGameLoop where TModel : ISimulationModel<TSnapshot>
     {
         private readonly long _tickIntervalMilliseconds;
         private readonly long _rollbackHistoryMilliseconds;
@@ -31,7 +32,7 @@ namespace GameLibrary
         /// </summary>
         private long LastArrivedCommandTickNumber { get; set; }
 
-        public void ExecuteTick(long elapsedMilliseconds)
+        public void Update(long elapsedMilliseconds)
         {
             ElapsedMilliseconds = elapsedMilliseconds;
 
@@ -73,7 +74,7 @@ namespace GameLibrary
                 foreach (var command in commands)
                     command.Execute(_model);
 
-            _model.ExecuteTick(_tickIntervalMilliseconds * TickNumber);
+            _model.Step(_tickIntervalMilliseconds * TickNumber);
         }
 
         private void RollbackToTick(long tickNumber)

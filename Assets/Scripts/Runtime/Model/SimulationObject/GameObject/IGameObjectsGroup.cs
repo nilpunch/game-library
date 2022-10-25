@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace GameLibrary
+﻿namespace GameLibrary
 {
     public interface IGameObjectsGroup
     {

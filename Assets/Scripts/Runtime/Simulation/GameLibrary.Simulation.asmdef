@@ -2,8 +2,8 @@
     "name": "GameLibrary.Simulation",
     "rootNamespace": "",
     "references": [
-        "GUID:bacda8cf4a62d3d44966d55cb2641097",
-        "GUID:664f3adabac4d7546b8853ca5f3e472f"
+        "GUID:664f3adabac4d7546b8853ca5f3e472f",
+        "GUID:8cc674f58f9b5f147993da7907d9687a"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
