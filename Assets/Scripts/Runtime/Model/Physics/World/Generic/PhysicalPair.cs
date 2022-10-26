@@ -2,13 +2,13 @@
 {
     public readonly struct PhysicalPair<TConcrete>
     {
-        public PhysicalPair(IPhysicalObject physicalObject, TConcrete concrete)
+        public PhysicalPair(IRigidbody rigidbody, TConcrete concrete)
         {
-            PhysicalObject = physicalObject;
+            Rigidbody = rigidbody;
             Concrete = concrete;
         }
 
         public TConcrete Concrete { get; }
-        public IPhysicalObject PhysicalObject { get; }
+        public IRigidbody Rigidbody { get; }
     }
 }

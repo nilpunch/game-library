@@ -4,8 +4,8 @@
     {
         public bool Occure { get; }
         
-        public Contact Contact { get; }
+        public ContactPoint ContactPoint { get; }
         
-        public IPhysicalObject PhysicalObject { get; }
+        public IRigidbody Rigidbody { get; }
     }
 }

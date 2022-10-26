@@ -2,7 +2,7 @@
 {
     public interface IPhysicWorld<TConcrete> : ICollisionsWorld<TConcrete>
     {
-        void Add(IPhysicalObject physicalObject, TConcrete concreteObject);
-        void Remove(IPhysicalObject physicalObject);
+        void Add(IRigidbody rigidbody, TConcrete concreteObject);
+        void Remove(IRigidbody rigidbody);
     }
 }

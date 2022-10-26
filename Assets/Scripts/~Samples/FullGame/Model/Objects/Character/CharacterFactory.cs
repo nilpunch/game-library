@@ -15,13 +15,13 @@ namespace GameLibrary.Sample
 
         public ICharacter Create(int health, IWeapon weapon)
         {
-            IPhysicalObject physicalObject =  new PhysicalObject(new SphereCollidingShell(
+            IRigidbody rigidbody =  new Rigidbody(new SphereCollider(
                 new SphereShell(Vector3.Zero, new FloatingPoint()),
                 new CollisionsLibrary()));
 
-            ICharacter character = new Character(health, physicalObject, _characterViewFactory.Create(), weapon);
+            ICharacter character = new Character(health, rigidbody, _characterViewFactory.Create(), weapon);
 
-            _charactersWorld.Add(physicalObject, character);
+            _charactersWorld.Add(rigidbody, character);
 
             return character;
         }

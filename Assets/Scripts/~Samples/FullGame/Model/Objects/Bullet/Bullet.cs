@@ -8,14 +8,14 @@ namespace GameLibrary.Sample
     public class Bullet : IBullet, IGameObject
     {
         private readonly int _damage;
-        private readonly IPhysicalObject _physicalObject;
+        private readonly IRigidbody _rigidbody;
         private readonly IBulletView _view;
         private readonly ICollisionsWorld<ICharacter> _charactersToHit;
 
-        public Bullet(int damage, IPhysicalObject physicalObject, IBulletView view, ICollisionsWorld<ICharacter> charactersToHit)
+        public Bullet(int damage, IRigidbody rigidbody, IBulletView view, ICollisionsWorld<ICharacter> charactersToHit)
         {
             _damage = damage;
-            _physicalObject = physicalObject;
+            _rigidbody = rigidbody;
             _view = view;
             _charactersToHit = charactersToHit;
         }
@@ -27,7 +27,7 @@ namespace GameLibrary.Sample
             if (!IsAlive)
                 throw new Exception();
 
-            var interactedCharacters = _charactersToHit.InteractionsWith(_physicalObject);
+            var interactedCharacters = _charactersToHit.CollisionsWith(_rigidbody);
             if (interactedCharacters.Length == 0) 
                 return;
             
@@ -40,13 +40,13 @@ namespace GameLibrary.Sample
 
         public void Throw(Vector3 velocity)
         {
-            _physicalObject.AddVelocityChange(velocity);
+            _rigidbody.AddVelocityChange(velocity);
         }
 
         private void DestroySelf()
         {
             IsAlive = false;
-            _physicalObject.Destroy();
+            _rigidbody.Destroy();
             _view.Destroy();
         }
     }

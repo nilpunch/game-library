@@ -9,8 +9,8 @@ namespace GameLibrary
 {
     public class PhysicWorld : IPhysicWorld, ISimulationObject, IDeadObjectsStorage
     {
-        private readonly List<IPhysicalObject> _physicObjects = new();
-        private readonly List<Interaction> _interactions = new();
+        private readonly List<IRigidbody> _rigidbodies = new();
+        private readonly List<CollisionManifold> _manifolds = new();
 
         public void Step(long elapsedMilliseconds)
         {
@@ -22,34 +22,29 @@ namespace GameLibrary
             throw new NotImplementedException();
         }
 
-        public void Add(IPhysicalObject physicalObject)
+        public void Add(IRigidbody rigidbody)
         {
-            _physicObjects.Add(physicalObject);
+            _rigidbodies.Add(rigidbody);
         }
 
-        public void Remove(IPhysicalObject physicalObject)
+        public void Remove(IRigidbody rigidbody)
         {
-            _physicObjects.Remove(physicalObject);
+            _rigidbodies.Remove(rigidbody);
         }
 
         public void CleanupDeadObjects()
         {
-            _physicObjects.RemoveAll(physicObject => !physicObject.IsAlive);
+            _rigidbodies.RemoveAll(physicObject => !physicObject.IsAlive);
         }
 
-        public Interaction[] InteractWith(IPhysicalObject physicalObject)
+        public CollisionManifold[] CollisionsWith(IRigidbody rigidbody)
         {
             Collision collision = new Collision();
 
-            foreach (var simulatedObject in _physicObjects.Where(obj => !obj.Equals(physicalObject)))
-                collision = collision.Merge(simulatedObject.Shell.Fallback(physicalObject.Shell));
+            foreach (var simulatedObject in _rigidbodies.Where(obj => !obj.Equals(rigidbody)))
+                collision = collision.Merge(simulatedObject.Collider.Collide(rigidbody.Collider));
 
-            return Array.Empty<Interaction>();
-        }
-
-        public Interaction[] AllInteractions()
-        {
-            throw new NotImplementedException();
+            return Array.Empty<CollisionManifold>();
         }
 
         public RaycastHit Raycast(Vector3 from, Vector3 direction)

@@ -1,19 +1,19 @@
 ﻿namespace GameLibrary
 {
-    public class BoxCollidingShell : ICollidingShell
+    public class BoxCollider : ICollider
     {
         private readonly IBoxShell _shell;
         private readonly ICollisionsLibrary _collisionsLibrary;
 
-        public BoxCollidingShell(IBoxShell shell, ICollisionsLibrary collisionsLibrary)
+        public BoxCollider(IBoxShell shell, ICollisionsLibrary collisionsLibrary)
         {
             _shell = shell;
             _collisionsLibrary = collisionsLibrary;
         }
 
-        public Collision Fallback(ICollidingShell collidingShell)
+        public Collision Collide(ICollider collider)
         {
-            return collidingShell.CollideAgainstBox(_shell);
+            return collider.CollideAgainstBox(_shell);
         }
 
         public Collision CollideAgainstBox(IBoxShell boxShell)

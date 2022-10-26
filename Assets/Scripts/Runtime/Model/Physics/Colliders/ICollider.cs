@@ -1,8 +1,8 @@
 ﻿namespace GameLibrary
 {
-    public interface ICollidingShell
+    public interface ICollider
     {
-        Collision Fallback(ICollidingShell collidingShell);
+        Collision Collide(ICollider collider);
 
         Collision CollideAgainstBox(IBoxShell boxShell);
         Collision CollideAgainstSphere(ISphereShell sphereShell);

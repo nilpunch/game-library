@@ -3,17 +3,17 @@ using GameLibrary.Math;
 
 namespace GameLibrary
 {
-    public class PhysicalObject : IPhysicalObject
+    public class Rigidbody : IRigidbody
     {
-        public PhysicalObject(ICollidingShell shell)
+        public Rigidbody(ICollider shell)
         {
-            Shell = shell;
+            Collider = shell;
             IsAlive = true;
         }
 
         public bool IsAlive { get; private set; }
 
-        public ICollidingShell Shell { get; }
+        public ICollider Collider { get; }
 
         public void AddVelocityChange(Vector3 velocity)
         {

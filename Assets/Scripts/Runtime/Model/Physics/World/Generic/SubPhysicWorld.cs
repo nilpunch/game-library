@@ -9,7 +9,7 @@ namespace GameLibrary
     public class SubPhysicWorld<TConcrete> : IPhysicWorld<TConcrete>, IDeadObjectsStorage where TConcrete : IAlive
     {
         private readonly List<PhysicalPair<TConcrete>> _physicalPairs = new();
-        private readonly List<Interaction<TConcrete>> _interactions = new();
+        private readonly List<CollisionManifold<TConcrete>> _manifolds = new();
 
         private readonly IPhysicWorld _parent;
 
@@ -18,16 +18,16 @@ namespace GameLibrary
             _parent = parent;
         }
 
-        public void Add(IPhysicalObject physicalObject, TConcrete concreteObject)
+        public void Add(IRigidbody rigidbody, TConcrete concreteObject)
         {
-            _parent.Add(physicalObject);
-            _physicalPairs.Add(new PhysicalPair<TConcrete>(physicalObject, concreteObject));
+            _parent.Add(rigidbody);
+            _physicalPairs.Add(new PhysicalPair<TConcrete>(rigidbody, concreteObject));
         }
 
-        public void Remove(IPhysicalObject physicalObject)
+        public void Remove(IRigidbody rigidbody)
         {
-            _parent.Remove(physicalObject);
-            _physicalPairs.RemoveAll(physicalLink => physicalLink.PhysicalObject == physicalObject);
+            _parent.Remove(rigidbody);
+            _physicalPairs.RemoveAll(physicalLink => physicalLink.Rigidbody == rigidbody);
         }
         
         public void ExecuteTick(long elapsedMilliseconds)
@@ -38,15 +38,10 @@ namespace GameLibrary
         public void CleanupDeadObjects()
         {
             _physicalPairs.RemoveAll(association =>
-                !association.Concrete.IsAlive || !association.PhysicalObject.IsAlive);
+                !association.Concrete.IsAlive || !association.Rigidbody.IsAlive);
         }
 
-        public Interaction<TConcrete>[] AllInteractions()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Interaction<TConcrete>[] InteractionsWith(IPhysicalObject physicalObject)
+        public CollisionManifold<TConcrete>[] CollisionsWith(IRigidbody rigidbody)
         {
             throw new NotImplementedException();
         }
@@ -57,20 +52,20 @@ namespace GameLibrary
 
             throw new NotImplementedException();
             
-            if (raycastHit.Occure && HasLinkedObject(raycastHit.PhysicalObject))
+            if (raycastHit.Occure && HasLinkedObject(raycastHit.Rigidbody))
             {
                 return new RaycastHit<TConcrete>();
             }
         }
 
-        private bool HasLinkedObject(IPhysicalObject physicalObject)
+        private bool HasLinkedObject(IRigidbody rigidbody)
         {
-            return _physicalPairs.Any(association => association.PhysicalObject == physicalObject);
+            return _physicalPairs.Any(association => association.Rigidbody == rigidbody);
         }
 
-        private TConcrete GetLinkedObject(IPhysicalObject physicalObject)
+        private TConcrete GetLinkedObject(IRigidbody rigidbody)
         {
-            return _physicalPairs.First(association => association.PhysicalObject == physicalObject).Concrete;
+            return _physicalPairs.First(association => association.Rigidbody == rigidbody).Concrete;
         }
     }
 }

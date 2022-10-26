@@ -3,9 +3,9 @@ using GameLibrary.Math;
 
 namespace GameLibrary
 {
-    public interface IPhysicalObject : IAlive
+    public interface IRigidbody : IAlive
     {
-        ICollidingShell Shell { get; }
+        ICollider Collider { get; }
 
         void AddVelocityChange(Vector3 velocity);
 

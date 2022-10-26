@@ -1,19 +1,19 @@
 ﻿namespace GameLibrary
 {
-    public class SphereCollidingShell : ICollidingShell
+    public class SphereCollider : ICollider
     {
         private readonly ISphereShell _shell;
         private readonly ICollisionsLibrary _collisionsLibrary;
 
-        public SphereCollidingShell(ISphereShell shell, ICollisionsLibrary collisionsLibrary)
+        public SphereCollider(ISphereShell shell, ICollisionsLibrary collisionsLibrary)
         {
             _shell = shell;
             _collisionsLibrary = collisionsLibrary;
         }
 
-        public Collision Fallback(ICollidingShell collidingShell)
+        public Collision Collide(ICollider collider)
         {
-            return collidingShell.CollideAgainstSphere(_shell);
+            return collider.CollideAgainstSphere(_shell);
         }
 
         public Collision CollideAgainstBox(IBoxShell boxShell)

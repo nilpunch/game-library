@@ -2,10 +2,9 @@
 
 namespace GameLibrary
 {
-    public struct Contact
+    public struct ContactPoint
     {
         public Vector3 Position { get; }
-        
         public Vector3 Normal { get; }
     }
 }

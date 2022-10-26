@@ -4,16 +4,16 @@ namespace GameLibrary.Sample
 {
     public class Character : ICharacter
     {
-        private readonly IPhysicalObject _physicalObject;
+        private readonly IRigidbody _rigidbody;
         private readonly ICharacterView _characterView;
         private readonly IWeapon _weapon;
 
         private int _health;
 
-        public Character(int health, IPhysicalObject physicalObject, ICharacterView characterView, IWeapon weapon)
+        public Character(int health, IRigidbody rigidbody, ICharacterView characterView, IWeapon weapon)
         {
             _health = health;
-            _physicalObject = physicalObject;
+            _rigidbody = rigidbody;
             _characterView = characterView;
             _weapon = weapon;
         }
@@ -39,7 +39,7 @@ namespace GameLibrary.Sample
 
             if (!IsAlive)
             {
-                _physicalObject.Destroy();
+                _rigidbody.Destroy();
                 _characterView.Destroy();
             }
         }

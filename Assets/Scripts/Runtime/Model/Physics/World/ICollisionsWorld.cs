@@ -4,9 +4,7 @@ namespace GameLibrary
 {
     public interface ICollisionsWorld
     {
-        Interaction[] AllInteractions();
-        
-        Interaction[] InteractWith(IPhysicalObject physicalObject);
+        CollisionManifold[] CollisionsWith(IRigidbody rigidbody);
 
         RaycastHit Raycast(Vector3 from, Vector3 direction);
     }

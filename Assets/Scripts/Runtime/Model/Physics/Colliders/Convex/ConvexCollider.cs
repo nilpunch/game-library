@@ -1,19 +1,19 @@
 ﻿namespace GameLibrary
 {
-    public class ConvexCollidingShell : ICollidingShell
+    public class ConvexCollider : ICollider
     {
         private readonly IConvexShell _shell;
         private readonly ICollisionsLibrary _collisionsLibrary;
 
-        public ConvexCollidingShell(IConvexShell shell, ICollisionsLibrary collisionsLibrary)
+        public ConvexCollider(IConvexShell shell, ICollisionsLibrary collisionsLibrary)
         {
             _shell = shell;
             _collisionsLibrary = collisionsLibrary;
         }
 
-        public Collision Fallback(ICollidingShell collidingShell)
+        public Collision Collide(ICollider collider)
         {
-            return collidingShell.CollideAgainstConvex(_shell);
+            return collider.CollideAgainstConvex(_shell);
         }
 
         public Collision CollideAgainstBox(IBoxShell boxShell)

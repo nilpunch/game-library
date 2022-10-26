@@ -20,14 +20,14 @@ namespace GameLibrary.Sample
 
         public IBullet Create(int damage)
         {
-            IPhysicalObject physicalObject =
-                new PhysicalObject(new SphereCollidingShell(new SphereShell(Vector3.Zero, new FloatingPoint()),
+            IRigidbody rigidbody =
+                new Rigidbody(new SphereCollider(new SphereShell(Vector3.Zero, new FloatingPoint()),
                     new CollisionsLibrary()));
 
-            var bullet = new Bullet(damage, physicalObject, _bulletViewFactory.Create(), _charactersCollisions);
+            var bullet = new Bullet(damage, rigidbody, _bulletViewFactory.Create(), _charactersCollisions);
 
             _bulletsLoop.Add(bullet);
-            _physicWorld.Add(physicalObject);
+            _physicWorld.Add(rigidbody);
 
             return bullet;
         }

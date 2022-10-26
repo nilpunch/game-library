@@ -1,20 +1,20 @@
 ﻿namespace GameLibrary
 {
-    public class CollidingShellGroup : ICollidingShell
+    public class ColliderGroup : ICollider
     {
-        private readonly ICollidingShell[] _collidingShells;
+        private readonly ICollider[] _collidingShells;
 
-        public CollidingShellGroup(ICollidingShell[] collidingShells)
+        public ColliderGroup(ICollider[] collidingShells)
         {
             _collidingShells = collidingShells;
         }
 
-        public Collision Fallback(ICollidingShell collidingShell)
+        public Collision Collide(ICollider collider)
         {
             Collision collision = new Collision();
 
             foreach (var shell in _collidingShells)
-                collision = collision.Merge(shell.Fallback(collidingShell));
+                collision = collision.Merge(shell.Collide(collider));
 
             return collision;
         }
