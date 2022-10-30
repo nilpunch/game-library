@@ -7,8 +7,10 @@
         /// </summary>
         Collision Collide(ICollider collider);
 
-        Collision CollideAgainstBox(IBoxShell boxShell);
-        Collision CollideAgainstSphere(ISphereShell sphereShell);
-        Collision CollideAgainstConvex(IConvexShell convexShell);
+        Collision CollideAgainstBox(Box box);
+        Collision CollideAgainstSphere(Sphere sphere);
+        Collision CollideAgainstConvexHull(ConvexHull convexHull);
+        
+        Collision CollideAgainstAABB(AABB aabb);
     }
 }

@@ -2,7 +2,7 @@
 
 namespace GameLibrary.Physics
 {
-    public interface ISphereShell
+    public struct Sphere
     {
         Vector3 Center { get; }
         Scalar Radius { get; }

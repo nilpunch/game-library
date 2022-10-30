@@ -16,9 +16,7 @@ namespace GameLibrary.Sample
 
         public ICharacter Create(int health, IWeapon weapon)
         {
-            IRigidbody rigidbody =  new Rigidbody(new SphereCollider(
-                new SphereShell(Vector3.Zero, new Scalar()),
-                new CollisionsLibrary()));
+            IRigidbody rigidbody =  new Rigidbody(new SphereCollider(new Sphere(), new CollisionsLibrary()));
 
             ICharacter character = new Character(health, rigidbody, _characterViewFactory.Create(), weapon);
 

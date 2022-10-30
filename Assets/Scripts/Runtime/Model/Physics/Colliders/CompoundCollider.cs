@@ -1,10 +1,10 @@
 ﻿namespace GameLibrary.Physics
 {
-    public class ColliderGroup : ICollider
+    public class CompoundCollider : ICollider
     {
         private readonly ICollider[] _collidingShells;
 
-        public ColliderGroup(ICollider[] collidingShells)
+        public CompoundCollider(ICollider[] collidingShells)
         {
             _collidingShells = collidingShells;
         }
@@ -19,34 +19,42 @@
             return collision;
         }
 
-        public Collision CollideAgainstBox(IBoxShell boxShell)
+        public Collision CollideAgainstBox(Box box)
         {
             Collision collision = new Collision();
 
             foreach (var shell in _collidingShells)
-                collision = collision.Merge(shell.CollideAgainstBox(boxShell));
+                collision = collision.Merge(shell.CollideAgainstBox(box));
 
             return collision;
         }
 
-        public Collision CollideAgainstSphere(ISphereShell sphereShell)
+        public Collision CollideAgainstSphere(Sphere sphere)
         {
             Collision collision = new Collision();
 
             foreach (var shell in _collidingShells)
-                collision = collision.Merge(shell.CollideAgainstSphere(sphereShell));
+                collision = collision.Merge(shell.CollideAgainstSphere(sphere));
 
             return collision;
         }
 
-        public Collision CollideAgainstConvex(IConvexShell convexShell)
+        public Collision CollideAgainstConvexHull(ConvexHull convexHull)
         {
             Collision collision = new Collision();
 
             foreach (var shell in _collidingShells)
-            {
-                collision = collision.Merge(shell.CollideAgainstConvex(convexShell));
-            }
+                collision = collision.Merge(shell.CollideAgainstConvexHull(convexHull));
+
+            return collision;
+        }
+
+        public Collision CollideAgainstAABB(AABB aabb)
+        {
+            Collision collision = new Collision();
+
+            foreach (var shell in _collidingShells)
+                collision = collision.Merge(shell.CollideAgainstAABB(aabb));
 
             return collision;
         }

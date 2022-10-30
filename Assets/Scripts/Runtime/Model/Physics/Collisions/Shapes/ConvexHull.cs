@@ -2,10 +2,9 @@
 
 namespace GameLibrary.Physics
 {
-    public interface IBoxShell
+    public struct ConvexHull
     {
         Vector3 Center { get; }
-        Quaternion Rotation { get; }
-        Vector3 Size { get; }
+        Mesh Mesh { get; }
     }
 }
