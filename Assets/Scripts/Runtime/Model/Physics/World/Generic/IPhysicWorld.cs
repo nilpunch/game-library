@@ -1,4 +1,4 @@
-﻿namespace GameLibrary
+﻿namespace GameLibrary.Physics
 {
     public interface IPhysicWorld<TConcrete> : ICollisionsWorld<TConcrete>
     {

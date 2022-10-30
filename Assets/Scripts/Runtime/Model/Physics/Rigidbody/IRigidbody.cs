@@ -1,14 +1,18 @@
 ﻿using GameLibrary.Lifetime;
 using GameLibrary.Math;
 
-namespace GameLibrary
+namespace GameLibrary.Physics
 {
     public interface IRigidbody : IAlive
     {
+        Vector3 Velocity { get; set; }
+        
+        Vector3 Position { get; set; }
+
         ICollider Collider { get; }
 
-        void AddVelocityChange(Vector3 velocity);
-
+        
+        
         void Destroy();
     }
 }

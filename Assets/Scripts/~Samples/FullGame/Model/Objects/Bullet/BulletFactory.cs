@@ -1,4 +1,5 @@
 ﻿using GameLibrary.Math;
+using GameLibrary.Physics;
 
 namespace GameLibrary.Sample
 {
@@ -21,7 +22,7 @@ namespace GameLibrary.Sample
         public IBullet Create(int damage)
         {
             IRigidbody rigidbody =
-                new Rigidbody(new SphereCollider(new SphereShell(Vector3.Zero, new FloatingPoint()),
+                new Rigidbody(new SphereCollider(new SphereShell(Vector3.Zero, new Scalar()),
                     new CollisionsLibrary()));
 
             var bullet = new Bullet(damage, rigidbody, _bulletViewFactory.Create(), _charactersCollisions);

@@ -1,10 +1,10 @@
 ﻿using GameLibrary.Math;
 
-namespace GameLibrary
+namespace GameLibrary.Physics
 {
     public interface ISphereShell
     {
         Vector3 Center { get; }
-        FloatingPoint Radius { get; }
+        Scalar Radius { get; }
     }
 }

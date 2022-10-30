@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary.Math
 {
-    public struct FloatingPoint
+    public struct Scalar
     {
     }
 }

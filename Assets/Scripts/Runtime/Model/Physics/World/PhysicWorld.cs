@@ -5,7 +5,7 @@ using GameLibrary.Lifetime;
 using GameLibrary.Math;
 
 
-namespace GameLibrary
+namespace GameLibrary.Physics
 {
     public class PhysicWorld : IPhysicWorld, ISimulationObject, IDeadObjectsStorage
     {

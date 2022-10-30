@@ -1,7 +1,10 @@
-﻿namespace GameLibrary
+﻿namespace GameLibrary.Physics
 {
     public interface ICollider
     {
+        /// <summary>
+        /// Double dispatch method.
+        /// </summary>
         Collision Collide(ICollider collider);
 
         Collision CollideAgainstBox(IBoxShell boxShell);

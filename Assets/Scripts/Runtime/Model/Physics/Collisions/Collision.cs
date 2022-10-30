@@ -1,7 +1,7 @@
 ﻿using System;
 using GameLibrary.Math;
 
-namespace GameLibrary
+namespace GameLibrary.Physics
 {
     public struct Collision
     {

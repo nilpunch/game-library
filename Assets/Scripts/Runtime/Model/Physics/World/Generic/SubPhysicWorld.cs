@@ -4,7 +4,7 @@ using System.Linq;
 using GameLibrary.Lifetime;
 using GameLibrary.Math;
 
-namespace GameLibrary
+namespace GameLibrary.Physics
 {
     public class SubPhysicWorld<TConcrete> : IPhysicWorld<TConcrete>, IDeadObjectsStorage where TConcrete : IAlive
     {

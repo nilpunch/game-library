@@ -1,4 +1,4 @@
-﻿namespace GameLibrary
+﻿namespace GameLibrary.Physics
 {
     public class SphereCollider : ICollider
     {

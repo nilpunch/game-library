@@ -1,7 +1,7 @@
 ﻿using System;
 using GameLibrary.Math;
 
-namespace GameLibrary
+namespace GameLibrary.Physics
 {
     public class Rigidbody : IRigidbody
     {
@@ -13,12 +13,10 @@ namespace GameLibrary
 
         public bool IsAlive { get; private set; }
 
+        public Vector3 Velocity { get; set; }
+        public Vector3 Position { get; set; }
+        
         public ICollider Collider { get; }
-
-        public void AddVelocityChange(Vector3 velocity)
-        {
-            throw new NotImplementedException();
-        }
 
         public void Destroy()
         {

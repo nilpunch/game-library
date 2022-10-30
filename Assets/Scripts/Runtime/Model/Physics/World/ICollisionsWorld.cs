@@ -1,6 +1,6 @@
 ﻿using GameLibrary.Math;
 
-namespace GameLibrary
+namespace GameLibrary.Physics
 {
     public interface ICollisionsWorld
     {

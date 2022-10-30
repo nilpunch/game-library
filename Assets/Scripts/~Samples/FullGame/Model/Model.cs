@@ -1,4 +1,5 @@
 ﻿using GameLibrary.Lifetime;
+using GameLibrary.Physics;
 
 namespace GameLibrary.Sample
 {
