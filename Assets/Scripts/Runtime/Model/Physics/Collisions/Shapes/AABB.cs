@@ -4,7 +4,7 @@ namespace GameLibrary.Physics
 {
 	public struct AABB
 	{
-		public float3 Min { get; }
-		public float3 Max { get; }
+		public Float3 Min { get; }
+		public Float3 Max { get; }
 	}
 }

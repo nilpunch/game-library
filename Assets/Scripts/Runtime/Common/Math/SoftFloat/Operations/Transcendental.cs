@@ -2,44 +2,6 @@
 {
 	public static partial class SoftFloatMath
 	{
-		private static SoftFloat Scalbn(SoftFloat x, int n)
-		{
-			SoftFloat x1P127 = SoftFloat.FromRaw(0x7f000000); // 0x1p127f === 2 ^ 127
-			SoftFloat x1P126 = SoftFloat.FromRaw(0x800000); // 0x1p-126f === 2 ^ -126
-			SoftFloat x1P24 = SoftFloat.FromRaw(0x4b800000); // 0x1p24f === 2 ^ 24
-
-			if (n > 127)
-			{
-				x *= x1P127;
-				n -= 127;
-				if (n > 127)
-				{
-					x *= x1P127;
-					n -= 127;
-					if (n > 127)
-					{
-						n = 127;
-					}
-				}
-			}
-			else if (n < -126)
-			{
-				x *= x1P126 * x1P24;
-				n += 126 - 24;
-				if (n < -126)
-				{
-					x *= x1P126 * x1P24;
-					n += 126 - 24;
-					if (n < -126)
-					{
-						n = -126;
-					}
-				}
-			}
-
-			return x * SoftFloat.FromRaw(((uint)(0x7f + n)) << 23);
-		}
-
 		/// <summary>
 		/// Returns e raised to the power x (e ~= 2.71828182845904523536)
 		/// </summary>
@@ -685,6 +647,44 @@
 			}
 
 			return sn * z;
+		}
+
+		private static SoftFloat Scalbn(SoftFloat x, int n)
+		{
+			SoftFloat x1P127 = SoftFloat.FromRaw(0x7f000000); // 0x1p127f === 2 ^ 127
+			SoftFloat x1P126 = SoftFloat.FromRaw(0x800000); // 0x1p-126f === 2 ^ -126
+			SoftFloat x1P24 = SoftFloat.FromRaw(0x4b800000); // 0x1p24f === 2 ^ 24
+
+			if (n > 127)
+			{
+				x *= x1P127;
+				n -= 127;
+				if (n > 127)
+				{
+					x *= x1P127;
+					n -= 127;
+					if (n > 127)
+					{
+						n = 127;
+					}
+				}
+			}
+			else if (n < -126)
+			{
+				x *= x1P126 * x1P24;
+				n += 126 - 24;
+				if (n < -126)
+				{
+					x *= x1P126 * x1P24;
+					n += 126 - 24;
+					if (n < -126)
+					{
+						n = -126;
+					}
+				}
+			}
+
+			return x * SoftFloat.FromRaw(((uint)(0x7f + n)) << 23);
 		}
 	}
 }

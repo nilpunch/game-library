@@ -170,7 +170,7 @@
 		}
 
 
-		private static readonly uint[] _atanHi = new uint[4]
+		private static readonly uint[] s_atanHi = new uint[4]
 		{
 			0x3eed6338, // 4.6364760399e-01, /* atan(0.5)hi */
 			0x3f490fda, // 7.8539812565e-01, /* atan(1.0)hi */
@@ -178,7 +178,7 @@
 			0x3fc90fda, // 1.5707962513e+00, /* atan(inf)hi */
 		};
 
-		private static readonly uint[] _atanLO = new uint[4]
+		private static readonly uint[] s_atanLO = new uint[4]
 		{
 			0x31ac3769, // 5.0121582440e-09, /* atan(0.5)lo */
 			0x33222168, // 3.7748947079e-08, /* atan(1.0)lo */
@@ -186,7 +186,7 @@
 			0x33a22168, // 7.5497894159e-08, /* atan(inf)lo */
 		};
 
-		private static readonly uint[] _aT = new uint[5]
+		private static readonly uint[] s_aT = new uint[5]
 		{
 			0x3eaaaaa9, // 3.3333328366e-01
 			0xbe4cca98, // -1.9999158382e-01
@@ -215,7 +215,7 @@
 				}
 
 				SoftFloat x1P120 = SoftFloat.FromRaw(0x03800000); // 0x1p-120 === 2 ^ (-120)
-				z = SoftFloat.FromRaw(_atanHi[3]) + x1P120;
+				z = SoftFloat.FromRaw(s_atanHi[3]) + x1P120;
 				return sign ? -z : z;
 			}
 
@@ -276,15 +276,15 @@
 			SoftFloat w = z * z;
 
 			/* break sum from i=0 to 10 aT[i]z**(i+1) into odd and even poly */
-			SoftFloat s1 = z * (SoftFloat.FromRaw(_aT[0]) +
-			                    w * (SoftFloat.FromRaw(_aT[2]) + w * SoftFloat.FromRaw(_aT[4])));
-			SoftFloat s2 = w * (SoftFloat.FromRaw(_aT[1]) + w * SoftFloat.FromRaw(_aT[3]));
+			SoftFloat s1 = z * (SoftFloat.FromRaw(s_aT[0]) +
+			                    w * (SoftFloat.FromRaw(s_aT[2]) + w * SoftFloat.FromRaw(s_aT[4])));
+			SoftFloat s2 = w * (SoftFloat.FromRaw(s_aT[1]) + w * SoftFloat.FromRaw(s_aT[3]));
 			if (id < 0)
 			{
 				return x - x * (s1 + s2);
 			}
 
-			z = SoftFloat.FromRaw(_atanHi[id]) - ((x * (s1 + s2) - SoftFloat.FromRaw(_atanLO[id])) - x);
+			z = SoftFloat.FromRaw(s_atanHi[id]) - ((x * (s1 + s2) - SoftFloat.FromRaw(s_atanLO[id])) - x);
 			return sign ? -z : z;
 		}
 
@@ -311,7 +311,7 @@
 			ix &= 0x7fffffff;
 			iy &= 0x7fffffff;
 
-			const uint piLOU32 = 0xb3bbbd2e; // -8.7422776573e-08
+			const uint piLou32 = 0xb3bbbd2e; // -8.7422776573e-08
 
 			/* when y = 0 */
 			if (iy == 0)
@@ -388,10 +388,10 @@
 				case 1:
 					return -z; /* atan(-,+) */
 				case 2:
-					return SoftFloat.FromRaw(PI) - (z - SoftFloat.FromRaw(piLOU32)); /* atan(+,-) */
+					return SoftFloat.FromRaw(PI) - (z - SoftFloat.FromRaw(piLou32)); /* atan(+,-) */
 				case 3:
 				default:
-					return (z - SoftFloat.FromRaw(piLOU32)) - SoftFloat.FromRaw(PI); /* atan(-,-) */
+					return (z - SoftFloat.FromRaw(piLou32)) - SoftFloat.FromRaw(PI); /* atan(-,-) */
 			}
 		}
 
@@ -401,7 +401,7 @@
 		public static SoftFloat Acos(SoftFloat x)
 		{
 			const uint pio2HiU32 = 0x3fc90fda; // 1.5707962513e+00
-			const uint pio2LOU32 = 0x33a22168; // 7.5497894159e-08
+			const uint pio2Lou32 = 0x33a22168; // 7.5497894159e-08
 			const uint pS0U32 = 0x3e2aaa75; // 1.6666586697e-01
 			const uint pS1U32 = 0xbd2f13ba; // -4.2743422091e-02
 			const uint pS2U32 = 0xbc0dd36b; // -8.6563630030e-03
@@ -449,7 +449,7 @@
 					return SoftFloat.FromRaw(pio2HiU32) + x1P120;
 				}
 
-				return SoftFloat.FromRaw(pio2HiU32) - (x - (SoftFloat.FromRaw(pio2LOU32) - x * R(x * x)));
+				return SoftFloat.FromRaw(pio2HiU32) - (x - (SoftFloat.FromRaw(pio2Lou32) - x * R(x * x)));
 			}
 
 			/* x < -0.5 */
@@ -457,7 +457,7 @@
 			{
 				z = ((SoftFloat)1.0f + x) * (SoftFloat)0.5f;
 				s = Sqrt(z);
-				w = R(z) * s - SoftFloat.FromRaw(pio2LOU32);
+				w = R(z) * s - SoftFloat.FromRaw(pio2Lou32);
 				return (SoftFloat)2.0 * (SoftFloat.FromRaw(pio2HiU32) - (s + w));
 			}
 

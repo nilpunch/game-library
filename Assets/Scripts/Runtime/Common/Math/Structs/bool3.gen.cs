@@ -1193,18 +1193,18 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(bool3 v)
         {
-            return csum(select(uint3(0xA1E92D39u, 0x4583C801u, 0x9536A0F5u), uint3(0xAF816615u, 0x9AF8D62Du, 0xE3600729u), v));
+            return Csum(Select(UInt3(0xA1E92D39u, 0x4583C801u, 0x9536A0F5u), UInt3(0xAF816615u, 0x9AF8D62Du, 0xE3600729u), v));
         }
 
         /// <summary>
-        /// Returns a uint3 vector hash code of a bool3 vector.
+        /// Returns a UInt3 vector hash code of a bool3 vector.
         /// When multiple elements are to be hashes together, it can more efficient to calculate and combine wide hash
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3 hashwide(bool3 v)
+        public static UInt3 hashwide(bool3 v)
         {
-            return (select(uint3(0x5F17300Du, 0x670D6809u, 0x7AF32C49u), uint3(0xAE131389u, 0x5D1B165Bu, 0x87096CD7u), v));
+            return (Select(UInt3(0x5F17300Du, 0x670D6809u, 0x7AF32C49u), UInt3(0xAE131389u, 0x5D1B165Bu, 0x87096CD7u), v));
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two bool3 vectors into a bool value.</summary>

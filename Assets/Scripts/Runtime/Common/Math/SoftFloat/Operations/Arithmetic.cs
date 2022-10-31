@@ -3,147 +3,6 @@
 	public static partial class SoftFloatMath
 	{
 		/// <summary>
-		/// Returns the remainder and the quotient when dividing x by y, so that x == y * quotient + remainder
-		/// </summary>
-		public static void Remquo(SoftFloat x, SoftFloat y, out SoftFloat remainder, out int quotient)
-		{
-			uint ux = x.RawValue;
-			uint uy = y.RawValue;
-			int ex = (int)((ux >> 23) & 0xff);
-			int ey = (int)((uy >> 23) & 0xff);
-			bool sx = (ux >> 31) != 0;
-			bool sy = (uy >> 31) != 0;
-			uint q;
-			uint i;
-			var uxi = ux;
-
-			if ((uy << 1) == 0 || y.IsNaN() || ex == 0xff)
-			{
-				SoftFloat m = (x * y);
-				remainder = m / m;
-				quotient = 0;
-				return;
-			}
-
-			if ((ux << 1) == 0)
-			{
-				remainder = x;
-				quotient = 0;
-				return;
-			}
-
-			/* normalize x and y */
-			if (ex == 0)
-			{
-				i = uxi << 9;
-				while ((i >> 31) == 0)
-				{
-					ex -= 1;
-					i <<= 1;
-				}
-
-				uxi <<= -ex + 1;
-			}
-			else
-			{
-				uxi &= (~0u) >> 9;
-				uxi |= 1 << 23;
-			}
-
-			if (ey == 0)
-			{
-				i = uy << 9;
-				while ((i >> 31) == 0)
-				{
-					ey -= 1;
-					i <<= 1;
-				}
-
-				uy <<= -ey + 1;
-			}
-			else
-			{
-				uy &= (~0u) >> 9;
-				uy |= 1 << 23;
-			}
-
-			q = 0;
-			if (ex + 1 != ey)
-			{
-				if (ex < ey)
-				{
-					remainder = x;
-					quotient = 0;
-					return;
-				}
-
-				/* x mod y */
-				while (ex > ey)
-				{
-					i = uxi - uy;
-					if ((i >> 31) == 0)
-					{
-						uxi = i;
-						q += 1;
-					}
-
-					uxi <<= 1;
-					q <<= 1;
-					ex -= 1;
-				}
-
-				i = uxi - uy;
-				if ((i >> 31) == 0)
-				{
-					uxi = i;
-					q += 1;
-				}
-
-				if (uxi == 0)
-				{
-					ex = -30;
-				}
-				else
-				{
-					while ((uxi >> 23) == 0)
-					{
-						uxi <<= 1;
-						ex -= 1;
-					}
-				}
-			}
-
-			/* scale result and decide between |x| and |x|-|y| */
-			if (ex > 0)
-			{
-				uxi -= 1 << 23;
-				uxi |= ((uint)ex) << 23;
-			}
-			else
-			{
-				uxi >>= -ex + 1;
-			}
-
-			x = SoftFloat.FromRaw(uxi);
-			if (sy)
-			{
-				y = -y;
-			}
-
-			if ((ex == ey || (ex + 1 == ey && ((SoftFloat)2.0f * x > y || ((SoftFloat)2.0f * x == y && (q % 2) != 0)))) &&
-			    x > y)
-			{
-				x -= y;
-				q += 1;
-			}
-
-			q &= 0x7fffffff;
-			int quo = sx ^ sy ? -(int)q : (int)q;
-			remainder = sx ? -x : x;
-			quotient = quo;
-		}
-
-		/// <summary>
 		/// Returns the remainder when dividing x by y
 		/// </summary>
 		public static SoftFloat Remainder(SoftFloat x, SoftFloat y)
@@ -528,6 +387,147 @@
 			ix = (q >> 1) + 0x3f000000;
 			ix += m << 23;
 			return SoftFloat.FromRaw((uint)ix);
+		}
+
+		/// <summary>
+		/// Returns the remainder and the quotient when dividing x by y, so that x == y * quotient + remainder
+		/// </summary>
+		public static void Remquo(SoftFloat x, SoftFloat y, out SoftFloat remainder, out int quotient)
+		{
+			uint ux = x.RawValue;
+			uint uy = y.RawValue;
+			int ex = (int)((ux >> 23) & 0xff);
+			int ey = (int)((uy >> 23) & 0xff);
+			bool sx = (ux >> 31) != 0;
+			bool sy = (uy >> 31) != 0;
+			uint q;
+			uint i;
+			var uxi = ux;
+
+			if ((uy << 1) == 0 || y.IsNaN() || ex == 0xff)
+			{
+				SoftFloat m = (x * y);
+				remainder = m / m;
+				quotient = 0;
+				return;
+			}
+
+			if ((ux << 1) == 0)
+			{
+				remainder = x;
+				quotient = 0;
+				return;
+			}
+
+			/* normalize x and y */
+			if (ex == 0)
+			{
+				i = uxi << 9;
+				while ((i >> 31) == 0)
+				{
+					ex -= 1;
+					i <<= 1;
+				}
+
+				uxi <<= -ex + 1;
+			}
+			else
+			{
+				uxi &= (~0u) >> 9;
+				uxi |= 1 << 23;
+			}
+
+			if (ey == 0)
+			{
+				i = uy << 9;
+				while ((i >> 31) == 0)
+				{
+					ey -= 1;
+					i <<= 1;
+				}
+
+				uy <<= -ey + 1;
+			}
+			else
+			{
+				uy &= (~0u) >> 9;
+				uy |= 1 << 23;
+			}
+
+			q = 0;
+			if (ex + 1 != ey)
+			{
+				if (ex < ey)
+				{
+					remainder = x;
+					quotient = 0;
+					return;
+				}
+
+				/* x mod y */
+				while (ex > ey)
+				{
+					i = uxi - uy;
+					if ((i >> 31) == 0)
+					{
+						uxi = i;
+						q += 1;
+					}
+
+					uxi <<= 1;
+					q <<= 1;
+					ex -= 1;
+				}
+
+				i = uxi - uy;
+				if ((i >> 31) == 0)
+				{
+					uxi = i;
+					q += 1;
+				}
+
+				if (uxi == 0)
+				{
+					ex = -30;
+				}
+				else
+				{
+					while ((uxi >> 23) == 0)
+					{
+						uxi <<= 1;
+						ex -= 1;
+					}
+				}
+			}
+
+			/* scale result and decide between |x| and |x|-|y| */
+			if (ex > 0)
+			{
+				uxi -= 1 << 23;
+				uxi |= ((uint)ex) << 23;
+			}
+			else
+			{
+				uxi >>= -ex + 1;
+			}
+
+			x = SoftFloat.FromRaw(uxi);
+			if (sy)
+			{
+				y = -y;
+			}
+
+			if ((ex == ey || (ex + 1 == ey && ((SoftFloat)2.0f * x > y || ((SoftFloat)2.0f * x == y && (q % 2) != 0)))) &&
+			    x > y)
+			{
+				x -= y;
+				q += 1;
+			}
+
+			q &= 0x7fffffff;
+			int quo = sx ^ sy ? -(int)q : (int)q;
+			remainder = sx ? -x : x;
+			quotient = quo;
 		}
 	}
 }

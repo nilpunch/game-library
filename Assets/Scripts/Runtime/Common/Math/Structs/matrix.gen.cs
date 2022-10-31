@@ -20,444 +20,444 @@ namespace GameLibrary.Mathematics
             return a * b;
         }
 
-        /// <summary>Returns the float value result of a matrix multiplication between a float2 row vector and a float2 column vector.</summary>
+        /// <summary>Returns the float value result of a matrix multiplication between a Float2 row vector and a Float2 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat mul(float2 a, float2 b)
+        public static SoftFloat mul(Float2 a, Float2 b)
         {
             return a.x * b.x + a.y * b.y;
         }
 
-        /// <summary>Returns the float2 row vector result of a matrix multiplication between a float2 row vector and a float2x2 matrix.</summary>
+        /// <summary>Returns the Float2 row vector result of a matrix multiplication between a Float2 row vector and a Float2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 mul(float2 a, float2x2 b)
+        public static Float2 mul(Float2 a, Float2X2 b)
         {
-            return float2(
+            return Float2(
                 a.x * b.c0.x + a.y * b.c0.y,
                 a.x * b.c1.x + a.y * b.c1.y);
         }
 
-        /// <summary>Returns the float3 row vector result of a matrix multiplication between a float2 row vector and a float2x3 matrix.</summary>
+        /// <summary>Returns the Float3 row vector result of a matrix multiplication between a Float2 row vector and a Float2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3 mul(float2 a, float2x3 b)
+        public static Float3 mul(Float2 a, Float2x3 b)
         {
-            return float3(
+            return Float3(
                 a.x * b.c0.x + a.y * b.c0.y,
                 a.x * b.c1.x + a.y * b.c1.y,
                 a.x * b.c2.x + a.y * b.c2.y);
         }
 
-        /// <summary>Returns the float4 row vector result of a matrix multiplication between a float2 row vector and a float2x4 matrix.</summary>
+        /// <summary>Returns the Float4 row vector result of a matrix multiplication between a Float2 row vector and a Float2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4 mul(float2 a, float2x4 b)
+        public static Float4 mul(Float2 a, Float2x4 b)
         {
-            return float4(
+            return Float4(
                 a.x * b.c0.x + a.y * b.c0.y,
                 a.x * b.c1.x + a.y * b.c1.y,
                 a.x * b.c2.x + a.y * b.c2.y,
                 a.x * b.c3.x + a.y * b.c3.y);
         }
 
-        /// <summary>Returns the float value result of a matrix multiplication between a float3 row vector and a float3 column vector.</summary>
+        /// <summary>Returns the float value result of a matrix multiplication between a Float3 row vector and a Float3 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat mul(float3 a, float3 b)
+        public static SoftFloat mul(Float3 a, Float3 b)
         {
             return a.x * b.x + a.y * b.y + a.z * b.z;
         }
 
-        /// <summary>Returns the float2 row vector result of a matrix multiplication between a float3 row vector and a float3x2 matrix.</summary>
+        /// <summary>Returns the Float2 row vector result of a matrix multiplication between a Float3 row vector and a Float3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 mul(float3 a, float3x2 b)
+        public static Float2 mul(Float3 a, Float3x2 b)
         {
-            return float2(
+            return Float2(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z);
         }
 
-        /// <summary>Returns the float3 row vector result of a matrix multiplication between a float3 row vector and a float3x3 matrix.</summary>
+        /// <summary>Returns the Float3 row vector result of a matrix multiplication between a Float3 row vector and a Float3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3 mul(float3 a, float3x3 b)
+        public static Float3 mul(Float3 a, Float3X3 b)
         {
-            return float3(
+            return Float3(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z,
                 a.x * b.c2.x + a.y * b.c2.y + a.z * b.c2.z);
         }
 
-        /// <summary>Returns the float4 row vector result of a matrix multiplication between a float3 row vector and a float3x4 matrix.</summary>
+        /// <summary>Returns the Float4 row vector result of a matrix multiplication between a Float3 row vector and a Float3x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4 mul(float3 a, float3x4 b)
+        public static Float4 mul(Float3 a, Float3x4 b)
         {
-            return float4(
+            return Float4(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z,
                 a.x * b.c2.x + a.y * b.c2.y + a.z * b.c2.z,
                 a.x * b.c3.x + a.y * b.c3.y + a.z * b.c3.z);
         }
 
-        /// <summary>Returns the float value result of a matrix multiplication between a float4 row vector and a float4 column vector.</summary>
+        /// <summary>Returns the float value result of a matrix multiplication between a Float4 row vector and a Float4 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat mul(float4 a, float4 b)
+        public static SoftFloat mul(Float4 a, Float4 b)
         {
             return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
         }
 
-        /// <summary>Returns the float2 row vector result of a matrix multiplication between a float4 row vector and a float4x2 matrix.</summary>
+        /// <summary>Returns the Float2 row vector result of a matrix multiplication between a Float4 row vector and a Float4x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 mul(float4 a, float4x2 b)
+        public static Float2 mul(Float4 a, Float4x2 b)
         {
-            return float2(
+            return Float2(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z + a.w * b.c0.w,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z + a.w * b.c1.w);
         }
 
-        /// <summary>Returns the float3 row vector result of a matrix multiplication between a float4 row vector and a float4x3 matrix.</summary>
+        /// <summary>Returns the Float3 row vector result of a matrix multiplication between a Float4 row vector and a Float4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3 mul(float4 a, float4x3 b)
+        public static Float3 mul(Float4 a, Float4x3 b)
         {
-            return float3(
+            return Float3(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z + a.w * b.c0.w,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z + a.w * b.c1.w,
                 a.x * b.c2.x + a.y * b.c2.y + a.z * b.c2.z + a.w * b.c2.w);
         }
 
-        /// <summary>Returns the float4 row vector result of a matrix multiplication between a float4 row vector and a float4x4 matrix.</summary>
+        /// <summary>Returns the Float4 row vector result of a matrix multiplication between a Float4 row vector and a Float4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4 mul(float4 a, float4x4 b)
+        public static Float4 mul(Float4 a, Float4X4 b)
         {
-            return float4(
+            return Float4(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z + a.w * b.c0.w,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z + a.w * b.c1.w,
                 a.x * b.c2.x + a.y * b.c2.y + a.z * b.c2.z + a.w * b.c2.w,
                 a.x * b.c3.x + a.y * b.c3.y + a.z * b.c3.z + a.w * b.c3.w);
         }
 
-        /// <summary>Returns the float2 column vector result of a matrix multiplication between a float2x2 matrix and a float2 column vector.</summary>
+        /// <summary>Returns the Float2 column vector result of a matrix multiplication between a Float2x2 matrix and a Float2 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 mul(float2x2 a, float2 b)
+        public static Float2 mul(Float2X2 a, Float2 b)
         {
             return a.c0 * b.x + a.c1 * b.y;
         }
 
-        /// <summary>Returns the float2x2 matrix result of a matrix multiplication between a float2x2 matrix and a float2x2 matrix.</summary>
+        /// <summary>Returns the Float2x2 matrix result of a matrix multiplication between a Float2x2 matrix and a Float2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x2 mul(float2x2 a, float2x2 b)
+        public static Float2X2 mul(Float2X2 a, Float2X2 b)
         {
-            return float2x2(
+            return Float2x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y);
         }
 
-        /// <summary>Returns the float2x3 matrix result of a matrix multiplication between a float2x2 matrix and a float2x3 matrix.</summary>
+        /// <summary>Returns the Float2x3 matrix result of a matrix multiplication between a Float2x2 matrix and a Float2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x3 mul(float2x2 a, float2x3 b)
+        public static Float2x3 mul(Float2X2 a, Float2x3 b)
         {
-            return float2x3(
+            return Float2x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y);
         }
 
-        /// <summary>Returns the float2x4 matrix result of a matrix multiplication between a float2x2 matrix and a float2x4 matrix.</summary>
+        /// <summary>Returns the Float2x4 matrix result of a matrix multiplication between a Float2x2 matrix and a Float2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x4 mul(float2x2 a, float2x4 b)
+        public static Float2x4 mul(Float2X2 a, Float2x4 b)
         {
-            return float2x4(
+            return Float2x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y,
                 a.c0 * b.c3.x + a.c1 * b.c3.y);
         }
 
-        /// <summary>Returns the float2 column vector result of a matrix multiplication between a float2x3 matrix and a float3 column vector.</summary>
+        /// <summary>Returns the Float2 column vector result of a matrix multiplication between a Float2x3 matrix and a Float3 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 mul(float2x3 a, float3 b)
+        public static Float2 mul(Float2x3 a, Float3 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z;
         }
 
-        /// <summary>Returns the float2x2 matrix result of a matrix multiplication between a float2x3 matrix and a float3x2 matrix.</summary>
+        /// <summary>Returns the Float2x2 matrix result of a matrix multiplication between a Float2x3 matrix and a Float3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x2 mul(float2x3 a, float3x2 b)
+        public static Float2X2 mul(Float2x3 a, Float3x2 b)
         {
-            return float2x2(
+            return Float2x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z);
         }
 
-        /// <summary>Returns the float2x3 matrix result of a matrix multiplication between a float2x3 matrix and a float3x3 matrix.</summary>
+        /// <summary>Returns the Float2x3 matrix result of a matrix multiplication between a Float2x3 matrix and a Float3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x3 mul(float2x3 a, float3x3 b)
+        public static Float2x3 mul(Float2x3 a, Float3X3 b)
         {
-            return float2x3(
+            return Float2x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z);
         }
 
-        /// <summary>Returns the float2x4 matrix result of a matrix multiplication between a float2x3 matrix and a float3x4 matrix.</summary>
+        /// <summary>Returns the Float2x4 matrix result of a matrix multiplication between a Float2x3 matrix and a Float3x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x4 mul(float2x3 a, float3x4 b)
+        public static Float2x4 mul(Float2x3 a, Float3x4 b)
         {
-            return float2x4(
+            return Float2x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z);
         }
 
-        /// <summary>Returns the float2 column vector result of a matrix multiplication between a float2x4 matrix and a float4 column vector.</summary>
+        /// <summary>Returns the Float2 column vector result of a matrix multiplication between a Float2x4 matrix and a Float4 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2 mul(float2x4 a, float4 b)
+        public static Float2 mul(Float2x4 a, Float4 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3 * b.w;
         }
 
-        /// <summary>Returns the float2x2 matrix result of a matrix multiplication between a float2x4 matrix and a float4x2 matrix.</summary>
+        /// <summary>Returns the Float2x2 matrix result of a matrix multiplication between a Float2x4 matrix and a Float4x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x2 mul(float2x4 a, float4x2 b)
+        public static Float2X2 mul(Float2x4 a, Float4x2 b)
         {
-            return float2x2(
+            return Float2x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w);
         }
 
-        /// <summary>Returns the float2x3 matrix result of a matrix multiplication between a float2x4 matrix and a float4x3 matrix.</summary>
+        /// <summary>Returns the Float2x3 matrix result of a matrix multiplication between a Float2x4 matrix and a Float4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x3 mul(float2x4 a, float4x3 b)
+        public static Float2x3 mul(Float2x4 a, Float4x3 b)
         {
-            return float2x3(
+            return Float2x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w);
         }
 
-        /// <summary>Returns the float2x4 matrix result of a matrix multiplication between a float2x4 matrix and a float4x4 matrix.</summary>
+        /// <summary>Returns the Float2x4 matrix result of a matrix multiplication between a Float2x4 matrix and a Float4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x4 mul(float2x4 a, float4x4 b)
+        public static Float2x4 mul(Float2x4 a, Float4X4 b)
         {
-            return float2x4(
+            return Float2x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z + a.c3 * b.c3.w);
         }
 
-        /// <summary>Returns the float3 column vector result of a matrix multiplication between a float3x2 matrix and a float2 column vector.</summary>
+        /// <summary>Returns the Float3 column vector result of a matrix multiplication between a Float3x2 matrix and a Float2 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3 mul(float3x2 a, float2 b)
+        public static Float3 mul(Float3x2 a, Float2 b)
         {
             return a.c0 * b.x + a.c1 * b.y;
         }
 
-        /// <summary>Returns the float3x2 matrix result of a matrix multiplication between a float3x2 matrix and a float2x2 matrix.</summary>
+        /// <summary>Returns the Float3x2 matrix result of a matrix multiplication between a Float3x2 matrix and a Float2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x2 mul(float3x2 a, float2x2 b)
+        public static Float3x2 mul(Float3x2 a, Float2X2 b)
         {
-            return float3x2(
+            return Float3x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y);
         }
 
-        /// <summary>Returns the float3x3 matrix result of a matrix multiplication between a float3x2 matrix and a float2x3 matrix.</summary>
+        /// <summary>Returns the Float3x3 matrix result of a matrix multiplication between a Float3x2 matrix and a Float2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 mul(float3x2 a, float2x3 b)
+        public static Float3X3 mul(Float3x2 a, Float2x3 b)
         {
-            return float3x3(
+            return Float3x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y);
         }
 
-        /// <summary>Returns the float3x4 matrix result of a matrix multiplication between a float3x2 matrix and a float2x4 matrix.</summary>
+        /// <summary>Returns the Float3x4 matrix result of a matrix multiplication between a Float3x2 matrix and a Float2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x4 mul(float3x2 a, float2x4 b)
+        public static Float3x4 mul(Float3x2 a, Float2x4 b)
         {
-            return float3x4(
+            return Float3x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y,
                 a.c0 * b.c3.x + a.c1 * b.c3.y);
         }
 
-        /// <summary>Returns the float3 column vector result of a matrix multiplication between a float3x3 matrix and a float3 column vector.</summary>
+        /// <summary>Returns the Float3 column vector result of a matrix multiplication between a Float3x3 matrix and a Float3 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3 mul(float3x3 a, float3 b)
+        public static Float3 mul(Float3X3 a, Float3 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z;
         }
 
-        /// <summary>Returns the float3x2 matrix result of a matrix multiplication between a float3x3 matrix and a float3x2 matrix.</summary>
+        /// <summary>Returns the Float3x2 matrix result of a matrix multiplication between a Float3x3 matrix and a Float3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x2 mul(float3x3 a, float3x2 b)
+        public static Float3x2 mul(Float3X3 a, Float3x2 b)
         {
-            return float3x2(
+            return Float3x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z);
         }
 
-        /// <summary>Returns the float3x3 matrix result of a matrix multiplication between a float3x3 matrix and a float3x3 matrix.</summary>
+        /// <summary>Returns the Float3x3 matrix result of a matrix multiplication between a Float3x3 matrix and a Float3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 mul(float3x3 a, float3x3 b)
+        public static Float3X3 mul(Float3X3 a, Float3X3 b)
         {
-            return float3x3(
+            return Float3x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z);
         }
 
-        /// <summary>Returns the float3x4 matrix result of a matrix multiplication between a float3x3 matrix and a float3x4 matrix.</summary>
+        /// <summary>Returns the Float3x4 matrix result of a matrix multiplication between a Float3x3 matrix and a Float3x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x4 mul(float3x3 a, float3x4 b)
+        public static Float3x4 mul(Float3X3 a, Float3x4 b)
         {
-            return float3x4(
+            return Float3x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z);
         }
 
-        /// <summary>Returns the float3 column vector result of a matrix multiplication between a float3x4 matrix and a float4 column vector.</summary>
+        /// <summary>Returns the Float3 column vector result of a matrix multiplication between a Float3x4 matrix and a Float4 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3 mul(float3x4 a, float4 b)
+        public static Float3 mul(Float3x4 a, Float4 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3 * b.w;
         }
 
-        /// <summary>Returns the float3x2 matrix result of a matrix multiplication between a float3x4 matrix and a float4x2 matrix.</summary>
+        /// <summary>Returns the Float3x2 matrix result of a matrix multiplication between a Float3x4 matrix and a Float4x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x2 mul(float3x4 a, float4x2 b)
+        public static Float3x2 mul(Float3x4 a, Float4x2 b)
         {
-            return float3x2(
+            return Float3x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w);
         }
 
-        /// <summary>Returns the float3x3 matrix result of a matrix multiplication between a float3x4 matrix and a float4x3 matrix.</summary>
+        /// <summary>Returns the Float3x3 matrix result of a matrix multiplication between a Float3x4 matrix and a Float4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 mul(float3x4 a, float4x3 b)
+        public static Float3X3 mul(Float3x4 a, Float4x3 b)
         {
-            return float3x3(
+            return Float3x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w);
         }
 
-        /// <summary>Returns the float3x4 matrix result of a matrix multiplication between a float3x4 matrix and a float4x4 matrix.</summary>
+        /// <summary>Returns the Float3x4 matrix result of a matrix multiplication between a Float3x4 matrix and a Float4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x4 mul(float3x4 a, float4x4 b)
+        public static Float3x4 mul(Float3x4 a, Float4X4 b)
         {
-            return float3x4(
+            return Float3x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z + a.c3 * b.c3.w);
         }
 
-        /// <summary>Returns the float4 column vector result of a matrix multiplication between a float4x2 matrix and a float2 column vector.</summary>
+        /// <summary>Returns the Float4 column vector result of a matrix multiplication between a Float4x2 matrix and a Float2 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4 mul(float4x2 a, float2 b)
+        public static Float4 mul(Float4x2 a, Float2 b)
         {
             return a.c0 * b.x + a.c1 * b.y;
         }
 
-        /// <summary>Returns the float4x2 matrix result of a matrix multiplication between a float4x2 matrix and a float2x2 matrix.</summary>
+        /// <summary>Returns the Float4x2 matrix result of a matrix multiplication between a Float4x2 matrix and a Float2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x2 mul(float4x2 a, float2x2 b)
+        public static Float4x2 mul(Float4x2 a, Float2X2 b)
         {
-            return float4x2(
+            return Float4x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y);
         }
 
-        /// <summary>Returns the float4x3 matrix result of a matrix multiplication between a float4x2 matrix and a float2x3 matrix.</summary>
+        /// <summary>Returns the Float4x3 matrix result of a matrix multiplication between a Float4x2 matrix and a Float2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x3 mul(float4x2 a, float2x3 b)
+        public static Float4x3 mul(Float4x2 a, Float2x3 b)
         {
-            return float4x3(
+            return Float4x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y);
         }
 
-        /// <summary>Returns the float4x4 matrix result of a matrix multiplication between a float4x2 matrix and a float2x4 matrix.</summary>
+        /// <summary>Returns the Float4x4 matrix result of a matrix multiplication between a Float4x2 matrix and a Float2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 mul(float4x2 a, float2x4 b)
+        public static Float4X4 mul(Float4x2 a, Float2x4 b)
         {
-            return float4x4(
+            return Float4x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y,
                 a.c0 * b.c3.x + a.c1 * b.c3.y);
         }
 
-        /// <summary>Returns the float4 column vector result of a matrix multiplication between a float4x3 matrix and a float3 column vector.</summary>
+        /// <summary>Returns the Float4 column vector result of a matrix multiplication between a Float4x3 matrix and a Float3 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4 mul(float4x3 a, float3 b)
+        public static Float4 mul(Float4x3 a, Float3 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z;
         }
 
-        /// <summary>Returns the float4x2 matrix result of a matrix multiplication between a float4x3 matrix and a float3x2 matrix.</summary>
+        /// <summary>Returns the Float4x2 matrix result of a matrix multiplication between a Float4x3 matrix and a Float3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x2 mul(float4x3 a, float3x2 b)
+        public static Float4x2 mul(Float4x3 a, Float3x2 b)
         {
-            return float4x2(
+            return Float4x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z);
         }
 
-        /// <summary>Returns the float4x3 matrix result of a matrix multiplication between a float4x3 matrix and a float3x3 matrix.</summary>
+        /// <summary>Returns the Float4x3 matrix result of a matrix multiplication between a Float4x3 matrix and a Float3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x3 mul(float4x3 a, float3x3 b)
+        public static Float4x3 mul(Float4x3 a, Float3X3 b)
         {
-            return float4x3(
+            return Float4x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z);
         }
 
-        /// <summary>Returns the float4x4 matrix result of a matrix multiplication between a float4x3 matrix and a float3x4 matrix.</summary>
+        /// <summary>Returns the Float4x4 matrix result of a matrix multiplication between a Float4x3 matrix and a Float3x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 mul(float4x3 a, float3x4 b)
+        public static Float4X4 mul(Float4x3 a, Float3x4 b)
         {
-            return float4x4(
+            return Float4x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z);
         }
 
-        /// <summary>Returns the float4 column vector result of a matrix multiplication between a float4x4 matrix and a float4 column vector.</summary>
+        /// <summary>Returns the Float4 column vector result of a matrix multiplication between a Float4x4 matrix and a Float4 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4 mul(float4x4 a, float4 b)
+        public static Float4 mul(Float4X4 a, Float4 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3 * b.w;
         }
 
-        /// <summary>Returns the float4x2 matrix result of a matrix multiplication between a float4x4 matrix and a float4x2 matrix.</summary>
+        /// <summary>Returns the Float4x2 matrix result of a matrix multiplication between a Float4x4 matrix and a Float4x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x2 mul(float4x4 a, float4x2 b)
+        public static Float4x2 mul(Float4X4 a, Float4x2 b)
         {
-            return float4x2(
+            return Float4x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w);
         }
 
-        /// <summary>Returns the float4x3 matrix result of a matrix multiplication between a float4x4 matrix and a float4x3 matrix.</summary>
+        /// <summary>Returns the Float4x3 matrix result of a matrix multiplication between a Float4x4 matrix and a Float4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x3 mul(float4x4 a, float4x3 b)
+        public static Float4x3 mul(Float4X4 a, Float4x3 b)
         {
-            return float4x3(
+            return Float4x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w);
         }
 
-        /// <summary>Returns the float4x4 matrix result of a matrix multiplication between a float4x4 matrix and a float4x4 matrix.</summary>
+        /// <summary>Returns the Float4x4 matrix result of a matrix multiplication between a Float4x4 matrix and a Float4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 mul(float4x4 a, float4x4 b)
+        public static Float4X4 mul(Float4X4 a, Float4X4 b)
         {
-            return float4x4(
+            return Float4x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w,
@@ -471,444 +471,444 @@ namespace GameLibrary.Mathematics
             return a * b;
         }
 
-        /// <summary>Returns the int value result of a matrix multiplication between an int2 row vector and an int2 column vector.</summary>
+        /// <summary>Returns the int value result of a matrix multiplication between an Int2 row vector and an Int2 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int mul(int2 a, int2 b)
+        public static int mul(Int2 a, Int2 b)
         {
             return a.x * b.x + a.y * b.y;
         }
 
-        /// <summary>Returns the int2 row vector result of a matrix multiplication between an int2 row vector and an int2x2 matrix.</summary>
+        /// <summary>Returns the Int2 row vector result of a matrix multiplication between an Int2 row vector and an Int2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2 mul(int2 a, int2x2 b)
+        public static Int2 mul(Int2 a, Int2x2 b)
         {
-            return int2(
+            return Int2(
                 a.x * b.c0.x + a.y * b.c0.y,
                 a.x * b.c1.x + a.y * b.c1.y);
         }
 
-        /// <summary>Returns the int3 row vector result of a matrix multiplication between an int2 row vector and an int2x3 matrix.</summary>
+        /// <summary>Returns the Int3 row vector result of a matrix multiplication between an Int2 row vector and an Int2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3 mul(int2 a, int2x3 b)
+        public static Int3 mul(Int2 a, Int2x3 b)
         {
-            return int3(
+            return Int3(
                 a.x * b.c0.x + a.y * b.c0.y,
                 a.x * b.c1.x + a.y * b.c1.y,
                 a.x * b.c2.x + a.y * b.c2.y);
         }
 
-        /// <summary>Returns the int4 row vector result of a matrix multiplication between an int2 row vector and an int2x4 matrix.</summary>
+        /// <summary>Returns the Int4 row vector result of a matrix multiplication between an Int2 row vector and an Int2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4 mul(int2 a, int2x4 b)
+        public static Int4 mul(Int2 a, Int2x4 b)
         {
-            return int4(
+            return Int4(
                 a.x * b.c0.x + a.y * b.c0.y,
                 a.x * b.c1.x + a.y * b.c1.y,
                 a.x * b.c2.x + a.y * b.c2.y,
                 a.x * b.c3.x + a.y * b.c3.y);
         }
 
-        /// <summary>Returns the int value result of a matrix multiplication between an int3 row vector and an int3 column vector.</summary>
+        /// <summary>Returns the int value result of a matrix multiplication between an Int3 row vector and an Int3 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int mul(int3 a, int3 b)
+        public static int mul(Int3 a, Int3 b)
         {
             return a.x * b.x + a.y * b.y + a.z * b.z;
         }
 
-        /// <summary>Returns the int2 row vector result of a matrix multiplication between an int3 row vector and an int3x2 matrix.</summary>
+        /// <summary>Returns the Int2 row vector result of a matrix multiplication between an Int3 row vector and an Int3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2 mul(int3 a, int3x2 b)
+        public static Int2 mul(Int3 a, Int3x2 b)
         {
-            return int2(
+            return Int2(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z);
         }
 
-        /// <summary>Returns the int3 row vector result of a matrix multiplication between an int3 row vector and an int3x3 matrix.</summary>
+        /// <summary>Returns the Int3 row vector result of a matrix multiplication between an Int3 row vector and an Int3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3 mul(int3 a, int3x3 b)
+        public static Int3 mul(Int3 a, Int3x3 b)
         {
-            return int3(
+            return Int3(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z,
                 a.x * b.c2.x + a.y * b.c2.y + a.z * b.c2.z);
         }
 
-        /// <summary>Returns the int4 row vector result of a matrix multiplication between an int3 row vector and an int3x4 matrix.</summary>
+        /// <summary>Returns the Int4 row vector result of a matrix multiplication between an Int3 row vector and an Int3x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4 mul(int3 a, int3x4 b)
+        public static Int4 mul(Int3 a, Int3x4 b)
         {
-            return int4(
+            return Int4(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z,
                 a.x * b.c2.x + a.y * b.c2.y + a.z * b.c2.z,
                 a.x * b.c3.x + a.y * b.c3.y + a.z * b.c3.z);
         }
 
-        /// <summary>Returns the int value result of a matrix multiplication between an int4 row vector and an int4 column vector.</summary>
+        /// <summary>Returns the int value result of a matrix multiplication between an Int4 row vector and an Int4 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int mul(int4 a, int4 b)
+        public static int mul(Int4 a, Int4 b)
         {
             return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
         }
 
-        /// <summary>Returns the int2 row vector result of a matrix multiplication between an int4 row vector and an int4x2 matrix.</summary>
+        /// <summary>Returns the Int2 row vector result of a matrix multiplication between an Int4 row vector and an Int4x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2 mul(int4 a, int4x2 b)
+        public static Int2 mul(Int4 a, Int4x2 b)
         {
-            return int2(
+            return Int2(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z + a.w * b.c0.w,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z + a.w * b.c1.w);
         }
 
-        /// <summary>Returns the int3 row vector result of a matrix multiplication between an int4 row vector and an int4x3 matrix.</summary>
+        /// <summary>Returns the Int3 row vector result of a matrix multiplication between an Int4 row vector and an Int4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3 mul(int4 a, int4x3 b)
+        public static Int3 mul(Int4 a, Int4x3 b)
         {
-            return int3(
+            return Int3(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z + a.w * b.c0.w,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z + a.w * b.c1.w,
                 a.x * b.c2.x + a.y * b.c2.y + a.z * b.c2.z + a.w * b.c2.w);
         }
 
-        /// <summary>Returns the int4 row vector result of a matrix multiplication between an int4 row vector and an int4x4 matrix.</summary>
+        /// <summary>Returns the Int4 row vector result of a matrix multiplication between an Int4 row vector and an Int4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4 mul(int4 a, int4x4 b)
+        public static Int4 mul(Int4 a, Int4x4 b)
         {
-            return int4(
+            return Int4(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z + a.w * b.c0.w,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z + a.w * b.c1.w,
                 a.x * b.c2.x + a.y * b.c2.y + a.z * b.c2.z + a.w * b.c2.w,
                 a.x * b.c3.x + a.y * b.c3.y + a.z * b.c3.z + a.w * b.c3.w);
         }
 
-        /// <summary>Returns the int2 column vector result of a matrix multiplication between an int2x2 matrix and an int2 column vector.</summary>
+        /// <summary>Returns the Int2 column vector result of a matrix multiplication between an Int2x2 matrix and an Int2 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2 mul(int2x2 a, int2 b)
+        public static Int2 mul(Int2x2 a, Int2 b)
         {
             return a.c0 * b.x + a.c1 * b.y;
         }
 
-        /// <summary>Returns the int2x2 matrix result of a matrix multiplication between an int2x2 matrix and an int2x2 matrix.</summary>
+        /// <summary>Returns the Int2x2 matrix result of a matrix multiplication between an Int2x2 matrix and an Int2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2x2 mul(int2x2 a, int2x2 b)
+        public static Int2x2 mul(Int2x2 a, Int2x2 b)
         {
-            return int2x2(
+            return Int2x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y);
         }
 
-        /// <summary>Returns the int2x3 matrix result of a matrix multiplication between an int2x2 matrix and an int2x3 matrix.</summary>
+        /// <summary>Returns the Int2x3 matrix result of a matrix multiplication between an Int2x2 matrix and an Int2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2x3 mul(int2x2 a, int2x3 b)
+        public static Int2x3 mul(Int2x2 a, Int2x3 b)
         {
-            return int2x3(
+            return Int2x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y);
         }
 
-        /// <summary>Returns the int2x4 matrix result of a matrix multiplication between an int2x2 matrix and an int2x4 matrix.</summary>
+        /// <summary>Returns the Int2x4 matrix result of a matrix multiplication between an Int2x2 matrix and an Int2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2x4 mul(int2x2 a, int2x4 b)
+        public static Int2x4 mul(Int2x2 a, Int2x4 b)
         {
-            return int2x4(
+            return Int2x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y,
                 a.c0 * b.c3.x + a.c1 * b.c3.y);
         }
 
-        /// <summary>Returns the int2 column vector result of a matrix multiplication between an int2x3 matrix and an int3 column vector.</summary>
+        /// <summary>Returns the Int2 column vector result of a matrix multiplication between an Int2x3 matrix and an Int3 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2 mul(int2x3 a, int3 b)
+        public static Int2 mul(Int2x3 a, Int3 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z;
         }
 
-        /// <summary>Returns the int2x2 matrix result of a matrix multiplication between an int2x3 matrix and an int3x2 matrix.</summary>
+        /// <summary>Returns the Int2x2 matrix result of a matrix multiplication between an Int2x3 matrix and an Int3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2x2 mul(int2x3 a, int3x2 b)
+        public static Int2x2 mul(Int2x3 a, Int3x2 b)
         {
-            return int2x2(
+            return Int2x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z);
         }
 
-        /// <summary>Returns the int2x3 matrix result of a matrix multiplication between an int2x3 matrix and an int3x3 matrix.</summary>
+        /// <summary>Returns the Int2x3 matrix result of a matrix multiplication between an Int2x3 matrix and an Int3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2x3 mul(int2x3 a, int3x3 b)
+        public static Int2x3 mul(Int2x3 a, Int3x3 b)
         {
-            return int2x3(
+            return Int2x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z);
         }
 
-        /// <summary>Returns the int2x4 matrix result of a matrix multiplication between an int2x3 matrix and an int3x4 matrix.</summary>
+        /// <summary>Returns the Int2x4 matrix result of a matrix multiplication between an Int2x3 matrix and an Int3x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2x4 mul(int2x3 a, int3x4 b)
+        public static Int2x4 mul(Int2x3 a, Int3x4 b)
         {
-            return int2x4(
+            return Int2x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z);
         }
 
-        /// <summary>Returns the int2 column vector result of a matrix multiplication between an int2x4 matrix and an int4 column vector.</summary>
+        /// <summary>Returns the Int2 column vector result of a matrix multiplication between an Int2x4 matrix and an Int4 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2 mul(int2x4 a, int4 b)
+        public static Int2 mul(Int2x4 a, Int4 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3 * b.w;
         }
 
-        /// <summary>Returns the int2x2 matrix result of a matrix multiplication between an int2x4 matrix and an int4x2 matrix.</summary>
+        /// <summary>Returns the Int2x2 matrix result of a matrix multiplication between an Int2x4 matrix and an Int4x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2x2 mul(int2x4 a, int4x2 b)
+        public static Int2x2 mul(Int2x4 a, Int4x2 b)
         {
-            return int2x2(
+            return Int2x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w);
         }
 
-        /// <summary>Returns the int2x3 matrix result of a matrix multiplication between an int2x4 matrix and an int4x3 matrix.</summary>
+        /// <summary>Returns the Int2x3 matrix result of a matrix multiplication between an Int2x4 matrix and an Int4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2x3 mul(int2x4 a, int4x3 b)
+        public static Int2x3 mul(Int2x4 a, Int4x3 b)
         {
-            return int2x3(
+            return Int2x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w);
         }
 
-        /// <summary>Returns the int2x4 matrix result of a matrix multiplication between an int2x4 matrix and an int4x4 matrix.</summary>
+        /// <summary>Returns the Int2x4 matrix result of a matrix multiplication between an Int2x4 matrix and an Int4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int2x4 mul(int2x4 a, int4x4 b)
+        public static Int2x4 mul(Int2x4 a, Int4x4 b)
         {
-            return int2x4(
+            return Int2x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z + a.c3 * b.c3.w);
         }
 
-        /// <summary>Returns the int3 column vector result of a matrix multiplication between an int3x2 matrix and an int2 column vector.</summary>
+        /// <summary>Returns the Int3 column vector result of a matrix multiplication between an Int3x2 matrix and an Int2 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3 mul(int3x2 a, int2 b)
+        public static Int3 mul(Int3x2 a, Int2 b)
         {
             return a.c0 * b.x + a.c1 * b.y;
         }
 
-        /// <summary>Returns the int3x2 matrix result of a matrix multiplication between an int3x2 matrix and an int2x2 matrix.</summary>
+        /// <summary>Returns the Int3x2 matrix result of a matrix multiplication between an Int3x2 matrix and an Int2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3x2 mul(int3x2 a, int2x2 b)
+        public static Int3x2 mul(Int3x2 a, Int2x2 b)
         {
-            return int3x2(
+            return Int3x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y);
         }
 
-        /// <summary>Returns the int3x3 matrix result of a matrix multiplication between an int3x2 matrix and an int2x3 matrix.</summary>
+        /// <summary>Returns the Int3x3 matrix result of a matrix multiplication between an Int3x2 matrix and an Int2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3x3 mul(int3x2 a, int2x3 b)
+        public static Int3x3 mul(Int3x2 a, Int2x3 b)
         {
-            return int3x3(
+            return Int3x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y);
         }
 
-        /// <summary>Returns the int3x4 matrix result of a matrix multiplication between an int3x2 matrix and an int2x4 matrix.</summary>
+        /// <summary>Returns the Int3x4 matrix result of a matrix multiplication between an Int3x2 matrix and an Int2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3x4 mul(int3x2 a, int2x4 b)
+        public static Int3x4 mul(Int3x2 a, Int2x4 b)
         {
-            return int3x4(
+            return Int3x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y,
                 a.c0 * b.c3.x + a.c1 * b.c3.y);
         }
 
-        /// <summary>Returns the int3 column vector result of a matrix multiplication between an int3x3 matrix and an int3 column vector.</summary>
+        /// <summary>Returns the Int3 column vector result of a matrix multiplication between an Int3x3 matrix and an Int3 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3 mul(int3x3 a, int3 b)
+        public static Int3 mul(Int3x3 a, Int3 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z;
         }
 
-        /// <summary>Returns the int3x2 matrix result of a matrix multiplication between an int3x3 matrix and an int3x2 matrix.</summary>
+        /// <summary>Returns the Int3x2 matrix result of a matrix multiplication between an Int3x3 matrix and an Int3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3x2 mul(int3x3 a, int3x2 b)
+        public static Int3x2 mul(Int3x3 a, Int3x2 b)
         {
-            return int3x2(
+            return Int3x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z);
         }
 
-        /// <summary>Returns the int3x3 matrix result of a matrix multiplication between an int3x3 matrix and an int3x3 matrix.</summary>
+        /// <summary>Returns the Int3x3 matrix result of a matrix multiplication between an Int3x3 matrix and an Int3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3x3 mul(int3x3 a, int3x3 b)
+        public static Int3x3 mul(Int3x3 a, Int3x3 b)
         {
-            return int3x3(
+            return Int3x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z);
         }
 
-        /// <summary>Returns the int3x4 matrix result of a matrix multiplication between an int3x3 matrix and an int3x4 matrix.</summary>
+        /// <summary>Returns the Int3x4 matrix result of a matrix multiplication between an Int3x3 matrix and an Int3x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3x4 mul(int3x3 a, int3x4 b)
+        public static Int3x4 mul(Int3x3 a, Int3x4 b)
         {
-            return int3x4(
+            return Int3x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z);
         }
 
-        /// <summary>Returns the int3 column vector result of a matrix multiplication between an int3x4 matrix and an int4 column vector.</summary>
+        /// <summary>Returns the Int3 column vector result of a matrix multiplication between an Int3x4 matrix and an Int4 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3 mul(int3x4 a, int4 b)
+        public static Int3 mul(Int3x4 a, Int4 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3 * b.w;
         }
 
-        /// <summary>Returns the int3x2 matrix result of a matrix multiplication between an int3x4 matrix and an int4x2 matrix.</summary>
+        /// <summary>Returns the Int3x2 matrix result of a matrix multiplication between an Int3x4 matrix and an Int4x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3x2 mul(int3x4 a, int4x2 b)
+        public static Int3x2 mul(Int3x4 a, Int4x2 b)
         {
-            return int3x2(
+            return Int3x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w);
         }
 
-        /// <summary>Returns the int3x3 matrix result of a matrix multiplication between an int3x4 matrix and an int4x3 matrix.</summary>
+        /// <summary>Returns the Int3x3 matrix result of a matrix multiplication between an Int3x4 matrix and an Int4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3x3 mul(int3x4 a, int4x3 b)
+        public static Int3x3 mul(Int3x4 a, Int4x3 b)
         {
-            return int3x3(
+            return Int3x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w);
         }
 
-        /// <summary>Returns the int3x4 matrix result of a matrix multiplication between an int3x4 matrix and an int4x4 matrix.</summary>
+        /// <summary>Returns the Int3x4 matrix result of a matrix multiplication between an Int3x4 matrix and an Int4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int3x4 mul(int3x4 a, int4x4 b)
+        public static Int3x4 mul(Int3x4 a, Int4x4 b)
         {
-            return int3x4(
+            return Int3x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z + a.c3 * b.c3.w);
         }
 
-        /// <summary>Returns the int4 column vector result of a matrix multiplication between an int4x2 matrix and an int2 column vector.</summary>
+        /// <summary>Returns the Int4 column vector result of a matrix multiplication between an Int4x2 matrix and an Int2 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4 mul(int4x2 a, int2 b)
+        public static Int4 mul(Int4x2 a, Int2 b)
         {
             return a.c0 * b.x + a.c1 * b.y;
         }
 
-        /// <summary>Returns the int4x2 matrix result of a matrix multiplication between an int4x2 matrix and an int2x2 matrix.</summary>
+        /// <summary>Returns the Int4x2 matrix result of a matrix multiplication between an Int4x2 matrix and an Int2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4x2 mul(int4x2 a, int2x2 b)
+        public static Int4x2 mul(Int4x2 a, Int2x2 b)
         {
-            return int4x2(
+            return Int4x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y);
         }
 
-        /// <summary>Returns the int4x3 matrix result of a matrix multiplication between an int4x2 matrix and an int2x3 matrix.</summary>
+        /// <summary>Returns the Int4x3 matrix result of a matrix multiplication between an Int4x2 matrix and an Int2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4x3 mul(int4x2 a, int2x3 b)
+        public static Int4x3 mul(Int4x2 a, Int2x3 b)
         {
-            return int4x3(
+            return Int4x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y);
         }
 
-        /// <summary>Returns the int4x4 matrix result of a matrix multiplication between an int4x2 matrix and an int2x4 matrix.</summary>
+        /// <summary>Returns the Int4x4 matrix result of a matrix multiplication between an Int4x2 matrix and an Int2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4x4 mul(int4x2 a, int2x4 b)
+        public static Int4x4 mul(Int4x2 a, Int2x4 b)
         {
-            return int4x4(
+            return Int4x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y,
                 a.c0 * b.c3.x + a.c1 * b.c3.y);
         }
 
-        /// <summary>Returns the int4 column vector result of a matrix multiplication between an int4x3 matrix and an int3 column vector.</summary>
+        /// <summary>Returns the Int4 column vector result of a matrix multiplication between an Int4x3 matrix and an Int3 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4 mul(int4x3 a, int3 b)
+        public static Int4 mul(Int4x3 a, Int3 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z;
         }
 
-        /// <summary>Returns the int4x2 matrix result of a matrix multiplication between an int4x3 matrix and an int3x2 matrix.</summary>
+        /// <summary>Returns the Int4x2 matrix result of a matrix multiplication between an Int4x3 matrix and an Int3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4x2 mul(int4x3 a, int3x2 b)
+        public static Int4x2 mul(Int4x3 a, Int3x2 b)
         {
-            return int4x2(
+            return Int4x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z);
         }
 
-        /// <summary>Returns the int4x3 matrix result of a matrix multiplication between an int4x3 matrix and an int3x3 matrix.</summary>
+        /// <summary>Returns the Int4x3 matrix result of a matrix multiplication between an Int4x3 matrix and an Int3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4x3 mul(int4x3 a, int3x3 b)
+        public static Int4x3 mul(Int4x3 a, Int3x3 b)
         {
-            return int4x3(
+            return Int4x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z);
         }
 
-        /// <summary>Returns the int4x4 matrix result of a matrix multiplication between an int4x3 matrix and an int3x4 matrix.</summary>
+        /// <summary>Returns the Int4x4 matrix result of a matrix multiplication between an Int4x3 matrix and an Int3x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4x4 mul(int4x3 a, int3x4 b)
+        public static Int4x4 mul(Int4x3 a, Int3x4 b)
         {
-            return int4x4(
+            return Int4x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z);
         }
 
-        /// <summary>Returns the int4 column vector result of a matrix multiplication between an int4x4 matrix and an int4 column vector.</summary>
+        /// <summary>Returns the Int4 column vector result of a matrix multiplication between an Int4x4 matrix and an Int4 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4 mul(int4x4 a, int4 b)
+        public static Int4 mul(Int4x4 a, Int4 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3 * b.w;
         }
 
-        /// <summary>Returns the int4x2 matrix result of a matrix multiplication between an int4x4 matrix and an int4x2 matrix.</summary>
+        /// <summary>Returns the Int4x2 matrix result of a matrix multiplication between an Int4x4 matrix and an Int4x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4x2 mul(int4x4 a, int4x2 b)
+        public static Int4x2 mul(Int4x4 a, Int4x2 b)
         {
-            return int4x2(
+            return Int4x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w);
         }
 
-        /// <summary>Returns the int4x3 matrix result of a matrix multiplication between an int4x4 matrix and an int4x3 matrix.</summary>
+        /// <summary>Returns the Int4x3 matrix result of a matrix multiplication between an Int4x4 matrix and an Int4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4x3 mul(int4x4 a, int4x3 b)
+        public static Int4x3 mul(Int4x4 a, Int4x3 b)
         {
-            return int4x3(
+            return Int4x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w);
         }
 
-        /// <summary>Returns the int4x4 matrix result of a matrix multiplication between an int4x4 matrix and an int4x4 matrix.</summary>
+        /// <summary>Returns the Int4x4 matrix result of a matrix multiplication between an Int4x4 matrix and an Int4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int4x4 mul(int4x4 a, int4x4 b)
+        public static Int4x4 mul(Int4x4 a, Int4x4 b)
         {
-            return int4x4(
+            return Int4x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w,
@@ -922,444 +922,444 @@ namespace GameLibrary.Mathematics
             return a * b;
         }
 
-        /// <summary>Returns the uint value result of a matrix multiplication between a uint2 row vector and a uint2 column vector.</summary>
+        /// <summary>Returns the uint value result of a matrix multiplication between a UInt2 row vector and a UInt2 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint mul(uint2 a, uint2 b)
+        public static uint mul(UInt2 a, UInt2 b)
         {
             return a.x * b.x + a.y * b.y;
         }
 
-        /// <summary>Returns the uint2 row vector result of a matrix multiplication between a uint2 row vector and a uint2x2 matrix.</summary>
+        /// <summary>Returns the UInt2 row vector result of a matrix multiplication between a UInt2 row vector and a UInt2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2 mul(uint2 a, uint2x2 b)
+        public static UInt2 mul(UInt2 a, UInt2x2 b)
         {
-            return uint2(
+            return UInt2(
                 a.x * b.c0.x + a.y * b.c0.y,
                 a.x * b.c1.x + a.y * b.c1.y);
         }
 
-        /// <summary>Returns the uint3 row vector result of a matrix multiplication between a uint2 row vector and a uint2x3 matrix.</summary>
+        /// <summary>Returns the UInt3 row vector result of a matrix multiplication between a UInt2 row vector and a UInt2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3 mul(uint2 a, uint2x3 b)
+        public static UInt3 mul(UInt2 a, UInt2x3 b)
         {
-            return uint3(
+            return UInt3(
                 a.x * b.c0.x + a.y * b.c0.y,
                 a.x * b.c1.x + a.y * b.c1.y,
                 a.x * b.c2.x + a.y * b.c2.y);
         }
 
-        /// <summary>Returns the uint4 row vector result of a matrix multiplication between a uint2 row vector and a uint2x4 matrix.</summary>
+        /// <summary>Returns the UInt4 row vector result of a matrix multiplication between a UInt2 row vector and a UInt2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4 mul(uint2 a, uint2x4 b)
+        public static UInt4 mul(UInt2 a, UInt2x4 b)
         {
-            return uint4(
+            return UInt4(
                 a.x * b.c0.x + a.y * b.c0.y,
                 a.x * b.c1.x + a.y * b.c1.y,
                 a.x * b.c2.x + a.y * b.c2.y,
                 a.x * b.c3.x + a.y * b.c3.y);
         }
 
-        /// <summary>Returns the uint value result of a matrix multiplication between a uint3 row vector and a uint3 column vector.</summary>
+        /// <summary>Returns the uint value result of a matrix multiplication between a UInt3 row vector and a UInt3 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint mul(uint3 a, uint3 b)
+        public static uint mul(UInt3 a, UInt3 b)
         {
             return a.x * b.x + a.y * b.y + a.z * b.z;
         }
 
-        /// <summary>Returns the uint2 row vector result of a matrix multiplication between a uint3 row vector and a uint3x2 matrix.</summary>
+        /// <summary>Returns the UInt2 row vector result of a matrix multiplication between a UInt3 row vector and a UInt3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2 mul(uint3 a, uint3x2 b)
+        public static UInt2 mul(UInt3 a, UInt3x2 b)
         {
-            return uint2(
+            return UInt2(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z);
         }
 
-        /// <summary>Returns the uint3 row vector result of a matrix multiplication between a uint3 row vector and a uint3x3 matrix.</summary>
+        /// <summary>Returns the UInt3 row vector result of a matrix multiplication between a UInt3 row vector and a UInt3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3 mul(uint3 a, uint3x3 b)
+        public static UInt3 mul(UInt3 a, UInt3x3 b)
         {
-            return uint3(
+            return UInt3(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z,
                 a.x * b.c2.x + a.y * b.c2.y + a.z * b.c2.z);
         }
 
-        /// <summary>Returns the uint4 row vector result of a matrix multiplication between a uint3 row vector and a uint3x4 matrix.</summary>
+        /// <summary>Returns the UInt4 row vector result of a matrix multiplication between a UInt3 row vector and a UInt3x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4 mul(uint3 a, uint3x4 b)
+        public static UInt4 mul(UInt3 a, UInt3x4 b)
         {
-            return uint4(
+            return UInt4(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z,
                 a.x * b.c2.x + a.y * b.c2.y + a.z * b.c2.z,
                 a.x * b.c3.x + a.y * b.c3.y + a.z * b.c3.z);
         }
 
-        /// <summary>Returns the uint value result of a matrix multiplication between a uint4 row vector and a uint4 column vector.</summary>
+        /// <summary>Returns the uint value result of a matrix multiplication between a UInt4 row vector and a UInt4 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint mul(uint4 a, uint4 b)
+        public static uint mul(UInt4 a, UInt4 b)
         {
             return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.w;
         }
 
-        /// <summary>Returns the uint2 row vector result of a matrix multiplication between a uint4 row vector and a uint4x2 matrix.</summary>
+        /// <summary>Returns the UInt2 row vector result of a matrix multiplication between a UInt4 row vector and a UInt4x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2 mul(uint4 a, uint4x2 b)
+        public static UInt2 mul(UInt4 a, UInt4x2 b)
         {
-            return uint2(
+            return UInt2(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z + a.w * b.c0.w,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z + a.w * b.c1.w);
         }
 
-        /// <summary>Returns the uint3 row vector result of a matrix multiplication between a uint4 row vector and a uint4x3 matrix.</summary>
+        /// <summary>Returns the UInt3 row vector result of a matrix multiplication between a UInt4 row vector and a UInt4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3 mul(uint4 a, uint4x3 b)
+        public static UInt3 mul(UInt4 a, UInt4x3 b)
         {
-            return uint3(
+            return UInt3(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z + a.w * b.c0.w,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z + a.w * b.c1.w,
                 a.x * b.c2.x + a.y * b.c2.y + a.z * b.c2.z + a.w * b.c2.w);
         }
 
-        /// <summary>Returns the uint4 row vector result of a matrix multiplication between a uint4 row vector and a uint4x4 matrix.</summary>
+        /// <summary>Returns the UInt4 row vector result of a matrix multiplication between a UInt4 row vector and a UInt4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4 mul(uint4 a, uint4x4 b)
+        public static UInt4 mul(UInt4 a, UInt4x4 b)
         {
-            return uint4(
+            return UInt4(
                 a.x * b.c0.x + a.y * b.c0.y + a.z * b.c0.z + a.w * b.c0.w,
                 a.x * b.c1.x + a.y * b.c1.y + a.z * b.c1.z + a.w * b.c1.w,
                 a.x * b.c2.x + a.y * b.c2.y + a.z * b.c2.z + a.w * b.c2.w,
                 a.x * b.c3.x + a.y * b.c3.y + a.z * b.c3.z + a.w * b.c3.w);
         }
 
-        /// <summary>Returns the uint2 column vector result of a matrix multiplication between a uint2x2 matrix and a uint2 column vector.</summary>
+        /// <summary>Returns the UInt2 column vector result of a matrix multiplication between a UInt2x2 matrix and a UInt2 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2 mul(uint2x2 a, uint2 b)
+        public static UInt2 mul(UInt2x2 a, UInt2 b)
         {
             return a.c0 * b.x + a.c1 * b.y;
         }
 
-        /// <summary>Returns the uint2x2 matrix result of a matrix multiplication between a uint2x2 matrix and a uint2x2 matrix.</summary>
+        /// <summary>Returns the UInt2x2 matrix result of a matrix multiplication between a UInt2x2 matrix and a UInt2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2x2 mul(uint2x2 a, uint2x2 b)
+        public static UInt2x2 mul(UInt2x2 a, UInt2x2 b)
         {
-            return uint2x2(
+            return UInt2x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y);
         }
 
-        /// <summary>Returns the uint2x3 matrix result of a matrix multiplication between a uint2x2 matrix and a uint2x3 matrix.</summary>
+        /// <summary>Returns the UInt2x3 matrix result of a matrix multiplication between a UInt2x2 matrix and a UInt2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2x3 mul(uint2x2 a, uint2x3 b)
+        public static UInt2x3 mul(UInt2x2 a, UInt2x3 b)
         {
-            return uint2x3(
+            return UInt2x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y);
         }
 
-        /// <summary>Returns the uint2x4 matrix result of a matrix multiplication between a uint2x2 matrix and a uint2x4 matrix.</summary>
+        /// <summary>Returns the UInt2x4 matrix result of a matrix multiplication between a UInt2x2 matrix and a UInt2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2x4 mul(uint2x2 a, uint2x4 b)
+        public static UInt2x4 mul(UInt2x2 a, UInt2x4 b)
         {
-            return uint2x4(
+            return UInt2x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y,
                 a.c0 * b.c3.x + a.c1 * b.c3.y);
         }
 
-        /// <summary>Returns the uint2 column vector result of a matrix multiplication between a uint2x3 matrix and a uint3 column vector.</summary>
+        /// <summary>Returns the UInt2 column vector result of a matrix multiplication between a UInt2x3 matrix and a UInt3 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2 mul(uint2x3 a, uint3 b)
+        public static UInt2 mul(UInt2x3 a, UInt3 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z;
         }
 
-        /// <summary>Returns the uint2x2 matrix result of a matrix multiplication between a uint2x3 matrix and a uint3x2 matrix.</summary>
+        /// <summary>Returns the UInt2x2 matrix result of a matrix multiplication between a UInt2x3 matrix and a UInt3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2x2 mul(uint2x3 a, uint3x2 b)
+        public static UInt2x2 mul(UInt2x3 a, UInt3x2 b)
         {
-            return uint2x2(
+            return UInt2x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z);
         }
 
-        /// <summary>Returns the uint2x3 matrix result of a matrix multiplication between a uint2x3 matrix and a uint3x3 matrix.</summary>
+        /// <summary>Returns the UInt2x3 matrix result of a matrix multiplication between a UInt2x3 matrix and a UInt3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2x3 mul(uint2x3 a, uint3x3 b)
+        public static UInt2x3 mul(UInt2x3 a, UInt3x3 b)
         {
-            return uint2x3(
+            return UInt2x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z);
         }
 
-        /// <summary>Returns the uint2x4 matrix result of a matrix multiplication between a uint2x3 matrix and a uint3x4 matrix.</summary>
+        /// <summary>Returns the UInt2x4 matrix result of a matrix multiplication between a UInt2x3 matrix and a UInt3x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2x4 mul(uint2x3 a, uint3x4 b)
+        public static UInt2x4 mul(UInt2x3 a, UInt3x4 b)
         {
-            return uint2x4(
+            return UInt2x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z);
         }
 
-        /// <summary>Returns the uint2 column vector result of a matrix multiplication between a uint2x4 matrix and a uint4 column vector.</summary>
+        /// <summary>Returns the UInt2 column vector result of a matrix multiplication between a UInt2x4 matrix and a UInt4 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2 mul(uint2x4 a, uint4 b)
+        public static UInt2 mul(UInt2x4 a, UInt4 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3 * b.w;
         }
 
-        /// <summary>Returns the uint2x2 matrix result of a matrix multiplication between a uint2x4 matrix and a uint4x2 matrix.</summary>
+        /// <summary>Returns the UInt2x2 matrix result of a matrix multiplication between a UInt2x4 matrix and a UInt4x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2x2 mul(uint2x4 a, uint4x2 b)
+        public static UInt2x2 mul(UInt2x4 a, UInt4x2 b)
         {
-            return uint2x2(
+            return UInt2x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w);
         }
 
-        /// <summary>Returns the uint2x3 matrix result of a matrix multiplication between a uint2x4 matrix and a uint4x3 matrix.</summary>
+        /// <summary>Returns the UInt2x3 matrix result of a matrix multiplication between a UInt2x4 matrix and a UInt4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2x3 mul(uint2x4 a, uint4x3 b)
+        public static UInt2x3 mul(UInt2x4 a, UInt4x3 b)
         {
-            return uint2x3(
+            return UInt2x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w);
         }
 
-        /// <summary>Returns the uint2x4 matrix result of a matrix multiplication between a uint2x4 matrix and a uint4x4 matrix.</summary>
+        /// <summary>Returns the UInt2x4 matrix result of a matrix multiplication between a UInt2x4 matrix and a UInt4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2x4 mul(uint2x4 a, uint4x4 b)
+        public static UInt2x4 mul(UInt2x4 a, UInt4x4 b)
         {
-            return uint2x4(
+            return UInt2x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z + a.c3 * b.c3.w);
         }
 
-        /// <summary>Returns the uint3 column vector result of a matrix multiplication between a uint3x2 matrix and a uint2 column vector.</summary>
+        /// <summary>Returns the UInt3 column vector result of a matrix multiplication between a UInt3x2 matrix and a UInt2 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3 mul(uint3x2 a, uint2 b)
+        public static UInt3 mul(UInt3x2 a, UInt2 b)
         {
             return a.c0 * b.x + a.c1 * b.y;
         }
 
-        /// <summary>Returns the uint3x2 matrix result of a matrix multiplication between a uint3x2 matrix and a uint2x2 matrix.</summary>
+        /// <summary>Returns the UInt3x2 matrix result of a matrix multiplication between a UInt3x2 matrix and a UInt2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3x2 mul(uint3x2 a, uint2x2 b)
+        public static UInt3x2 mul(UInt3x2 a, UInt2x2 b)
         {
-            return uint3x2(
+            return UInt3x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y);
         }
 
-        /// <summary>Returns the uint3x3 matrix result of a matrix multiplication between a uint3x2 matrix and a uint2x3 matrix.</summary>
+        /// <summary>Returns the UInt3x3 matrix result of a matrix multiplication between a UInt3x2 matrix and a UInt2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3x3 mul(uint3x2 a, uint2x3 b)
+        public static UInt3x3 mul(UInt3x2 a, UInt2x3 b)
         {
-            return uint3x3(
+            return UInt3x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y);
         }
 
-        /// <summary>Returns the uint3x4 matrix result of a matrix multiplication between a uint3x2 matrix and a uint2x4 matrix.</summary>
+        /// <summary>Returns the UInt3x4 matrix result of a matrix multiplication between a UInt3x2 matrix and a UInt2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3x4 mul(uint3x2 a, uint2x4 b)
+        public static UInt3x4 mul(UInt3x2 a, UInt2x4 b)
         {
-            return uint3x4(
+            return UInt3x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y,
                 a.c0 * b.c3.x + a.c1 * b.c3.y);
         }
 
-        /// <summary>Returns the uint3 column vector result of a matrix multiplication between a uint3x3 matrix and a uint3 column vector.</summary>
+        /// <summary>Returns the UInt3 column vector result of a matrix multiplication between a UInt3x3 matrix and a UInt3 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3 mul(uint3x3 a, uint3 b)
+        public static UInt3 mul(UInt3x3 a, UInt3 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z;
         }
 
-        /// <summary>Returns the uint3x2 matrix result of a matrix multiplication between a uint3x3 matrix and a uint3x2 matrix.</summary>
+        /// <summary>Returns the UInt3x2 matrix result of a matrix multiplication between a UInt3x3 matrix and a UInt3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3x2 mul(uint3x3 a, uint3x2 b)
+        public static UInt3x2 mul(UInt3x3 a, UInt3x2 b)
         {
-            return uint3x2(
+            return UInt3x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z);
         }
 
-        /// <summary>Returns the uint3x3 matrix result of a matrix multiplication between a uint3x3 matrix and a uint3x3 matrix.</summary>
+        /// <summary>Returns the UInt3x3 matrix result of a matrix multiplication between a UInt3x3 matrix and a UInt3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3x3 mul(uint3x3 a, uint3x3 b)
+        public static UInt3x3 mul(UInt3x3 a, UInt3x3 b)
         {
-            return uint3x3(
+            return UInt3x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z);
         }
 
-        /// <summary>Returns the uint3x4 matrix result of a matrix multiplication between a uint3x3 matrix and a uint3x4 matrix.</summary>
+        /// <summary>Returns the UInt3x4 matrix result of a matrix multiplication between a UInt3x3 matrix and a UInt3x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3x4 mul(uint3x3 a, uint3x4 b)
+        public static UInt3x4 mul(UInt3x3 a, UInt3x4 b)
         {
-            return uint3x4(
+            return UInt3x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z);
         }
 
-        /// <summary>Returns the uint3 column vector result of a matrix multiplication between a uint3x4 matrix and a uint4 column vector.</summary>
+        /// <summary>Returns the UInt3 column vector result of a matrix multiplication between a UInt3x4 matrix and a UInt4 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3 mul(uint3x4 a, uint4 b)
+        public static UInt3 mul(UInt3x4 a, UInt4 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3 * b.w;
         }
 
-        /// <summary>Returns the uint3x2 matrix result of a matrix multiplication between a uint3x4 matrix and a uint4x2 matrix.</summary>
+        /// <summary>Returns the UInt3x2 matrix result of a matrix multiplication between a UInt3x4 matrix and a UInt4x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3x2 mul(uint3x4 a, uint4x2 b)
+        public static UInt3x2 mul(UInt3x4 a, UInt4x2 b)
         {
-            return uint3x2(
+            return UInt3x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w);
         }
 
-        /// <summary>Returns the uint3x3 matrix result of a matrix multiplication between a uint3x4 matrix and a uint4x3 matrix.</summary>
+        /// <summary>Returns the UInt3x3 matrix result of a matrix multiplication between a UInt3x4 matrix and a UInt4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3x3 mul(uint3x4 a, uint4x3 b)
+        public static UInt3x3 mul(UInt3x4 a, UInt4x3 b)
         {
-            return uint3x3(
+            return UInt3x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w);
         }
 
-        /// <summary>Returns the uint3x4 matrix result of a matrix multiplication between a uint3x4 matrix and a uint4x4 matrix.</summary>
+        /// <summary>Returns the UInt3x4 matrix result of a matrix multiplication between a UInt3x4 matrix and a UInt4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint3x4 mul(uint3x4 a, uint4x4 b)
+        public static UInt3x4 mul(UInt3x4 a, UInt4x4 b)
         {
-            return uint3x4(
+            return UInt3x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z + a.c3 * b.c3.w);
         }
 
-        /// <summary>Returns the uint4 column vector result of a matrix multiplication between a uint4x2 matrix and a uint2 column vector.</summary>
+        /// <summary>Returns the UInt4 column vector result of a matrix multiplication between a UInt4x2 matrix and a UInt2 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4 mul(uint4x2 a, uint2 b)
+        public static UInt4 mul(UInt4x2 a, UInt2 b)
         {
             return a.c0 * b.x + a.c1 * b.y;
         }
 
-        /// <summary>Returns the uint4x2 matrix result of a matrix multiplication between a uint4x2 matrix and a uint2x2 matrix.</summary>
+        /// <summary>Returns the UInt4x2 matrix result of a matrix multiplication between a UInt4x2 matrix and a UInt2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4x2 mul(uint4x2 a, uint2x2 b)
+        public static UInt4x2 mul(UInt4x2 a, UInt2x2 b)
         {
-            return uint4x2(
+            return UInt4x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y);
         }
 
-        /// <summary>Returns the uint4x3 matrix result of a matrix multiplication between a uint4x2 matrix and a uint2x3 matrix.</summary>
+        /// <summary>Returns the UInt4x3 matrix result of a matrix multiplication between a UInt4x2 matrix and a UInt2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4x3 mul(uint4x2 a, uint2x3 b)
+        public static UInt4x3 mul(UInt4x2 a, UInt2x3 b)
         {
-            return uint4x3(
+            return UInt4x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y);
         }
 
-        /// <summary>Returns the uint4x4 matrix result of a matrix multiplication between a uint4x2 matrix and a uint2x4 matrix.</summary>
+        /// <summary>Returns the UInt4x4 matrix result of a matrix multiplication between a UInt4x2 matrix and a UInt2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4x4 mul(uint4x2 a, uint2x4 b)
+        public static UInt4x4 mul(UInt4x2 a, UInt2x4 b)
         {
-            return uint4x4(
+            return UInt4x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y,
                 a.c0 * b.c1.x + a.c1 * b.c1.y,
                 a.c0 * b.c2.x + a.c1 * b.c2.y,
                 a.c0 * b.c3.x + a.c1 * b.c3.y);
         }
 
-        /// <summary>Returns the uint4 column vector result of a matrix multiplication between a uint4x3 matrix and a uint3 column vector.</summary>
+        /// <summary>Returns the UInt4 column vector result of a matrix multiplication between a UInt4x3 matrix and a UInt3 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4 mul(uint4x3 a, uint3 b)
+        public static UInt4 mul(UInt4x3 a, UInt3 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z;
         }
 
-        /// <summary>Returns the uint4x2 matrix result of a matrix multiplication between a uint4x3 matrix and a uint3x2 matrix.</summary>
+        /// <summary>Returns the UInt4x2 matrix result of a matrix multiplication between a UInt4x3 matrix and a UInt3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4x2 mul(uint4x3 a, uint3x2 b)
+        public static UInt4x2 mul(UInt4x3 a, UInt3x2 b)
         {
-            return uint4x2(
+            return UInt4x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z);
         }
 
-        /// <summary>Returns the uint4x3 matrix result of a matrix multiplication between a uint4x3 matrix and a uint3x3 matrix.</summary>
+        /// <summary>Returns the UInt4x3 matrix result of a matrix multiplication between a UInt4x3 matrix and a UInt3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4x3 mul(uint4x3 a, uint3x3 b)
+        public static UInt4x3 mul(UInt4x3 a, UInt3x3 b)
         {
-            return uint4x3(
+            return UInt4x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z);
         }
 
-        /// <summary>Returns the uint4x4 matrix result of a matrix multiplication between a uint4x3 matrix and a uint3x4 matrix.</summary>
+        /// <summary>Returns the UInt4x4 matrix result of a matrix multiplication between a UInt4x3 matrix and a UInt3x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4x4 mul(uint4x3 a, uint3x4 b)
+        public static UInt4x4 mul(UInt4x3 a, UInt3x4 b)
         {
-            return uint4x4(
+            return UInt4x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z,
                 a.c0 * b.c3.x + a.c1 * b.c3.y + a.c2 * b.c3.z);
         }
 
-        /// <summary>Returns the uint4 column vector result of a matrix multiplication between a uint4x4 matrix and a uint4 column vector.</summary>
+        /// <summary>Returns the UInt4 column vector result of a matrix multiplication between a UInt4x4 matrix and a UInt4 column vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4 mul(uint4x4 a, uint4 b)
+        public static UInt4 mul(UInt4x4 a, UInt4 b)
         {
             return a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3 * b.w;
         }
 
-        /// <summary>Returns the uint4x2 matrix result of a matrix multiplication between a uint4x4 matrix and a uint4x2 matrix.</summary>
+        /// <summary>Returns the UInt4x2 matrix result of a matrix multiplication between a UInt4x4 matrix and a UInt4x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4x2 mul(uint4x4 a, uint4x2 b)
+        public static UInt4x2 mul(UInt4x4 a, UInt4x2 b)
         {
-            return uint4x2(
+            return UInt4x2(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w);
         }
 
-        /// <summary>Returns the uint4x3 matrix result of a matrix multiplication between a uint4x4 matrix and a uint4x3 matrix.</summary>
+        /// <summary>Returns the UInt4x3 matrix result of a matrix multiplication between a UInt4x4 matrix and a UInt4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4x3 mul(uint4x4 a, uint4x3 b)
+        public static UInt4x3 mul(UInt4x4 a, UInt4x3 b)
         {
-            return uint4x3(
+            return UInt4x3(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w);
         }
 
-        /// <summary>Returns the uint4x4 matrix result of a matrix multiplication between a uint4x4 matrix and a uint4x4 matrix.</summary>
+        /// <summary>Returns the UInt4x4 matrix result of a matrix multiplication between a UInt4x4 matrix and a UInt4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint4x4 mul(uint4x4 a, uint4x4 b)
+        public static UInt4x4 mul(UInt4x4 a, UInt4x4 b)
         {
-            return uint4x4(
+            return UInt4x4(
                 a.c0 * b.c0.x + a.c1 * b.c0.y + a.c2 * b.c0.z + a.c3 * b.c0.w,
                 a.c0 * b.c1.x + a.c1 * b.c1.y + a.c2 * b.c1.z + a.c3 * b.c1.w,
                 a.c0 * b.c2.x + a.c1 * b.c2.y + a.c2 * b.c2.z + a.c3 * b.c2.w,

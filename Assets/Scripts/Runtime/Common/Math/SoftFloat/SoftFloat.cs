@@ -125,7 +125,7 @@ namespace GameLibrary.Mathematics
 		/// Creates an soft float number from a float value
 		/// </summary>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static implicit operator SoftFloat(float f)
+		public static explicit operator SoftFloat(float f)
 		{
 			uint raw = ReinterpretFloatToInt32(f);
 			return new SoftFloat(raw);
@@ -144,7 +144,7 @@ namespace GameLibrary.Mathematics
 		/// <summary>
 		/// Creates an soft float number from an integer
 		/// </summary>
-		public static implicit operator SoftFloat(int value)
+		public static explicit operator SoftFloat(int value)
 		{
 			if (value == 0)
 			{
@@ -196,7 +196,7 @@ namespace GameLibrary.Mathematics
 			return f.IsPositive() ? value : -value;
 		}
 
-		private static readonly int[] _debruijn32 = new int[64]
+		private static readonly int[] s_debruijn32 = new int[64]
 		{
 			32, 8, 17, -1, -1, 14, -1, -1, -1, 20, -1, -1, -1, 28, -1, 18,
 			-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 26, 25, 24,
@@ -215,13 +215,13 @@ namespace GameLibrary.Mathematics
 			x |= x >> 8;
 			x |= x >> 16;
 
-			return _debruijn32[(uint)x * 0x8c0b2891u >> 26];
+			return s_debruijn32[(uint)x * 0x8c0b2891u >> 26];
 		}
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static SoftFloat operator -(SoftFloat f) => new SoftFloat(f._rawValue ^ 0x80000000);
 
-		private static readonly int[] _normalizeAmounts = new int[]
+		private static readonly int[] s_normalizeAmounts = new int[]
 		{
 			0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8, 8, 8, 16, 16, 16, 16, 16, 16, 16, 16, 24, 24, 24, 24, 24, 24,
 			24
@@ -280,7 +280,7 @@ namespace GameLibrary.Mathematics
 
 				int rawExp = rawExp1 - 6;
 
-				int amount = _normalizeAmounts[Clz(absMan)];
+				int amount = s_normalizeAmounts[Clz(absMan)];
 				rawExp -= amount;
 				absMan <<= amount;
 
@@ -730,7 +730,7 @@ namespace GameLibrary.Mathematics
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static SoftFloat operator %(SoftFloat f1, SoftFloat f2) => SoftFloatMath.Fmod(f1, f2);
 
-		private static readonly sbyte[] _msb = new sbyte[256]
+		private static readonly sbyte[] s_msb = new sbyte[256]
 		{
 			-1, 0, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4,
 			5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
@@ -743,7 +743,7 @@ namespace GameLibrary.Mathematics
 		};
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		private static int BitScanReverse8(int b) => _msb[b];
+		private static int BitScanReverse8(int b) => s_msb[b];
 
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		private static unsafe uint ReinterpretFloatToInt32(float f) => *(uint*)&f;

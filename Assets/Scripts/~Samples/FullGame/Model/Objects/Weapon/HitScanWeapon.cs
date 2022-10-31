@@ -16,12 +16,12 @@ namespace GameLibrary.Sample
 
         public void Shoot()
         {
-            var hit = _collisionsWorld.Raycast(float3.zero, new float3(0, 0, 1));
+            var hit = _collisionsWorld.Raycast(Float3.zero, new Float3((SoftFloat)0, (SoftFloat)0, (SoftFloat)1));
             if (!hit.Occure)
                 return;
 
             var character = hit.Object;
-            
+
             if (character.IsAlive)
                 character.TakeDamage(_shootDamage);
         }

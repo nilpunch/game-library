@@ -29,9 +29,9 @@ namespace GameLibrary.Sample
                 throw new Exception();
 
             var interactedCharacters = _charactersToHit.CollisionsWith(_rigidbody);
-            if (interactedCharacters.Length == 0) 
+            if (interactedCharacters.Length == 0)
                 return;
-            
+
             ICharacter character = interactedCharacters.First().First.Concrete;
             if (character.IsAlive)
                 character.TakeDamage(_damage);
@@ -39,7 +39,7 @@ namespace GameLibrary.Sample
             DestroySelf();
         }
 
-        public void Throw(float3 velocity)
+        public void Throw(Float3 velocity)
         {
             _rigidbody.Velocity = velocity;
         }

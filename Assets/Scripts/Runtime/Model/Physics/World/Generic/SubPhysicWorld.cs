@@ -29,7 +29,7 @@ namespace GameLibrary.Physics
             _parent.Remove(rigidbody);
             _physicalPairs.RemoveAll(physicalLink => physicalLink.Rigidbody == rigidbody);
         }
-        
+
         public void ExecuteTick(long elapsedMilliseconds)
         {
             throw new NotImplementedException();
@@ -46,12 +46,12 @@ namespace GameLibrary.Physics
             throw new NotImplementedException();
         }
 
-        public RaycastHit<TConcrete> Raycast(float3 from, float3 direction)
+        public RaycastHit<TConcrete> Raycast(Float3 from, Float3 direction)
         {
             RaycastHit raycastHit = _parent.Raycast(from, direction);
 
             throw new NotImplementedException();
-            
+
             if (raycastHit.Occure && HasLinkedObject(raycastHit.Rigidbody))
             {
                 return new RaycastHit<TConcrete>();

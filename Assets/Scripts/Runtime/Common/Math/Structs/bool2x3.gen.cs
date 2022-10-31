@@ -194,22 +194,22 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(bool2x3 v)
         {
-            return csum(select(uint2(0x7BE39F3Bu, 0xFAB9913Fu), uint2(0xB4501269u, 0xE04B89FDu), v.c0) +
-                        select(uint2(0xDB3DE101u, 0x7B6D1B4Bu), uint2(0x58399E77u, 0x5EAC29C9u), v.c1) +
-                        select(uint2(0xFC6014F9u, 0x6BF6693Fu), uint2(0x9D1B1D9Bu, 0xF842F5C1u), v.c2));
+            return Csum(Select(UInt2(0x7BE39F3Bu, 0xFAB9913Fu), UInt2(0xB4501269u, 0xE04B89FDu), v.c0) +
+                        Select(UInt2(0xDB3DE101u, 0x7B6D1B4Bu), UInt2(0x58399E77u, 0x5EAC29C9u), v.c1) +
+                        Select(UInt2(0xFC6014F9u, 0x6BF6693Fu), UInt2(0x9D1B1D9Bu, 0xF842F5C1u), v.c2));
         }
 
         /// <summary>
-        /// Returns a uint2 vector hash code of a bool2x3 vector.
+        /// Returns a UInt2 vector hash code of a bool2x3 vector.
         /// When multiple elements are to be hashes together, it can more efficient to calculate and combine wide hash
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2 hashwide(bool2x3 v)
+        public static UInt2 hashwide(bool2x3 v)
         {
-            return (select(uint2(0xA47EC335u, 0xA477DF57u), uint2(0xC4B1493Fu, 0xBA0966D3u), v.c0) +
-                    select(uint2(0xAFBEE253u, 0x5B419C01u), uint2(0x515D90F5u, 0xEC9F68F3u), v.c1) +
-                    select(uint2(0xF9EA92D5u, 0xC2FAFCB9u), uint2(0x616E9CA1u, 0xC5C5394Bu), v.c2));
+            return (Select(UInt2(0xA47EC335u, 0xA477DF57u), UInt2(0xC4B1493Fu, 0xBA0966D3u), v.c0) +
+                    Select(UInt2(0xAFBEE253u, 0x5B419C01u), UInt2(0x515D90F5u, 0xEC9F68F3u), v.c1) +
+                    Select(UInt2(0xF9EA92D5u, 0xC2FAFCB9u), UInt2(0x616E9CA1u, 0xC5C5394Bu), v.c2));
         }
 
     }

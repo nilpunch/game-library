@@ -3,36 +3,36 @@ using System;
 namespace GameLibrary.Mathematics
 {
     [Serializable]
-    public partial struct AABB
+    public struct AABB
     {
-        public float3 Center;
-        public float3 Extents;
+        public Float3 _center;
+        public Float3 _extents;
 
-        public float3 Size { get { return Extents * 2; } }
-        public float3 Min { get { return Center - Extents; } }
-        public float3 Max { get { return Center + Extents; } }
+        public Float3 Size { get { return _extents * 2; } }
+        public Float3 Min { get { return _center - _extents; } }
+        public Float3 Max { get { return _center + _extents; } }
 
         /// <summary>Returns a string representation of the AABB.</summary>
         public override string ToString()
         {
-            return $"AABB(Center:{Center}, Extents:{Extents}";
+            return $"AABB(Center:{_center}, Extents:{_extents}";
         }
 
-        public bool Contains(float3 point)
+        public bool Contains(Float3 point)
         {
-            if (point[0] < Center[0] - Extents[0])
+            if (point[0] < _center[0] - _extents[0])
                 return false;
-            if (point[0] > Center[0] + Extents[0])
-                return false;
-
-            if (point[1] < Center[1] - Extents[1])
-                return false;
-            if (point[1] > Center[1] + Extents[1])
+            if (point[0] > _center[0] + _extents[0])
                 return false;
 
-            if (point[2] < Center[2] - Extents[2])
+            if (point[1] < _center[1] - _extents[1])
                 return false;
-            if (point[2] > Center[2] + Extents[2])
+            if (point[1] > _center[1] + _extents[1])
+                return false;
+
+            if (point[2] < _center[2] - _extents[2])
+                return false;
+            if (point[2] > _center[2] + _extents[2])
                 return false;
 
             return true;
@@ -40,32 +40,32 @@ namespace GameLibrary.Mathematics
 
         public bool Contains(AABB b)
         {
-            return Contains(b.Center + new float3(-b.Extents.x, -b.Extents.y, -b.Extents.z))
-                && Contains(b.Center + new float3(-b.Extents.x, -b.Extents.y,  b.Extents.z))
-                && Contains(b.Center + new float3(-b.Extents.x,  b.Extents.y, -b.Extents.z))
-                && Contains(b.Center + new float3(-b.Extents.x,  b.Extents.y,  b.Extents.z))
-                && Contains(b.Center + new float3(b.Extents.x, -b.Extents.y, -b.Extents.z))
-                && Contains(b.Center + new float3(b.Extents.x, -b.Extents.y,  b.Extents.z))
-                && Contains(b.Center + new float3(b.Extents.x,  b.Extents.y, -b.Extents.z))
-                && Contains(b.Center + new float3(b.Extents.x,  b.Extents.y,  b.Extents.z));
+            return Contains(b._center + new Float3(-b._extents.x, -b._extents.y, -b._extents.z))
+                && Contains(b._center + new Float3(-b._extents.x, -b._extents.y,  b._extents.z))
+                && Contains(b._center + new Float3(-b._extents.x,  b._extents.y, -b._extents.z))
+                && Contains(b._center + new Float3(-b._extents.x,  b._extents.y,  b._extents.z))
+                && Contains(b._center + new Float3(b._extents.x, -b._extents.y, -b._extents.z))
+                && Contains(b._center + new Float3(b._extents.x, -b._extents.y,  b._extents.z))
+                && Contains(b._center + new Float3(b._extents.x,  b._extents.y, -b._extents.z))
+                && Contains(b._center + new Float3(b._extents.x,  b._extents.y,  b._extents.z));
         }
 
-        static float3 RotateExtents(float3 extents, float3 m0, float3 m1, float3 m2)
-        {
-            return Math.abs(m0 * extents.x) + Math.abs(m1 * extents.y) + Math.abs(m2 * extents.z);
-        }
-
-        public static AABB Transform(float4x4 transform, AABB localBounds)
+        public static AABB Transform(Float4X4 transform, AABB localBounds)
         {
             AABB transformed;
-            transformed.Extents = RotateExtents(localBounds.Extents, transform.c0.xyz, transform.c1.xyz, transform.c2.xyz);
-            transformed.Center = Math.transform(transform, localBounds.Center);
+            transformed._extents = RotateExtents(localBounds._extents, transform.c0.xyz, transform.c1.xyz, transform.c2.xyz);
+            transformed._center = Math.transform(transform, localBounds._center);
             return transformed;
         }
 
-        public SoftFloat DistanceSq(float3 point)
+        public SoftFloat DistanceSq(Float3 point)
         {
-            return Math.lengthsq(Math.max(Math.abs(point - Center), Extents) - Extents);
+            return Math.LengthSqr(Math.MAX(Math.Abs(point - _center), _extents) - _extents);
+        }
+
+        private static Float3 RotateExtents(Float3 extents, Float3 m0, Float3 m1, Float3 m2)
+        {
+            return Math.Abs(m0 * extents.x) + Math.Abs(m1 * extents.y) + Math.Abs(m2 * extents.z);
         }
     }
 }

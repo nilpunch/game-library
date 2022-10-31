@@ -199,24 +199,24 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(bool2x4 v)
         {
-            return csum(select(uint2(0x45A22087u, 0xFC104C3Bu), uint2(0x5FFF6B19u, 0x5E6CBF3Bu), v.c0) +
-                        select(uint2(0xB546F2A5u, 0xBBCF63E7u), uint2(0xC53F4755u, 0x6985C229u), v.c1) +
-                        select(uint2(0xE133B0B3u, 0xC3E0A3B9u), uint2(0xFE31134Fu, 0x712A34D7u), v.c2) +
-                        select(uint2(0x9D77A59Bu, 0x4942CA39u), uint2(0xB40EC62Du, 0x565ED63Fu), v.c3));
+            return Csum(Select(UInt2(0x45A22087u, 0xFC104C3Bu), UInt2(0x5FFF6B19u, 0x5E6CBF3Bu), v.c0) +
+                        Select(UInt2(0xB546F2A5u, 0xBBCF63E7u), UInt2(0xC53F4755u, 0x6985C229u), v.c1) +
+                        Select(UInt2(0xE133B0B3u, 0xC3E0A3B9u), UInt2(0xFE31134Fu, 0x712A34D7u), v.c2) +
+                        Select(UInt2(0x9D77A59Bu, 0x4942CA39u), UInt2(0xB40EC62Du, 0x565ED63Fu), v.c3));
         }
 
         /// <summary>
-        /// Returns a uint2 vector hash code of a bool2x4 vector.
+        /// Returns a UInt2 vector hash code of a bool2x4 vector.
         /// When multiple elements are to be hashes together, it can more efficient to calculate and combine wide hash
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2 hashwide(bool2x4 v)
+        public static UInt2 hashwide(bool2x4 v)
         {
-            return (select(uint2(0x93C30C2Bu, 0xDCAF0351u), uint2(0x6E050B01u, 0x750FDBF5u), v.c0) +
-                    select(uint2(0x7F3DD499u, 0x52EAAEBBu), uint2(0x4599C793u, 0x83B5E729u), v.c1) +
-                    select(uint2(0xC267163Fu, 0x67BC9149u), uint2(0xAD7C5EC1u, 0x822A7D6Du), v.c2) +
-                    select(uint2(0xB492BF15u, 0xD37220E3u), uint2(0x7AA2C2BDu, 0xE16BC89Du), v.c3));
+            return (Select(UInt2(0x93C30C2Bu, 0xDCAF0351u), UInt2(0x6E050B01u, 0x750FDBF5u), v.c0) +
+                    Select(UInt2(0x7F3DD499u, 0x52EAAEBBu), UInt2(0x4599C793u, 0x83B5E729u), v.c1) +
+                    Select(UInt2(0xC267163Fu, 0x67BC9149u), UInt2(0xAD7C5EC1u, 0x822A7D6Du), v.c2) +
+                    Select(UInt2(0xB492BF15u, 0xD37220E3u), UInt2(0x7AA2C2BDu, 0xE16BC89Du), v.c3));
         }
 
     }

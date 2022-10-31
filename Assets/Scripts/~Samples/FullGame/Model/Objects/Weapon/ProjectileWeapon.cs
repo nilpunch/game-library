@@ -16,7 +16,7 @@ namespace GameLibrary.Sample
         public void Shoot()
         {
             var bullet = _bulletFactory.Create(_bulletsDamage);
-            bullet.Throw(new float3(0, 0, 1));
+            bullet.Throw(new Float3((SoftFloat)0, (SoftFloat)0, (SoftFloat)1));
         }
     }
 }

@@ -2,96 +2,96 @@ using System.Runtime.CompilerServices;
 
 namespace GameLibrary.Mathematics
 {
-    public partial struct float2x2
+    public partial struct Float2X2
     {
-        /// <summary>Returns a float2x2 matrix representing a counter-clockwise rotation of angle degrees.</summary>
+        /// <summary>Returns a Float2x2 matrix representing a counter-clockwise rotation of angle degrees.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x2 Rotate(SoftFloat angle)
+        public static Float2X2 Rotate(SoftFloat angle)
         {
             SoftFloat s, c;
-            Math.sincos(angle, out s, out c);
-            return new float2x2(c, -s,
+            Math.Sincos(angle, out s, out c);
+            return new Float2X2(c, -s,
                             s,  c);
         }
 
-        /// <summary>Returns a float2x2 matrix representing a uniform scaling of both axes by s.</summary>
+        /// <summary>Returns a Float2x2 matrix representing a uniform scaling of both axes by s.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x2 Scale(SoftFloat s)
+        public static Float2X2 Scale(SoftFloat s)
         {
-            return new float2x2(s,    SoftFloat.Zero,
+            return new Float2X2(s,    SoftFloat.Zero,
                             SoftFloat.Zero, s);
         }
 
-        /// <summary>Returns a float2x2 matrix representing a non-uniform axis scaling by x and y.</summary>
+        /// <summary>Returns a Float2x2 matrix representing a non-uniform axis scaling by x and y.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x2 Scale(SoftFloat x, SoftFloat y)
+        public static Float2X2 Scale(SoftFloat x, SoftFloat y)
         {
-            return new float2x2(x, SoftFloat.Zero,
+            return new Float2X2(x, SoftFloat.Zero,
                             SoftFloat.Zero, y);
         }
 
-        /// <summary>Returns a float2x2 matrix representing a non-uniform axis scaling by the components of the float2 vector v.</summary>
+        /// <summary>Returns a Float2x2 matrix representing a non-uniform axis scaling by the components of the Float2 vector v.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float2x2 Scale(float2 v)
+        public static Float2X2 Scale(Float2 v)
         {
             return Scale(v.x, v.y);
         }
     }
 
-    public partial struct float3x3
+    public partial struct Float3X3
     {
         /// <summary>
-        /// Constructs a float3x3 from the upper left 3x3 of a float4x4.
+        /// Constructs a Float3x3 from the upper left 3x3 of a Float4x4.
         /// </summary>
-        /// <param name="f4x4"><see cref="float4x4"/> to extract a float3x3 from.</param>
-        public float3x3(float4x4 f4x4)
+        /// <param name="f4X4"><see cref="Float4X4"/> to extract a Float3x3 from.</param>
+        public Float3X3(Float4X4 f4X4)
         {
-            c0 = f4x4.c0.xyz;
-            c1 = f4x4.c1.xyz;
-            c2 = f4x4.c2.xyz;
+            c0 = f4X4.c0.xyz;
+            c1 = f4X4.c1.xyz;
+            c2 = f4X4.c2.xyz;
         }
 
-        /// <summary>Constructs a float3x3 matrix from a unit quaternion.</summary>
-        public float3x3(quaternion q)
+        /// <summary>Constructs a Float3x3 matrix from a unit quaternion.</summary>
+        public Float3X3(Quaternion q)
         {
-            float4 v = q.value;
-            float4 v2 = v + v;
+            Float4 v = q._value;
+            Float4 v2 = v + v;
 
-            uint3 npn = new uint3(0x80000000, 0x00000000, 0x80000000);
-            uint3 nnp = new uint3(0x80000000, 0x80000000, 0x00000000);
-            uint3 pnn = new uint3(0x00000000, 0x80000000, 0x80000000);
-            c0 = v2.y * Math.asfloat(Math.asuint(v.yxw) ^ npn) - v2.z * Math.asfloat(Math.asuint(v.zwx) ^ pnn) + new float3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero);
-            c1 = v2.z * Math.asfloat(Math.asuint(v.wzy) ^ nnp) - v2.x * Math.asfloat(Math.asuint(v.yxw) ^ npn) + new float3(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero);
-            c2 = v2.x * Math.asfloat(Math.asuint(v.zwx) ^ pnn) - v2.y * Math.asfloat(Math.asuint(v.wzy) ^ nnp) + new float3(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
+            UInt3 npn = new UInt3(0x80000000, 0x00000000, 0x80000000);
+            UInt3 nnp = new UInt3(0x80000000, 0x80000000, 0x00000000);
+            UInt3 pnn = new UInt3(0x00000000, 0x80000000, 0x80000000);
+            c0 = v2.y * Math.Asfloat(Math.Asuint(v.yxw) ^ npn) - v2.z * Math.Asfloat(Math.Asuint(v.zwx) ^ pnn) + new Float3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero);
+            c1 = v2.z * Math.Asfloat(Math.Asuint(v.wzy) ^ nnp) - v2.x * Math.Asfloat(Math.Asuint(v.yxw) ^ npn) + new Float3(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero);
+            c2 = v2.x * Math.Asfloat(Math.Asuint(v.zwx) ^ pnn) - v2.y * Math.Asfloat(Math.Asuint(v.wzy) ^ nnp) + new Float3(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
         }
 
         /// <summary>
-        /// Returns a float3x3 matrix representing a rotation around a unit axis by an angle in radians.
+        /// Returns a Float3x3 matrix representing a rotation around a unit axis by an angle in radians.
         /// The rotation direction is clockwise when looking along the rotation axis towards the origin.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 AxisAngle(float3 axis, SoftFloat angle)
+        public static Float3X3 AxisAngle(Float3 axis, SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            Math.sincos(angle, out sina, out cosa);
+            Math.Sincos(angle, out sina, out cosa);
 
-            float3 u = axis;
-            float3 u_yzx = u.yzx;
-            float3 u_zxy = u.zxy;
-            float3 u_inv_cosa = u - u * cosa;  // u * (1.0f - cosa);
-            float4 t = new float4(u * sina, cosa);
+            Float3 u = axis;
+            Float3 uYZX = u.yzx;
+            Float3 uZXY = u.zxy;
+            Float3 uInvCosa = u - u * cosa;  // u * (1.0f - cosa);
+            Float4 t = new Float4(u * sina, cosa);
 
-            uint3 ppn = new uint3(0x00000000, 0x00000000, 0x80000000);
-            uint3 npp = new uint3(0x80000000, 0x00000000, 0x00000000);
-            uint3 pnp = new uint3(0x00000000, 0x80000000, 0x00000000);
+            UInt3 ppn = new UInt3(0x00000000, 0x00000000, 0x80000000);
+            UInt3 npp = new UInt3(0x80000000, 0x00000000, 0x00000000);
+            UInt3 pnp = new UInt3(0x00000000, 0x80000000, 0x00000000);
 
-            return new float3x3(
-                u.x * u_inv_cosa + Math.asfloat(Math.asuint(t.wzy) ^ ppn),
-                u.y * u_inv_cosa + Math.asfloat(Math.asuint(t.zwx) ^ npp),
-                u.z * u_inv_cosa + Math.asfloat(Math.asuint(t.yxw) ^ pnp)
+            return new Float3X3(
+                u.x * uInvCosa + Math.Asfloat(Math.Asuint(t.wzy) ^ ppn),
+                u.y * uInvCosa + Math.Asfloat(Math.Asuint(t.zwx) ^ npp),
+                u.z * uInvCosa + Math.Asfloat(Math.Asuint(t.yxw) ^ pnp)
                 );
             /*
-            return new float3x3(
+            return new Float3x3(
                 cosa + u.x * u.x * (1.0f - cosa),       u.y * u.x * (1.0f - cosa) - u.z * sina, u.z * u.x * (1.0f - cosa) + u.y * sina,
                 u.x * u.y * (1.0f - cosa) + u.z * sina, cosa + u.y * u.y * (1.0f - cosa),       u.y * u.z * (1.0f - cosa) - u.x * sina,
                 u.x * u.z * (1.0f - cosa) - u.y * sina, u.y * u.z * (1.0f - cosa) + u.x * sina, cosa + u.z * u.z * (1.0f - cosa)
@@ -100,17 +100,17 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+        /// Returns a Float3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 EulerXYZ(float3 xyz)
+        public static Float3X3 EulerXYZ(Float3 xyz)
         {
             // return mul(rotateZ(xyz.z), mul(rotateY(xyz.y), rotateX(xyz.x)));
-            float3 s, c;
-            Math.sincos(xyz, out s, out c);
-            return new float3x3(
+            Float3 s, c;
+            Math.Sincos(xyz, out s, out c);
+            return new Float3X3(
                 c.y * c.z,  c.z * s.x * s.y - c.x * s.z,    c.x * c.z * s.y + s.x * s.z,
                 c.y * s.z,  c.x * c.z + s.x * s.y * s.z,    c.x * s.y * s.z - c.z * s.x,
                 -s.y,       c.y * s.x,                      c.x * c.y
@@ -118,17 +118,17 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+        /// Returns a Float3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 EulerXZY(float3 xyz)
+        public static Float3X3 EulerXZY(Float3 xyz)
         {
             // return mul(rotateY(xyz.y), mul(rotateZ(xyz.z), rotateX(xyz.x))); }
-            float3 s, c;
-            Math.sincos(xyz, out s, out c);
-            return new float3x3(
+            Float3 s, c;
+            Math.Sincos(xyz, out s, out c);
+            return new Float3X3(
                 c.y * c.z,  s.x * s.y - c.x * c.y * s.z,    c.x * s.y + c.y * s.x * s.z,
                 s.z,        c.x * c.z,                      -c.z * s.x,
                 -c.z * s.y, c.y * s.x + c.x * s.y * s.z,    c.x * c.y - s.x * s.y * s.z
@@ -136,17 +136,17 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+        /// Returns a Float3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 EulerYXZ(float3 xyz)
+        public static Float3X3 EulerYXZ(Float3 xyz)
         {
             // return mul(rotateZ(xyz.z), mul(rotateX(xyz.x), rotateY(xyz.y)));
-            float3 s, c;
-            Math.sincos(xyz, out s, out c);
-            return new float3x3(
+            Float3 s, c;
+            Math.Sincos(xyz, out s, out c);
+            return new Float3X3(
                 c.y * c.z - s.x * s.y * s.z,    -c.x * s.z, c.z * s.y + c.y * s.x * s.z,
                 c.z * s.x * s.y + c.y * s.z,    c.x * c.z,  s.y * s.z - c.y * c.z * s.x,
                 -c.x * s.y,                     s.x,        c.x * c.y
@@ -154,17 +154,17 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+        /// Returns a Float3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 EulerYZX(float3 xyz)
+        public static Float3X3 EulerYZX(Float3 xyz)
         {
             // return mul(rotateX(xyz.x), mul(rotateZ(xyz.z), rotateY(xyz.y)));
-            float3 s, c;
-            Math.sincos(xyz, out s, out c);
-            return new float3x3(
+            Float3 s, c;
+            Math.Sincos(xyz, out s, out c);
+            return new Float3X3(
                 c.y * c.z,                      -s.z,       c.z * s.y,
                 s.x * s.y + c.x * c.y * s.z,    c.x * c.z,  c.x * s.y * s.z - c.y * s.x,
                 c.y * s.x * s.z - c.x * s.y,    c.z * s.x,  c.x * c.y + s.x * s.y * s.z
@@ -172,18 +172,18 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+        /// Returns a Float3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// This is the default order rotation order in Unity.
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 EulerZXY(float3 xyz)
+        public static Float3X3 EulerZXY(Float3 xyz)
         {
             // return mul(rotateY(xyz.y), mul(rotateX(xyz.x), rotateZ(xyz.z)));
-            float3 s, c;
-            Math.sincos(xyz, out s, out c);
-            return new float3x3(
+            Float3 s, c;
+            Math.Sincos(xyz, out s, out c);
+            return new Float3X3(
                 c.y * c.z + s.x * s.y * s.z,    c.z * s.x * s.y - c.y * s.z,    c.x * s.y,
                 c.x * s.z,                      c.x * c.z,                      -s.x,
                 c.y * s.x * s.z - c.z * s.y,    c.y * c.z * s.x + s.y * s.z,    c.x * c.y
@@ -191,17 +191,17 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
+        /// Returns a Float3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 EulerZYX(float3 xyz)
+        public static Float3X3 EulerZYX(Float3 xyz)
         {
             // return mul(rotateX(xyz.x), mul(rotateY(xyz.y), rotateZ(xyz.z)));
-            float3 s, c;
-            Math.sincos(xyz, out s, out c);
-            return new float3x3(
+            Float3 s, c;
+            Math.Sincos(xyz, out s, out c);
+            return new Float3X3(
                 c.y * c.z,                      -c.y * s.z,                     s.y,
                 c.z * s.x * s.y + c.x * s.z,    c.x * c.z - s.x * s.y * s.z,    -c.y * s.x,
                 s.x * s.z - c.x * c.z * s.y,    c.z * s.x + c.x * s.y * s.z,    c.x * c.y
@@ -209,47 +209,47 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+        /// Returns a Float3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
         /// <param name="x">The rotation angle around the x-axis in radians.</param>
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 EulerXYZ(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerXYZ(new float3(x, y, z)); }
+        public static Float3X3 EulerXYZ(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerXYZ(new Float3(x, y, z)); }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+        /// Returns a Float3x3 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
         /// <param name="x">The rotation angle around the x-axis in radians.</param>
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 EulerXZY(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerXZY(new float3(x, y, z)); }
+        public static Float3X3 EulerXZY(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerXZY(new Float3(x, y, z)); }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+        /// Returns a Float3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
         /// <param name="x">The rotation angle around the x-axis in radians.</param>
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 EulerYXZ(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerYXZ(new float3(x, y, z)); }
+        public static Float3X3 EulerYXZ(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerYXZ(new Float3(x, y, z)); }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+        /// Returns a Float3x3 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
         /// <param name="x">The rotation angle around the x-axis in radians.</param>
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 EulerYZX(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerYZX(new float3(x, y, z)); }
+        public static Float3X3 EulerYZX(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerYZX(new Float3(x, y, z)); }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+        /// Returns a Float3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// This is the default order rotation order in Unity.
         /// </summary>
@@ -257,28 +257,28 @@ namespace GameLibrary.Mathematics
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 EulerZXY(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerZXY(new float3(x, y, z)); }
+        public static Float3X3 EulerZXY(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerZXY(new Float3(x, y, z)); }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
+        /// Returns a Float3x3 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
         /// <param name="x">The rotation angle around the x-axis in radians.</param>
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 EulerZYX(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerZYX(new float3(x, y, z)); }
+        public static Float3X3 EulerZYX(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerZYX(new Float3(x, y, z)); }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing 3 rotations around the principal axes in a given order.
+        /// Returns a Float3x3 rotation matrix constructed by first performing 3 rotations around the principal axes in a given order.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// When the rotation order is known at compile time, it is recommended for performance reasons to use specific
         /// Euler rotation constructors such as EulerZXY(...).
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         /// <param name="order">The order in which the rotations are applied.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 Euler(float3 xyz, Math.RotationOrder order = Math.RotationOrder.Default)
+        public static Float3X3 Euler(Float3 xyz, Math.RotationOrder order = Math.RotationOrder.Default)
         {
             switch (order)
             {
@@ -300,7 +300,7 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float3x3 rotation matrix constructed by first performing 3 rotations around the principal axes in a given order.
+        /// Returns a Float3x3 rotation matrix constructed by first performing 3 rotations around the principal axes in a given order.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// When the rotation order is known at compile time, it is recommended for performance reasons to use specific
         /// Euler rotation constructors such as EulerZXY(...).
@@ -310,195 +310,195 @@ namespace GameLibrary.Mathematics
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         /// <param name="order">The order in which the rotations are applied.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 Euler(SoftFloat x, SoftFloat y, SoftFloat z, Math.RotationOrder order = Math.RotationOrder.Default)
+        public static Float3X3 Euler(SoftFloat x, SoftFloat y, SoftFloat z, Math.RotationOrder order = Math.RotationOrder.Default)
         {
-            return Euler(new float3(x, y, z), order);
+            return Euler(new Float3(x, y, z), order);
         }
 
-        /// <summary>Returns a float4x4 matrix that rotates around the x-axis by a given number of radians.</summary>
+        /// <summary>Returns a Float4x4 matrix that rotates around the x-axis by a given number of radians.</summary>
         /// <param name="angle">The clockwise rotation angle when looking along the x-axis towards the origin in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 RotateX(SoftFloat angle)
+        public static Float3X3 RotateX(SoftFloat angle)
         {
             // {{1, 0, 0}, {0, c_0, -s_0}, {0, s_0, c_0}}
             SoftFloat s, c;
-            Math.sincos(angle, out s, out c);
-            return new float3x3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero,
+            Math.Sincos(angle, out s, out c);
+            return new Float3X3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero,
                             SoftFloat.Zero, c,    -s,
                             SoftFloat.Zero, s,    c);
         }
 
-        /// <summary>Returns a float4x4 matrix that rotates around the y-axis by a given number of radians.</summary>
+        /// <summary>Returns a Float4x4 matrix that rotates around the y-axis by a given number of radians.</summary>
         /// <param name="angle">The clockwise rotation angle when looking along the y-axis towards the origin in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 RotateY(SoftFloat angle)
+        public static Float3X3 RotateY(SoftFloat angle)
         {
             // {{c_1, 0, s_1}, {0, 1, 0}, {-s_1, 0, c_1}}
             SoftFloat s, c;
-            Math.sincos(angle, out s, out c);
-            return new float3x3(c, SoftFloat.Zero, s,
+            Math.Sincos(angle, out s, out c);
+            return new Float3X3(c, SoftFloat.Zero, s,
                             SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero,
                             -s, SoftFloat.Zero, c);
         }
 
-        /// <summary>Returns a float4x4 matrix that rotates around the z-axis by a given number of radians.</summary>
+        /// <summary>Returns a Float4x4 matrix that rotates around the z-axis by a given number of radians.</summary>
         /// <param name="angle">The clockwise rotation angle when looking along the z-axis towards the origin in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 RotateZ(SoftFloat angle)
+        public static Float3X3 RotateZ(SoftFloat angle)
         {
             // {{c_2, -s_2, 0}, {s_2, c_2, 0}, {0, 0, 1}}
             SoftFloat s, c;
-            Math.sincos(angle, out s, out c);
-            return new float3x3(c,    -s, SoftFloat.Zero,
+            Math.Sincos(angle, out s, out c);
+            return new Float3X3(c,    -s, SoftFloat.Zero,
                             s,    c, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
         }
 
-        //<summary>Returns a float3x3 matrix representing a uniform scaling of all axes by s.</summary>
+        //<summary>Returns a Float3x3 matrix representing a uniform scaling of all axes by s.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 Scale(SoftFloat s)
+        public static Float3X3 Scale(SoftFloat s)
         {
-            return new float3x3(s, SoftFloat.Zero, SoftFloat.Zero,
+            return new Float3X3(s, SoftFloat.Zero, SoftFloat.Zero,
                             SoftFloat.Zero, s, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, s);
         }
 
-        /// <summary>Returns a float3x3 matrix representing a non-uniform axis scaling by x, y and z.</summary>
+        /// <summary>Returns a Float3x3 matrix representing a non-uniform axis scaling by x, y and z.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 Scale(SoftFloat x, SoftFloat y, SoftFloat z)
+        public static Float3X3 Scale(SoftFloat x, SoftFloat y, SoftFloat z)
         {
-            return new float3x3(x, SoftFloat.Zero, SoftFloat.Zero,
+            return new Float3X3(x, SoftFloat.Zero, SoftFloat.Zero,
                             SoftFloat.Zero, y, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, z);
         }
 
-        /// <summary>Returns a float3x3 matrix representing a non-uniform axis scaling by the components of the float3 vector v.</summary>
+        /// <summary>Returns a Float3x3 matrix representing a non-uniform axis scaling by the components of the Float3 vector v.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 Scale(float3 v)
+        public static Float3X3 Scale(Float3 v)
         {
             return Scale(v.x, v.y, v.z);
         }
 
         /// <summary>
-        /// Returns a float3x3 view rotation matrix given a unit length forward vector and a unit length up vector.
+        /// Returns a Float3x3 view rotation matrix given a unit length forward vector and a unit length up vector.
         /// The two input vectors are assumed to be unit length and not collinear.
-        /// If these assumptions are not met use float3x3.LookRotationSafe instead.
+        /// If these assumptions are not met use Float3x3.LookRotationSafe instead.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 LookRotation(float3 forward, float3 up)
+        public static Float3X3 LookRotation(Float3 forward, Float3 up)
         {
-            float3 t = Math.normalize(Math.cross(up, forward));
-            return new float3x3(t, Math.cross(forward, t), forward);
+            Float3 t = Math.Normalize(Math.Cross(up, forward));
+            return new Float3X3(t, Math.Cross(forward, t), forward);
         }
 
         /// <summary>
-        /// Returns a float3x3 view rotation matrix given a forward vector and an up vector.
+        /// Returns a Float3x3 view rotation matrix given a forward vector and an up vector.
         /// The two input vectors are not assumed to be unit length.
         /// If the magnitude of either of the vectors is so extreme that the calculation cannot be carried out reliably or the vectors are collinear,
         /// the identity will be returned instead.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 LookRotationSafe(float3 forward, float3 up)
+        public static Float3X3 LookRotationSafe(Float3 forward, Float3 up)
         {
-            SoftFloat forwardLengthSq = Math.dot(forward, forward);
-            SoftFloat upLengthSq = Math.dot(up, up);
+            SoftFloat forwardLengthSq = Math.Dot(forward, forward);
+            SoftFloat upLengthSq = Math.Dot(up, up);
 
-            forward *= Math.rsqrt(forwardLengthSq);
-            up *= Math.rsqrt(upLengthSq);
+            forward *= Math.Rsqrt(forwardLengthSq);
+            up *= Math.Rsqrt(upLengthSq);
 
-            float3 t = Math.cross(up, forward);
-            SoftFloat tLengthSq = Math.dot(t, t);
-            t *= Math.rsqrt(tLengthSq);
+            Float3 t = Math.Cross(up, forward);
+            SoftFloat tLengthSq = Math.Dot(t, t);
+            t *= Math.Rsqrt(tLengthSq);
 
-            SoftFloat mn = Math.min(Math.min(forwardLengthSq, upLengthSq), tLengthSq);
-            SoftFloat mx = Math.max(Math.max(forwardLengthSq, upLengthSq), tLengthSq);
+            SoftFloat mn = Math.MIN(Math.MIN(forwardLengthSq, upLengthSq), tLengthSq);
+            SoftFloat mx = Math.MAX(Math.MAX(forwardLengthSq, upLengthSq), tLengthSq);
 
             const uint bigValue = 0x799a130c;
             const uint smallValue = 0x0554ad2e;
 
-            bool accept = mn > SoftFloat.FromRaw(smallValue) && mx < SoftFloat.FromRaw(bigValue) && Math.isfinite(forwardLengthSq) && Math.isfinite(upLengthSq) && Math.isfinite(tLengthSq);
-            return new float3x3(
-                Math.select(new float3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero), t, accept),
-                Math.select(new float3(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero), Math.cross(forward, t), accept),
-                Math.select(new float3(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One), forward, accept));
+            bool accept = mn > SoftFloat.FromRaw(smallValue) && mx < SoftFloat.FromRaw(bigValue) && Math.Isfinite(forwardLengthSq) && Math.Isfinite(upLengthSq) && Math.Isfinite(tLengthSq);
+            return new Float3X3(
+                Math.Select(new Float3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero), t, accept),
+                Math.Select(new Float3(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero), Math.Cross(forward, t), accept),
+                Math.Select(new Float3(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One), forward, accept));
         }
 
-        public static explicit operator float3x3(float4x4 f4x4) => new float3x3(f4x4);
+        public static explicit operator Float3X3(Float4X4 f4X4) => new Float3X3(f4X4);
     }
 
-    public partial struct float4x4
+    public partial struct Float4X4
     {
-        /// <summary>Constructs a float4x4 from a float3x3 rotation matrix and a float3 translation vector.</summary>
-        public float4x4(float3x3 rotation, float3 translation)
+        /// <summary>Constructs a Float4x4 from a Float3x3 rotation matrix and a Float3 translation vector.</summary>
+        public Float4X4(Float3X3 rotation, Float3 translation)
         {
-            c0 = new float4(rotation.c0, SoftFloat.Zero);
-            c1 = new float4(rotation.c1, SoftFloat.Zero);
-            c2 = new float4(rotation.c2, SoftFloat.Zero);
-            c3 = new float4(translation, SoftFloat.One);
+            c0 = new Float4(rotation.c0, SoftFloat.Zero);
+            c1 = new Float4(rotation.c1, SoftFloat.Zero);
+            c2 = new Float4(rotation.c2, SoftFloat.Zero);
+            c3 = new Float4(translation, SoftFloat.One);
         }
 
-        /// <summary>Constructs a float4x4 from a quaternion and a float3 translation vector.</summary>
-        public float4x4(quaternion rotation, float3 translation)
+        /// <summary>Constructs a Float4x4 from a quaternion and a Float3 translation vector.</summary>
+        public Float4X4(Quaternion rotation, Float3 translation)
         {
-            float3x3 rot = new float3x3(rotation);
-            c0 = new float4(rot.c0, SoftFloat.Zero);
-            c1 = new float4(rot.c1, SoftFloat.Zero);
-            c2 = new float4(rot.c2, SoftFloat.Zero);
-            c3 = new float4(translation, SoftFloat.One);
+            Float3X3 rot = new Float3X3(rotation);
+            c0 = new Float4(rot.c0, SoftFloat.Zero);
+            c1 = new Float4(rot.c1, SoftFloat.Zero);
+            c2 = new Float4(rot.c2, SoftFloat.Zero);
+            c3 = new Float4(translation, SoftFloat.One);
         }
 
-        /// <summary>Constructs a float4x4 from a RigidTransform.</summary>
-        public float4x4(RigidTransform transform)
+        /// <summary>Constructs a Float4x4 from a RigidTransform.</summary>
+        public Float4X4(RigidTransform transform)
         {
-            float3x3 rot = new float3x3(transform.rot);
-            c0 = new float4(rot.c0, SoftFloat.Zero);
-            c1 = new float4(rot.c1, SoftFloat.Zero);
-            c2 = new float4(rot.c2, SoftFloat.Zero);
-            c3 = new float4(transform.pos, SoftFloat.One);
+            Float3X3 rot = new Float3X3(transform._rot);
+            c0 = new Float4(rot.c0, SoftFloat.Zero);
+            c1 = new Float4(rot.c1, SoftFloat.Zero);
+            c2 = new Float4(rot.c2, SoftFloat.Zero);
+            c3 = new Float4(transform._pos, SoftFloat.One);
         }
 
         /// <summary>
-        /// Returns a float4x4 matrix representing a rotation around a unit axis by an angle in radians.
+        /// Returns a Float4x4 matrix representing a rotation around a unit axis by an angle in radians.
         /// The rotation direction is clockwise when looking along the rotation axis towards the origin.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 AxisAngle(float3 axis, SoftFloat angle)
+        public static Float4X4 AxisAngle(Float3 axis, SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            Math.sincos(angle, out sina, out cosa);
+            Math.Sincos(angle, out sina, out cosa);
 
-            float4 u = new float4(axis, SoftFloat.Zero);
-            float4 u_yzx = u.yzxx;
-            float4 u_zxy = u.zxyx;
-            float4 u_inv_cosa = u - u * cosa;  // u * (1.0f - cosa);
-            float4 t = new float4(u.xyz * sina, cosa);
+            Float4 u = new Float4(axis, SoftFloat.Zero);
+            Float4 uYZX = u.yzxx;
+            Float4 uZXY = u.zxyx;
+            Float4 uInvCosa = u - u * cosa;  // u * (1.0f - cosa);
+            Float4 t = new Float4(u.xyz * sina, cosa);
 
-            uint4 ppnp = new uint4(0x00000000, 0x00000000, 0x80000000, 0x00000000);
-            uint4 nppp = new uint4(0x80000000, 0x00000000, 0x00000000, 0x00000000);
-            uint4 pnpp = new uint4(0x00000000, 0x80000000, 0x00000000, 0x00000000);
-            uint4 mask = new uint4(0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000000);
+            UInt4 ppnp = new UInt4(0x00000000, 0x00000000, 0x80000000, 0x00000000);
+            UInt4 nppp = new UInt4(0x80000000, 0x00000000, 0x00000000, 0x00000000);
+            UInt4 pnpp = new UInt4(0x00000000, 0x80000000, 0x00000000, 0x00000000);
+            UInt4 mask = new UInt4(0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000000);
 
-            return new float4x4(
-                u.x * u_inv_cosa + Math.asfloat((Math.asuint(t.wzyx) ^ ppnp) & mask),
-                u.y * u_inv_cosa + Math.asfloat((Math.asuint(t.zwxx) ^ nppp) & mask),
-                u.z * u_inv_cosa + Math.asfloat((Math.asuint(t.yxwx) ^ pnpp) & mask),
-                new float4(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One)
+            return new Float4X4(
+                u.x * uInvCosa + Math.Asfloat((Math.Asuint(t.wzyx) ^ ppnp) & mask),
+                u.y * uInvCosa + Math.Asfloat((Math.Asuint(t.zwxx) ^ nppp) & mask),
+                u.z * uInvCosa + Math.Asfloat((Math.Asuint(t.yxwx) ^ pnpp) & mask),
+                new Float4(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One)
                 );
 
         }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+        /// Returns a Float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 EulerXYZ(float3 xyz)
+        public static Float4X4 EulerXYZ(Float3 xyz)
         {
             // return mul(rotateZ(xyz.z), mul(rotateY(xyz.y), rotateX(xyz.x)));
-            float3 s, c;
-            Math.sincos(xyz, out s, out c);
-            return new float4x4(
+            Float3 s, c;
+            Math.Sincos(xyz, out s, out c);
+            return new Float4X4(
                 c.y * c.z,  c.z * s.x * s.y - c.x * s.z,    c.x * c.z * s.y + s.x * s.z,    SoftFloat.Zero,
                 c.y * s.z,  c.x * c.z + s.x * s.y * s.z,    c.x * s.y * s.z - c.z * s.x,    SoftFloat.Zero,
                 -s.y,       c.y * s.x,                      c.x * c.y,                      SoftFloat.Zero,
@@ -507,17 +507,17 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+        /// Returns a Float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 EulerXZY(float3 xyz)
+        public static Float4X4 EulerXZY(Float3 xyz)
         {
             // return mul(rotateY(xyz.y), mul(rotateZ(xyz.z), rotateX(xyz.x))); }
-            float3 s, c;
-            Math.sincos(xyz, out s, out c);
-            return new float4x4(
+            Float3 s, c;
+            Math.Sincos(xyz, out s, out c);
+            return new Float4X4(
                 c.y * c.z,  s.x * s.y - c.x * c.y * s.z,    c.x * s.y + c.y * s.x * s.z,    SoftFloat.Zero,
                 s.z,        c.x * c.z,                      -c.z * s.x,                     SoftFloat.Zero,
                 -c.z * s.y, c.y * s.x + c.x * s.y * s.z,    c.x * c.y - s.x * s.y * s.z,    SoftFloat.Zero,
@@ -526,17 +526,17 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+        /// Returns a Float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 EulerYXZ(float3 xyz)
+        public static Float4X4 EulerYXZ(Float3 xyz)
         {
             // return mul(rotateZ(xyz.z), mul(rotateX(xyz.x), rotateY(xyz.y)));
-            float3 s, c;
-            Math.sincos(xyz, out s, out c);
-            return new float4x4(
+            Float3 s, c;
+            Math.Sincos(xyz, out s, out c);
+            return new Float4X4(
                 c.y * c.z - s.x * s.y * s.z,    -c.x * s.z, c.z * s.y + c.y * s.x * s.z,    SoftFloat.Zero,
                 c.z * s.x * s.y + c.y * s.z,    c.x * c.z,  s.y * s.z - c.y * c.z * s.x,    SoftFloat.Zero,
                 -c.x * s.y,                     s.x,        c.x * c.y,                      SoftFloat.Zero,
@@ -545,17 +545,17 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+        /// Returns a Float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 EulerYZX(float3 xyz)
+        public static Float4X4 EulerYZX(Float3 xyz)
         {
             // return mul(rotateX(xyz.x), mul(rotateZ(xyz.z), rotateY(xyz.y)));
-            float3 s, c;
-            Math.sincos(xyz, out s, out c);
-            return new float4x4(
+            Float3 s, c;
+            Math.Sincos(xyz, out s, out c);
+            return new Float4X4(
                 c.y * c.z,                      -s.z,       c.z * s.y,                      SoftFloat.Zero,
                 s.x * s.y + c.x * c.y * s.z,    c.x * c.z,  c.x * s.y * s.z - c.y * s.x,    SoftFloat.Zero,
                 c.y * s.x * s.z - c.x * s.y,    c.z * s.x,  c.x * c.y + s.x * s.y * s.z,    SoftFloat.Zero,
@@ -564,18 +564,18 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+        /// Returns a Float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// This is the default order rotation order in Unity.
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 EulerZXY(float3 xyz)
+        public static Float4X4 EulerZXY(Float3 xyz)
         {
             // return mul(rotateY(xyz.y), mul(rotateX(xyz.x), rotateZ(xyz.z)));
-            float3 s, c;
-            Math.sincos(xyz, out s, out c);
-            return new float4x4(
+            Float3 s, c;
+            Math.Sincos(xyz, out s, out c);
+            return new Float4X4(
                 c.y * c.z + s.x * s.y * s.z,    c.z * s.x * s.y - c.y * s.z,    c.x * s.y,  SoftFloat.Zero,
                 c.x * s.z,                      c.x * c.z,                      -s.x,       SoftFloat.Zero,
                 c.y * s.x * s.z - c.z * s.y,    c.y * c.z * s.x + s.y * s.z,    c.x * c.y,  SoftFloat.Zero,
@@ -584,17 +584,17 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
+        /// Returns a Float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
-        /// <param name="xyz">A float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
+        /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 EulerZYX(float3 xyz)
+        public static Float4X4 EulerZYX(Float3 xyz)
         {
             // return mul(rotateX(xyz.x), mul(rotateY(xyz.y), rotateZ(xyz.z)));
-            float3 s, c;
-            Math.sincos(xyz, out s, out c);
-            return new float4x4(
+            Float3 s, c;
+            Math.Sincos(xyz, out s, out c);
+            return new Float4X4(
                 c.y * c.z,                      -c.y * s.z,                     s.y,        SoftFloat.Zero,
                 c.z * s.x * s.y + c.x * s.z,    c.x * c.z - s.x * s.y * s.z,    -c.y * s.x, SoftFloat.Zero,
                 s.x * s.z - c.x * c.z * s.y,    c.z * s.x + c.x * s.y * s.z,    c.x * c.y,  SoftFloat.Zero,
@@ -603,47 +603,47 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
+        /// Returns a Float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the y-axis and finally the z-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
         /// <param name="x">The rotation angle around the x-axis in radians.</param>
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 EulerXYZ(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerXYZ(new float3(x, y, z)); }
+        public static Float4X4 EulerXYZ(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerXYZ(new Float3(x, y, z)); }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
+        /// Returns a Float4x4 rotation matrix constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
         /// <param name="x">The rotation angle around the x-axis in radians.</param>
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 EulerXZY(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerXZY(new float3(x, y, z)); }
+        public static Float4X4 EulerXZY(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerXZY(new Float3(x, y, z)); }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
+        /// Returns a Float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
         /// <param name="x">The rotation angle around the x-axis in radians.</param>
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 EulerYXZ(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerYXZ(new float3(x, y, z)); }
+        public static Float4X4 EulerYXZ(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerYXZ(new Float3(x, y, z)); }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
+        /// Returns a Float4x4 rotation matrix constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
         /// <param name="x">The rotation angle around the x-axis in radians.</param>
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 EulerYZX(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerYZX(new float3(x, y, z)); }
+        public static Float4X4 EulerYZX(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerYZX(new Float3(x, y, z)); }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
+        /// Returns a Float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// This is the default order rotation order in Unity.
         /// </summary>
@@ -651,20 +651,20 @@ namespace GameLibrary.Mathematics
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 EulerZXY(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerZXY(new float3(x, y, z)); }
+        public static Float4X4 EulerZXY(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerZXY(new Float3(x, y, z)); }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
+        /// Returns a Float4x4 rotation matrix constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// </summary>
         /// <param name="x">The rotation angle around the x-axis in radians.</param>
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 EulerZYX(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerZYX(new float3(x, y, z)); }
+        public static Float4X4 EulerZYX(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerZYX(new Float3(x, y, z)); }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 Euler(float3 xyz, Math.RotationOrder order = Math.RotationOrder.Default)
+        public static Float4X4 Euler(Float3 xyz, Math.RotationOrder order = Math.RotationOrder.Default)
         {
             switch (order)
             {
@@ -686,7 +686,7 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float4x4 rotation matrix constructed by first performing 3 rotations around the principal axes in a given order.
+        /// Returns a Float4x4 rotation matrix constructed by first performing 3 rotations around the principal axes in a given order.
         /// All rotation angles are in radians and clockwise when looking along the rotation axis towards the origin.
         /// When the rotation order is known at compile time, it is recommended for performance reasons to use specific
         /// Euler rotation constructors such as EulerZXY(...).
@@ -696,127 +696,127 @@ namespace GameLibrary.Mathematics
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         /// <param name="order">The order in which the rotations are applied.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 Euler(SoftFloat x, SoftFloat y, SoftFloat z, Math.RotationOrder order = Math.RotationOrder.Default)
+        public static Float4X4 Euler(SoftFloat x, SoftFloat y, SoftFloat z, Math.RotationOrder order = Math.RotationOrder.Default)
         {
-            return Euler(new float3(x, y, z), order);
+            return Euler(new Float3(x, y, z), order);
         }
 
-        /// <summary>Returns a float4x4 matrix that rotates around the x-axis by a given number of radians.</summary>
+        /// <summary>Returns a Float4x4 matrix that rotates around the x-axis by a given number of radians.</summary>
         /// <param name="angle">The clockwise rotation angle when looking along the x-axis towards the origin in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 RotateX(SoftFloat angle)
+        public static Float4X4 RotateX(SoftFloat angle)
         {
             // {{1, 0, 0}, {0, c_0, -s_0}, {0, s_0, c_0}}
             SoftFloat s, c;
-            Math.sincos(angle, out s, out c);
-            return new float4x4(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero,
+            Math.Sincos(angle, out s, out c);
+            return new Float4X4(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero,
                             SoftFloat.Zero, c, -s, SoftFloat.Zero,
                             SoftFloat.Zero, s, c, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
 
         }
 
-        /// <summary>Returns a float4x4 matrix that rotates around the y-axis by a given number of radians.</summary>
+        /// <summary>Returns a Float4x4 matrix that rotates around the y-axis by a given number of radians.</summary>
         /// <param name="angle">The clockwise rotation angle when looking along the y-axis towards the origin in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 RotateY(SoftFloat angle)
+        public static Float4X4 RotateY(SoftFloat angle)
         {
             // {{c_1, 0, s_1}, {0, 1, 0}, {-s_1, 0, c_1}}
             SoftFloat s, c;
-            Math.sincos(angle, out s, out c);
-            return new float4x4(c, SoftFloat.Zero, s, SoftFloat.Zero,
+            Math.Sincos(angle, out s, out c);
+            return new Float4X4(c, SoftFloat.Zero, s, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero,
                             -s, SoftFloat.Zero, c, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
 
         }
 
-        /// <summary>Returns a float4x4 matrix that rotates around the z-axis by a given number of radians.</summary>
+        /// <summary>Returns a Float4x4 matrix that rotates around the z-axis by a given number of radians.</summary>
         /// <param name="angle">The clockwise rotation angle when looking along the z-axis towards the origin in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 RotateZ(SoftFloat angle)
+        public static Float4X4 RotateZ(SoftFloat angle)
         {
             // {{c_2, -s_2, 0}, {s_2, c_2, 0}, {0, 0, 1}}
             SoftFloat s, c;
-            Math.sincos(angle, out s, out c);
-            return new float4x4(c, -s, SoftFloat.Zero, SoftFloat.Zero,
+            Math.Sincos(angle, out s, out c);
+            return new Float4X4(c, -s, SoftFloat.Zero, SoftFloat.Zero,
                             s, c, SoftFloat.Zero, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
 
         }
 
-        /// <summary>Returns a float4x4 scale matrix given 3 axis scales.</summary>
+        /// <summary>Returns a Float4x4 scale matrix given 3 axis scales.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 Scale(SoftFloat s)
+        public static Float4X4 Scale(SoftFloat s)
         {
-            return new float4x4(s, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero,
+            return new Float4X4(s, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero,
                             SoftFloat.Zero, s, SoftFloat.Zero, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, s, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
         }
 
-        /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales.</summary>
+        /// <summary>Returns a Float4x4 scale matrix given a Float3 vector containing the 3 axis scales.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 Scale(SoftFloat x, SoftFloat y, SoftFloat z)
+        public static Float4X4 Scale(SoftFloat x, SoftFloat y, SoftFloat z)
         {
-            return new float4x4(x, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero,
+            return new Float4X4(x, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero,
                             SoftFloat.Zero, y, SoftFloat.Zero, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, z, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
         }
 
-        /// <summary>Returns a float4x4 scale matrix given a float3 vector containing the 3 axis scales.</summary>
+        /// <summary>Returns a Float4x4 scale matrix given a Float3 vector containing the 3 axis scales.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 Scale(float3 scales)
+        public static Float4X4 Scale(Float3 scales)
         {
             return Scale(scales.x, scales.y, scales.z);
         }
 
-        /// <summary>Returns a float4x4 translation matrix given a float3 translation vector.</summary>
+        /// <summary>Returns a Float4x4 translation matrix given a Float3 translation vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 Translate(float3 vector)
+        public static Float4X4 Translate(Float3 vector)
         {
-            return new float4x4(new float4(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero),
-                            new float4(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero),
-                            new float4(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero),
-                            new float4(vector.x, vector.y, vector.z, SoftFloat.One));
+            return new Float4X4(new Float4(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero),
+                            new Float4(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero),
+                            new Float4(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero),
+                            new Float4(vector.x, vector.y, vector.z, SoftFloat.One));
         }
 
         /// <summary>
-        /// Returns a float4x4 view matrix given an eye position, a target point and a unit length up vector.
+        /// Returns a Float4x4 view matrix given an eye position, a target point and a unit length up vector.
         /// The up vector is assumed to be unit length, the eye and target points are assumed to be distinct and
         /// the vector between them is assumes to be collinear with the up vector.
-        /// If these assumptions are not met use float4x4.LookRotationSafe instead.
+        /// If these assumptions are not met use Float4x4.LookRotationSafe instead.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 LookAt(float3 eye, float3 target, float3 up)
+        public static Float4X4 LookAt(Float3 eye, Float3 target, Float3 up)
         {
-            float3x3 rot = float3x3.LookRotation(Math.normalize(target - eye), up);
+            Float3X3 rot = Float3X3.LookRotation(Math.Normalize(target - eye), up);
 
-            float4x4 matrix;
-            matrix.c0 = new float4(rot.c0, SoftFloat.Zero);
-            matrix.c1 = new float4(rot.c1, SoftFloat.Zero);
-            matrix.c2 = new float4(rot.c2, SoftFloat.Zero);
-            matrix.c3 = new float4(eye, SoftFloat.One);
+            Float4X4 matrix;
+            matrix.c0 = new Float4(rot.c0, SoftFloat.Zero);
+            matrix.c1 = new Float4(rot.c1, SoftFloat.Zero);
+            matrix.c2 = new Float4(rot.c2, SoftFloat.Zero);
+            matrix.c3 = new Float4(eye, SoftFloat.One);
             return matrix;
         }
 
         /// <summary>
-        /// Returns a float4x4 centered orthographic projection matrix.
+        /// Returns a Float4x4 centered orthographic projection matrix.
         /// </summary>
         /// <param name="width">The width of the view volume.</param>
         /// <param name="height">The height of the view volume.</param>
         /// <param name="near">The distance to the near plane.</param>
         /// <param name="far">The distance to the far plane.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 Ortho(SoftFloat width, SoftFloat height, SoftFloat near, SoftFloat far)
+        public static Float4X4 Ortho(SoftFloat width, SoftFloat height, SoftFloat near, SoftFloat far)
         {
             SoftFloat rcpdx = SoftFloat.One / width;
             SoftFloat rcpdy = SoftFloat.One / height;
             SoftFloat rcpdz = SoftFloat.One / (far - near);
 
-            return new float4x4(
+            return new Float4X4(
                 (SoftFloat)2.0f * rcpdx, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero,
                 SoftFloat.Zero, (SoftFloat)2.0f * rcpdy, SoftFloat.Zero, SoftFloat.Zero,
                 SoftFloat.Zero, SoftFloat.Zero, (SoftFloat)(-2.0f) * rcpdz, -(far + near) * rcpdz,
@@ -825,7 +825,7 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float4x4 off-center orthographic projection matrix.
+        /// Returns a Float4x4 off-center orthographic projection matrix.
         /// </summary>
         /// <param name="left">The minimum x-coordinate of the view volume.</param>
         /// <param name="right">The maximum x-coordinate of the view volume.</param>
@@ -834,13 +834,13 @@ namespace GameLibrary.Mathematics
         /// <param name="near">The distance to the near plane.</param>
         /// <param name="far">The distance to the far plane.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 OrthoOffCenter(SoftFloat left, SoftFloat right, SoftFloat bottom, SoftFloat top, SoftFloat near, SoftFloat far)
+        public static Float4X4 OrthoOffCenter(SoftFloat left, SoftFloat right, SoftFloat bottom, SoftFloat top, SoftFloat near, SoftFloat far)
         {
             SoftFloat rcpdx = SoftFloat.One / (right - left);
             SoftFloat rcpdy = SoftFloat.One / (top - bottom);
             SoftFloat rcpdz = SoftFloat.One / (far - near);
 
-            return new float4x4(
+            return new Float4X4(
                 (SoftFloat)2.0f * rcpdx, SoftFloat.Zero, SoftFloat.Zero, -(right + left) * rcpdx,
                 SoftFloat.Zero, (SoftFloat)2.0f * rcpdy, SoftFloat.Zero, -(top + bottom) * rcpdy,
                 SoftFloat.Zero, SoftFloat.Zero, (SoftFloat)(-2.0f) * rcpdz, -(far + near) * rcpdz,
@@ -849,19 +849,19 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float4x4 perspective projection matrix based on field of view.
+        /// Returns a Float4x4 perspective projection matrix based on field of view.
         /// </summary>
         /// <param name="verticalFov">Vertical Field of view in radians.</param>
         /// <param name="aspect">X:Y aspect ratio.</param>
         /// <param name="near">Distance to near plane. Must be greater than zero.</param>
         /// <param name="far">Distance to far plane. Must be greater than zero.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 PerspectiveFov(SoftFloat verticalFov, SoftFloat aspect, SoftFloat near, SoftFloat far)
+        public static Float4X4 PerspectiveFov(SoftFloat verticalFov, SoftFloat aspect, SoftFloat near, SoftFloat far)
         {
-            SoftFloat cotangent = SoftFloat.One / Math.tan(verticalFov * (SoftFloat)0.5f);
+            SoftFloat cotangent = SoftFloat.One / Math.Tan(verticalFov * (SoftFloat)0.5f);
             SoftFloat rcpdz = SoftFloat.One / (near - far);
 
-            return new float4x4(
+            return new Float4X4(
                 cotangent / aspect, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero,
                 SoftFloat.Zero, cotangent, SoftFloat.Zero, SoftFloat.Zero,
                 SoftFloat.Zero, SoftFloat.Zero, (far + near) * rcpdz, (SoftFloat)2.0f * near * far * rcpdz,
@@ -870,7 +870,7 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float4x4 off-center perspective projection matrix.
+        /// Returns a Float4x4 off-center perspective projection matrix.
         /// </summary>
         /// <param name="left">The x-coordinate of the left side of the clipping frustum at the near plane.</param>
         /// <param name="right">The x-coordinate of the right side of the clipping frustum at the near plane.</param>
@@ -879,13 +879,13 @@ namespace GameLibrary.Mathematics
         /// <param name="near">Distance to the near plane. Must be greater than zero.</param>
         /// <param name="far">Distance to the far plane. Must be greater than zero.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 PerspectiveOffCenter(SoftFloat left, SoftFloat right, SoftFloat bottom, SoftFloat top, SoftFloat near, SoftFloat far)
+        public static Float4X4 PerspectiveOffCenter(SoftFloat left, SoftFloat right, SoftFloat bottom, SoftFloat top, SoftFloat near, SoftFloat far)
         {
             SoftFloat rcpdz = SoftFloat.One / (near - far);
             SoftFloat rcpWidth = SoftFloat.One / (right - left);
             SoftFloat rcpHeight = SoftFloat.One / (top - bottom);
 
-            return new float4x4(
+            return new Float4X4(
                 (SoftFloat)2.0f * near * rcpWidth, SoftFloat.Zero, (left + right) * rcpWidth, SoftFloat.Zero,
                 SoftFloat.Zero, (SoftFloat)2.0f * near * rcpHeight, (bottom + top) * rcpHeight, SoftFloat.Zero,
                 SoftFloat.Zero, SoftFloat.Zero, (far + near) * rcpdz, (SoftFloat)2.0f * near * far * rcpdz,
@@ -894,81 +894,81 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
-        /// Returns a float4x4 matrix representing a combined scale-, rotation- and translation transform.
+        /// Returns a Float4x4 matrix representing a combined scale-, rotation- and translation transform.
         /// Equivalent to mul(translationTransform, mul(rotationTransform, scaleTransform)).
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 TRS(float3 translation, quaternion rotation, float3 scale)
+        public static Float4X4 TRS(Float3 translation, Quaternion rotation, Float3 scale)
         {
-            float3x3 r = new float3x3(rotation);
-            return new float4x4(  new float4(r.c0 * scale.x, SoftFloat.Zero),
-                              new float4(r.c1 * scale.y, SoftFloat.Zero),
-                              new float4(r.c2 * scale.z, SoftFloat.Zero),
-                              new float4(translation, SoftFloat.One));
+            Float3X3 r = new Float3X3(rotation);
+            return new Float4X4(  new Float4(r.c0 * scale.x, SoftFloat.Zero),
+                              new Float4(r.c1 * scale.y, SoftFloat.Zero),
+                              new Float4(r.c2 * scale.z, SoftFloat.Zero),
+                              new Float4(translation, SoftFloat.One));
         }
     }
 
     partial class Math
     {
         /// <summary>
-        /// Extracts a float3x3 from the upper left 3x3 of a float4x4.
+        /// Extracts a Float3x3 from the upper left 3x3 of a Float4x4.
         /// </summary>
-        /// <param name="f4x4"><see cref="float4x4"/> to extract a float3x3 from.</param>
-        /// <returns>Upper left 3x3 matrix as float3x3.</returns>
+        /// <param name="f4X4"><see cref="Float4x4"/> to extract a Float3x3 from.</param>
+        /// <returns>Upper left 3x3 matrix as Float3x3.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 float3x3(float4x4 f4x4)
+        public static Float3X3 Float3X3(Float4X4 f4X4)
         {
-            return new float3x3(f4x4);
+            return new Float3X3(f4X4);
         }
 
-        /// <summary>Returns a float3x3 matrix constructed from a quaternion.</summary>
+        /// <summary>Returns a Float3x3 matrix constructed from a quaternion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 float3x3(quaternion rotation)
+        public static Float3X3 Float3X3(Quaternion rotation)
         {
-            return new float3x3(rotation);
+            return new Float3X3(rotation);
         }
 
-        /// <summary>Returns a float4x4 constructed from a float3x3 rotation matrix and a float3 translation vector.</summary>
+        /// <summary>Returns a Float4x4 constructed from a Float3x3 rotation matrix and a Float3 translation vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 float4x4(float3x3 rotation, float3 translation)
+        public static Float4X4 Float4X4(Float3X3 rotation, Float3 translation)
         {
-            return new float4x4(rotation, translation);
+            return new Float4X4(rotation, translation);
         }
 
-        /// <summary>Returns a float4x4 constructed from a quaternion and a float3 translation vector.</summary>
+        /// <summary>Returns a Float4x4 constructed from a quaternion and a Float3 translation vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 float4x4(quaternion rotation, float3 translation)
+        public static Float4X4 Float4X4(Quaternion rotation, Float3 translation)
         {
-            return new float4x4(rotation, translation);
+            return new Float4X4(rotation, translation);
         }
 
-        /// <summary>Returns a float4x4 constructed from a RigidTransform.</summary>
+        /// <summary>Returns a Float4x4 constructed from a RigidTransform.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float4x4 float4x4(RigidTransform transform)
+        public static Float4X4 Float4X4(RigidTransform transform)
         {
-            return new float4x4(transform);
+            return new Float4X4(transform);
         }
 
-        /// <summary>Returns an orthonormalized version of a float3x3 matrix.</summary>
+        /// <summary>Returns an orthonormalized version of a Float3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static float3x3 orthonormalize(float3x3 i)
+        public static Float3X3 Orthonormalize(Float3X3 i)
         {
-            float3x3 o;
+            Float3X3 o;
 
-            float3 u = i.c0;
-            float3 v = i.c1 - i.c0 * dot(i.c1, i.c0);
+            Float3 u = i.c0;
+            Float3 v = i.c1 - i.c0 * Dot(i.c1, i.c0);
 
-            SoftFloat lenU = length(u);
-            SoftFloat lenV = length(v);
+            SoftFloat lenU = Length(u);
+            SoftFloat lenV = Length(v);
 
             const uint smallValue = 0x0da24260;
             SoftFloat epsilon = SoftFloat.FromRaw(smallValue);
 
             bool c = lenU > epsilon && lenV > epsilon;
 
-            o.c0 = select(new float3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero), u / lenU, c);
-            o.c1 = select(new float3(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero), v / lenV, c);
-            o.c2 = cross(o.c0, o.c1);
+            o.c0 = Select(new Float3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero), u / lenU, c);
+            o.c1 = Select(new Float3(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero), v / lenV, c);
+            o.c2 = Cross(o.c0, o.c1);
 
             return o;
         }

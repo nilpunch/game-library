@@ -4,7 +4,7 @@ namespace GameLibrary.Physics
 {
     public struct Sphere
     {
-        float3 Center { get; }
+        Float3 Center { get; }
         SoftFloat Radius { get; }
     }
 }

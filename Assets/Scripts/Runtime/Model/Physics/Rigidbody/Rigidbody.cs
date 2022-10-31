@@ -13,9 +13,9 @@ namespace GameLibrary.Physics
 
         public bool IsAlive { get; private set; }
 
-        public float3 Velocity { get; set; }
-        public float3 Position { get; set; }
-        
+        public Float3 Velocity { get; set; }
+        public Float3 Position { get; set; }
+
         public ICollider Collider { get; }
 
         public void Destroy()

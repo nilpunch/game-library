@@ -4,8 +4,8 @@ namespace GameLibrary.Physics
 {
     public struct Box
     {
-        float3 Center { get; }
-        quaternion Rotation { get; }
-        float3 Size { get; }
+        Float3 Center { get; }
+        Quaternion Rotation { get; }
+        Float3 Size { get; }
     }
 }

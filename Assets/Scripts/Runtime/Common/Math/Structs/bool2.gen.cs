@@ -428,18 +428,18 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(bool2 v)
         {
-            return csum(select(uint2(0x90A285BBu, 0x5D19E1D5u), uint2(0xFAAF07DDu, 0x625C45BDu), v));
+            return Csum(Select(UInt2(0x90A285BBu, 0x5D19E1D5u), UInt2(0xFAAF07DDu, 0x625C45BDu), v));
         }
 
         /// <summary>
-        /// Returns a uint2 vector hash code of a bool2 vector.
+        /// Returns a UInt2 vector hash code of a bool2 vector.
         /// When multiple elements are to be hashes together, it can more efficient to calculate and combine wide hash
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint2 hashwide(bool2 v)
+        public static UInt2 hashwide(bool2 v)
         {
-            return (select(uint2(0xC9F27FCBu, 0x6D2523B1u), uint2(0x6E2BF6A9u, 0xCC74B3B7u), v));
+            return (Select(UInt2(0xC9F27FCBu, 0x6D2523B1u), UInt2(0x6E2BF6A9u, 0xCC74B3B7u), v));
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two bool2 vectors into a bool value.</summary>

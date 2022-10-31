@@ -4,6 +4,6 @@ namespace GameLibrary.Sample
 {
     public interface IBullet
     {
-        void Throw(float3 velocity);
+        void Throw(Float3 velocity);
     }
 }
