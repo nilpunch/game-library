@@ -8,7 +8,7 @@ namespace GameLibrary.Mathematics
 {
     [DebuggerTypeProxy(typeof(DebuggerProxy))]
     [System.Serializable]
-    public partial struct Bool2 : System.IEquatable<Bool2>
+    public struct Bool2 : System.IEquatable<Bool2>
     {
         [MarshalAs(UnmanagedType.U1)] public bool x;
         [MarshalAs(UnmanagedType.U1)] public bool y;
@@ -513,44 +513,44 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of specified shuffling of the components from two Bool2 vectors into a bool value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool shuffle(Bool2 a, Bool2 b, ShuffleComponent x)
+        public static bool Shuffle(Bool2 a, Bool2 b, ShuffleComponent x)
         {
-            return select_shuffle_component(a, b, x);
+            return SelectShuffleComponent(a, b, x);
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two Bool2 vectors into a Bool2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool2 shuffle(Bool2 a, Bool2 b, ShuffleComponent x, ShuffleComponent y)
+        public static Bool2 Shuffle(Bool2 a, Bool2 b, ShuffleComponent x, ShuffleComponent y)
         {
             return Bool2(
-                select_shuffle_component(a, b, x),
-                select_shuffle_component(a, b, y));
+                SelectShuffleComponent(a, b, x),
+                SelectShuffleComponent(a, b, y));
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two Bool2 vectors into a Bool3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool3 shuffle(Bool2 a, Bool2 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z)
+        public static Bool3 Shuffle(Bool2 a, Bool2 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z)
         {
             return Bool3(
-                select_shuffle_component(a, b, x),
-                select_shuffle_component(a, b, y),
-                select_shuffle_component(a, b, z));
+                SelectShuffleComponent(a, b, x),
+                SelectShuffleComponent(a, b, y),
+                SelectShuffleComponent(a, b, z));
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two Bool2 vectors into a Bool4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool4 shuffle(Bool2 a, Bool2 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z,
+        public static Bool4 Shuffle(Bool2 a, Bool2 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z,
             ShuffleComponent w)
         {
             return Bool4(
-                select_shuffle_component(a, b, x),
-                select_shuffle_component(a, b, y),
-                select_shuffle_component(a, b, z),
-                select_shuffle_component(a, b, w));
+                SelectShuffleComponent(a, b, x),
+                SelectShuffleComponent(a, b, y),
+                SelectShuffleComponent(a, b, z),
+                SelectShuffleComponent(a, b, w));
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static bool select_shuffle_component(Bool2 a, Bool2 b, ShuffleComponent component)
+        internal static bool SelectShuffleComponent(Bool2 a, Bool2 b, ShuffleComponent component)
         {
             switch (component)
             {

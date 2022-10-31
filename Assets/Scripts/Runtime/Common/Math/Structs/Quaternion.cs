@@ -6,7 +6,7 @@ namespace GameLibrary.Mathematics
     [Serializable]
     public struct Quaternion : IEquatable<Quaternion>, IFormattable
     {
-        public Float4 _value;
+        public Float4 value;
 
         /// <summary>A quaternion representing the identity transform.</summary>
         public static Quaternion Identity =>
@@ -16,17 +16,17 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Quaternion(SoftFloat x, SoftFloat y, SoftFloat z, SoftFloat w)
         {
-            _value.x = x;
-            _value.y = y;
-            _value.z = z;
-            _value.w = w;
+            value.x = x;
+            value.y = y;
+            value.z = z;
+            value.w = w;
         }
 
         /// <summary>Constructs a quaternion from Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Quaternion(Float4 value)
         {
-            _value = value;
+            this.value = value;
         }
 
         /// <summary>Implicitly converts a Float4 vector to a quaternion.</summary>
@@ -54,12 +54,12 @@ namespace GameLibrary.Mathematics
                               (uMask & new UInt4(0x00000000, 0x80000000, 0x00000000, 0x80000000)) ^
                               (tMask & new UInt4(0x80000000, 0x80000000, 0x80000000, 0x00000000));
 
-            _value = new Float4(tr, u.y, w.x, v.z) +
+            value = new Float4(tr, u.y, w.x, v.z) +
                      Math.Asfloat(Math.Asuint(new Float4(t, v.x, u.z, w.y)) ^ signFlips); // +---, +++-, ++-+, +-++
 
-            _value = Math.Asfloat((Math.Asuint(_value) & ~uMask) | (Math.Asuint(_value.zwxy) & uMask));
-            _value = Math.Asfloat((Math.Asuint(_value.wzyx) & ~tMask) | (Math.Asuint(_value) & tMask));
-            _value = Math.Normalize(_value);
+            value = Math.Asfloat((Math.Asuint(value) & ~uMask) | (Math.Asuint(value.zwxy) & uMask));
+            value = Math.Asfloat((Math.Asuint(value.wzyx) & ~tMask) | (Math.Asuint(value) & tMask));
+            value = Math.Normalize(value);
         }
 
         /// <summary>Constructs a unit quaternion from an orthonormal Float4x4 matrix.</summary>
@@ -80,13 +80,13 @@ namespace GameLibrary.Mathematics
                               (uMask & new UInt4(0x00000000, 0x80000000, 0x00000000, 0x80000000)) ^
                               (tMask & new UInt4(0x80000000, 0x80000000, 0x80000000, 0x00000000));
 
-            _value = new Float4(tr, u.y, w.x, v.z) +
+            value = new Float4(tr, u.y, w.x, v.z) +
                      Math.Asfloat(Math.Asuint(new Float4(t, v.x, u.z, w.y)) ^ signFlips); // +---, +++-, ++-+, +-++
 
-            _value = Math.Asfloat((Math.Asuint(_value) & ~uMask) | (Math.Asuint(_value.zwxy) & uMask));
-            _value = Math.Asfloat((Math.Asuint(_value.wzyx) & ~tMask) | (Math.Asuint(_value) & tMask));
+            value = Math.Asfloat((Math.Asuint(value) & ~uMask) | (Math.Asuint(value.zwxy) & uMask));
+            value = Math.Asfloat((Math.Asuint(value.wzyx) & ~tMask) | (Math.Asuint(value) & tMask));
 
-            _value = Math.Normalize(_value);
+            value = Math.Normalize(value);
         }
 
         /// <summary>
@@ -423,14 +423,14 @@ namespace GameLibrary.Mathematics
             bool accept = mn > SoftFloat.FromRaw(smallValue) && mx < SoftFloat.FromRaw(bigValue) &&
                           Math.Isfinite(forwardLengthSq) && Math.Isfinite(upLengthSq) && Math.Isfinite(tLengthSq);
             return new Quaternion(Math.Select(new Float4(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One),
-                new Quaternion(new Float3X3(t, Math.Cross(forward, t), forward))._value, accept));
+                new Quaternion(new Float3X3(t, Math.Cross(forward, t), forward)).value, accept));
         }
 
         /// <summary>Returns true if the quaternion is equal to a given quaternion, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public bool Equals(Quaternion x)
         {
-            return _value.x == x._value.x && _value.y == x._value.y && _value.z == x._value.z && _value.w == x._value.w;
+            return value.x == x.value.x && value.y == x.value.y && value.z == x.value.z && value.w == x.value.w;
         }
 
         /// <summary>Returns whether true if the quaternion is equal to a given quaternion, false otherwise.</summary>
@@ -451,16 +451,16 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override string ToString()
         {
-            return string.Format("quaternion({0}f, {1}f, {2}f, {3}f)", _value.x, _value.y, _value.z, _value.w);
+            return string.Format("quaternion({0}f, {1}f, {2}f, {3}f)", value.x, value.y, value.z, value.w);
         }
 
         /// <summary>Returns a string representation of the quaternion using a specified format and culture-specific format information.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public string ToString(string format, IFormatProvider formatProvider)
         {
-            return string.Format("quaternion({0}f, {1}f, {2}f, {3}f)", _value.x.ToString(format, formatProvider),
-                _value.y.ToString(format, formatProvider), _value.z.ToString(format, formatProvider),
-                _value.w.ToString(format, formatProvider));
+            return string.Format("quaternion({0}f, {1}f, {2}f, {3}f)", value.x.ToString(format, formatProvider),
+                value.y.ToString(format, formatProvider), value.z.ToString(format, formatProvider),
+                value.w.ToString(format, formatProvider));
         }
     }
 
@@ -498,14 +498,14 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion Conjugate(Quaternion q)
         {
-            return new Quaternion(q._value * new Float4(-SoftFloat.One, -SoftFloat.One, -SoftFloat.One, SoftFloat.One));
+            return new Quaternion(q.value * new Float4(-SoftFloat.One, -SoftFloat.One, -SoftFloat.One, SoftFloat.One));
         }
 
         /// <summary>Returns the inverse of a quaternion value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion Inverse(Quaternion q)
         {
-            Float4 x = q._value;
+            Float4 x = q.value;
             return new Quaternion(Rcp(Dot(x, x)) * x *
                                   new Float4(-SoftFloat.One, -SoftFloat.One, -SoftFloat.One, SoftFloat.One));
         }
@@ -514,28 +514,28 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Dot(Quaternion a, Quaternion b)
         {
-            return Dot(a._value, b._value);
+            return Dot(a.value, b.value);
         }
 
         /// <summary>Returns the length of a quaternion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Length(Quaternion q)
         {
-            return Sqrt(Dot(q._value, q._value));
+            return Sqrt(Dot(q.value, q.value));
         }
 
         /// <summary>Returns the squared length of a quaternion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat LengthSqr(Quaternion q)
         {
-            return Dot(q._value, q._value);
+            return Dot(q.value, q.value);
         }
 
         /// <summary>Returns a normalized version of a quaternion q by scaling it by 1 / length(q).</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion Normalize(Quaternion q)
         {
-            Float4 x = q._value;
+            Float4 x = q.value;
             return new Quaternion(Rsqrt(Dot(x, x)) * x);
         }
 
@@ -546,9 +546,9 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion NormalizeSafe(Quaternion q)
         {
-            Float4 x = q._value;
+            Float4 x = q.value;
             SoftFloat len = Dot(x, x);
-            return new Quaternion(Select(Mathematics.Quaternion.Identity._value, x * Rsqrt(len), len > FLTMINNormal));
+            return new Quaternion(Select(Mathematics.Quaternion.Identity.value, x * Rsqrt(len), len > FLTMINNormal));
         }
 
         /// <summary>
@@ -558,77 +558,77 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion NormalizeSafe(Quaternion q, Quaternion defaultvalue)
         {
-            Float4 x = q._value;
+            Float4 x = q.value;
             SoftFloat len = Dot(x, x);
-            return new Quaternion(Select(defaultvalue._value, x * Rsqrt(len), len > FLTMINNormal));
+            return new Quaternion(Select(defaultvalue.value, x * Rsqrt(len), len > FLTMINNormal));
         }
 
         /// <summary>Returns the natural exponent of a quaternion. Assumes w is zero.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion Unitexp(Quaternion q)
         {
-            SoftFloat vRcpLen = Rsqrt(Dot(q._value.xyz, q._value.xyz));
+            SoftFloat vRcpLen = Rsqrt(Dot(q.value.xyz, q.value.xyz));
             SoftFloat vLen = Rcp(vRcpLen);
             SoftFloat sinVLen, cosVLen;
             SinCos(vLen, out sinVLen, out cosVLen);
-            return new Quaternion(new Float4(q._value.xyz * vRcpLen * sinVLen, cosVLen));
+            return new Quaternion(new Float4(q.value.xyz * vRcpLen * sinVLen, cosVLen));
         }
 
         /// <summary>Returns the natural exponent of a quaternion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion Exp(Quaternion q)
         {
-            SoftFloat vRcpLen = Rsqrt(Dot(q._value.xyz, q._value.xyz));
+            SoftFloat vRcpLen = Rsqrt(Dot(q.value.xyz, q.value.xyz));
             SoftFloat vLen = Rcp(vRcpLen);
             SoftFloat sinVLen, cosVLen;
             SinCos(vLen, out sinVLen, out cosVLen);
-            return new Quaternion(new Float4(q._value.xyz * vRcpLen * sinVLen, cosVLen) * Exp(q._value.w));
+            return new Quaternion(new Float4(q.value.xyz * vRcpLen * sinVLen, cosVLen) * Exp(q.value.w));
         }
 
         /// <summary>Returns the natural logarithm of a unit length quaternion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion Unitlog(Quaternion q)
         {
-            SoftFloat w = Clamp(q._value.w, -SoftFloat.One, SoftFloat.One);
+            SoftFloat w = Clamp(q.value.w, -SoftFloat.One, SoftFloat.One);
             SoftFloat s = Acos(w) * Rsqrt(SoftFloat.One - w * w);
-            return new Quaternion(new Float4(q._value.xyz * s, SoftFloat.Zero));
+            return new Quaternion(new Float4(q.value.xyz * s, SoftFloat.Zero));
         }
 
         /// <summary>Returns the natural logarithm of a quaternion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion Log(Quaternion q)
         {
-            SoftFloat vLenSq = Dot(q._value.xyz, q._value.xyz);
-            SoftFloat qLenSq = vLenSq + q._value.w * q._value.w;
+            SoftFloat vLenSq = Dot(q.value.xyz, q.value.xyz);
+            SoftFloat qLenSq = vLenSq + q.value.w * q.value.w;
 
-            SoftFloat s = Acos(Clamp(q._value.w * Rsqrt(qLenSq), -SoftFloat.One, SoftFloat.One)) * Rsqrt(vLenSq);
-            return new Quaternion(new Float4(q._value.xyz * s, (SoftFloat)0.5f * Log(qLenSq)));
+            SoftFloat s = Acos(Clamp(q.value.w * Rsqrt(qLenSq), -SoftFloat.One, SoftFloat.One)) * Rsqrt(vLenSq);
+            return new Quaternion(new Float4(q.value.xyz * s, (SoftFloat)0.5f * Log(qLenSq)));
         }
 
         /// <summary>Returns the result of transforming the quaternion b by the quaternion a.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion Mul(Quaternion a, Quaternion b)
         {
-            return new Quaternion(a._value.wwww * b._value +
-                                  (a._value.xyzx * b._value.wwwx + a._value.yzxy * b._value.zxyy) *
+            return new Quaternion(a.value.wwww * b.value +
+                                  (a.value.xyzx * b.value.wwwx + a.value.yzxy * b.value.zxyy) *
                                   new Float4(SoftFloat.One, SoftFloat.One, SoftFloat.One, -SoftFloat.One) -
-                                  a._value.zxyz * b._value.yzxz);
+                                  a.value.zxyz * b.value.yzxz);
         }
 
         /// <summary>Returns the result of transforming a vector by a quaternion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Float3 Mul(Quaternion q, Float3 v)
         {
-            Float3 t = (SoftFloat)2.0f * Cross(q._value.xyz, v);
-            return v + q._value.w * t + Cross(q._value.xyz, t);
+            Float3 t = (SoftFloat)2.0f * Cross(q.value.xyz, v);
+            return v + q.value.w * t + Cross(q.value.xyz, t);
         }
 
         /// <summary>Returns the result of rotating a vector by a unit quaternion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Float3 Rotate(Quaternion q, Float3 v)
         {
-            Float3 t = (SoftFloat)2.0f * Cross(q._value.xyz, v);
-            return v + q._value.w * t + Cross(q._value.xyz, t);
+            Float3 t = (SoftFloat)2.0f * Cross(q.value.xyz, v);
+            return v + q.value.w * t + Cross(q.value.xyz, t);
         }
 
         /// <summary>Returns the result of a normalized linear interpolation between two quaternions q1 and a2 using an interpolation parameter t.</summary>
@@ -638,10 +638,10 @@ namespace GameLibrary.Mathematics
             SoftFloat dt = Dot(q1, q2);
             if (dt < SoftFloat.Zero)
             {
-                q2._value = -q2._value;
+                q2.value = -q2.value;
             }
 
-            return Normalize(Quaternion(Lerp(q1._value, q2._value, t)));
+            return Normalize(Quaternion(Lerp(q1.value, q2.value, t)));
         }
 
         /// <summary>Returns the result of a spherical interpolation between two quaternions q1 and a2 using an interpolation parameter t.</summary>
@@ -652,7 +652,7 @@ namespace GameLibrary.Mathematics
             if (dt < SoftFloat.Zero)
             {
                 dt = -dt;
-                q2._value = -q2._value;
+                q2.value = -q2.value;
             }
 
             const uint almostOne = 0x3f7fdf3b;
@@ -662,7 +662,7 @@ namespace GameLibrary.Mathematics
                 SoftFloat s = Rsqrt(SoftFloat.One - dt * dt); // 1.0f / sin(angle)
                 SoftFloat w1 = Sin(angle * (SoftFloat.One - t)) * s;
                 SoftFloat w2 = Sin(angle * t) * s;
-                return new Quaternion(q1._value * w1 + q2._value * w2);
+                return new Quaternion(q1.value * w1 + q2.value * w2);
             }
             else
             {
@@ -675,7 +675,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint Hash(Quaternion q)
         {
-            return hash(q._value);
+            return hash(q.value);
         }
 
         /// <summary>
@@ -686,7 +686,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static UInt4 Hashwide(Quaternion q)
         {
-            return hashwide(q._value);
+            return hashwide(q.value);
         }
 
 

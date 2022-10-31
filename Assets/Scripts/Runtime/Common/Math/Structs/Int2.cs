@@ -9,7 +9,7 @@ namespace GameLibrary.Mathematics
 {
     [DebuggerTypeProxy(typeof(DebuggerProxy))]
     [Serializable]
-    public partial struct Int2 : IEquatable<Int2>, IFormattable
+    public struct Int2 : IEquatable<Int2>, IFormattable
     {
         public int x;
         public int y;
@@ -684,43 +684,43 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of specified shuffling of the components from two Int2 vectors into an int value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int shuffle(Int2 a, Int2 b, ShuffleComponent x)
+        public static int Shuffle(Int2 a, Int2 b, ShuffleComponent x)
         {
-            return select_shuffle_component(a, b, x);
+            return SelectShuffleComponent(a, b, x);
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two Int2 vectors into an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 shuffle(Int2 a, Int2 b, ShuffleComponent x, ShuffleComponent y)
+        public static Int2 Shuffle(Int2 a, Int2 b, ShuffleComponent x, ShuffleComponent y)
         {
             return Int2(
-                select_shuffle_component(a, b, x),
-                select_shuffle_component(a, b, y));
+                SelectShuffleComponent(a, b, x),
+                SelectShuffleComponent(a, b, y));
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two Int2 vectors into an Int3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 shuffle(Int2 a, Int2 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z)
+        public static Int3 Shuffle(Int2 a, Int2 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z)
         {
             return Int3(
-                select_shuffle_component(a, b, x),
-                select_shuffle_component(a, b, y),
-                select_shuffle_component(a, b, z));
+                SelectShuffleComponent(a, b, x),
+                SelectShuffleComponent(a, b, y),
+                SelectShuffleComponent(a, b, z));
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two Int2 vectors into an Int4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 shuffle(Int2 a, Int2 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z, ShuffleComponent w)
+        public static Int4 Shuffle(Int2 a, Int2 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z, ShuffleComponent w)
         {
             return Int4(
-                select_shuffle_component(a, b, x),
-                select_shuffle_component(a, b, y),
-                select_shuffle_component(a, b, z),
-                select_shuffle_component(a, b, w));
+                SelectShuffleComponent(a, b, x),
+                SelectShuffleComponent(a, b, y),
+                SelectShuffleComponent(a, b, z),
+                SelectShuffleComponent(a, b, w));
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static int select_shuffle_component(Int2 a, Int2 b, ShuffleComponent component)
+        internal static int SelectShuffleComponent(Int2 a, Int2 b, ShuffleComponent component)
         {
             switch(component)
             {

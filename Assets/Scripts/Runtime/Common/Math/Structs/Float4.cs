@@ -9,7 +9,7 @@ namespace GameLibrary.Mathematics
 {
     [DebuggerTypeProxy(typeof(DebuggerProxy))]
     [Serializable]
-    public partial struct Float4 : IEquatable<Float4>, IFormattable
+    public struct Float4 : IEquatable<Float4>, IFormattable
     {
         public SoftFloat x;
         public SoftFloat y;
@@ -3305,43 +3305,43 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of specified shuffling of the components from two Float4 vectors into a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat shuffle(Float4 a, Float4 b, ShuffleComponent x)
+        public static SoftFloat Shuffle(Float4 a, Float4 b, ShuffleComponent x)
         {
-            return select_shuffle_component(a, b, x);
+            return SelectShuffleComponent(a, b, x);
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two Float4 vectors into a Float2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2 shuffle(Float4 a, Float4 b, ShuffleComponent x, ShuffleComponent y)
+        public static Float2 Shuffle(Float4 a, Float4 b, ShuffleComponent x, ShuffleComponent y)
         {
             return Float2(
-                select_shuffle_component(a, b, x),
-                select_shuffle_component(a, b, y));
+                SelectShuffleComponent(a, b, x),
+                SelectShuffleComponent(a, b, y));
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two Float4 vectors into a Float3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 shuffle(Float4 a, Float4 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z)
+        public static Float3 Shuffle(Float4 a, Float4 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z)
         {
             return Float3(
-                select_shuffle_component(a, b, x),
-                select_shuffle_component(a, b, y),
-                select_shuffle_component(a, b, z));
+                SelectShuffleComponent(a, b, x),
+                SelectShuffleComponent(a, b, y),
+                SelectShuffleComponent(a, b, z));
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two Float4 vectors into a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 shuffle(Float4 a, Float4 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z, ShuffleComponent w)
+        public static Float4 Shuffle(Float4 a, Float4 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z, ShuffleComponent w)
         {
             return Float4(
-                select_shuffle_component(a, b, x),
-                select_shuffle_component(a, b, y),
-                select_shuffle_component(a, b, z),
-                select_shuffle_component(a, b, w));
+                SelectShuffleComponent(a, b, x),
+                SelectShuffleComponent(a, b, y),
+                SelectShuffleComponent(a, b, z),
+                SelectShuffleComponent(a, b, w));
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static SoftFloat select_shuffle_component(Float4 a, Float4 b, ShuffleComponent component)
+        internal static SoftFloat SelectShuffleComponent(Float4 a, Float4 b, ShuffleComponent component)
         {
             switch(component)
             {

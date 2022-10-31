@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 namespace GameLibrary.Mathematics
 {
     [Serializable]
-    public partial struct UInt2x2 : IEquatable<UInt2x2>, IFormattable
+    public struct UInt2x2 : IEquatable<UInt2x2>, IFormattable
     {
         public UInt2 c0;
         public UInt2 c1;

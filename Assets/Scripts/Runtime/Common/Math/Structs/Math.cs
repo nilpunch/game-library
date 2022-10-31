@@ -4133,14 +4133,14 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static Float4 Unpacklo(Float4 a, Float4 b)
         {
-            return shuffle(a, b, ShuffleComponent.LeftX, ShuffleComponent.RightX, ShuffleComponent.LeftY,
+            return Shuffle(a, b, ShuffleComponent.LeftX, ShuffleComponent.RightX, ShuffleComponent.LeftY,
                 ShuffleComponent.RightY);
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static Float4 Unpackhi(Float4 a, Float4 b)
         {
-            return shuffle(a, b, ShuffleComponent.LeftZ, ShuffleComponent.RightZ, ShuffleComponent.LeftW,
+            return Shuffle(a, b, ShuffleComponent.LeftZ, ShuffleComponent.RightZ, ShuffleComponent.LeftW,
                 ShuffleComponent.RightW);
         }
 
@@ -4148,7 +4148,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static Float4 Movelh(Float4 a, Float4 b)
         {
-            return shuffle(a, b, ShuffleComponent.LeftX, ShuffleComponent.LeftY, ShuffleComponent.RightX,
+            return Shuffle(a, b, ShuffleComponent.LeftX, ShuffleComponent.LeftY, ShuffleComponent.RightX,
                 ShuffleComponent.RightY);
         }
 
@@ -4156,7 +4156,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         internal static Float4 Movehl(Float4 a, Float4 b)
         {
-            return shuffle(b, a, ShuffleComponent.LeftZ, ShuffleComponent.LeftW, ShuffleComponent.RightZ,
+            return Shuffle(b, a, ShuffleComponent.LeftZ, ShuffleComponent.LeftW, ShuffleComponent.RightZ,
                 ShuffleComponent.RightW);
         }
     }

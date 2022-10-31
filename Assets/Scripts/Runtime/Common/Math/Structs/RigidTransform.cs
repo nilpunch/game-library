@@ -301,7 +301,7 @@ namespace GameLibrary.Mathematics
         public override string ToString()
         {
             return string.Format("RigidTransform(({0}f, {1}f, {2}f, {3}f),  ({4}f, {5}f, {6}f))",
-                _rot._value.x, _rot._value.y, _rot._value.z, _rot._value.w, _pos.x, _pos.y, _pos.z);
+                _rot.value.x, _rot.value.y, _rot.value.z, _rot.value.w, _pos.x, _pos.y, _pos.z);
         }
 
         /// <summary>Returns a string representation of the quaternion using a specified format and culture-specific format information.</summary>
@@ -309,10 +309,10 @@ namespace GameLibrary.Mathematics
         public string ToString(string format, IFormatProvider formatProvider)
         {
             return string.Format("Float4x4(({0}f, {1}f, {2}f, {3}f),  ({4}f, {5}f, {6}f))",
-                _rot._value.x.ToString(format, formatProvider),
-                _rot._value.y.ToString(format, formatProvider),
-                _rot._value.z.ToString(format, formatProvider),
-                _rot._value.w.ToString(format, formatProvider),
+                _rot.value.x.ToString(format, formatProvider),
+                _rot.value.y.ToString(format, formatProvider),
+                _rot.value.z.ToString(format, formatProvider),
+                _rot.value.w.ToString(format, formatProvider),
                 _pos.x.ToString(format, formatProvider),
                 _pos.y.ToString(format, formatProvider),
                 _pos.z.ToString(format, formatProvider));

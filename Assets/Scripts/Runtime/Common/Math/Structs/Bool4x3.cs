@@ -5,7 +5,7 @@ using System.Runtime.CompilerServices;
 namespace GameLibrary.Mathematics
 {
     [System.Serializable]
-    public partial struct Bool4x3 : System.IEquatable<Bool4x3>
+    public struct Bool4x3 : System.IEquatable<Bool4x3>
     {
         public Bool4 c0;
         public Bool4 c1;

@@ -54,7 +54,7 @@ namespace GameLibrary.Mathematics
         /// <summary>Constructs a Float3x3 matrix from a unit quaternion.</summary>
         public Float3X3(Quaternion q)
         {
-            Float4 v = q._value;
+            Float4 v = q.value;
             Float4 v2 = v + v;
 
             UInt3 npn = new UInt3(0x80000000, 0x00000000, 0x80000000);
