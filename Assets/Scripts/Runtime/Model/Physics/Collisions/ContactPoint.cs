@@ -1,10 +1,10 @@
-﻿using GameLibrary.Math;
+﻿using GameLibrary.Mathematics;
 
 namespace GameLibrary.Physics
 {
     public struct ContactPoint
     {
-        public Vector3 Position { get; }
-        public Vector3 Normal { get; }
+        public float3 Position { get; }
+        public float3 Normal { get; }
     }
 }

@@ -1,9 +1,9 @@
-﻿using GameLibrary.Math;
+﻿using GameLibrary.Mathematics;
 
 namespace GameLibrary.Sample
 {
     public interface IBullet
     {
-        void Throw(Vector3 velocity);
+        void Throw(float3 velocity);
     }
 }

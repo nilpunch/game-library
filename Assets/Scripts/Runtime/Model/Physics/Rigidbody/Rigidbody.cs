@@ -1,5 +1,5 @@
 ﻿using System;
-using GameLibrary.Math;
+using GameLibrary.Mathematics;
 
 namespace GameLibrary.Physics
 {
@@ -13,8 +13,8 @@ namespace GameLibrary.Physics
 
         public bool IsAlive { get; private set; }
 
-        public Vector3 Velocity { get; set; }
-        public Vector3 Position { get; set; }
+        public float3 Velocity { get; set; }
+        public float3 Position { get; set; }
         
         public ICollider Collider { get; }
 

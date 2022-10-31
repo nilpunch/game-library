@@ -2,6 +2,6 @@
 {
 	public interface ICollisionSolver
 	{
-		void Solve(CollisionManifold[] collisionManifolds);
+		void Solve(CollisionManifold[] collisionManifolds, long timeStep);
 	}
 }

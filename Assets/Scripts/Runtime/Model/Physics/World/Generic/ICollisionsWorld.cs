@@ -1,4 +1,4 @@
-﻿using GameLibrary.Math;
+﻿using GameLibrary.Mathematics;
 
 namespace GameLibrary.Physics
 {
@@ -6,6 +6,6 @@ namespace GameLibrary.Physics
     {
         CollisionManifold<TConcrete>[] CollisionsWith(IRigidbody rigidbody);
         
-        RaycastHit<TConcrete> Raycast(Vector3 from, Vector3 direction);
+        RaycastHit<TConcrete> Raycast(float3 from, float3 direction);
     }
 }

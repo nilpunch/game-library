@@ -1,10 +1,10 @@
-﻿using GameLibrary.Math;
+﻿using GameLibrary.Mathematics;
 
 namespace GameLibrary.Physics
 {
     public struct Sphere
     {
-        Vector3 Center { get; }
-        Scalar Radius { get; }
+        float3 Center { get; }
+        SoftFloat Radius { get; }
     }
 }

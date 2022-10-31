@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GameLibrary.Lifetime;
-using GameLibrary.Math;
+using GameLibrary.Mathematics;
 
 
 namespace GameLibrary.Physics
@@ -47,7 +47,7 @@ namespace GameLibrary.Physics
             return Array.Empty<CollisionManifold>();
         }
 
-        public RaycastHit Raycast(Vector3 from, Vector3 direction)
+        public RaycastHit Raycast(float3 from, float3 direction)
         {
             throw new NotImplementedException();
         }

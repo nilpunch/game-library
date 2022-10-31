@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GameLibrary.Lifetime;
-using GameLibrary.Math;
+using GameLibrary.Mathematics;
 
 namespace GameLibrary.Physics
 {
@@ -46,7 +46,7 @@ namespace GameLibrary.Physics
             throw new NotImplementedException();
         }
 
-        public RaycastHit<TConcrete> Raycast(Vector3 from, Vector3 direction)
+        public RaycastHit<TConcrete> Raycast(float3 from, float3 direction)
         {
             RaycastHit raycastHit = _parent.Raycast(from, direction);
 

@@ -1,11 +1,11 @@
-﻿using GameLibrary.Math;
+﻿using GameLibrary.Mathematics;
 
 namespace GameLibrary.Physics
 {
     public struct Box
     {
-        Vector3 Center { get; }
-        Quaternion Rotation { get; }
-        Vector3 Size { get; }
+        float3 Center { get; }
+        quaternion Rotation { get; }
+        float3 Size { get; }
     }
 }

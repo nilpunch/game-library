@@ -1,10 +1,10 @@
-﻿using GameLibrary.Math;
+﻿using GameLibrary.Mathematics;
 
 namespace GameLibrary.Physics
 {
     public struct ConvexHull
     {
-        Vector3 Center { get; }
+        float3 Center { get; }
         Mesh Mesh { get; }
     }
 }

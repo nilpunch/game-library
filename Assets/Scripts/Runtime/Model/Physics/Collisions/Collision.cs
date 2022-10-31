@@ -1,16 +1,20 @@
 ﻿using System;
-using GameLibrary.Math;
+using GameLibrary.Mathematics;
 
 namespace GameLibrary.Physics
 {
-    public struct Collision
+    public readonly struct Collision
     {
+        public bool Occure { get; }
+        
         public ContactPoint[] Contacts { get; }
 
-        public Vector3 PenetrationNormal { get; }
+        public float3 PenetrationNormal { get; }
         
         public float PenetrationDepth { get; }
 
+        
+        
         public Collision Merge(Collision other)
         {
             throw new NotImplementedException();

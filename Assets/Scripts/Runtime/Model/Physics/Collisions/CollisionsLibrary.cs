@@ -1,4 +1,6 @@
-﻿namespace GameLibrary.Physics
+﻿using GameLibrary.Mathematics;
+
+namespace GameLibrary.Physics
 {
     public class CollisionsLibrary : ICollisionsLibrary
     {
