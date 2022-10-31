@@ -189,7 +189,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(bool2x2 v)
         {
-            return Csum(Select(UInt2(0x7AF32C49u, 0xAE131389u), UInt2(0x5D1B165Bu, 0x87096CD7u), v.c0) +
+            return SumComponents(Select(UInt2(0x7AF32C49u, 0xAE131389u), UInt2(0x5D1B165Bu, 0x87096CD7u), v.c0) +
                         Select(UInt2(0x4C7F6DD1u, 0x4822A3E9u), UInt2(0xAAC3C25Du, 0xD21D0945u), v.c1));
         }
 

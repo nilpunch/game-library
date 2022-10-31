@@ -50,17 +50,17 @@ namespace GameLibrary.Mathematics
                 && Contains(b._center + new Float3(b._extents.x,  b._extents.y,  b._extents.z));
         }
 
+        public SoftFloat DistanceSqr(Float3 point)
+        {
+            return Math.LengthSqr(Math.Max(Math.Abs(point - _center), _extents) - _extents);
+        }
+
         public static AABB Transform(Float4X4 transform, AABB localBounds)
         {
             AABB transformed;
             transformed._extents = RotateExtents(localBounds._extents, transform.c0.xyz, transform.c1.xyz, transform.c2.xyz);
             transformed._center = Math.transform(transform, localBounds._center);
             return transformed;
-        }
-
-        public SoftFloat DistanceSq(Float3 point)
-        {
-            return Math.LengthSqr(Math.MAX(Math.Abs(point - _center), _extents) - _extents);
         }
 
         private static Float3 RotateExtents(Float3 extents, Float3 m0, Float3 m1, Float3 m2)

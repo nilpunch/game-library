@@ -9,7 +9,7 @@ namespace GameLibrary.Mathematics
         public static Float2X2 Rotate(SoftFloat angle)
         {
             SoftFloat s, c;
-            Math.Sincos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float2X2(c, -s,
                             s,  c);
         }
@@ -73,7 +73,7 @@ namespace GameLibrary.Mathematics
         public static Float3X3 AxisAngle(Float3 axis, SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            Math.Sincos(angle, out sina, out cosa);
+            Math.SinCos(angle, out sina, out cosa);
 
             Float3 u = axis;
             Float3 uYZX = u.yzx;
@@ -109,7 +109,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateZ(xyz.z), mul(rotateY(xyz.y), rotateX(xyz.x)));
             Float3 s, c;
-            Math.Sincos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float3X3(
                 c.y * c.z,  c.z * s.x * s.y - c.x * s.z,    c.x * c.z * s.y + s.x * s.z,
                 c.y * s.z,  c.x * c.z + s.x * s.y * s.z,    c.x * s.y * s.z - c.z * s.x,
@@ -127,7 +127,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateY(xyz.y), mul(rotateZ(xyz.z), rotateX(xyz.x))); }
             Float3 s, c;
-            Math.Sincos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float3X3(
                 c.y * c.z,  s.x * s.y - c.x * c.y * s.z,    c.x * s.y + c.y * s.x * s.z,
                 s.z,        c.x * c.z,                      -c.z * s.x,
@@ -145,7 +145,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateZ(xyz.z), mul(rotateX(xyz.x), rotateY(xyz.y)));
             Float3 s, c;
-            Math.Sincos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float3X3(
                 c.y * c.z - s.x * s.y * s.z,    -c.x * s.z, c.z * s.y + c.y * s.x * s.z,
                 c.z * s.x * s.y + c.y * s.z,    c.x * c.z,  s.y * s.z - c.y * c.z * s.x,
@@ -163,7 +163,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateX(xyz.x), mul(rotateZ(xyz.z), rotateY(xyz.y)));
             Float3 s, c;
-            Math.Sincos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float3X3(
                 c.y * c.z,                      -s.z,       c.z * s.y,
                 s.x * s.y + c.x * c.y * s.z,    c.x * c.z,  c.x * s.y * s.z - c.y * s.x,
@@ -182,7 +182,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateY(xyz.y), mul(rotateX(xyz.x), rotateZ(xyz.z)));
             Float3 s, c;
-            Math.Sincos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float3X3(
                 c.y * c.z + s.x * s.y * s.z,    c.z * s.x * s.y - c.y * s.z,    c.x * s.y,
                 c.x * s.z,                      c.x * c.z,                      -s.x,
@@ -200,7 +200,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateX(xyz.x), mul(rotateY(xyz.y), rotateZ(xyz.z)));
             Float3 s, c;
-            Math.Sincos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float3X3(
                 c.y * c.z,                      -c.y * s.z,                     s.y,
                 c.z * s.x * s.y + c.x * s.z,    c.x * c.z - s.x * s.y * s.z,    -c.y * s.x,
@@ -322,7 +322,7 @@ namespace GameLibrary.Mathematics
         {
             // {{1, 0, 0}, {0, c_0, -s_0}, {0, s_0, c_0}}
             SoftFloat s, c;
-            Math.Sincos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float3X3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero,
                             SoftFloat.Zero, c,    -s,
                             SoftFloat.Zero, s,    c);
@@ -335,7 +335,7 @@ namespace GameLibrary.Mathematics
         {
             // {{c_1, 0, s_1}, {0, 1, 0}, {-s_1, 0, c_1}}
             SoftFloat s, c;
-            Math.Sincos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float3X3(c, SoftFloat.Zero, s,
                             SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero,
                             -s, SoftFloat.Zero, c);
@@ -348,7 +348,7 @@ namespace GameLibrary.Mathematics
         {
             // {{c_2, -s_2, 0}, {s_2, c_2, 0}, {0, 0, 1}}
             SoftFloat s, c;
-            Math.Sincos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float3X3(c,    -s, SoftFloat.Zero,
                             s,    c, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
@@ -410,8 +410,8 @@ namespace GameLibrary.Mathematics
             SoftFloat tLengthSq = Math.Dot(t, t);
             t *= Math.Rsqrt(tLengthSq);
 
-            SoftFloat mn = Math.MIN(Math.MIN(forwardLengthSq, upLengthSq), tLengthSq);
-            SoftFloat mx = Math.MAX(Math.MAX(forwardLengthSq, upLengthSq), tLengthSq);
+            SoftFloat mn = Math.Min(Math.Min(forwardLengthSq, upLengthSq), tLengthSq);
+            SoftFloat mx = Math.Max(Math.Max(forwardLengthSq, upLengthSq), tLengthSq);
 
             const uint bigValue = 0x799a130c;
             const uint smallValue = 0x0554ad2e;
@@ -465,7 +465,7 @@ namespace GameLibrary.Mathematics
         public static Float4X4 AxisAngle(Float3 axis, SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            Math.Sincos(angle, out sina, out cosa);
+            Math.SinCos(angle, out sina, out cosa);
 
             Float4 u = new Float4(axis, SoftFloat.Zero);
             Float4 uYZX = u.yzxx;
@@ -497,7 +497,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateZ(xyz.z), mul(rotateY(xyz.y), rotateX(xyz.x)));
             Float3 s, c;
-            Math.Sincos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float4X4(
                 c.y * c.z,  c.z * s.x * s.y - c.x * s.z,    c.x * c.z * s.y + s.x * s.z,    SoftFloat.Zero,
                 c.y * s.z,  c.x * c.z + s.x * s.y * s.z,    c.x * s.y * s.z - c.z * s.x,    SoftFloat.Zero,
@@ -516,7 +516,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateY(xyz.y), mul(rotateZ(xyz.z), rotateX(xyz.x))); }
             Float3 s, c;
-            Math.Sincos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float4X4(
                 c.y * c.z,  s.x * s.y - c.x * c.y * s.z,    c.x * s.y + c.y * s.x * s.z,    SoftFloat.Zero,
                 s.z,        c.x * c.z,                      -c.z * s.x,                     SoftFloat.Zero,
@@ -535,7 +535,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateZ(xyz.z), mul(rotateX(xyz.x), rotateY(xyz.y)));
             Float3 s, c;
-            Math.Sincos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float4X4(
                 c.y * c.z - s.x * s.y * s.z,    -c.x * s.z, c.z * s.y + c.y * s.x * s.z,    SoftFloat.Zero,
                 c.z * s.x * s.y + c.y * s.z,    c.x * c.z,  s.y * s.z - c.y * c.z * s.x,    SoftFloat.Zero,
@@ -554,7 +554,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateX(xyz.x), mul(rotateZ(xyz.z), rotateY(xyz.y)));
             Float3 s, c;
-            Math.Sincos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float4X4(
                 c.y * c.z,                      -s.z,       c.z * s.y,                      SoftFloat.Zero,
                 s.x * s.y + c.x * c.y * s.z,    c.x * c.z,  c.x * s.y * s.z - c.y * s.x,    SoftFloat.Zero,
@@ -574,7 +574,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateY(xyz.y), mul(rotateX(xyz.x), rotateZ(xyz.z)));
             Float3 s, c;
-            Math.Sincos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float4X4(
                 c.y * c.z + s.x * s.y * s.z,    c.z * s.x * s.y - c.y * s.z,    c.x * s.y,  SoftFloat.Zero,
                 c.x * s.z,                      c.x * c.z,                      -s.x,       SoftFloat.Zero,
@@ -593,7 +593,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateX(xyz.x), mul(rotateY(xyz.y), rotateZ(xyz.z)));
             Float3 s, c;
-            Math.Sincos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float4X4(
                 c.y * c.z,                      -c.y * s.z,                     s.y,        SoftFloat.Zero,
                 c.z * s.x * s.y + c.x * s.z,    c.x * c.z - s.x * s.y * s.z,    -c.y * s.x, SoftFloat.Zero,
@@ -708,7 +708,7 @@ namespace GameLibrary.Mathematics
         {
             // {{1, 0, 0}, {0, c_0, -s_0}, {0, s_0, c_0}}
             SoftFloat s, c;
-            Math.Sincos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float4X4(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero,
                             SoftFloat.Zero, c, -s, SoftFloat.Zero,
                             SoftFloat.Zero, s, c, SoftFloat.Zero,
@@ -723,7 +723,7 @@ namespace GameLibrary.Mathematics
         {
             // {{c_1, 0, s_1}, {0, 1, 0}, {-s_1, 0, c_1}}
             SoftFloat s, c;
-            Math.Sincos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float4X4(c, SoftFloat.Zero, s, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero,
                             -s, SoftFloat.Zero, c, SoftFloat.Zero,
@@ -738,7 +738,7 @@ namespace GameLibrary.Mathematics
         {
             // {{c_2, -s_2, 0}, {s_2, c_2, 0}, {0, 0, 1}}
             SoftFloat s, c;
-            Math.Sincos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float4X4(c, -s, SoftFloat.Zero, SoftFloat.Zero,
                             s, c, SoftFloat.Zero, SoftFloat.Zero,
                             SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero,

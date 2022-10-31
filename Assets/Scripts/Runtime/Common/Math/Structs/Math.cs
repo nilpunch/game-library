@@ -389,124 +389,124 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the minimum of two int values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MIN(int x, int y) { return x < y ? x : y; }
+        public static int Min(int x, int y) { return x < y ? x : y; }
 
         /// <summary>Returns the componentwise minimum of two Int2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 MIN(Int2 x, Int2 y) { return new Int2(MIN(x.x, y.x), MIN(x.y, y.y)); }
+        public static Int2 Min(Int2 x, Int2 y) { return new Int2(Min(x.x, y.x), Min(x.y, y.y)); }
 
         /// <summary>Returns the componentwise minimum of two Int3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 MIN(Int3 x, Int3 y) { return new Int3(MIN(x.x, y.x), MIN(x.y, y.y), MIN(x.z, y.z)); }
+        public static Int3 Min(Int3 x, Int3 y) { return new Int3(Min(x.x, y.x), Min(x.y, y.y), Min(x.z, y.z)); }
 
         /// <summary>Returns the componentwise minimum of two Int4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 MIN(Int4 x, Int4 y) { return new Int4(MIN(x.x, y.x), MIN(x.y, y.y), MIN(x.z, y.z), MIN(x.w, y.w)); }
+        public static Int4 Min(Int4 x, Int4 y) { return new Int4(Min(x.x, y.x), Min(x.y, y.y), Min(x.z, y.z), Min(x.w, y.w)); }
 
 
         /// <summary>Returns the minimum of two uint values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint MIN(uint x, uint y) { return x < y ? x : y; }
+        public static uint Min(uint x, uint y) { return x < y ? x : y; }
 
         /// <summary>Returns the componentwise minimum of two UInt2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 MIN(UInt2 x, UInt2 y) { return new UInt2(MIN(x.x, y.x), MIN(x.y, y.y)); }
+        public static UInt2 Min(UInt2 x, UInt2 y) { return new UInt2(Min(x.x, y.x), Min(x.y, y.y)); }
 
         /// <summary>Returns the componentwise minimum of two UInt3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 MIN(UInt3 x, UInt3 y) { return new UInt3(MIN(x.x, y.x), MIN(x.y, y.y), MIN(x.z, y.z)); }
+        public static UInt3 Min(UInt3 x, UInt3 y) { return new UInt3(Min(x.x, y.x), Min(x.y, y.y), Min(x.z, y.z)); }
 
         /// <summary>Returns the componentwise minimum of two UInt4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 MIN(UInt4 x, UInt4 y) { return new UInt4(MIN(x.x, y.x), MIN(x.y, y.y), MIN(x.z, y.z), MIN(x.w, y.w)); }
+        public static UInt4 Min(UInt4 x, UInt4 y) { return new UInt4(Min(x.x, y.x), Min(x.y, y.y), Min(x.z, y.z), Min(x.w, y.w)); }
 
 
         /// <summary>Returns the minimum of two long values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long MIN(long x, long y) { return x < y ? x : y; }
+        public static long Min(long x, long y) { return x < y ? x : y; }
 
 
         /// <summary>Returns the minimum of two ulong values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong MIN(ulong x, ulong y) { return x < y ? x : y; }
+        public static ulong Min(ulong x, ulong y) { return x < y ? x : y; }
 
 
         /// <summary>Returns the minimum of two float values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat MIN(SoftFloat x, SoftFloat y) { return y.IsNaN() || x < y ? x : y; }
+        public static SoftFloat Min(SoftFloat x, SoftFloat y) { return y.IsNaN() || x < y ? x : y; }
 
         /// <summary>Returns the componentwise minimum of two Float2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2 MIN(Float2 x, Float2 y) { return new Float2(MIN(x.x, y.x), MIN(x.y, y.y)); }
+        public static Float2 Min(Float2 x, Float2 y) { return new Float2(Min(x.x, y.x), Min(x.y, y.y)); }
 
         /// <summary>Returns the componentwise minimum of two Float3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 MIN(Float3 x, Float3 y) { return new Float3(MIN(x.x, y.x), MIN(x.y, y.y), MIN(x.z, y.z)); }
+        public static Float3 Min(Float3 x, Float3 y) { return new Float3(Min(x.x, y.x), Min(x.y, y.y), Min(x.z, y.z)); }
 
         /// <summary>Returns the componentwise minimum of two Float4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 MIN(Float4 x, Float4 y) { return new Float4(MIN(x.x, y.x), MIN(x.y, y.y), MIN(x.z, y.z), MIN(x.w, y.w)); }
+        public static Float4 Min(Float4 x, Float4 y) { return new Float4(Min(x.x, y.x), Min(x.y, y.y), Min(x.z, y.z), Min(x.w, y.w)); }
 
 
         /// <summary>Returns the maximum of two int values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int MAX(int x, int y) { return x > y ? x : y; }
+        public static int Max(int x, int y) { return x > y ? x : y; }
 
         /// <summary>Returns the componentwise maximum of two Int2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 MAX(Int2 x, Int2 y) { return new Int2(MAX(x.x, y.x), MAX(x.y, y.y)); }
+        public static Int2 Max(Int2 x, Int2 y) { return new Int2(Max(x.x, y.x), Max(x.y, y.y)); }
 
         /// <summary>Returns the componentwise maximum of two Int3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 MAX(Int3 x, Int3 y) { return new Int3(MAX(x.x, y.x), MAX(x.y, y.y), MAX(x.z, y.z)); }
+        public static Int3 Max(Int3 x, Int3 y) { return new Int3(Max(x.x, y.x), Max(x.y, y.y), Max(x.z, y.z)); }
 
         /// <summary>Returns the componentwise maximum of two Int4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 MAX(Int4 x, Int4 y) { return new Int4(MAX(x.x, y.x), MAX(x.y, y.y), MAX(x.z, y.z), MAX(x.w, y.w)); }
+        public static Int4 Max(Int4 x, Int4 y) { return new Int4(Max(x.x, y.x), Max(x.y, y.y), Max(x.z, y.z), Max(x.w, y.w)); }
 
 
         /// <summary>Returns the maximum of two uint values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint MAX(uint x, uint y) { return x > y ? x : y; }
+        public static uint Max(uint x, uint y) { return x > y ? x : y; }
 
         /// <summary>Returns the componentwise maximum of two UInt2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 MAX(UInt2 x, UInt2 y) { return new UInt2(MAX(x.x, y.x), MAX(x.y, y.y)); }
+        public static UInt2 Max(UInt2 x, UInt2 y) { return new UInt2(Max(x.x, y.x), Max(x.y, y.y)); }
 
         /// <summary>Returns the componentwise maximum of two UInt3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 MAX(UInt3 x, UInt3 y) { return new UInt3(MAX(x.x, y.x), MAX(x.y, y.y), MAX(x.z, y.z)); }
+        public static UInt3 Max(UInt3 x, UInt3 y) { return new UInt3(Max(x.x, y.x), Max(x.y, y.y), Max(x.z, y.z)); }
 
         /// <summary>Returns the componentwise maximum of two UInt4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 MAX(UInt4 x, UInt4 y) { return new UInt4(MAX(x.x, y.x), MAX(x.y, y.y), MAX(x.z, y.z), MAX(x.w, y.w)); }
+        public static UInt4 Max(UInt4 x, UInt4 y) { return new UInt4(Max(x.x, y.x), Max(x.y, y.y), Max(x.z, y.z), Max(x.w, y.w)); }
 
 
         /// <summary>Returns the maximum of two long values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long MAX(long x, long y) { return x > y ? x : y; }
+        public static long Max(long x, long y) { return x > y ? x : y; }
 
 
         /// <summary>Returns the maximum of two ulong values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong MAX(ulong x, ulong y) { return x > y ? x : y; }
+        public static ulong Max(ulong x, ulong y) { return x > y ? x : y; }
 
 
         /// <summary>Returns the maximum of two float values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat MAX(SoftFloat x, SoftFloat y) { return y.IsNaN() || x > y ? x : y; }
+        public static SoftFloat Max(SoftFloat x, SoftFloat y) { return y.IsNaN() || x > y ? x : y; }
 
         /// <summary>Returns the componentwise maximum of two Float2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2 MAX(Float2 x, Float2 y) { return new Float2(MAX(x.x, y.x), MAX(x.y, y.y)); }
+        public static Float2 Max(Float2 x, Float2 y) { return new Float2(Max(x.x, y.x), Max(x.y, y.y)); }
 
         /// <summary>Returns the componentwise maximum of two Float3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 MAX(Float3 x, Float3 y) { return new Float3(MAX(x.x, y.x), MAX(x.y, y.y), MAX(x.z, y.z)); }
+        public static Float3 Max(Float3 x, Float3 y) { return new Float3(Max(x.x, y.x), Max(x.y, y.y), Max(x.z, y.z)); }
 
         /// <summary>Returns the componentwise maximum of two Float4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 MAX(Float4 x, Float4 y) { return new Float4(MAX(x.x, y.x), MAX(x.y, y.y), MAX(x.z, y.z), MAX(x.w, y.w)); }
+        public static Float4 Max(Float4 x, Float4 y) { return new Float4(Max(x.x, y.x), Max(x.y, y.y), Max(x.z, y.z), Max(x.w, y.w)); }
 
 
 
@@ -637,62 +637,62 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of clamping the value x into the interval [a, b], where x, a and b are int values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Clamp(int x, int a, int b) { return MAX(a, MIN(b, x)); }
+        public static int Clamp(int x, int a, int b) { return Max(a, Min(b, x)); }
 
         /// <summary>Returns the result of a componentwise clamping of the Int2 x into the interval [a, b], where a and b are Int2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Clamp(Int2 x, Int2 a, Int2 b) { return MAX(a, MIN(b, x)); }
+        public static Int2 Clamp(Int2 x, Int2 a, Int2 b) { return Max(a, Min(b, x)); }
 
         /// <summary>Returns the result of a componentwise clamping of the Int3 x into the interval [a, b], where x, a and b are Int3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Clamp(Int3 x, Int3 a, Int3 b) { return MAX(a, MIN(b, x)); }
+        public static Int3 Clamp(Int3 x, Int3 a, Int3 b) { return Max(a, Min(b, x)); }
 
         /// <summary>Returns the result of a componentwise clamping of the value x into the interval [a, b], where x, a and b are Int4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Clamp(Int4 x, Int4 a, Int4 b) { return MAX(a, MIN(b, x)); }
+        public static Int4 Clamp(Int4 x, Int4 a, Int4 b) { return Max(a, Min(b, x)); }
 
 
         /// <summary>Returns the result of clamping the value x into the interval [a, b], where x, a and b are uint values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Clamp(uint x, uint a, uint b) { return MAX(a, MIN(b, x)); }
+        public static uint Clamp(uint x, uint a, uint b) { return Max(a, Min(b, x)); }
 
         /// <summary>Returns the result of a componentwise clamping of the value x into the interval [a, b], where x, a and b are UInt2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 Clamp(UInt2 x, UInt2 a, UInt2 b) { return MAX(a, MIN(b, x)); }
+        public static UInt2 Clamp(UInt2 x, UInt2 a, UInt2 b) { return Max(a, Min(b, x)); }
 
         /// <summary>Returns the result of a componentwise clamping of the value x into the interval [a, b], where x, a and b are UInt3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 Clamp(UInt3 x, UInt3 a, UInt3 b) { return MAX(a, MIN(b, x)); }
+        public static UInt3 Clamp(UInt3 x, UInt3 a, UInt3 b) { return Max(a, Min(b, x)); }
 
         /// <summary>Returns the result of a componentwise clamping of the value x into the interval [a, b], where x, a and b are UInt4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 Clamp(UInt4 x, UInt4 a, UInt4 b) { return MAX(a, MIN(b, x)); }
+        public static UInt4 Clamp(UInt4 x, UInt4 a, UInt4 b) { return Max(a, Min(b, x)); }
 
 
         /// <summary>Returns the result of clamping the value x into the interval [a, b], where x, a and b are long values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long Clamp(long x, long a, long b) { return MAX(a, MIN(b, x)); }
+        public static long Clamp(long x, long a, long b) { return Max(a, Min(b, x)); }
 
         /// <summary>Returns the result of clamping the value x into the interval [a, b], where x, a and b are ulong values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong Clamp(ulong x, ulong a, ulong b) { return MAX(a, MIN(b, x)); }
+        public static ulong Clamp(ulong x, ulong a, ulong b) { return Max(a, Min(b, x)); }
 
 
         /// <summary>Returns the result of clamping the value x into the interval [a, b], where x, a and b are float values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Clamp(SoftFloat x, SoftFloat a, SoftFloat b) { return MAX(a, MIN(b, x)); }
+        public static SoftFloat Clamp(SoftFloat x, SoftFloat a, SoftFloat b) { return Max(a, Min(b, x)); }
 
         /// <summary>Returns the result of a componentwise clamping of the value x into the interval [a, b], where x, a and b are Float2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2 Clamp(Float2 x, Float2 a, Float2 b) { return MAX(a, MIN(b, x)); }
+        public static Float2 Clamp(Float2 x, Float2 a, Float2 b) { return Max(a, Min(b, x)); }
 
         /// <summary>Returns the result of a componentwise clamping of the value x into the interval [a, b], where x, a and b are Float3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 Clamp(Float3 x, Float3 a, Float3 b) { return MAX(a, MIN(b, x)); }
+        public static Float3 Clamp(Float3 x, Float3 a, Float3 b) { return Max(a, Min(b, x)); }
 
         /// <summary>Returns the result of a componentwise clamping of the value x into the interval [a, b], where x, a and b are Float4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 Clamp(Float4 x, Float4 a, Float4 b) { return MAX(a, MIN(b, x)); }
+        public static Float4 Clamp(Float4 x, Float4 a, Float4 b) { return Max(a, Min(b, x)); }
 
 
         /// <summary>Returns the result of clamping the float value x into the interval [0, 1].</summary>
@@ -714,23 +714,23 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the absolute value of a int value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Abs(int x) { return MAX(-x, x); }
+        public static int Abs(int x) { return Max(-x, x); }
 
         /// <summary>Returns the componentwise absolute value of a Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Abs(Int2 x) { return MAX(-x, x); }
+        public static Int2 Abs(Int2 x) { return Max(-x, x); }
 
         /// <summary>Returns the componentwise absolute value of a Int3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Abs(Int3 x) { return MAX(-x, x); }
+        public static Int3 Abs(Int3 x) { return Max(-x, x); }
 
         /// <summary>Returns the componentwise absolute value of a Int4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Abs(Int4 x) { return MAX(-x, x); }
+        public static Int4 Abs(Int4 x) { return Max(-x, x); }
 
         /// <summary>Returns the absolute value of a long value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long Abs(long x) { return MAX(-x, x); }
+        public static long Abs(long x) { return Max(-x, x); }
 
 
         /// <summary>Returns the absolute value of a float value.</summary>
@@ -1109,53 +1109,53 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the natural logarithm of a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat LOG(SoftFloat x) { return SoftFloatMath.Log(x); }
+        public static SoftFloat Log(SoftFloat x) { return SoftFloatMath.Log(x); }
 
         /// <summary>Returns the componentwise natural logarithm of a Float2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2 LOG(Float2 x) { return new Float2(LOG(x.x), LOG(x.y)); }
+        public static Float2 Log(Float2 x) { return new Float2(Log(x.x), Log(x.y)); }
 
         /// <summary>Returns the componentwise natural logarithm of a Float3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 LOG(Float3 x) { return new Float3(LOG(x.x), LOG(x.y), LOG(x.z)); }
+        public static Float3 Log(Float3 x) { return new Float3(Log(x.x), Log(x.y), Log(x.z)); }
 
         /// <summary>Returns the componentwise natural logarithm of a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 LOG(Float4 x) { return new Float4(LOG(x.x), LOG(x.y), LOG(x.z), LOG(x.w)); }
+        public static Float4 Log(Float4 x) { return new Float4(Log(x.x), Log(x.y), Log(x.z), Log(x.w)); }
 
 
         /// <summary>Returns the base-2 logarithm of a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat LOG2(SoftFloat x) { return SoftFloatMath.Log2(x); }
+        public static SoftFloat Log2(SoftFloat x) { return SoftFloatMath.Log2(x); }
 
         /// <summary>Returns the componentwise base-2 logarithm of a Float2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2 LOG2(Float2 x) { return new Float2(LOG2(x.x), LOG2(x.y)); }
+        public static Float2 Log2(Float2 x) { return new Float2(Log2(x.x), Log2(x.y)); }
 
         /// <summary>Returns the componentwise base-2 logarithm of a Float3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 LOG2(Float3 x) { return new Float3(LOG2(x.x), LOG2(x.y), LOG2(x.z)); }
+        public static Float3 Log2(Float3 x) { return new Float3(Log2(x.x), Log2(x.y), Log2(x.z)); }
 
         /// <summary>Returns the componentwise base-2 logarithm of a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 LOG2(Float4 x) { return new Float4(LOG2(x.x), LOG2(x.y), LOG2(x.z), LOG2(x.w)); }
+        public static Float4 Log2(Float4 x) { return new Float4(Log2(x.x), Log2(x.y), Log2(x.z), Log2(x.w)); }
 
 
         /// <summary>Returns the base-10 logarithm of a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat LOG10(SoftFloat x) { return SoftFloatMath.Log(x) * LOG10E; }
+        public static SoftFloat Log10(SoftFloat x) { return SoftFloatMath.Log(x) * LOG10E; }
 
         /// <summary>Returns the componentwise base-10 logarithm of a Float2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2 LOG10(Float2 x) { return new Float2(LOG10(x.x), LOG10(x.y)); }
+        public static Float2 Log10(Float2 x) { return new Float2(Log10(x.x), Log10(x.y)); }
 
         /// <summary>Returns the componentwise base-10 logarithm of a Float3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 LOG10(Float3 x) { return new Float3(LOG10(x.x), LOG10(x.y), LOG10(x.z)); }
+        public static Float3 Log10(Float3 x) { return new Float3(Log10(x.x), Log10(x.y), Log10(x.z)); }
 
         /// <summary>Returns the componentwise base-10 logarithm of a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 LOG10(Float4 x) { return new Float4(LOG10(x.x), LOG10(x.y), LOG10(x.z), LOG10(x.w)); }
+        public static Float4 Log10(Float4 x) { return new Float4(Log10(x.x), Log10(x.y), Log10(x.z), Log10(x.w)); }
 
 
         /// <summary>Returns the floating point remainder of x/y.</summary>
@@ -1253,7 +1253,7 @@ namespace GameLibrary.Mathematics
         /// Returns the given default value when 1 / length(x) does not produce a finite number.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        static public Float2 Normalizesafe(Float2 x, Float2 defaultvalue = new Float2())
+        static public Float2 NormalizeSafe(Float2 x, Float2 defaultvalue = new Float2())
         {
             SoftFloat len = Dot(x, x);
             return Select(defaultvalue, x * Rsqrt(len), len > FLTMINNormal);
@@ -1264,7 +1264,7 @@ namespace GameLibrary.Mathematics
         /// Returns the given default value when 1 / length(x) does not produce a finite number.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        static public Float3 Normalizesafe(Float3 x, Float3 defaultvalue = new Float3())
+        static public Float3 NormalizeSafe(Float3 x, Float3 defaultvalue = new Float3())
         {
             SoftFloat len = Dot(x, x);
             return Select(defaultvalue, x * Rsqrt(len), len > FLTMINNormal);
@@ -1275,7 +1275,7 @@ namespace GameLibrary.Mathematics
         /// Returns the given default value when 1 / length(x) does not produce a finite number.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        static public Float4 Normalizesafe(Float4 x, Float4 defaultvalue = new Float4())
+        static public Float4 NormalizeSafe(Float4 x, Float4 defaultvalue = new Float4())
         {
             SoftFloat len = Dot(x, x);
             return Select(defaultvalue, x * Rsqrt(len), len > FLTMINNormal);
@@ -1744,7 +1744,7 @@ namespace GameLibrary.Mathematics
         /// <param name="defaultValue">Default value to return if projection is not finite.</param>
         /// <returns>Vector projection of a onto b or the default value.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2 Projectsafe(Float2 a, Float2 b, Float2 defaultValue = new Float2())
+        public static Float2 ProjectSafe(Float2 a, Float2 b, Float2 defaultValue = new Float2())
         {
             var proj = Project(a, b);
 
@@ -1765,7 +1765,7 @@ namespace GameLibrary.Mathematics
         /// <param name="defaultValue">Default value to return if projection is not finite.</param>
         /// <returns>Vector projection of a onto b or the default value.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 Projectsafe(Float3 a, Float3 b, Float3 defaultValue = new Float3())
+        public static Float3 ProjectSafe(Float3 a, Float3 b, Float3 defaultValue = new Float3())
         {
             var proj = Project(a, b);
 
@@ -1786,7 +1786,7 @@ namespace GameLibrary.Mathematics
         /// <param name="defaultValue">Default value to return if projection is not finite.</param>
         /// <returns>Vector projection of a onto b or the default value.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 Projectsafe(Float4 a, Float4 b, Float4 defaultValue = new Float4())
+        public static Float4 ProjectSafe(Float4 a, Float4 b, Float4 defaultValue = new Float4())
         {
             var proj = Project(a, b);
 
@@ -1796,64 +1796,64 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Conditionally flips a vector n to face in the direction of i. Returns n if dot(i, ng) &lt; 0, -n otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2 Faceforward(Float2 n, Float2 i, Float2 ng) { return Select(n, -n, Dot(ng, i) >= SoftFloat.Zero); }
+        public static Float2 FaceForward(Float2 n, Float2 i, Float2 ng) { return Select(n, -n, Dot(ng, i) >= SoftFloat.Zero); }
 
         /// <summary>Conditionally flips a vector n to face in the direction of i. Returns n if dot(i, ng) &lt; 0, -n otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 Faceforward(Float3 n, Float3 i, Float3 ng) { return Select(n, -n, Dot(ng, i) >= SoftFloat.Zero); }
+        public static Float3 FaceForward(Float3 n, Float3 i, Float3 ng) { return Select(n, -n, Dot(ng, i) >= SoftFloat.Zero); }
 
         /// <summary>Conditionally flips a vector n to face in the direction of i. Returns n if dot(i, ng) &lt; 0, -n otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 Faceforward(Float4 n, Float4 i, Float4 ng) { return Select(n, -n, Dot(ng, i) >= SoftFloat.Zero); }
+        public static Float4 FaceForward(Float4 n, Float4 i, Float4 ng) { return Select(n, -n, Dot(ng, i) >= SoftFloat.Zero); }
 
 
         /// <summary>Returns the sine and cosine of the input float value x through the out parameters s and c.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Sincos(SoftFloat x, out SoftFloat s, out SoftFloat c) { s = Sin(x); c = Cos(x); }
+        public static void SinCos(SoftFloat x, out SoftFloat s, out SoftFloat c) { s = Sin(x); c = Cos(x); }
 
         /// <summary>Returns the componentwise sine and cosine of the input Float2 vector x through the out parameters s and c.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Sincos(Float2 x, out Float2 s, out Float2 c) { s = Sin(x); c = Cos(x); }
+        public static void SinCos(Float2 x, out Float2 s, out Float2 c) { s = Sin(x); c = Cos(x); }
 
         /// <summary>Returns the componentwise sine and cosine of the input Float3 vector x through the out parameters s and c.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Sincos(Float3 x, out Float3 s, out Float3 c) { s = Sin(x); c = Cos(x); }
+        public static void SinCos(Float3 x, out Float3 s, out Float3 c) { s = Sin(x); c = Cos(x); }
 
         /// <summary>Returns the componentwise sine and cosine of the input Float4 vector x through the out parameters s and c.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static void Sincos(Float4 x, out Float4 s, out Float4 c) { s = Sin(x); c = Cos(x); }
+        public static void SinCos(Float4 x, out Float4 s, out Float4 c) { s = Sin(x); c = Cos(x); }
 
 
         /// <summary>Returns number of 1-bits in the binary representation of an int value. Also known as the Hamming weight, popcnt on x86, and vcnt on ARM.</summary>
         /// <param name="x">int value in which to count bits set to 1.</param>
         /// <returns>Number of bits set to 1 within x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Countbits(int x) { return Countbits((uint)x); }
+        public static int CountBits(int x) { return CountBits((uint)x); }
 
         /// <summary>Returns component-wise number of 1-bits in the binary representation of an Int2 vector. Also known as the Hamming weight, popcnt on x86, and vcnt on ARM.</summary>
         /// <param name="x">Int2 value in which to count bits for each component.</param>
         /// <returns>Int2 containing number of bits set to 1 within each component of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Countbits(Int2 x) { return Countbits((UInt2)x); }
+        public static Int2 CountBits(Int2 x) { return CountBits((UInt2)x); }
 
         /// <summary>Returns component-wise number of 1-bits in the binary representation of an Int3 vector. Also known as the Hamming weight, popcnt on x86, and vcnt on ARM.</summary>
         /// <param name="x">Number in which to count bits.</param>
         /// <returns>Int3 containing number of bits set to 1 within each component of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Countbits(Int3 x) { return Countbits((UInt3)x); }
+        public static Int3 CountBits(Int3 x) { return CountBits((UInt3)x); }
 
         /// <summary>Returns component-wise number of 1-bits in the binary representation of an Int4 vector. Also known as the Hamming weight, popcnt on x86, and vcnt on ARM.</summary>
         /// <param name="x">Number in which to count bits.</param>
         /// <returns>Int4 containing number of bits set to 1 within each component of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Countbits(Int4 x) { return Countbits((UInt4)x); }
+        public static Int4 CountBits(Int4 x) { return CountBits((UInt4)x); }
 
 
         /// <summary>Returns number of 1-bits in the binary representation of a uint value. Also known as the Hamming weight, popcnt on x86, and vcnt on ARM.</summary>
         /// <param name="x">Number in which to count bits.</param>
         /// <returns>Number of bits set to 1 within x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Countbits(uint x)
+        public static int CountBits(uint x)
         {
             x = x - ((x >> 1) & 0x55555555);
             x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
@@ -1864,7 +1864,7 @@ namespace GameLibrary.Mathematics
         /// <param name="x">Number in which to count bits.</param>
         /// <returns>Int2 containing number of bits set to 1 within each component of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Countbits(UInt2 x)
+        public static Int2 CountBits(UInt2 x)
         {
             x = x - ((x >> 1) & 0x55555555);
             x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
@@ -1875,7 +1875,7 @@ namespace GameLibrary.Mathematics
         /// <param name="x">Number in which to count bits.</param>
         /// <returns>Int3 containing number of bits set to 1 within each component of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Countbits(UInt3 x)
+        public static Int3 CountBits(UInt3 x)
         {
             x = x - ((x >> 1) & 0x55555555);
             x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
@@ -1886,7 +1886,7 @@ namespace GameLibrary.Mathematics
         /// <param name="x">Number in which to count bits.</param>
         /// <returns>Int4 containing number of bits set to 1 within each component of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Countbits(UInt4 x)
+        public static Int4 CountBits(UInt4 x)
         {
             x = x - ((x >> 1) & 0x55555555);
             x = (x & 0x33333333) + ((x >> 2) & 0x33333333);
@@ -1897,7 +1897,7 @@ namespace GameLibrary.Mathematics
         /// <param name="x">Number in which to count bits.</param>
         /// <returns>Number of bits set to 1 within x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Countbits(ulong x)
+        public static int CountBits(ulong x)
         {
             x = x - ((x >> 1) & 0x5555555555555555);
             x = (x & 0x3333333333333333) + ((x >> 2) & 0x3333333333333333);
@@ -1908,24 +1908,24 @@ namespace GameLibrary.Mathematics
         /// <param name="x">Number in which to count bits.</param>
         /// <returns>Number of bits set to 1 within x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Countbits(long x) { return Countbits((ulong)x); }
+        public static int CountBits(long x) { return CountBits((ulong)x); }
 
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of an int vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Lzcnt(int x) { return Lzcnt((uint)x); }
+        public static int LeadingZeroesCount(int x) { return LeadingZeroesCount((uint)x); }
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Lzcnt(Int2 x) { return Int2(Lzcnt(x.x), Lzcnt(x.y)); }
+        public static Int2 LeadingZeroesCount(Int2 x) { return Int2(LeadingZeroesCount(x.x), LeadingZeroesCount(x.y)); }
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of an Int3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Lzcnt(Int3 x) { return Int3(Lzcnt(x.x), Lzcnt(x.y), Lzcnt(x.z)); }
+        public static Int3 LeadingZeroesCount(Int3 x) { return Int3(LeadingZeroesCount(x.x), LeadingZeroesCount(x.y), LeadingZeroesCount(x.z)); }
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of an Int4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Lzcnt(Int4 x) { return Int4(Lzcnt(x.x), Lzcnt(x.y), Lzcnt(x.z), Lzcnt(x.w)); }
+        public static Int4 LeadingZeroesCount(Int4 x) { return Int4(LeadingZeroesCount(x.x), LeadingZeroesCount(x.y), LeadingZeroesCount(x.z), LeadingZeroesCount(x.w)); }
 
 
         private static readonly int[] s_debruijn32 = new int[32]
@@ -1936,7 +1936,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns number of leading zeros in the binary representations of a uint value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Lzcnt(uint x)
+        public static int LeadingZeroesCount(uint x)
         {
             if (x == 0)
             {
@@ -1956,20 +1956,20 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of a UInt2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Lzcnt(UInt2 x) { return Int2(Lzcnt(x.x), Lzcnt(x.y)); }
+        public static Int2 LeadingZeroesCount(UInt2 x) { return Int2(LeadingZeroesCount(x.x), LeadingZeroesCount(x.y)); }
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of a UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Lzcnt(UInt3 x) { return Int3(Lzcnt(x.x), Lzcnt(x.y), Lzcnt(x.z)); }
+        public static Int3 LeadingZeroesCount(UInt3 x) { return Int3(LeadingZeroesCount(x.x), LeadingZeroesCount(x.y), LeadingZeroesCount(x.z)); }
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of a UInt4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Lzcnt(UInt4 x) { return Int4(Lzcnt(x.x), Lzcnt(x.y), Lzcnt(x.z), Lzcnt(x.w)); }
+        public static Int4 LeadingZeroesCount(UInt4 x) { return Int4(LeadingZeroesCount(x.x), LeadingZeroesCount(x.y), LeadingZeroesCount(x.z), LeadingZeroesCount(x.w)); }
 
 
         /// <summary>Returns number of leading zeros in the binary representations of a long value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Lzcnt(long x) { return Lzcnt((ulong)x); }
+        public static int LeadingZeroesCount(long x) { return LeadingZeroesCount((ulong)x); }
 
         private static readonly int[] s_debruijn64 = new int[64] {
             63,  0, 58,  1, 59, 47, 53,  2,
@@ -1984,7 +1984,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns number of leading zeros in the binary representations of a ulong value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Lzcnt(ulong x)
+        public static int LeadingZeroesCount(ulong x)
         {
             if (x == 0)
             {
@@ -2003,19 +2003,19 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns number of trailing zeros in the binary representations of an int value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Tzcnt(int x) { return Tzcnt((uint)x); }
+        public static int TrailingZeroesCount(int x) { return TrailingZeroesCount((uint)x); }
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Tzcnt(Int2 x) { return Int2(Tzcnt(x.x), Tzcnt(x.y)); }
+        public static Int2 TrailingZeroesCount(Int2 x) { return Int2(TrailingZeroesCount(x.x), TrailingZeroesCount(x.y)); }
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of an Int3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Tzcnt(Int3 v) { return Int3(Tzcnt(v.x), Tzcnt(v.y), Tzcnt(v.z)); }
+        public static Int3 TrailingZeroesCount(Int3 v) { return Int3(TrailingZeroesCount(v.x), TrailingZeroesCount(v.y), TrailingZeroesCount(v.z)); }
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of an Int4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Tzcnt(Int4 v) { return Int4(Tzcnt(v.x), Tzcnt(v.y), Tzcnt(v.z), Tzcnt(v.w)); }
+        public static Int4 TrailingZeroesCount(Int4 v) { return Int4(TrailingZeroesCount(v.x), TrailingZeroesCount(v.y), TrailingZeroesCount(v.z), TrailingZeroesCount(v.w)); }
 
 
 
@@ -2027,27 +2027,27 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns number of trailing zeros in the binary representations of a uint value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Tzcnt(uint x)
+        public static int TrailingZeroesCount(uint x)
         {
             return (x == 0 ? 1 : 0) + s_debruijnCtz32[((uint)((int)x & -(int)x) * 0x0EF96A62u) >> 27];
         }
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of an UInt2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Tzcnt(UInt2 x) { return Int2(Tzcnt(x.x), Tzcnt(x.y)); }
+        public static Int2 TrailingZeroesCount(UInt2 x) { return Int2(TrailingZeroesCount(x.x), TrailingZeroesCount(x.y)); }
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of an UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Tzcnt(UInt3 x) { return Int3(Tzcnt(x.x), Tzcnt(x.y), Tzcnt(x.z)); }
+        public static Int3 TrailingZeroesCount(UInt3 x) { return Int3(TrailingZeroesCount(x.x), TrailingZeroesCount(x.y), TrailingZeroesCount(x.z)); }
 
         /// <summary>Returns the componentwise number of leading zeros in the binary representations of an UInt4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Tzcnt(UInt4 x) { return Int4(Tzcnt(x.x), Tzcnt(x.y), Tzcnt(x.z), Tzcnt(x.w)); }
+        public static Int4 TrailingZeroesCount(UInt4 x) { return Int4(TrailingZeroesCount(x.x), TrailingZeroesCount(x.y), TrailingZeroesCount(x.z), TrailingZeroesCount(x.w)); }
 
 
         /// <summary>Returns number of trailing zeros in the binary representations of a long value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Tzcnt(long x) { return Tzcnt((ulong)x); }
+        public static int TrailingZeroesCount(long x) { return TrailingZeroesCount((ulong)x); }
 
 
         private static readonly int[] s_debruijnCtz64 = new int[64]
@@ -2060,7 +2060,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns number of trailing zeros in the binary representations of a ulong value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Tzcnt(ulong x)
+        public static int TrailingZeroesCount(ulong x)
         {
             return (x == 0 ? 1 : 0) + s_debruijnCtz64[((ulong)((long)x & -(long)x) * 0x045FBAC7992A70DAul) >> 58];
         }
@@ -2068,24 +2068,24 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of performing a reversal of the bit pattern of an int value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Reversebits(int x) { return (int)Reversebits((uint)x); }
+        public static int ReverseBits(int x) { return (int)ReverseBits((uint)x); }
 
         /// <summary>Returns the result of performing a componentwise reversal of the bit pattern of an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Reversebits(Int2 x) { return (Int2)Reversebits((UInt2)x); }
+        public static Int2 ReverseBits(Int2 x) { return (Int2)ReverseBits((UInt2)x); }
 
         /// <summary>Returns the result of performing a componentwise reversal of the bit pattern of an Int3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Reversebits(Int3 x) { return (Int3)Reversebits((UInt3)x); }
+        public static Int3 ReverseBits(Int3 x) { return (Int3)ReverseBits((UInt3)x); }
 
         /// <summary>Returns the result of performing a componentwise reversal of the bit pattern of an Int4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Reversebits(Int4 x) { return (Int4)Reversebits((UInt4)x); }
+        public static Int4 ReverseBits(Int4 x) { return (Int4)ReverseBits((UInt4)x); }
 
 
         /// <summary>Returns the result of performing a reversal of the bit pattern of a uint value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Reversebits(uint x) {
+        public static uint ReverseBits(uint x) {
             x = ((x >> 1) & 0x55555555) | ((x & 0x55555555) << 1);
             x = ((x >> 2) & 0x33333333) | ((x & 0x33333333) << 2);
             x = ((x >> 4) & 0x0F0F0F0F) | ((x & 0x0F0F0F0F) << 4);
@@ -2095,7 +2095,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of performing a componentwise reversal of the bit pattern of an UInt2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 Reversebits(UInt2 x)
+        public static UInt2 ReverseBits(UInt2 x)
         {
             x = ((x >> 1) & 0x55555555) | ((x & 0x55555555) << 1);
             x = ((x >> 2) & 0x33333333) | ((x & 0x33333333) << 2);
@@ -2106,7 +2106,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of performing a componentwise reversal of the bit pattern of an UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 Reversebits(UInt3 x)
+        public static UInt3 ReverseBits(UInt3 x)
         {
             x = ((x >> 1) & 0x55555555) | ((x & 0x55555555) << 1);
             x = ((x >> 2) & 0x33333333) | ((x & 0x33333333) << 2);
@@ -2117,7 +2117,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of performing a componentwise reversal of the bit pattern of an UInt4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 Reversebits(UInt4 x)
+        public static UInt4 ReverseBits(UInt4 x)
         {
             x = ((x >> 1) & 0x55555555) | ((x & 0x55555555) << 1);
             x = ((x >> 2) & 0x33333333) | ((x & 0x33333333) << 2);
@@ -2129,12 +2129,12 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of performing a reversal of the bit pattern of a long value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long Reversebits(long x) { return (long)Reversebits((ulong)x); }
+        public static long ReverseBits(long x) { return (long)ReverseBits((ulong)x); }
 
 
         /// <summary>Returns the result of performing a reversal of the bit pattern of a ulong value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong Reversebits(ulong x)
+        public static ulong ReverseBits(ulong x)
         {
             x = ((x >> 1) & 0x5555555555555555ul) | ((x & 0x5555555555555555ul) << 1);
             x = ((x >> 2) & 0x3333333333333333ul) | ((x & 0x3333333333333333ul) << 2);
@@ -2147,95 +2147,95 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of rotating the bits of an int left by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Rol(int x, int n) { return (int)Rol((uint)x, n); }
+        public static int RotateBitsLeft(int x, int n) { return (int)RotateBitsLeft((uint)x, n); }
 
         /// <summary>Returns the componentwise result of rotating the bits of an Int2 left by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Rol(Int2 x, int n) { return (Int2)Rol((UInt2)x, n); }
+        public static Int2 RotateBitsLeft(Int2 x, int n) { return (Int2)RotateBitsLeft((UInt2)x, n); }
 
         /// <summary>Returns the componentwise result of rotating the bits of an Int3 left by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Rol(Int3 x, int n) { return (Int3)Rol((UInt3)x, n); }
+        public static Int3 RotateBitsLeft(Int3 x, int n) { return (Int3)RotateBitsLeft((UInt3)x, n); }
 
         /// <summary>Returns the componentwise result of rotating the bits of an Int4 left by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Rol(Int4 x, int n) { return (Int4)Rol((UInt4)x, n); }
+        public static Int4 RotateBitsLeft(Int4 x, int n) { return (Int4)RotateBitsLeft((UInt4)x, n); }
 
 
         /// <summary>Returns the result of rotating the bits of a uint left by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Rol(uint x, int n) { return (x << n) | (x >> (32 - n)); }
+        public static uint RotateBitsLeft(uint x, int n) { return (x << n) | (x >> (32 - n)); }
 
         /// <summary>Returns the componentwise result of rotating the bits of a UInt2 left by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 Rol(UInt2 x, int n) { return (x << n) | (x >> (32 - n)); }
+        public static UInt2 RotateBitsLeft(UInt2 x, int n) { return (x << n) | (x >> (32 - n)); }
 
         /// <summary>Returns the componentwise result of rotating the bits of a UInt3 left by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 Rol(UInt3 x, int n) { return (x << n) | (x >> (32 - n)); }
+        public static UInt3 RotateBitsLeft(UInt3 x, int n) { return (x << n) | (x >> (32 - n)); }
 
         /// <summary>Returns the componentwise result of rotating the bits of a UInt4 left by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 Rol(UInt4 x, int n) { return (x << n) | (x >> (32 - n)); }
+        public static UInt4 RotateBitsLeft(UInt4 x, int n) { return (x << n) | (x >> (32 - n)); }
 
 
         /// <summary>Returns the result of rotating the bits of a long left by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long Rol(long x, int n) { return (long)Rol((ulong)x, n); }
+        public static long RotateBitsLeft(long x, int n) { return (long)RotateBitsLeft((ulong)x, n); }
 
 
         /// <summary>Returns the result of rotating the bits of a ulong left by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong Rol(ulong x, int n) { return (x << n) | (x >> (64 - n)); }
+        public static ulong RotateBitsLeft(ulong x, int n) { return (x << n) | (x >> (64 - n)); }
 
 
         /// <summary>Returns the result of rotating the bits of an int right by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Ror(int x, int n) { return (int)Ror((uint)x, n); }
+        public static int RotateBitsRight(int x, int n) { return (int)RotateBitsRight((uint)x, n); }
 
         /// <summary>Returns the componentwise result of rotating the bits of an Int2 right by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Ror(Int2 x, int n) { return (Int2)Ror((UInt2)x, n); }
+        public static Int2 RotateBitsRight(Int2 x, int n) { return (Int2)RotateBitsRight((UInt2)x, n); }
 
         /// <summary>Returns the componentwise result of rotating the bits of an Int3 right by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Ror(Int3 x, int n) { return (Int3)Ror((UInt3)x, n); }
+        public static Int3 RotateBitsRight(Int3 x, int n) { return (Int3)RotateBitsRight((UInt3)x, n); }
 
         /// <summary>Returns the componentwise result of rotating the bits of an Int4 right by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Ror(Int4 x, int n) { return (Int4)Ror((UInt4)x, n); }
+        public static Int4 RotateBitsRight(Int4 x, int n) { return (Int4)RotateBitsRight((UInt4)x, n); }
 
 
         /// <summary>Returns the result of rotating the bits of a uint right by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Ror(uint x, int n) { return (x >> n) | (x << (32 - n)); }
+        public static uint RotateBitsRight(uint x, int n) { return (x >> n) | (x << (32 - n)); }
 
         /// <summary>Returns the componentwise result of rotating the bits of a UInt2 right by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 Ror(UInt2 x, int n) { return (x >> n) | (x << (32 - n)); }
+        public static UInt2 RotateBitsRight(UInt2 x, int n) { return (x >> n) | (x << (32 - n)); }
 
         /// <summary>Returns the componentwise result of rotating the bits of a UInt3 right by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 Ror(UInt3 x, int n) { return (x >> n) | (x << (32 - n)); }
+        public static UInt3 RotateBitsRight(UInt3 x, int n) { return (x >> n) | (x << (32 - n)); }
 
         /// <summary>Returns the componentwise result of rotating the bits of a UInt4 right by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 Ror(UInt4 x, int n) { return (x >> n) | (x << (32 - n)); }
+        public static UInt4 RotateBitsRight(UInt4 x, int n) { return (x >> n) | (x << (32 - n)); }
 
 
         /// <summary>Returns the result of rotating the bits of a long right by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long Ror(long x, int n) { return (long)Ror((ulong)x, n); }
+        public static long RotateBitsRight(long x, int n) { return (long)RotateBitsRight((ulong)x, n); }
 
 
         /// <summary>Returns the result of rotating the bits of a ulong right by bits n.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong Ror(ulong x, int n) { return (x >> n) | (x << (64 - n)); }
+        public static ulong RotateBitsRight(ulong x, int n) { return (x >> n) | (x << (64 - n)); }
 
 
         /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Ceilpow2(int x)
+        public static int CeilPow2(int x)
         {
             x -= 1;
             x |= x >> 1;
@@ -2248,7 +2248,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Ceilpow2(Int2 x)
+        public static Int2 CeilPow2(Int2 x)
         {
             x -= 1;
             x |= x >> 1;
@@ -2261,7 +2261,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Ceilpow2(Int3 x)
+        public static Int3 CeilPow2(Int3 x)
         {
             x -= 1;
             x |= x >> 1;
@@ -2274,60 +2274,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Ceilpow2(Int4 x)
-        {
-            x -= 1;
-            x |= x >> 1;
-            x |= x >> 2;
-            x |= x >> 4;
-            x |= x >> 8;
-            x |= x >> 16;
-            return x + 1;
-        }
-
-
-        /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Ceilpow2(uint x)
-        {
-            x -= 1;
-            x |= x >> 1;
-            x |= x >> 2;
-            x |= x >> 4;
-            x |= x >> 8;
-            x |= x >> 16;
-            return x + 1;
-        }
-
-        /// <summary>Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.</summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 Ceilpow2(UInt2 x)
-        {
-            x -= 1;
-            x |= x >> 1;
-            x |= x >> 2;
-            x |= x >> 4;
-            x |= x >> 8;
-            x |= x >> 16;
-            return x + 1;
-        }
-
-        /// <summary>Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.</summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 Ceilpow2(UInt3 x)
-        {
-            x -= 1;
-            x |= x >> 1;
-            x |= x >> 2;
-            x |= x >> 4;
-            x |= x >> 8;
-            x |= x >> 16;
-            return x + 1;
-        }
-
-        /// <summary>Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.</summary>
-        [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 Ceilpow2(UInt4 x)
+        public static Int4 CeilPow2(Int4 x)
         {
             x -= 1;
             x |= x >> 1;
@@ -2341,7 +2288,60 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long Ceilpow2(long x)
+        public static uint CeilPow2(uint x)
+        {
+            x -= 1;
+            x |= x >> 1;
+            x |= x >> 2;
+            x |= x >> 4;
+            x |= x >> 8;
+            x |= x >> 16;
+            return x + 1;
+        }
+
+        /// <summary>Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static UInt2 CeilPow2(UInt2 x)
+        {
+            x -= 1;
+            x |= x >> 1;
+            x |= x >> 2;
+            x |= x >> 4;
+            x |= x >> 8;
+            x |= x >> 16;
+            return x + 1;
+        }
+
+        /// <summary>Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static UInt3 CeilPow2(UInt3 x)
+        {
+            x -= 1;
+            x |= x >> 1;
+            x |= x >> 2;
+            x |= x >> 4;
+            x |= x >> 8;
+            x |= x >> 16;
+            return x + 1;
+        }
+
+        /// <summary>Returns the result of a componentwise calculation of the smallest power of two greater than or equal to the input.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static UInt4 CeilPow2(UInt4 x)
+        {
+            x -= 1;
+            x |= x >> 1;
+            x |= x >> 2;
+            x |= x >> 4;
+            x |= x >> 8;
+            x |= x >> 16;
+            return x + 1;
+        }
+
+
+        /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static long CeilPow2(long x)
         {
             x -= 1;
             x |= x >> 1;
@@ -2356,7 +2356,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the smallest power of two greater than or equal to the input.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong Ceilpow2(ulong x)
+        public static ulong CeilPow2(ulong x)
         {
             x -= 1;
             x |= x >> 1;
@@ -2377,9 +2377,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x">Integer to be used as input.</param>
         /// <returns>Ceiling of the base-2 logarithm of x, as an integer.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Ceillog2(int x)
+        public static int CeilLog2(int x)
         {
-            return 32 - Lzcnt((uint)x - 1);
+            return 32 - LeadingZeroesCount((uint)x - 1);
         }
 
         /// <summary>
@@ -2391,9 +2391,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="Int2"/> to be used as input.</param>
         /// <returns>Componentwise ceiling of the base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Ceillog2(Int2 x)
+        public static Int2 CeilLog2(Int2 x)
         {
-            return new Int2(Ceillog2(x.x), Ceillog2(x.y));
+            return new Int2(CeilLog2(x.x), CeilLog2(x.y));
         }
 
         /// <summary>
@@ -2405,9 +2405,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="Int3"/> to be used as input.</param>
         /// <returns>Componentwise ceiling of the base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Ceillog2(Int3 x)
+        public static Int3 CeilLog2(Int3 x)
         {
-            return new Int3(Ceillog2(x.x), Ceillog2(x.y), Ceillog2(x.z));
+            return new Int3(CeilLog2(x.x), CeilLog2(x.y), CeilLog2(x.z));
         }
 
         /// <summary>
@@ -2419,9 +2419,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="Int4"/> to be used as input.</param>
         /// <returns>Componentwise ceiling of the base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Ceillog2(Int4 x)
+        public static Int4 CeilLog2(Int4 x)
         {
-            return new Int4(Ceillog2(x.x), Ceillog2(x.y), Ceillog2(x.z), Ceillog2(x.w));
+            return new Int4(CeilLog2(x.x), CeilLog2(x.y), CeilLog2(x.z), CeilLog2(x.w));
         }
 
         /// <summary>
@@ -2433,9 +2433,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x">Unsigned integer to be used as input.</param>
         /// <returns>Ceiling of the base-2 logarithm of x, as an integer.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Ceillog2(uint x)
+        public static int CeilLog2(uint x)
         {
-            return 32 - Lzcnt(x - 1);
+            return 32 - LeadingZeroesCount(x - 1);
         }
 
         /// <summary>
@@ -2447,9 +2447,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="UInt2"/> to be used as input.</param>
         /// <returns>Componentwise ceiling of the base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Ceillog2(UInt2 x)
+        public static Int2 CeilLog2(UInt2 x)
         {
-            return new Int2(Ceillog2(x.x), Ceillog2(x.y));
+            return new Int2(CeilLog2(x.x), CeilLog2(x.y));
         }
 
         /// <summary>
@@ -2461,9 +2461,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="UInt3"/> to be used as input.</param>
         /// <returns>Componentwise ceiling of the base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Ceillog2(UInt3 x)
+        public static Int3 CeilLog2(UInt3 x)
         {
-            return new Int3(Ceillog2(x.x), Ceillog2(x.y), Ceillog2(x.z));
+            return new Int3(CeilLog2(x.x), CeilLog2(x.y), CeilLog2(x.z));
         }
 
         /// <summary>
@@ -2475,9 +2475,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="UInt4"/> to be used as input.</param>
         /// <returns>Componentwise ceiling of the base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Ceillog2(UInt4 x)
+        public static Int4 CeilLog2(UInt4 x)
         {
-            return new Int4(Ceillog2(x.x), Ceillog2(x.y), Ceillog2(x.z), Ceillog2(x.w));
+            return new Int4(CeilLog2(x.x), CeilLog2(x.y), CeilLog2(x.z), CeilLog2(x.w));
         }
 
         /// <summary>
@@ -2487,9 +2487,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x">Integer to be used as input.</param>
         /// <returns>Floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Floorlog2(int x)
+        public static int FloorLog2(int x)
         {
-            return 31 - Lzcnt((uint)x);
+            return 31 - LeadingZeroesCount((uint)x);
         }
 
         /// <summary>
@@ -2499,9 +2499,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="Int2"/> to be used as input.</param>
         /// <returns>Componentwise floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Floorlog2(Int2 x)
+        public static Int2 FloorLog2(Int2 x)
         {
-            return new Int2(Floorlog2(x.x), Floorlog2(x.y));
+            return new Int2(FloorLog2(x.x), FloorLog2(x.y));
         }
 
         /// <summary>
@@ -2511,9 +2511,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="Int3"/> to be used as input.</param>
         /// <returns>Componentwise floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Floorlog2(Int3 x)
+        public static Int3 FloorLog2(Int3 x)
         {
-            return new Int3(Floorlog2(x.x), Floorlog2(x.y), Floorlog2(x.z));
+            return new Int3(FloorLog2(x.x), FloorLog2(x.y), FloorLog2(x.z));
         }
 
         /// <summary>
@@ -2523,9 +2523,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="Int4"/> to be used as input.</param>
         /// <returns>Componentwise floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Floorlog2(Int4 x)
+        public static Int4 FloorLog2(Int4 x)
         {
-            return new Int4(Floorlog2(x.x), Floorlog2(x.y), Floorlog2(x.z), Floorlog2(x.w));
+            return new Int4(FloorLog2(x.x), FloorLog2(x.y), FloorLog2(x.z), FloorLog2(x.w));
         }
 
         /// <summary>
@@ -2535,9 +2535,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x">Unsigned integer to be used as input.</param>
         /// <returns>Floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Floorlog2(uint x)
+        public static int FloorLog2(uint x)
         {
-            return 31 - Lzcnt(x);
+            return 31 - LeadingZeroesCount(x);
         }
 
         /// <summary>
@@ -2547,9 +2547,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="UInt2"/> to be used as input.</param>
         /// <returns>Componentwise floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Floorlog2(UInt2 x)
+        public static Int2 FloorLog2(UInt2 x)
         {
-            return new Int2(Floorlog2(x.x), Floorlog2(x.y));
+            return new Int2(FloorLog2(x.x), FloorLog2(x.y));
         }
 
         /// <summary>
@@ -2559,9 +2559,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="UInt3"/> to be used as input.</param>
         /// <returns>Componentwise floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Floorlog2(UInt3 x)
+        public static Int3 FloorLog2(UInt3 x)
         {
-            return new Int3(Floorlog2(x.x), Floorlog2(x.y), Floorlog2(x.z));
+            return new Int3(FloorLog2(x.x), FloorLog2(x.y), FloorLog2(x.z));
         }
 
         /// <summary>
@@ -2571,9 +2571,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="UInt4"/> to be used as input.</param>
         /// <returns>Componentwise floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Floorlog2(UInt4 x)
+        public static Int4 FloorLog2(UInt4 x)
         {
-            return new Int4(Floorlog2(x.x), Floorlog2(x.y), Floorlog2(x.z), Floorlog2(x.w));
+            return new Int4(FloorLog2(x.x), FloorLog2(x.y), FloorLog2(x.z), FloorLog2(x.w));
         }
 
         private const uint Deg2Rad = 0x3c8efa35;
@@ -2615,119 +2615,119 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the minimum component of an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Cmin(Int2 x) { return MIN(x.x, x.y); }
+        public static int MinComponent(Int2 x) { return Min(x.x, x.y); }
 
         /// <summary>Returns the minimum component of an Int3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Cmin(Int3 x) { return MIN(MIN(x.x, x.y), x.z); }
+        public static int MinComponent(Int3 x) { return Min(Min(x.x, x.y), x.z); }
 
         /// <summary>Returns the minimum component of an Int4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Cmin(Int4 x) { return MIN(MIN(x.x, x.y), MIN(x.z, x.w)); }
+        public static int MinComponent(Int4 x) { return Min(Min(x.x, x.y), Min(x.z, x.w)); }
 
 
         /// <summary>Returns the minimum component of a UInt2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Cmin(UInt2 x) { return MIN(x.x, x.y); }
+        public static uint MinComponent(UInt2 x) { return Min(x.x, x.y); }
 
         /// <summary>Returns the minimum component of a UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Cmin(UInt3 x) { return MIN(MIN(x.x, x.y), x.z); }
+        public static uint MinComponent(UInt3 x) { return Min(Min(x.x, x.y), x.z); }
 
         /// <summary>Returns the minimum component of a UInt4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Cmin(UInt4 x) { return MIN(MIN(x.x, x.y), MIN(x.z, x.w)); }
+        public static uint MinComponent(UInt4 x) { return Min(Min(x.x, x.y), Min(x.z, x.w)); }
 
 
         /// <summary>Returns the minimum component of a Float2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Cmin(Float2 x) { return MIN(x.x, x.y); }
+        public static SoftFloat MinComponent(Float2 x) { return Min(x.x, x.y); }
 
         /// <summary>Returns the minimum component of a Float3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Cmin(Float3 x) { return MIN(MIN(x.x, x.y), x.z); }
+        public static SoftFloat MinComponent(Float3 x) { return Min(Min(x.x, x.y), x.z); }
 
         /// <summary>Returns the maximum component of a Float3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Cmin(Float4 x) { return MIN(MIN(x.x, x.y), MIN(x.z, x.w)); }
+        public static SoftFloat MinComponent(Float4 x) { return Min(Min(x.x, x.y), Min(x.z, x.w)); }
 
 
         /// <summary>Returns the maximum component of an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Cmax(Int2 x) { return MAX(x.x, x.y); }
+        public static int MaxComponent(Int2 x) { return Max(x.x, x.y); }
 
         /// <summary>Returns the maximum component of an Int3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Cmax(Int3 x) { return MAX(MAX(x.x, x.y), x.z); }
+        public static int MaxComponent(Int3 x) { return Max(Max(x.x, x.y), x.z); }
 
         /// <summary>Returns the maximum component of an Int4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Cmax(Int4 x) { return MAX(MAX(x.x, x.y), MAX(x.z, x.w)); }
+        public static int MaxComponent(Int4 x) { return Max(Max(x.x, x.y), Max(x.z, x.w)); }
 
 
         /// <summary>Returns the maximum component of a UInt2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Cmax(UInt2 x) { return MAX(x.x, x.y); }
+        public static uint MaxComponent(UInt2 x) { return Max(x.x, x.y); }
 
         /// <summary>Returns the maximum component of a UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Cmax(UInt3 x) { return MAX(MAX(x.x, x.y), x.z); }
+        public static uint MaxComponent(UInt3 x) { return Max(Max(x.x, x.y), x.z); }
 
         /// <summary>Returns the maximum component of a UInt4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Cmax(UInt4 x) { return MAX(MAX(x.x, x.y), MAX(x.z, x.w)); }
+        public static uint MaxComponent(UInt4 x) { return Max(Max(x.x, x.y), Max(x.z, x.w)); }
 
 
         /// <summary>Returns the maximum component of a Float2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Cmax(Float2 x) { return MAX(x.x, x.y); }
+        public static SoftFloat MaxComponent(Float2 x) { return Max(x.x, x.y); }
 
         /// <summary>Returns the maximum component of a Float3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Cmax(Float3 x) { return MAX(MAX(x.x, x.y), x.z); }
+        public static SoftFloat MaxComponent(Float3 x) { return Max(Max(x.x, x.y), x.z); }
 
         /// <summary>Returns the maximum component of a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Cmax(Float4 x) { return MAX(MAX(x.x, x.y), MAX(x.z, x.w)); }
+        public static SoftFloat MaxComponent(Float4 x) { return Max(Max(x.x, x.y), Max(x.z, x.w)); }
 
 
         /// <summary>Returns the horizontal sum of components of an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Csum(Int2 x) { return x.x + x.y; }
+        public static int SumComponents(Int2 x) { return x.x + x.y; }
 
         /// <summary>Returns the horizontal sum of components of an Int3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Csum(Int3 x) { return x.x + x.y + x.z; }
+        public static int SumComponents(Int3 x) { return x.x + x.y + x.z; }
 
         /// <summary>Returns the horizontal sum of components of an Int4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Csum(Int4 x) { return x.x + x.y + x.z + x.w; }
+        public static int SumComponents(Int4 x) { return x.x + x.y + x.z + x.w; }
 
 
         /// <summary>Returns the horizontal sum of components of a UInt2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Csum(UInt2 x) { return x.x + x.y; }
+        public static uint SumComponents(UInt2 x) { return x.x + x.y; }
 
         /// <summary>Returns the horizontal sum of components of a UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Csum(UInt3 x) { return x.x + x.y + x.z; }
+        public static uint SumComponents(UInt3 x) { return x.x + x.y + x.z; }
 
         /// <summary>Returns the horizontal sum of components of a UInt4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Csum(UInt4 x) { return x.x + x.y + x.z + x.w; }
+        public static uint SumComponents(UInt4 x) { return x.x + x.y + x.z + x.w; }
 
 
         /// <summary>Returns the horizontal sum of components of a Float2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Csum(Float2 x) { return x.x + x.y; }
+        public static SoftFloat SumComponents(Float2 x) { return x.x + x.y; }
 
         /// <summary>Returns the horizontal sum of components of a Float3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Csum(Float3 x) { return x.x + x.y + x.z; }
+        public static SoftFloat SumComponents(Float3 x) { return x.x + x.y + x.z; }
 
         /// <summary>Returns the horizontal sum of components of a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Csum(Float4 x) { return (x.x + x.y) + (x.z + x.w); }
+        public static SoftFloat SumComponents(Float4 x) { return (x.x + x.y) + (x.z + x.w); }
 
 
         /// <summary>
@@ -2828,7 +2828,7 @@ namespace GameLibrary.Mathematics
                         state *= prime1;
                     }
 
-                    hash = Rol(state.x, 1) + Rol(state.y, 7) + Rol(state.z, 12) + Rol(state.w, 18);
+                    hash = RotateBitsLeft(state.x, 1) + RotateBitsLeft(state.y, 7) + RotateBitsLeft(state.z, 12) + RotateBitsLeft(state.w, 18);
                 }
 
                 hash += (uint)numBytes;
@@ -2837,14 +2837,14 @@ namespace GameLibrary.Mathematics
                 for (int i = 0; i < ((numBytes >> 2) & 3); ++i)
                 {
                     hash += *puint++ * prime3;
-                    hash = Rol(hash, 17) * prime4;
+                    hash = RotateBitsLeft(hash, 17) * prime4;
                 }
 
                 byte* pbyte = (byte*)puint;
                 for (int i = 0; i < ((numBytes) & 3); ++i)
                 {
                     hash += (*pbyte++) * prime5;
-                    hash = Rol(hash, 11) * prime1;
+                    hash = RotateBitsLeft(hash, 11) * prime1;
                 }
 
                 hash ^= hash >> 15;

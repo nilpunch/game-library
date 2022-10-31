@@ -456,7 +456,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(UInt3x3 v)
         {
-            return Csum(v.c0 * UInt3(0xAC60D0C3u, 0x9263662Fu, 0xE69626FFu) +
+            return SumComponents(v.c0 * UInt3(0xAC60D0C3u, 0x9263662Fu, 0xE69626FFu) +
                         v.c1 * UInt3(0xBD010EEBu, 0x9CEDE1D1u, 0x43BE0B51u) +
                         v.c2 * UInt3(0xAF836EE1u, 0xB130C137u, 0x54834775u)) + 0x7C022221u;
         }

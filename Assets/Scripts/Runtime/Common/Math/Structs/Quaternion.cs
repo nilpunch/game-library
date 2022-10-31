@@ -78,7 +78,7 @@ namespace GameLibrary.Mathematics
         public static Quaternion AxisAngle(Float3 axis, SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            Math.Sincos((SoftFloat)0.5f * angle, out sina, out cosa);
+            Math.SinCos((SoftFloat)0.5f * angle, out sina, out cosa);
             return new Quaternion(new Float4(axis * sina, cosa));
         }
 
@@ -92,7 +92,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateZ(xyz.z), mul(rotateY(xyz.y), rotateX(xyz.x)));
             Float3 s, c;
-            Math.Sincos((SoftFloat)0.5f * xyz, out s, out c);
+            Math.SinCos((SoftFloat)0.5f * xyz, out s, out c);
             return new Quaternion(
                 // s.x * c.y * c.z - s.y * s.z * c.x,
                 // s.y * c.x * c.z + s.x * s.z * c.y,
@@ -112,7 +112,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateY(xyz.y), mul(rotateZ(xyz.z), rotateX(xyz.x)));
             Float3 s, c;
-            Math.Sincos((SoftFloat)0.5f * xyz, out s, out c);
+            Math.SinCos((SoftFloat)0.5f * xyz, out s, out c);
             return new Quaternion(
                 // s.x * c.y * c.z + s.y * s.z * c.x,
                 // s.y * c.x * c.z + s.x * s.z * c.y,
@@ -132,7 +132,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateZ(xyz.z), mul(rotateX(xyz.x), rotateY(xyz.y)));
             Float3 s, c;
-            Math.Sincos((SoftFloat)0.5f * xyz, out s, out c);
+            Math.SinCos((SoftFloat)0.5f * xyz, out s, out c);
             return new Quaternion(
                 // s.x * c.y * c.z - s.y * s.z * c.x,
                 // s.y * c.x * c.z + s.x * s.z * c.y,
@@ -152,7 +152,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateX(xyz.x), mul(rotateZ(xyz.z), rotateY(xyz.y)));
             Float3 s, c;
-            Math.Sincos((SoftFloat)0.5f * xyz, out s, out c);
+            Math.SinCos((SoftFloat)0.5f * xyz, out s, out c);
             return new Quaternion(
                 // s.x * c.y * c.z - s.y * s.z * c.x,
                 // s.y * c.x * c.z - s.x * s.z * c.y,
@@ -173,7 +173,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateY(xyz.y), mul(rotateX(xyz.x), rotateZ(xyz.z)));
             Float3 s, c;
-            Math.Sincos((SoftFloat)0.5f * xyz, out s, out c);
+            Math.SinCos((SoftFloat)0.5f * xyz, out s, out c);
             return new Quaternion(
                 // s.x * c.y * c.z + s.y * s.z * c.x,
                 // s.y * c.x * c.z - s.x * s.z * c.y,
@@ -193,7 +193,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateX(xyz.x), mul(rotateY(xyz.y), rotateZ(xyz.z)));
             Float3 s, c;
-            Math.Sincos((SoftFloat)0.5f * xyz, out s, out c);
+            Math.SinCos((SoftFloat)0.5f * xyz, out s, out c);
             return new Quaternion(
                 // s.x * c.y * c.z + s.y * s.z * c.x,
                 // s.y * c.x * c.z - s.x * s.z * c.y,
@@ -316,7 +316,7 @@ namespace GameLibrary.Mathematics
         public static Quaternion RotateX(SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            Math.Sincos((SoftFloat)0.5f * angle, out sina, out cosa);
+            Math.SinCos((SoftFloat)0.5f * angle, out sina, out cosa);
             return new Quaternion(sina, SoftFloat.Zero, SoftFloat.Zero, cosa);
         }
 
@@ -326,7 +326,7 @@ namespace GameLibrary.Mathematics
         public static Quaternion RotateY(SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            Math.Sincos((SoftFloat)0.5f * angle, out sina, out cosa);
+            Math.SinCos((SoftFloat)0.5f * angle, out sina, out cosa);
             return new Quaternion(SoftFloat.Zero, sina, SoftFloat.Zero, cosa);
         }
 
@@ -336,7 +336,7 @@ namespace GameLibrary.Mathematics
         public static Quaternion RotateZ(SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            Math.Sincos((SoftFloat)0.5f * angle, out sina, out cosa);
+            Math.SinCos((SoftFloat)0.5f * angle, out sina, out cosa);
             return new Quaternion(SoftFloat.Zero, SoftFloat.Zero, sina, cosa);
         }
 
@@ -370,8 +370,8 @@ namespace GameLibrary.Mathematics
             SoftFloat tLengthSq = Math.Dot(t, t);
             t *= Math.Rsqrt(tLengthSq);
 
-            SoftFloat mn = Math.MIN(Math.MIN(forwardLengthSq, upLengthSq), tLengthSq);
-            SoftFloat mx = Math.MAX(Math.MAX(forwardLengthSq, upLengthSq), tLengthSq);
+            SoftFloat mn = Math.Min(Math.Min(forwardLengthSq, upLengthSq), tLengthSq);
+            SoftFloat mx = Math.Max(Math.Max(forwardLengthSq, upLengthSq), tLengthSq);
 
             const uint bigValue = 0x799a130c;
             const uint smallValue = 0x0554ad2e;
@@ -474,7 +474,7 @@ namespace GameLibrary.Mathematics
         /// Returns the identity when 1 / length(q) does not produce a finite number.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Normalizesafe(Quaternion q)
+        public static Quaternion NormalizeSafe(Quaternion q)
         {
             Float4 x = q._value;
             SoftFloat len = Dot(x, x);
@@ -486,7 +486,7 @@ namespace GameLibrary.Mathematics
         /// Returns the given default value when 1 / length(q) does not produce a finite number.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Normalizesafe(Quaternion q, Quaternion defaultvalue)
+        public static Quaternion NormalizeSafe(Quaternion q, Quaternion defaultvalue)
         {
             Float4 x = q._value;
             SoftFloat len = Dot(x, x);
@@ -500,7 +500,7 @@ namespace GameLibrary.Mathematics
             SoftFloat vRcpLen = Rsqrt(Dot(q._value.xyz, q._value.xyz));
             SoftFloat vLen = Rcp(vRcpLen);
             SoftFloat sinVLen, cosVLen;
-            Sincos(vLen, out sinVLen, out cosVLen);
+            SinCos(vLen, out sinVLen, out cosVLen);
             return new Quaternion(new Float4(q._value.xyz * vRcpLen * sinVLen, cosVLen));
         }
 
@@ -511,7 +511,7 @@ namespace GameLibrary.Mathematics
             SoftFloat vRcpLen = Rsqrt(Dot(q._value.xyz, q._value.xyz));
             SoftFloat vLen = Rcp(vRcpLen);
             SoftFloat sinVLen, cosVLen;
-            Sincos(vLen, out sinVLen, out cosVLen);
+            SinCos(vLen, out sinVLen, out cosVLen);
             return new Quaternion(new Float4(q._value.xyz * vRcpLen * sinVLen, cosVLen) * Exp(q._value.w));
         }
 
@@ -526,13 +526,13 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the natural logarithm of a quaternion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion LOG(Quaternion q)
+        public static Quaternion Log(Quaternion q)
         {
             SoftFloat vLenSq = Dot(q._value.xyz, q._value.xyz);
             SoftFloat qLenSq = vLenSq + q._value.w*q._value.w;
 
             SoftFloat s = Acos(Clamp(q._value.w * Rsqrt(qLenSq), -SoftFloat.One, SoftFloat.One)) * Rsqrt(vLenSq);
-            return new Quaternion(new Float4(q._value.xyz * s, (SoftFloat)0.5f * LOG(qLenSq)));
+            return new Quaternion(new Float4(q._value.xyz * s, (SoftFloat)0.5f * Log(qLenSq)));
         }
 
         /// <summary>Returns the result of transforming the quaternion b by the quaternion a.</summary>

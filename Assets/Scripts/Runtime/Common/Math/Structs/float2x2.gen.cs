@@ -401,7 +401,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(Float2X2 v)
         {
-            return Csum(Asuint(v.c0) * UInt2(0x9C9F0823u, 0x5A9CA13Bu) +
+            return SumComponents(Asuint(v.c0) * UInt2(0x9C9F0823u, 0x5A9CA13Bu) +
                         Asuint(v.c1) * UInt2(0xAFCDD5EFu, 0xA88D187Du)) + 0xCF6EBA1Du;
         }
 

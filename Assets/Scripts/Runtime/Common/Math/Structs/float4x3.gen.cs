@@ -389,7 +389,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(Float4x3 v)
         {
-            return Csum(Asuint(v.c0) * UInt4(0xC53F4755u, 0x6985C229u, 0xE133B0B3u, 0xC3E0A3B9u) +
+            return SumComponents(Asuint(v.c0) * UInt4(0xC53F4755u, 0x6985C229u, 0xE133B0B3u, 0xC3E0A3B9u) +
                         Asuint(v.c1) * UInt4(0xFE31134Fu, 0x712A34D7u, 0x9D77A59Bu, 0x4942CA39u) +
                         Asuint(v.c2) * UInt4(0xB40EC62Du, 0x565ED63Fu, 0x93C30C2Bu, 0xDCAF0351u)) + 0x6E050B01u;
         }

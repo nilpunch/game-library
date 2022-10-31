@@ -403,7 +403,7 @@ namespace GameLibrary.Mathematics
             Float3 m1 = t0.yzx * t2 - t0 * t2.yzx;
             Float3 m2 = t0 * t1.yzx - t0.yzx * t1;
 
-            SoftFloat rcpDet = SoftFloat.One / Csum(t0.zxy * m0);
+            SoftFloat rcpDet = SoftFloat.One / SumComponents(t0.zxy * m0);
             return Float3x3(m0, m1, m2) * rcpDet;
         }
 
@@ -426,7 +426,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint hash(Float3X3 v)
         {
-            return Csum(Asuint(v.c0) * UInt3(0x713BD06Fu, 0x753AD6ADu, 0xD19764C7u) +
+            return SumComponents(Asuint(v.c0) * UInt3(0x713BD06Fu, 0x753AD6ADu, 0xD19764C7u) +
                         Asuint(v.c1) * UInt3(0xB5D0BF63u, 0xF9102C5Fu, 0x9881FB9Fu) +
                         Asuint(v.c2) * UInt3(0x56A1530Du, 0x804B722Du, 0x738E50E5u)) + 0x4FC93C25u;
         }
