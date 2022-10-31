@@ -9,19 +9,32 @@ namespace GameLibrary.Mathematics
         public Float4 _value;
 
         /// <summary>A quaternion representing the identity transform.</summary>
-        public static Quaternion Identity => new Quaternion(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
+        public static Quaternion Identity =>
+            new Quaternion(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
 
         /// <summary>Constructs a quaternion from four float values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Quaternion(SoftFloat x, SoftFloat y, SoftFloat z, SoftFloat w) { _value.x = x; _value.y = y; _value.z = z; _value.w = w; }
+        public Quaternion(SoftFloat x, SoftFloat y, SoftFloat z, SoftFloat w)
+        {
+            _value.x = x;
+            _value.y = y;
+            _value.z = z;
+            _value.w = w;
+        }
 
         /// <summary>Constructs a quaternion from Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Quaternion(Float4 value) { this._value = value; }
+        public Quaternion(Float4 value)
+        {
+            _value = value;
+        }
 
         /// <summary>Implicitly converts a Float4 vector to a quaternion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static implicit operator Quaternion(Float4 v) { return new Quaternion(v); }
+        public static implicit operator Quaternion(Float4 v)
+        {
+            return new Quaternion(v);
+        }
 
         /// <summary>Constructs a unit quaternion from a Float3x3 rotation matrix. The matrix must be orthonormal.</summary>
         public Quaternion(Float3X3 m)
@@ -37,9 +50,12 @@ namespace GameLibrary.Mathematics
 
             SoftFloat tr = SoftFloat.One + Math.Abs(u.x);
 
-            UInt4 signFlips = new UInt4(0x00000000, 0x80000000, 0x80000000, 0x80000000) ^ (uMask & new UInt4(0x00000000, 0x80000000, 0x00000000, 0x80000000)) ^ (tMask & new UInt4(0x80000000, 0x80000000, 0x80000000, 0x00000000));
+            UInt4 signFlips = new UInt4(0x00000000, 0x80000000, 0x80000000, 0x80000000) ^
+                              (uMask & new UInt4(0x00000000, 0x80000000, 0x00000000, 0x80000000)) ^
+                              (tMask & new UInt4(0x80000000, 0x80000000, 0x80000000, 0x00000000));
 
-            _value = new Float4(tr, u.y, w.x, v.z) + Math.Asfloat(Math.Asuint(new Float4(t, v.x, u.z, w.y)) ^ signFlips);   // +---, +++-, ++-+, +-++
+            _value = new Float4(tr, u.y, w.x, v.z) +
+                     Math.Asfloat(Math.Asuint(new Float4(t, v.x, u.z, w.y)) ^ signFlips); // +---, +++-, ++-+, +-++
 
             _value = Math.Asfloat((Math.Asuint(_value) & ~uMask) | (Math.Asuint(_value.zwxy) & uMask));
             _value = Math.Asfloat((Math.Asuint(_value.wzyx) & ~tMask) | (Math.Asuint(_value) & tMask));
@@ -60,9 +76,12 @@ namespace GameLibrary.Mathematics
 
             SoftFloat tr = SoftFloat.One + Math.Abs(u.x);
 
-            UInt4 signFlips = new UInt4(0x00000000, 0x80000000, 0x80000000, 0x80000000) ^ (uMask & new UInt4(0x00000000, 0x80000000, 0x00000000, 0x80000000)) ^ (tMask & new UInt4(0x80000000, 0x80000000, 0x80000000, 0x00000000));
+            UInt4 signFlips = new UInt4(0x00000000, 0x80000000, 0x80000000, 0x80000000) ^
+                              (uMask & new UInt4(0x00000000, 0x80000000, 0x00000000, 0x80000000)) ^
+                              (tMask & new UInt4(0x80000000, 0x80000000, 0x80000000, 0x00000000));
 
-            _value = new Float4(tr, u.y, w.x, v.z) + Math.Asfloat(Math.Asuint(new Float4(t, v.x, u.z, w.y)) ^ signFlips);   // +---, +++-, ++-+, +-++
+            _value = new Float4(tr, u.y, w.x, v.z) +
+                     Math.Asfloat(Math.Asuint(new Float4(t, v.x, u.z, w.y)) ^ signFlips); // +---, +++-, ++-+, +-++
 
             _value = Math.Asfloat((Math.Asuint(_value) & ~uMask) | (Math.Asuint(_value.zwxy) & uMask));
             _value = Math.Asfloat((Math.Asuint(_value.wzyx) & ~tMask) | (Math.Asuint(_value) & tMask));
@@ -98,8 +117,9 @@ namespace GameLibrary.Mathematics
                 // s.y * c.x * c.z + s.x * s.z * c.y,
                 // s.z * c.x * c.y - s.x * s.y * c.z,
                 // c.x * c.y * c.z + s.y * s.z * s.x
-                new Float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new Float4(c.xyz, s.x) * new Float4(-SoftFloat.One, SoftFloat.One, -SoftFloat.One, SoftFloat.One)
-                );
+                new Float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new Float4(c.xyz, s.x) *
+                new Float4(-SoftFloat.One, SoftFloat.One, -SoftFloat.One, SoftFloat.One)
+            );
         }
 
         /// <summary>
@@ -118,8 +138,9 @@ namespace GameLibrary.Mathematics
                 // s.y * c.x * c.z + s.x * s.z * c.y,
                 // s.z * c.x * c.y - s.x * s.y * c.z,
                 // c.x * c.y * c.z - s.y * s.z * s.x
-                new Float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new Float4(c.xyz, s.x) * new Float4(SoftFloat.One, SoftFloat.One, -SoftFloat.One, -SoftFloat.One)
-                );
+                new Float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new Float4(c.xyz, s.x) *
+                new Float4(SoftFloat.One, SoftFloat.One, -SoftFloat.One, -SoftFloat.One)
+            );
         }
 
         /// <summary>
@@ -138,8 +159,9 @@ namespace GameLibrary.Mathematics
                 // s.y * c.x * c.z + s.x * s.z * c.y,
                 // s.z * c.x * c.y + s.x * s.y * c.z,
                 // c.x * c.y * c.z - s.y * s.z * s.x
-                new Float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new Float4(c.xyz, s.x) * new Float4(-SoftFloat.One, SoftFloat.One, SoftFloat.One, -SoftFloat.One)
-                );
+                new Float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new Float4(c.xyz, s.x) *
+                new Float4(-SoftFloat.One, SoftFloat.One, SoftFloat.One, -SoftFloat.One)
+            );
         }
 
         /// <summary>
@@ -158,8 +180,9 @@ namespace GameLibrary.Mathematics
                 // s.y * c.x * c.z - s.x * s.z * c.y,
                 // s.z * c.x * c.y + s.x * s.y * c.z,
                 // c.x * c.y * c.z + s.y * s.z * s.x
-                new Float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new Float4(c.xyz, s.x) * new Float4(-SoftFloat.One, -SoftFloat.One, SoftFloat.One, SoftFloat.One)
-                );
+                new Float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new Float4(c.xyz, s.x) *
+                new Float4(-SoftFloat.One, -SoftFloat.One, SoftFloat.One, SoftFloat.One)
+            );
         }
 
         /// <summary>
@@ -179,8 +202,9 @@ namespace GameLibrary.Mathematics
                 // s.y * c.x * c.z - s.x * s.z * c.y,
                 // s.z * c.x * c.y - s.x * s.y * c.z,
                 // c.x * c.y * c.z + s.y * s.z * s.x
-                new Float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new Float4(c.xyz, s.x) * new Float4(SoftFloat.One, -SoftFloat.One, -SoftFloat.One, SoftFloat.One)
-                );
+                new Float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new Float4(c.xyz, s.x) *
+                new Float4(SoftFloat.One, -SoftFloat.One, -SoftFloat.One, SoftFloat.One)
+            );
         }
 
         /// <summary>
@@ -199,8 +223,9 @@ namespace GameLibrary.Mathematics
                 // s.y * c.x * c.z - s.x * s.z * c.y,
                 // s.z * c.x * c.y + s.x * s.y * c.z,
                 // c.x * c.y * c.z - s.y * s.x * s.z
-                new Float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new Float4(c.xyz, s.x) * new Float4(SoftFloat.One, -SoftFloat.One, SoftFloat.One, -SoftFloat.One)
-                );
+                new Float4(s.xyz, c.x) * c.yxxy * c.zzyz + s.yxxy * s.zzyz * new Float4(c.xyz, s.x) *
+                new Float4(SoftFloat.One, -SoftFloat.One, SoftFloat.One, -SoftFloat.One)
+            );
         }
 
         /// <summary>
@@ -211,7 +236,10 @@ namespace GameLibrary.Mathematics
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion EulerXYZ(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerXYZ(new Float3(x, y, z)); }
+        public static Quaternion EulerXYZ(SoftFloat x, SoftFloat y, SoftFloat z)
+        {
+            return EulerXYZ(new Float3(x, y, z));
+        }
 
         /// <summary>
         /// Returns a quaternion constructed by first performing a rotation around the x-axis, then the z-axis and finally the y-axis.
@@ -221,7 +249,10 @@ namespace GameLibrary.Mathematics
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion EulerXZY(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerXZY(new Float3(x, y, z)); }
+        public static Quaternion EulerXZY(SoftFloat x, SoftFloat y, SoftFloat z)
+        {
+            return EulerXZY(new Float3(x, y, z));
+        }
 
         /// <summary>
         /// Returns a quaternion constructed by first performing a rotation around the y-axis, then the x-axis and finally the z-axis.
@@ -231,7 +262,10 @@ namespace GameLibrary.Mathematics
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion EulerYXZ(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerYXZ(new Float3(x, y, z)); }
+        public static Quaternion EulerYXZ(SoftFloat x, SoftFloat y, SoftFloat z)
+        {
+            return EulerYXZ(new Float3(x, y, z));
+        }
 
         /// <summary>
         /// Returns a quaternion constructed by first performing a rotation around the y-axis, then the z-axis and finally the x-axis.
@@ -241,7 +275,10 @@ namespace GameLibrary.Mathematics
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion EulerYZX(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerYZX(new Float3(x, y, z)); }
+        public static Quaternion EulerYZX(SoftFloat x, SoftFloat y, SoftFloat z)
+        {
+            return EulerYZX(new Float3(x, y, z));
+        }
 
         /// <summary>
         /// Returns a quaternion constructed by first performing a rotation around the z-axis, then the x-axis and finally the y-axis.
@@ -252,7 +289,10 @@ namespace GameLibrary.Mathematics
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion EulerZXY(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerZXY(new Float3(x, y, z)); }
+        public static Quaternion EulerZXY(SoftFloat x, SoftFloat y, SoftFloat z)
+        {
+            return EulerZXY(new Float3(x, y, z));
+        }
 
         /// <summary>
         /// Returns a quaternion constructed by first performing a rotation around the z-axis, then the y-axis and finally the x-axis.
@@ -262,7 +302,10 @@ namespace GameLibrary.Mathematics
         /// <param name="y">The rotation angle around the y-axis in radians.</param>
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion EulerZYX(SoftFloat x, SoftFloat y, SoftFloat z) { return EulerZYX(new Float3(x, y, z)); }
+        public static Quaternion EulerZYX(SoftFloat x, SoftFloat y, SoftFloat z)
+        {
+            return EulerZYX(new Float3(x, y, z));
+        }
 
         /// <summary>
         /// Returns a quaternion constructed by first performing 3 rotations around the principal axes in a given order.
@@ -305,7 +348,8 @@ namespace GameLibrary.Mathematics
         /// <param name="z">The rotation angle around the z-axis in radians.</param>
         /// <param name="order">The order in which the rotations are applied.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Euler(SoftFloat x, SoftFloat y, SoftFloat z, Math.RotationOrder order = Math.RotationOrder.Default)
+        public static Quaternion Euler(SoftFloat x, SoftFloat y, SoftFloat z,
+            Math.RotationOrder order = Math.RotationOrder.Default)
         {
             return Euler(new Float3(x, y, z), order);
         }
@@ -376,21 +420,32 @@ namespace GameLibrary.Mathematics
             const uint bigValue = 0x799a130c;
             const uint smallValue = 0x0554ad2e;
 
-            bool accept = mn > SoftFloat.FromRaw(smallValue) && mx < SoftFloat.FromRaw(bigValue) && Math.Isfinite(forwardLengthSq) && Math.Isfinite(upLengthSq) && Math.Isfinite(tLengthSq);
-            return new Quaternion(Math.Select(new Float4(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One), new Quaternion(new Float3X3(t, Math.Cross(forward, t),forward))._value, accept));
+            bool accept = mn > SoftFloat.FromRaw(smallValue) && mx < SoftFloat.FromRaw(bigValue) &&
+                          Math.Isfinite(forwardLengthSq) && Math.Isfinite(upLengthSq) && Math.Isfinite(tLengthSq);
+            return new Quaternion(Math.Select(new Float4(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One),
+                new Quaternion(new Float3X3(t, Math.Cross(forward, t), forward))._value, accept));
         }
 
         /// <summary>Returns true if the quaternion is equal to a given quaternion, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Equals(Quaternion x) { return _value.x == x._value.x && _value.y == x._value.y && _value.z == x._value.z && _value.w == x._value.w; }
+        public bool Equals(Quaternion x)
+        {
+            return _value.x == x._value.x && _value.y == x._value.y && _value.z == x._value.z && _value.w == x._value.w;
+        }
 
         /// <summary>Returns whether true if the quaternion is equal to a given quaternion, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override bool Equals(object x) { return Equals((Quaternion)x); }
+        public override bool Equals(object x)
+        {
+            return Equals((Quaternion)x);
+        }
 
         /// <summary>Returns a hash code for the quaternion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.Hash(this); }
+        public override int GetHashCode()
+        {
+            return (int)Math.Hash(this);
+        }
 
         /// <summary>Returns a string representation of the quaternion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -403,7 +458,9 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public string ToString(string format, IFormatProvider formatProvider)
         {
-            return string.Format("quaternion({0}f, {1}f, {2}f, {3}f)", _value.x.ToString(format, formatProvider), _value.y.ToString(format, formatProvider), _value.z.ToString(format, formatProvider), _value.w.ToString(format, formatProvider));
+            return string.Format("quaternion({0}f, {1}f, {2}f, {3}f)", _value.x.ToString(format, formatProvider),
+                _value.y.ToString(format, formatProvider), _value.z.ToString(format, formatProvider),
+                _value.w.ToString(format, formatProvider));
         }
     }
 
@@ -411,33 +468,46 @@ namespace GameLibrary.Mathematics
     {
         /// <summary>Returns a quaternion constructed from four float values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Quaternion(SoftFloat x, SoftFloat y, SoftFloat z, SoftFloat w) { return new Quaternion(x, y, z, w); }
+        public static Quaternion Quaternion(SoftFloat x, SoftFloat y, SoftFloat z, SoftFloat w)
+        {
+            return new Quaternion(x, y, z, w);
+        }
 
         /// <summary>Returns a quaternion constructed from a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Quaternion(Float4 value) { return new Quaternion(value); }
+        public static Quaternion Quaternion(Float4 value)
+        {
+            return new Quaternion(value);
+        }
 
         /// <summary>Returns a unit quaternion constructed from a Float3x3 rotation matrix. The matrix must be orthonormal.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Quaternion(Float3X3 m) { return new Quaternion(m); }
+        public static Quaternion Quaternion(Float3X3 m)
+        {
+            return new Quaternion(m);
+        }
 
         /// <summary>Returns a unit quaternion constructed from a Float4x4 matrix. The matrix must be orthonormal.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Quaternion(Float4X4 m) { return new Quaternion(m); }
+        public static Quaternion Quaternion(Float4X4 m)
+        {
+            return new Quaternion(m);
+        }
 
-       /// <summary>Returns the conjugate of a quaternion value.</summary>
+        /// <summary>Returns the conjugate of a quaternion value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion Conjugate(Quaternion q)
         {
             return new Quaternion(q._value * new Float4(-SoftFloat.One, -SoftFloat.One, -SoftFloat.One, SoftFloat.One));
         }
 
-       /// <summary>Returns the inverse of a quaternion value.</summary>
+        /// <summary>Returns the inverse of a quaternion value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion Inverse(Quaternion q)
         {
             Float4 x = q._value;
-            return new Quaternion(Rcp(Dot(x, x)) * x * new Float4(-SoftFloat.One, -SoftFloat.One, -SoftFloat.One, SoftFloat.One));
+            return new Quaternion(Rcp(Dot(x, x)) * x *
+                                  new Float4(-SoftFloat.One, -SoftFloat.One, -SoftFloat.One, SoftFloat.One));
         }
 
         /// <summary>Returns the dot product of two quaternions.</summary>
@@ -520,7 +590,7 @@ namespace GameLibrary.Mathematics
         public static Quaternion Unitlog(Quaternion q)
         {
             SoftFloat w = Clamp(q._value.w, -SoftFloat.One, SoftFloat.One);
-            SoftFloat s = Acos(w) * Rsqrt(SoftFloat.One - w*w);
+            SoftFloat s = Acos(w) * Rsqrt(SoftFloat.One - w * w);
             return new Quaternion(new Float4(q._value.xyz * s, SoftFloat.Zero));
         }
 
@@ -529,7 +599,7 @@ namespace GameLibrary.Mathematics
         public static Quaternion Log(Quaternion q)
         {
             SoftFloat vLenSq = Dot(q._value.xyz, q._value.xyz);
-            SoftFloat qLenSq = vLenSq + q._value.w*q._value.w;
+            SoftFloat qLenSq = vLenSq + q._value.w * q._value.w;
 
             SoftFloat s = Acos(Clamp(q._value.w * Rsqrt(qLenSq), -SoftFloat.One, SoftFloat.One)) * Rsqrt(vLenSq);
             return new Quaternion(new Float4(q._value.xyz * s, (SoftFloat)0.5f * Log(qLenSq)));
@@ -539,7 +609,10 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion Mul(Quaternion a, Quaternion b)
         {
-            return new Quaternion(a._value.wwww * b._value + (a._value.xyzx * b._value.wwwx + a._value.yzxy * b._value.zxyy) * new Float4(SoftFloat.One, SoftFloat.One, SoftFloat.One, -SoftFloat.One) - a._value.zxyz * b._value.yzxz);
+            return new Quaternion(a._value.wwww * b._value +
+                                  (a._value.xyzx * b._value.wwwx + a._value.yzxy * b._value.zxyy) *
+                                  new Float4(SoftFloat.One, SoftFloat.One, SoftFloat.One, -SoftFloat.One) -
+                                  a._value.zxyz * b._value.yzxz);
         }
 
         /// <summary>Returns the result of transforming a vector by a quaternion.</summary>
@@ -563,7 +636,7 @@ namespace GameLibrary.Mathematics
         public static Quaternion Nlerp(Quaternion q1, Quaternion q2, SoftFloat t)
         {
             SoftFloat dt = Dot(q1, q2);
-            if(dt < SoftFloat.Zero)
+            if (dt < SoftFloat.Zero)
             {
                 q2._value = -q2._value;
             }
@@ -586,7 +659,7 @@ namespace GameLibrary.Mathematics
             if (dt < SoftFloat.FromRaw(almostOne))
             {
                 SoftFloat angle = Acos(dt);
-                SoftFloat s = Rsqrt(SoftFloat.One - dt * dt);    // 1.0f / sin(angle)
+                SoftFloat s = Rsqrt(SoftFloat.One - dt * dt); // 1.0f / sin(angle)
                 SoftFloat w1 = Sin(angle * (SoftFloat.One - t)) * s;
                 SoftFloat w2 = Sin(angle * t) * s;
                 return new Quaternion(q1._value * w1 + q2._value * w2);
@@ -618,6 +691,9 @@ namespace GameLibrary.Mathematics
 
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 Forward(Quaternion q) { return Mul(q, Float3(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One)); }  // for compatibility
+        public static Float3 Forward(Quaternion q)
+        {
+            return Mul(q, Float3(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One));
+        } // for compatibility
     }
 }
