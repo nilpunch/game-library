@@ -79,9 +79,9 @@ namespace GameLibrary.Mathematics
             this.z = v ? 1u : 0u;
         }
 
-        /// <summary>Constructs a UInt3 vector from a bool3 vector by componentwise conversion.</summary>
+        /// <summary>Constructs a UInt3 vector from a Bool3 vector by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public UInt3(bool3 v)
+        public UInt3(Bool3 v)
         {
             this.x = v.x ? 1u : 0u;
             this.y = v.y ? 1u : 0u;
@@ -133,9 +133,9 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static explicit operator UInt3(bool v) { return new UInt3(v); }
 
-        /// <summary>Explicitly converts a bool3 vector to a UInt3 vector by componentwise conversion.</summary>
+        /// <summary>Explicitly converts a Bool3 vector to a UInt3 vector by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static explicit operator UInt3(bool3 v) { return new UInt3(v); }
+        public static explicit operator UInt3(Bool3 v) { return new UInt3(v); }
 
         /// <summary>Explicitly converts a single int value to a UInt3 vector by converting it to uint and assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -231,54 +231,54 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise less than operation on two UInt3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator < (UInt3 lhs, UInt3 rhs) { return new bool3 (lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z); }
+        public static Bool3 operator < (UInt3 lhs, UInt3 rhs) { return new Bool3 (lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z); }
 
         /// <summary>Returns the result of a componentwise less than operation on a UInt3 vector and a uint value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator < (UInt3 lhs, uint rhs) { return new bool3 (lhs.x < rhs, lhs.y < rhs, lhs.z < rhs); }
+        public static Bool3 operator < (UInt3 lhs, uint rhs) { return new Bool3 (lhs.x < rhs, lhs.y < rhs, lhs.z < rhs); }
 
         /// <summary>Returns the result of a componentwise less than operation on a uint value and a UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator < (uint lhs, UInt3 rhs) { return new bool3 (lhs < rhs.x, lhs < rhs.y, lhs < rhs.z); }
+        public static Bool3 operator < (uint lhs, UInt3 rhs) { return new Bool3 (lhs < rhs.x, lhs < rhs.y, lhs < rhs.z); }
 
 
         /// <summary>Returns the result of a componentwise less or equal operation on two UInt3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator <= (UInt3 lhs, UInt3 rhs) { return new bool3 (lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z); }
+        public static Bool3 operator <= (UInt3 lhs, UInt3 rhs) { return new Bool3 (lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z); }
 
         /// <summary>Returns the result of a componentwise less or equal operation on a UInt3 vector and a uint value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator <= (UInt3 lhs, uint rhs) { return new bool3 (lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs); }
+        public static Bool3 operator <= (UInt3 lhs, uint rhs) { return new Bool3 (lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs); }
 
         /// <summary>Returns the result of a componentwise less or equal operation on a uint value and a UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator <= (uint lhs, UInt3 rhs) { return new bool3 (lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z); }
+        public static Bool3 operator <= (uint lhs, UInt3 rhs) { return new Bool3 (lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z); }
 
 
         /// <summary>Returns the result of a componentwise greater than operation on two UInt3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator > (UInt3 lhs, UInt3 rhs) { return new bool3 (lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z); }
+        public static Bool3 operator > (UInt3 lhs, UInt3 rhs) { return new Bool3 (lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z); }
 
         /// <summary>Returns the result of a componentwise greater than operation on a UInt3 vector and a uint value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator > (UInt3 lhs, uint rhs) { return new bool3 (lhs.x > rhs, lhs.y > rhs, lhs.z > rhs); }
+        public static Bool3 operator > (UInt3 lhs, uint rhs) { return new Bool3 (lhs.x > rhs, lhs.y > rhs, lhs.z > rhs); }
 
         /// <summary>Returns the result of a componentwise greater than operation on a uint value and a UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator > (uint lhs, UInt3 rhs) { return new bool3 (lhs > rhs.x, lhs > rhs.y, lhs > rhs.z); }
+        public static Bool3 operator > (uint lhs, UInt3 rhs) { return new Bool3 (lhs > rhs.x, lhs > rhs.y, lhs > rhs.z); }
 
 
         /// <summary>Returns the result of a componentwise greater or equal operation on two UInt3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator >= (UInt3 lhs, UInt3 rhs) { return new bool3 (lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z); }
+        public static Bool3 operator >= (UInt3 lhs, UInt3 rhs) { return new Bool3 (lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z); }
 
         /// <summary>Returns the result of a componentwise greater or equal operation on a UInt3 vector and a uint value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator >= (UInt3 lhs, uint rhs) { return new bool3 (lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs); }
+        public static Bool3 operator >= (UInt3 lhs, uint rhs) { return new Bool3 (lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs); }
 
         /// <summary>Returns the result of a componentwise greater or equal operation on a uint value and a UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator >= (uint lhs, UInt3 rhs) { return new bool3 (lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z); }
+        public static Bool3 operator >= (uint lhs, UInt3 rhs) { return new Bool3 (lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z); }
 
 
         /// <summary>Returns the result of a componentwise unary minus operation on a UInt3 vector.</summary>
@@ -301,28 +301,28 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise equality operation on two UInt3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator == (UInt3 lhs, UInt3 rhs) { return new bool3 (lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z); }
+        public static Bool3 operator == (UInt3 lhs, UInt3 rhs) { return new Bool3 (lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z); }
 
         /// <summary>Returns the result of a componentwise equality operation on a UInt3 vector and a uint value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator == (UInt3 lhs, uint rhs) { return new bool3 (lhs.x == rhs, lhs.y == rhs, lhs.z == rhs); }
+        public static Bool3 operator == (UInt3 lhs, uint rhs) { return new Bool3 (lhs.x == rhs, lhs.y == rhs, lhs.z == rhs); }
 
         /// <summary>Returns the result of a componentwise equality operation on a uint value and a UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator == (uint lhs, UInt3 rhs) { return new bool3 (lhs == rhs.x, lhs == rhs.y, lhs == rhs.z); }
+        public static Bool3 operator == (uint lhs, UInt3 rhs) { return new Bool3 (lhs == rhs.x, lhs == rhs.y, lhs == rhs.z); }
 
 
         /// <summary>Returns the result of a componentwise not equal operation on two UInt3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator != (UInt3 lhs, UInt3 rhs) { return new bool3 (lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z); }
+        public static Bool3 operator != (UInt3 lhs, UInt3 rhs) { return new Bool3 (lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z); }
 
         /// <summary>Returns the result of a componentwise not equal operation on a UInt3 vector and a uint value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator != (UInt3 lhs, uint rhs) { return new bool3 (lhs.x != rhs, lhs.y != rhs, lhs.z != rhs); }
+        public static Bool3 operator != (UInt3 lhs, uint rhs) { return new Bool3 (lhs.x != rhs, lhs.y != rhs, lhs.z != rhs); }
 
         /// <summary>Returns the result of a componentwise not equal operation on a uint value and a UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator != (uint lhs, UInt3 rhs) { return new bool3 (lhs != rhs.x, lhs != rhs.y, lhs != rhs.z); }
+        public static Bool3 operator != (uint lhs, UInt3 rhs) { return new Bool3 (lhs != rhs.x, lhs != rhs.y, lhs != rhs.z); }
 
 
         /// <summary>Returns the result of a componentwise bitwise not operation on a UInt3 vector.</summary>
@@ -1421,9 +1421,9 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static UInt3 UInt3(bool v) { return new UInt3(v); }
 
-        /// <summary>Return a UInt3 vector constructed from a bool3 vector by componentwise conversion.</summary>
+        /// <summary>Return a UInt3 vector constructed from a Bool3 vector by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 UInt3(bool3 v) { return new UInt3(v); }
+        public static UInt3 UInt3(Bool3 v) { return new UInt3(v); }
 
         /// <summary>Returns a UInt3 vector constructed from a single int value by converting it to uint and assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

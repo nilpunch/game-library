@@ -56,9 +56,9 @@ namespace GameLibrary.Mathematics
             this.c1 = Math.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v);
         }
 
-        /// <summary>Constructs a Float3x2 matrix from a bool3x2 matrix by componentwise conversion.</summary>
+        /// <summary>Constructs a Float3x2 matrix from a Bool3x2 matrix by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Float3x2(bool3x2 v)
+        public Float3x2(Bool3x2 v)
         {
             this.c0 = Math.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v.c0);
             this.c1 = Math.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v.c1);
@@ -105,9 +105,9 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static explicit operator Float3x2(bool v) { return new Float3x2(v); }
 
-        /// <summary>Explicitly converts a bool3x2 matrix to a Float3x2 matrix by componentwise conversion.</summary>
+        /// <summary>Explicitly converts a Bool3x2 matrix to a Float3x2 matrix by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static explicit operator Float3x2(bool3x2 v) { return new Float3x2(v); }
+        public static explicit operator Float3x2(Bool3x2 v) { return new Float3x2(v); }
 
         /// <summary>Implicitly converts a single int value to a Float3x2 matrix by converting it to float and assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -193,54 +193,54 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise less than operation on two Float3x2 matrices.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator < (Float3x2 lhs, Float3x2 rhs) { return new bool3x2 (lhs.c0 < rhs.c0, lhs.c1 < rhs.c1); }
+        public static Bool3x2 operator < (Float3x2 lhs, Float3x2 rhs) { return new Bool3x2 (lhs.c0 < rhs.c0, lhs.c1 < rhs.c1); }
 
         /// <summary>Returns the result of a componentwise less than operation on a Float3x2 matrix and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator < (Float3x2 lhs, SoftFloat rhs) { return new bool3x2 (lhs.c0 < rhs, lhs.c1 < rhs); }
+        public static Bool3x2 operator < (Float3x2 lhs, SoftFloat rhs) { return new Bool3x2 (lhs.c0 < rhs, lhs.c1 < rhs); }
 
         /// <summary>Returns the result of a componentwise less than operation on a float value and a Float3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator < (SoftFloat lhs, Float3x2 rhs) { return new bool3x2 (lhs < rhs.c0, lhs < rhs.c1); }
+        public static Bool3x2 operator < (SoftFloat lhs, Float3x2 rhs) { return new Bool3x2 (lhs < rhs.c0, lhs < rhs.c1); }
 
 
         /// <summary>Returns the result of a componentwise less or equal operation on two Float3x2 matrices.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator <= (Float3x2 lhs, Float3x2 rhs) { return new bool3x2 (lhs.c0 <= rhs.c0, lhs.c1 <= rhs.c1); }
+        public static Bool3x2 operator <= (Float3x2 lhs, Float3x2 rhs) { return new Bool3x2 (lhs.c0 <= rhs.c0, lhs.c1 <= rhs.c1); }
 
         /// <summary>Returns the result of a componentwise less or equal operation on a Float3x2 matrix and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator <= (Float3x2 lhs, SoftFloat rhs) { return new bool3x2 (lhs.c0 <= rhs, lhs.c1 <= rhs); }
+        public static Bool3x2 operator <= (Float3x2 lhs, SoftFloat rhs) { return new Bool3x2 (lhs.c0 <= rhs, lhs.c1 <= rhs); }
 
         /// <summary>Returns the result of a componentwise less or equal operation on a float value and a Float3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator <= (SoftFloat lhs, Float3x2 rhs) { return new bool3x2 (lhs <= rhs.c0, lhs <= rhs.c1); }
+        public static Bool3x2 operator <= (SoftFloat lhs, Float3x2 rhs) { return new Bool3x2 (lhs <= rhs.c0, lhs <= rhs.c1); }
 
 
         /// <summary>Returns the result of a componentwise greater than operation on two Float3x2 matrices.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator > (Float3x2 lhs, Float3x2 rhs) { return new bool3x2 (lhs.c0 > rhs.c0, lhs.c1 > rhs.c1); }
+        public static Bool3x2 operator > (Float3x2 lhs, Float3x2 rhs) { return new Bool3x2 (lhs.c0 > rhs.c0, lhs.c1 > rhs.c1); }
 
         /// <summary>Returns the result of a componentwise greater than operation on a Float3x2 matrix and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator > (Float3x2 lhs, SoftFloat rhs) { return new bool3x2 (lhs.c0 > rhs, lhs.c1 > rhs); }
+        public static Bool3x2 operator > (Float3x2 lhs, SoftFloat rhs) { return new Bool3x2 (lhs.c0 > rhs, lhs.c1 > rhs); }
 
         /// <summary>Returns the result of a componentwise greater than operation on a float value and a Float3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator > (SoftFloat lhs, Float3x2 rhs) { return new bool3x2 (lhs > rhs.c0, lhs > rhs.c1); }
+        public static Bool3x2 operator > (SoftFloat lhs, Float3x2 rhs) { return new Bool3x2 (lhs > rhs.c0, lhs > rhs.c1); }
 
 
         /// <summary>Returns the result of a componentwise greater or equal operation on two Float3x2 matrices.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator >= (Float3x2 lhs, Float3x2 rhs) { return new bool3x2 (lhs.c0 >= rhs.c0, lhs.c1 >= rhs.c1); }
+        public static Bool3x2 operator >= (Float3x2 lhs, Float3x2 rhs) { return new Bool3x2 (lhs.c0 >= rhs.c0, lhs.c1 >= rhs.c1); }
 
         /// <summary>Returns the result of a componentwise greater or equal operation on a Float3x2 matrix and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator >= (Float3x2 lhs, SoftFloat rhs) { return new bool3x2 (lhs.c0 >= rhs, lhs.c1 >= rhs); }
+        public static Bool3x2 operator >= (Float3x2 lhs, SoftFloat rhs) { return new Bool3x2 (lhs.c0 >= rhs, lhs.c1 >= rhs); }
 
         /// <summary>Returns the result of a componentwise greater or equal operation on a float value and a Float3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator >= (SoftFloat lhs, Float3x2 rhs) { return new bool3x2 (lhs >= rhs.c0, lhs >= rhs.c1); }
+        public static Bool3x2 operator >= (SoftFloat lhs, Float3x2 rhs) { return new Bool3x2 (lhs >= rhs.c0, lhs >= rhs.c1); }
 
 
         /// <summary>Returns the result of a componentwise unary minus operation on a Float3x2 matrix.</summary>
@@ -250,28 +250,28 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise equality operation on two Float3x2 matrices.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator == (Float3x2 lhs, Float3x2 rhs) { return new bool3x2 (lhs.c0 == rhs.c0, lhs.c1 == rhs.c1); }
+        public static Bool3x2 operator == (Float3x2 lhs, Float3x2 rhs) { return new Bool3x2 (lhs.c0 == rhs.c0, lhs.c1 == rhs.c1); }
 
         /// <summary>Returns the result of a componentwise equality operation on a Float3x2 matrix and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator == (Float3x2 lhs, SoftFloat rhs) { return new bool3x2 (lhs.c0 == rhs, lhs.c1 == rhs); }
+        public static Bool3x2 operator == (Float3x2 lhs, SoftFloat rhs) { return new Bool3x2 (lhs.c0 == rhs, lhs.c1 == rhs); }
 
         /// <summary>Returns the result of a componentwise equality operation on a float value and a Float3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator == (SoftFloat lhs, Float3x2 rhs) { return new bool3x2 (lhs == rhs.c0, lhs == rhs.c1); }
+        public static Bool3x2 operator == (SoftFloat lhs, Float3x2 rhs) { return new Bool3x2 (lhs == rhs.c0, lhs == rhs.c1); }
 
 
         /// <summary>Returns the result of a componentwise not equal operation on two Float3x2 matrices.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator != (Float3x2 lhs, Float3x2 rhs) { return new bool3x2 (lhs.c0 != rhs.c0, lhs.c1 != rhs.c1); }
+        public static Bool3x2 operator != (Float3x2 lhs, Float3x2 rhs) { return new Bool3x2 (lhs.c0 != rhs.c0, lhs.c1 != rhs.c1); }
 
         /// <summary>Returns the result of a componentwise not equal operation on a Float3x2 matrix and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator != (Float3x2 lhs, SoftFloat rhs) { return new bool3x2 (lhs.c0 != rhs, lhs.c1 != rhs); }
+        public static Bool3x2 operator != (Float3x2 lhs, SoftFloat rhs) { return new Bool3x2 (lhs.c0 != rhs, lhs.c1 != rhs); }
 
         /// <summary>Returns the result of a componentwise not equal operation on a float value and a Float3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3x2 operator != (SoftFloat lhs, Float3x2 rhs) { return new bool3x2 (lhs != rhs.c0, lhs != rhs.c1); }
+        public static Bool3x2 operator != (SoftFloat lhs, Float3x2 rhs) { return new Bool3x2 (lhs != rhs.c0, lhs != rhs.c1); }
 
 
 
@@ -342,9 +342,9 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Float3x2 Float3x2(bool v) { return new Float3x2(v); }
 
-        /// <summary>Return a Float3x2 matrix constructed from a bool3x2 matrix by componentwise conversion.</summary>
+        /// <summary>Return a Float3x2 matrix constructed from a Bool3x2 matrix by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3x2 Float3x2(bool3x2 v) { return new Float3x2(v); }
+        public static Float3x2 Float3x2(Bool3x2 v) { return new Float3x2(v); }
 
         /// <summary>Returns a Float3x2 matrix constructed from a single int value by converting it to float and assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

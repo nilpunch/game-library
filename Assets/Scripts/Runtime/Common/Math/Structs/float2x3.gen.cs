@@ -60,9 +60,9 @@ namespace GameLibrary.Mathematics
             this.c2 = Math.Select(new Float2(SoftFloat.Zero), new Float2(SoftFloat.One), v);
         }
 
-        /// <summary>Constructs a Float2x3 matrix from a bool2x3 matrix by componentwise conversion.</summary>
+        /// <summary>Constructs a Float2x3 matrix from a Bool2x3 matrix by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Float2x3(bool2x3 v)
+        public Float2x3(Bool2x3 v)
         {
             this.c0 = Math.Select(new Float2(SoftFloat.Zero), new Float2(SoftFloat.One), v.c0);
             this.c1 = Math.Select(new Float2(SoftFloat.Zero), new Float2(SoftFloat.One), v.c1);
@@ -114,9 +114,9 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static explicit operator Float2x3(bool v) { return new Float2x3(v); }
 
-        /// <summary>Explicitly converts a bool2x3 matrix to a Float2x3 matrix by componentwise conversion.</summary>
+        /// <summary>Explicitly converts a Bool2x3 matrix to a Float2x3 matrix by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static explicit operator Float2x3(bool2x3 v) { return new Float2x3(v); }
+        public static explicit operator Float2x3(Bool2x3 v) { return new Float2x3(v); }
 
         /// <summary>Implicitly converts a single int value to a Float2x3 matrix by converting it to float and assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -202,54 +202,54 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise less than operation on two Float2x3 matrices.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator < (Float2x3 lhs, Float2x3 rhs) { return new bool2x3 (lhs.c0 < rhs.c0, lhs.c1 < rhs.c1, lhs.c2 < rhs.c2); }
+        public static Bool2x3 operator < (Float2x3 lhs, Float2x3 rhs) { return new Bool2x3 (lhs.c0 < rhs.c0, lhs.c1 < rhs.c1, lhs.c2 < rhs.c2); }
 
         /// <summary>Returns the result of a componentwise less than operation on a Float2x3 matrix and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator < (Float2x3 lhs, SoftFloat rhs) { return new bool2x3 (lhs.c0 < rhs, lhs.c1 < rhs, lhs.c2 < rhs); }
+        public static Bool2x3 operator < (Float2x3 lhs, SoftFloat rhs) { return new Bool2x3 (lhs.c0 < rhs, lhs.c1 < rhs, lhs.c2 < rhs); }
 
         /// <summary>Returns the result of a componentwise less than operation on a float value and a Float2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator < (SoftFloat lhs, Float2x3 rhs) { return new bool2x3 (lhs < rhs.c0, lhs < rhs.c1, lhs < rhs.c2); }
+        public static Bool2x3 operator < (SoftFloat lhs, Float2x3 rhs) { return new Bool2x3 (lhs < rhs.c0, lhs < rhs.c1, lhs < rhs.c2); }
 
 
         /// <summary>Returns the result of a componentwise less or equal operation on two Float2x3 matrices.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator <= (Float2x3 lhs, Float2x3 rhs) { return new bool2x3 (lhs.c0 <= rhs.c0, lhs.c1 <= rhs.c1, lhs.c2 <= rhs.c2); }
+        public static Bool2x3 operator <= (Float2x3 lhs, Float2x3 rhs) { return new Bool2x3 (lhs.c0 <= rhs.c0, lhs.c1 <= rhs.c1, lhs.c2 <= rhs.c2); }
 
         /// <summary>Returns the result of a componentwise less or equal operation on a Float2x3 matrix and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator <= (Float2x3 lhs, SoftFloat rhs) { return new bool2x3 (lhs.c0 <= rhs, lhs.c1 <= rhs, lhs.c2 <= rhs); }
+        public static Bool2x3 operator <= (Float2x3 lhs, SoftFloat rhs) { return new Bool2x3 (lhs.c0 <= rhs, lhs.c1 <= rhs, lhs.c2 <= rhs); }
 
         /// <summary>Returns the result of a componentwise less or equal operation on a float value and a Float2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator <= (SoftFloat lhs, Float2x3 rhs) { return new bool2x3 (lhs <= rhs.c0, lhs <= rhs.c1, lhs <= rhs.c2); }
+        public static Bool2x3 operator <= (SoftFloat lhs, Float2x3 rhs) { return new Bool2x3 (lhs <= rhs.c0, lhs <= rhs.c1, lhs <= rhs.c2); }
 
 
         /// <summary>Returns the result of a componentwise greater than operation on two Float2x3 matrices.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator > (Float2x3 lhs, Float2x3 rhs) { return new bool2x3 (lhs.c0 > rhs.c0, lhs.c1 > rhs.c1, lhs.c2 > rhs.c2); }
+        public static Bool2x3 operator > (Float2x3 lhs, Float2x3 rhs) { return new Bool2x3 (lhs.c0 > rhs.c0, lhs.c1 > rhs.c1, lhs.c2 > rhs.c2); }
 
         /// <summary>Returns the result of a componentwise greater than operation on a Float2x3 matrix and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator > (Float2x3 lhs, SoftFloat rhs) { return new bool2x3 (lhs.c0 > rhs, lhs.c1 > rhs, lhs.c2 > rhs); }
+        public static Bool2x3 operator > (Float2x3 lhs, SoftFloat rhs) { return new Bool2x3 (lhs.c0 > rhs, lhs.c1 > rhs, lhs.c2 > rhs); }
 
         /// <summary>Returns the result of a componentwise greater than operation on a float value and a Float2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator > (SoftFloat lhs, Float2x3 rhs) { return new bool2x3 (lhs > rhs.c0, lhs > rhs.c1, lhs > rhs.c2); }
+        public static Bool2x3 operator > (SoftFloat lhs, Float2x3 rhs) { return new Bool2x3 (lhs > rhs.c0, lhs > rhs.c1, lhs > rhs.c2); }
 
 
         /// <summary>Returns the result of a componentwise greater or equal operation on two Float2x3 matrices.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator >= (Float2x3 lhs, Float2x3 rhs) { return new bool2x3 (lhs.c0 >= rhs.c0, lhs.c1 >= rhs.c1, lhs.c2 >= rhs.c2); }
+        public static Bool2x3 operator >= (Float2x3 lhs, Float2x3 rhs) { return new Bool2x3 (lhs.c0 >= rhs.c0, lhs.c1 >= rhs.c1, lhs.c2 >= rhs.c2); }
 
         /// <summary>Returns the result of a componentwise greater or equal operation on a Float2x3 matrix and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator >= (Float2x3 lhs, SoftFloat rhs) { return new bool2x3 (lhs.c0 >= rhs, lhs.c1 >= rhs, lhs.c2 >= rhs); }
+        public static Bool2x3 operator >= (Float2x3 lhs, SoftFloat rhs) { return new Bool2x3 (lhs.c0 >= rhs, lhs.c1 >= rhs, lhs.c2 >= rhs); }
 
         /// <summary>Returns the result of a componentwise greater or equal operation on a float value and a Float2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator >= (SoftFloat lhs, Float2x3 rhs) { return new bool2x3 (lhs >= rhs.c0, lhs >= rhs.c1, lhs >= rhs.c2); }
+        public static Bool2x3 operator >= (SoftFloat lhs, Float2x3 rhs) { return new Bool2x3 (lhs >= rhs.c0, lhs >= rhs.c1, lhs >= rhs.c2); }
 
 
         /// <summary>Returns the result of a componentwise unary minus operation on a Float2x3 matrix.</summary>
@@ -259,28 +259,28 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise equality operation on two Float2x3 matrices.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator == (Float2x3 lhs, Float2x3 rhs) { return new bool2x3 (lhs.c0 == rhs.c0, lhs.c1 == rhs.c1, lhs.c2 == rhs.c2); }
+        public static Bool2x3 operator == (Float2x3 lhs, Float2x3 rhs) { return new Bool2x3 (lhs.c0 == rhs.c0, lhs.c1 == rhs.c1, lhs.c2 == rhs.c2); }
 
         /// <summary>Returns the result of a componentwise equality operation on a Float2x3 matrix and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator == (Float2x3 lhs, SoftFloat rhs) { return new bool2x3 (lhs.c0 == rhs, lhs.c1 == rhs, lhs.c2 == rhs); }
+        public static Bool2x3 operator == (Float2x3 lhs, SoftFloat rhs) { return new Bool2x3 (lhs.c0 == rhs, lhs.c1 == rhs, lhs.c2 == rhs); }
 
         /// <summary>Returns the result of a componentwise equality operation on a float value and a Float2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator == (SoftFloat lhs, Float2x3 rhs) { return new bool2x3 (lhs == rhs.c0, lhs == rhs.c1, lhs == rhs.c2); }
+        public static Bool2x3 operator == (SoftFloat lhs, Float2x3 rhs) { return new Bool2x3 (lhs == rhs.c0, lhs == rhs.c1, lhs == rhs.c2); }
 
 
         /// <summary>Returns the result of a componentwise not equal operation on two Float2x3 matrices.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator != (Float2x3 lhs, Float2x3 rhs) { return new bool2x3 (lhs.c0 != rhs.c0, lhs.c1 != rhs.c1, lhs.c2 != rhs.c2); }
+        public static Bool2x3 operator != (Float2x3 lhs, Float2x3 rhs) { return new Bool2x3 (lhs.c0 != rhs.c0, lhs.c1 != rhs.c1, lhs.c2 != rhs.c2); }
 
         /// <summary>Returns the result of a componentwise not equal operation on a Float2x3 matrix and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator != (Float2x3 lhs, SoftFloat rhs) { return new bool2x3 (lhs.c0 != rhs, lhs.c1 != rhs, lhs.c2 != rhs); }
+        public static Bool2x3 operator != (Float2x3 lhs, SoftFloat rhs) { return new Bool2x3 (lhs.c0 != rhs, lhs.c1 != rhs, lhs.c2 != rhs); }
 
         /// <summary>Returns the result of a componentwise not equal operation on a float value and a Float2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2x3 operator != (SoftFloat lhs, Float2x3 rhs) { return new bool2x3 (lhs != rhs.c0, lhs != rhs.c1, lhs != rhs.c2); }
+        public static Bool2x3 operator != (SoftFloat lhs, Float2x3 rhs) { return new Bool2x3 (lhs != rhs.c0, lhs != rhs.c1, lhs != rhs.c2); }
 
 
 
@@ -349,9 +349,9 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Float2x3 Float2x3(bool v) { return new Float2x3(v); }
 
-        /// <summary>Return a Float2x3 matrix constructed from a bool2x3 matrix by componentwise conversion.</summary>
+        /// <summary>Return a Float2x3 matrix constructed from a Bool2x3 matrix by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2x3 Float2x3(bool2x3 v) { return new Float2x3(v); }
+        public static Float2x3 Float2x3(Bool2x3 v) { return new Float2x3(v); }
 
         /// <summary>Returns a Float2x3 matrix constructed from a single int value by converting it to float and assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

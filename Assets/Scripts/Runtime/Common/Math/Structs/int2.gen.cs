@@ -56,9 +56,9 @@ namespace GameLibrary.Mathematics
             this.y = v ? 1 : 0;
         }
 
-        /// <summary>Constructs a Int2 vector from a bool2 vector by componentwise conversion.</summary>
+        /// <summary>Constructs a Int2 vector from a Bool2 vector by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Int2(bool2 v)
+        public Int2(Bool2 v)
         {
             this.x = v.x ? 1 : 0;
             this.y = v.y ? 1 : 0;
@@ -105,9 +105,9 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static explicit operator Int2(bool v) { return new Int2(v); }
 
-        /// <summary>Explicitly converts a bool2 vector to a Int2 vector by componentwise conversion.</summary>
+        /// <summary>Explicitly converts a Bool2 vector to a Int2 vector by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static explicit operator Int2(bool2 v) { return new Int2(v); }
+        public static explicit operator Int2(Bool2 v) { return new Int2(v); }
 
         /// <summary>Explicitly converts a single uint value to a Int2 vector by converting it to int and assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -203,54 +203,54 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise less than operation on two Int2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator < (Int2 lhs, Int2 rhs) { return new bool2 (lhs.x < rhs.x, lhs.y < rhs.y); }
+        public static Bool2 operator < (Int2 lhs, Int2 rhs) { return new Bool2 (lhs.x < rhs.x, lhs.y < rhs.y); }
 
         /// <summary>Returns the result of a componentwise less than operation on an Int2 vector and an int value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator < (Int2 lhs, int rhs) { return new bool2 (lhs.x < rhs, lhs.y < rhs); }
+        public static Bool2 operator < (Int2 lhs, int rhs) { return new Bool2 (lhs.x < rhs, lhs.y < rhs); }
 
         /// <summary>Returns the result of a componentwise less than operation on an int value and an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator < (int lhs, Int2 rhs) { return new bool2 (lhs < rhs.x, lhs < rhs.y); }
+        public static Bool2 operator < (int lhs, Int2 rhs) { return new Bool2 (lhs < rhs.x, lhs < rhs.y); }
 
 
         /// <summary>Returns the result of a componentwise less or equal operation on two Int2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator <= (Int2 lhs, Int2 rhs) { return new bool2 (lhs.x <= rhs.x, lhs.y <= rhs.y); }
+        public static Bool2 operator <= (Int2 lhs, Int2 rhs) { return new Bool2 (lhs.x <= rhs.x, lhs.y <= rhs.y); }
 
         /// <summary>Returns the result of a componentwise less or equal operation on an Int2 vector and an int value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator <= (Int2 lhs, int rhs) { return new bool2 (lhs.x <= rhs, lhs.y <= rhs); }
+        public static Bool2 operator <= (Int2 lhs, int rhs) { return new Bool2 (lhs.x <= rhs, lhs.y <= rhs); }
 
         /// <summary>Returns the result of a componentwise less or equal operation on an int value and an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator <= (int lhs, Int2 rhs) { return new bool2 (lhs <= rhs.x, lhs <= rhs.y); }
+        public static Bool2 operator <= (int lhs, Int2 rhs) { return new Bool2 (lhs <= rhs.x, lhs <= rhs.y); }
 
 
         /// <summary>Returns the result of a componentwise greater than operation on two Int2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator > (Int2 lhs, Int2 rhs) { return new bool2 (lhs.x > rhs.x, lhs.y > rhs.y); }
+        public static Bool2 operator > (Int2 lhs, Int2 rhs) { return new Bool2 (lhs.x > rhs.x, lhs.y > rhs.y); }
 
         /// <summary>Returns the result of a componentwise greater than operation on an Int2 vector and an int value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator > (Int2 lhs, int rhs) { return new bool2 (lhs.x > rhs, lhs.y > rhs); }
+        public static Bool2 operator > (Int2 lhs, int rhs) { return new Bool2 (lhs.x > rhs, lhs.y > rhs); }
 
         /// <summary>Returns the result of a componentwise greater than operation on an int value and an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator > (int lhs, Int2 rhs) { return new bool2 (lhs > rhs.x, lhs > rhs.y); }
+        public static Bool2 operator > (int lhs, Int2 rhs) { return new Bool2 (lhs > rhs.x, lhs > rhs.y); }
 
 
         /// <summary>Returns the result of a componentwise greater or equal operation on two Int2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator >= (Int2 lhs, Int2 rhs) { return new bool2 (lhs.x >= rhs.x, lhs.y >= rhs.y); }
+        public static Bool2 operator >= (Int2 lhs, Int2 rhs) { return new Bool2 (lhs.x >= rhs.x, lhs.y >= rhs.y); }
 
         /// <summary>Returns the result of a componentwise greater or equal operation on an Int2 vector and an int value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator >= (Int2 lhs, int rhs) { return new bool2 (lhs.x >= rhs, lhs.y >= rhs); }
+        public static Bool2 operator >= (Int2 lhs, int rhs) { return new Bool2 (lhs.x >= rhs, lhs.y >= rhs); }
 
         /// <summary>Returns the result of a componentwise greater or equal operation on an int value and an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator >= (int lhs, Int2 rhs) { return new bool2 (lhs >= rhs.x, lhs >= rhs.y); }
+        public static Bool2 operator >= (int lhs, Int2 rhs) { return new Bool2 (lhs >= rhs.x, lhs >= rhs.y); }
 
 
         /// <summary>Returns the result of a componentwise unary minus operation on an Int2 vector.</summary>
@@ -273,28 +273,28 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise equality operation on two Int2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator == (Int2 lhs, Int2 rhs) { return new bool2 (lhs.x == rhs.x, lhs.y == rhs.y); }
+        public static Bool2 operator == (Int2 lhs, Int2 rhs) { return new Bool2 (lhs.x == rhs.x, lhs.y == rhs.y); }
 
         /// <summary>Returns the result of a componentwise equality operation on an Int2 vector and an int value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator == (Int2 lhs, int rhs) { return new bool2 (lhs.x == rhs, lhs.y == rhs); }
+        public static Bool2 operator == (Int2 lhs, int rhs) { return new Bool2 (lhs.x == rhs, lhs.y == rhs); }
 
         /// <summary>Returns the result of a componentwise equality operation on an int value and an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator == (int lhs, Int2 rhs) { return new bool2 (lhs == rhs.x, lhs == rhs.y); }
+        public static Bool2 operator == (int lhs, Int2 rhs) { return new Bool2 (lhs == rhs.x, lhs == rhs.y); }
 
 
         /// <summary>Returns the result of a componentwise not equal operation on two Int2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator != (Int2 lhs, Int2 rhs) { return new bool2 (lhs.x != rhs.x, lhs.y != rhs.y); }
+        public static Bool2 operator != (Int2 lhs, Int2 rhs) { return new Bool2 (lhs.x != rhs.x, lhs.y != rhs.y); }
 
         /// <summary>Returns the result of a componentwise not equal operation on an Int2 vector and an int value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator != (Int2 lhs, int rhs) { return new bool2 (lhs.x != rhs, lhs.y != rhs); }
+        public static Bool2 operator != (Int2 lhs, int rhs) { return new Bool2 (lhs.x != rhs, lhs.y != rhs); }
 
         /// <summary>Returns the result of a componentwise not equal operation on an int value and an Int2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 operator != (int lhs, Int2 rhs) { return new bool2 (lhs != rhs.x, lhs != rhs.y); }
+        public static Bool2 operator != (int lhs, Int2 rhs) { return new Bool2 (lhs != rhs.x, lhs != rhs.y); }
 
 
         /// <summary>Returns the result of a componentwise bitwise not operation on an Int2 vector.</summary>
@@ -651,9 +651,9 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int2 Int2(bool v) { return new Int2(v); }
 
-        /// <summary>Return a Int2 vector constructed from a bool2 vector by componentwise conversion.</summary>
+        /// <summary>Return a Int2 vector constructed from a Bool2 vector by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Int2(bool2 v) { return new Int2(v); }
+        public static Int2 Int2(Bool2 v) { return new Int2(v); }
 
         /// <summary>Returns a Int2 vector constructed from a single uint value by converting it to int and assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -15,9 +15,9 @@ using System.Diagnostics;
 
 namespace GameLibrary.Mathematics
 {
-    [DebuggerTypeProxy(typeof(bool3.DebuggerProxy))]
+    [DebuggerTypeProxy(typeof(Bool3.DebuggerProxy))]
     [System.Serializable]
-    public partial struct bool3 : System.IEquatable<bool3>
+    public partial struct Bool3 : System.IEquatable<Bool3>
     {
         [MarshalAs(UnmanagedType.U1)]
         public bool x;
@@ -27,45 +27,45 @@ namespace GameLibrary.Mathematics
         public bool z;
 
 
-        /// <summary>Constructs a bool3 vector from three bool values.</summary>
+        /// <summary>Constructs a Bool3 vector from three bool values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool3(bool x, bool y, bool z)
+        public Bool3(bool x, bool y, bool z)
         {
             this.x = x;
             this.y = y;
             this.z = z;
         }
 
-        /// <summary>Constructs a bool3 vector from a bool value and a bool2 vector.</summary>
+        /// <summary>Constructs a Bool3 vector from a bool value and a Bool2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool3(bool x, bool2 yz)
+        public Bool3(bool x, Bool2 yz)
         {
             this.x = x;
             this.y = yz.x;
             this.z = yz.y;
         }
 
-        /// <summary>Constructs a bool3 vector from a bool2 vector and a bool value.</summary>
+        /// <summary>Constructs a Bool3 vector from a Bool2 vector and a bool value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool3(bool2 xy, bool z)
+        public Bool3(Bool2 xy, bool z)
         {
             this.x = xy.x;
             this.y = xy.y;
             this.z = z;
         }
 
-        /// <summary>Constructs a bool3 vector from a bool3 vector.</summary>
+        /// <summary>Constructs a Bool3 vector from a Bool3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool3(bool3 xyz)
+        public Bool3(Bool3 xyz)
         {
             this.x = xyz.x;
             this.y = xyz.y;
             this.z = xyz.z;
         }
 
-        /// <summary>Constructs a bool3 vector from a single bool value by assigning it to every component.</summary>
+        /// <summary>Constructs a Bool3 vector from a single bool value by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool3(bool v)
+        public Bool3(bool v)
         {
             this.x = v;
             this.y = v;
@@ -73,1040 +73,1040 @@ namespace GameLibrary.Mathematics
         }
 
 
-        /// <summary>Implicitly converts a single bool value to a bool3 vector by assigning it to every component.</summary>
+        /// <summary>Implicitly converts a single bool value to a Bool3 vector by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static implicit operator bool3(bool v) { return new bool3(v); }
+        public static implicit operator Bool3(bool v) { return new Bool3(v); }
 
 
-        /// <summary>Returns the result of a componentwise equality operation on two bool3 vectors.</summary>
+        /// <summary>Returns the result of a componentwise equality operation on two Bool3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator == (bool3 lhs, bool3 rhs) { return new bool3 (lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z); }
+        public static Bool3 operator == (Bool3 lhs, Bool3 rhs) { return new Bool3 (lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z); }
 
-        /// <summary>Returns the result of a componentwise equality operation on a bool3 vector and a bool value.</summary>
+        /// <summary>Returns the result of a componentwise equality operation on a Bool3 vector and a bool value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator == (bool3 lhs, bool rhs) { return new bool3 (lhs.x == rhs, lhs.y == rhs, lhs.z == rhs); }
+        public static Bool3 operator == (Bool3 lhs, bool rhs) { return new Bool3 (lhs.x == rhs, lhs.y == rhs, lhs.z == rhs); }
 
-        /// <summary>Returns the result of a componentwise equality operation on a bool value and a bool3 vector.</summary>
+        /// <summary>Returns the result of a componentwise equality operation on a bool value and a Bool3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator == (bool lhs, bool3 rhs) { return new bool3 (lhs == rhs.x, lhs == rhs.y, lhs == rhs.z); }
+        public static Bool3 operator == (bool lhs, Bool3 rhs) { return new Bool3 (lhs == rhs.x, lhs == rhs.y, lhs == rhs.z); }
 
 
-        /// <summary>Returns the result of a componentwise not equal operation on two bool3 vectors.</summary>
+        /// <summary>Returns the result of a componentwise not equal operation on two Bool3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator != (bool3 lhs, bool3 rhs) { return new bool3 (lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z); }
+        public static Bool3 operator != (Bool3 lhs, Bool3 rhs) { return new Bool3 (lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z); }
 
-        /// <summary>Returns the result of a componentwise not equal operation on a bool3 vector and a bool value.</summary>
+        /// <summary>Returns the result of a componentwise not equal operation on a Bool3 vector and a bool value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator != (bool3 lhs, bool rhs) { return new bool3 (lhs.x != rhs, lhs.y != rhs, lhs.z != rhs); }
+        public static Bool3 operator != (Bool3 lhs, bool rhs) { return new Bool3 (lhs.x != rhs, lhs.y != rhs, lhs.z != rhs); }
 
-        /// <summary>Returns the result of a componentwise not equal operation on a bool value and a bool3 vector.</summary>
+        /// <summary>Returns the result of a componentwise not equal operation on a bool value and a Bool3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator != (bool lhs, bool3 rhs) { return new bool3 (lhs != rhs.x, lhs != rhs.y, lhs != rhs.z); }
+        public static Bool3 operator != (bool lhs, Bool3 rhs) { return new Bool3 (lhs != rhs.x, lhs != rhs.y, lhs != rhs.z); }
 
 
-        /// <summary>Returns the result of a componentwise not operation on a bool3 vector.</summary>
+        /// <summary>Returns the result of a componentwise not operation on a Bool3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator ! (bool3 val) { return new bool3 (!val.x, !val.y, !val.z); }
+        public static Bool3 operator ! (Bool3 val) { return new Bool3 (!val.x, !val.y, !val.z); }
 
 
-        /// <summary>Returns the result of a componentwise bitwise and operation on two bool3 vectors.</summary>
+        /// <summary>Returns the result of a componentwise bitwise and operation on two Bool3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator & (bool3 lhs, bool3 rhs) { return new bool3 (lhs.x & rhs.x, lhs.y & rhs.y, lhs.z & rhs.z); }
+        public static Bool3 operator & (Bool3 lhs, Bool3 rhs) { return new Bool3 (lhs.x & rhs.x, lhs.y & rhs.y, lhs.z & rhs.z); }
 
-        /// <summary>Returns the result of a componentwise bitwise and operation on a bool3 vector and a bool value.</summary>
+        /// <summary>Returns the result of a componentwise bitwise and operation on a Bool3 vector and a bool value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator & (bool3 lhs, bool rhs) { return new bool3 (lhs.x & rhs, lhs.y & rhs, lhs.z & rhs); }
+        public static Bool3 operator & (Bool3 lhs, bool rhs) { return new Bool3 (lhs.x & rhs, lhs.y & rhs, lhs.z & rhs); }
 
-        /// <summary>Returns the result of a componentwise bitwise and operation on a bool value and a bool3 vector.</summary>
+        /// <summary>Returns the result of a componentwise bitwise and operation on a bool value and a Bool3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator & (bool lhs, bool3 rhs) { return new bool3 (lhs & rhs.x, lhs & rhs.y, lhs & rhs.z); }
+        public static Bool3 operator & (bool lhs, Bool3 rhs) { return new Bool3 (lhs & rhs.x, lhs & rhs.y, lhs & rhs.z); }
 
 
-        /// <summary>Returns the result of a componentwise bitwise or operation on two bool3 vectors.</summary>
+        /// <summary>Returns the result of a componentwise bitwise or operation on two Bool3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator | (bool3 lhs, bool3 rhs) { return new bool3 (lhs.x | rhs.x, lhs.y | rhs.y, lhs.z | rhs.z); }
+        public static Bool3 operator | (Bool3 lhs, Bool3 rhs) { return new Bool3 (lhs.x | rhs.x, lhs.y | rhs.y, lhs.z | rhs.z); }
 
-        /// <summary>Returns the result of a componentwise bitwise or operation on a bool3 vector and a bool value.</summary>
+        /// <summary>Returns the result of a componentwise bitwise or operation on a Bool3 vector and a bool value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator | (bool3 lhs, bool rhs) { return new bool3 (lhs.x | rhs, lhs.y | rhs, lhs.z | rhs); }
+        public static Bool3 operator | (Bool3 lhs, bool rhs) { return new Bool3 (lhs.x | rhs, lhs.y | rhs, lhs.z | rhs); }
 
-        /// <summary>Returns the result of a componentwise bitwise or operation on a bool value and a bool3 vector.</summary>
+        /// <summary>Returns the result of a componentwise bitwise or operation on a bool value and a Bool3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator | (bool lhs, bool3 rhs) { return new bool3 (lhs | rhs.x, lhs | rhs.y, lhs | rhs.z); }
+        public static Bool3 operator | (bool lhs, Bool3 rhs) { return new Bool3 (lhs | rhs.x, lhs | rhs.y, lhs | rhs.z); }
 
 
-        /// <summary>Returns the result of a componentwise bitwise exclusive or operation on two bool3 vectors.</summary>
+        /// <summary>Returns the result of a componentwise bitwise exclusive or operation on two Bool3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator ^ (bool3 lhs, bool3 rhs) { return new bool3 (lhs.x ^ rhs.x, lhs.y ^ rhs.y, lhs.z ^ rhs.z); }
+        public static Bool3 operator ^ (Bool3 lhs, Bool3 rhs) { return new Bool3 (lhs.x ^ rhs.x, lhs.y ^ rhs.y, lhs.z ^ rhs.z); }
 
-        /// <summary>Returns the result of a componentwise bitwise exclusive or operation on a bool3 vector and a bool value.</summary>
+        /// <summary>Returns the result of a componentwise bitwise exclusive or operation on a Bool3 vector and a bool value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator ^ (bool3 lhs, bool rhs) { return new bool3 (lhs.x ^ rhs, lhs.y ^ rhs, lhs.z ^ rhs); }
+        public static Bool3 operator ^ (Bool3 lhs, bool rhs) { return new Bool3 (lhs.x ^ rhs, lhs.y ^ rhs, lhs.z ^ rhs); }
 
-        /// <summary>Returns the result of a componentwise bitwise exclusive or operation on a bool value and a bool3 vector.</summary>
+        /// <summary>Returns the result of a componentwise bitwise exclusive or operation on a bool value and a Bool3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 operator ^ (bool lhs, bool3 rhs) { return new bool3 (lhs ^ rhs.x, lhs ^ rhs.y, lhs ^ rhs.z); }
+        public static Bool3 operator ^ (bool lhs, Bool3 rhs) { return new Bool3 (lhs ^ rhs.x, lhs ^ rhs.y, lhs ^ rhs.z); }
 
 
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxxx
+        public Bool4 xxxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, x, x); }
+            get { return new Bool4(x, x, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxxy
+        public Bool4 xxxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, x, y); }
+            get { return new Bool4(x, x, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxxz
+        public Bool4 xxxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, x, z); }
+            get { return new Bool4(x, x, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxyx
+        public Bool4 xxyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, y, x); }
+            get { return new Bool4(x, x, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxyy
+        public Bool4 xxyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, y, y); }
+            get { return new Bool4(x, x, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxyz
+        public Bool4 xxyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, y, z); }
+            get { return new Bool4(x, x, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxzx
+        public Bool4 xxzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, z, x); }
+            get { return new Bool4(x, x, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxzy
+        public Bool4 xxzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, z, y); }
+            get { return new Bool4(x, x, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xxzz
+        public Bool4 xxzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, x, z, z); }
+            get { return new Bool4(x, x, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyxx
+        public Bool4 xyxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, x, x); }
+            get { return new Bool4(x, y, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyxy
+        public Bool4 xyxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, x, y); }
+            get { return new Bool4(x, y, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyxz
+        public Bool4 xyxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, x, z); }
+            get { return new Bool4(x, y, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyyx
+        public Bool4 xyyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, y, x); }
+            get { return new Bool4(x, y, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyyy
+        public Bool4 xyyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, y, y); }
+            get { return new Bool4(x, y, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyyz
+        public Bool4 xyyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, y, z); }
+            get { return new Bool4(x, y, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyzx
+        public Bool4 xyzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, z, x); }
+            get { return new Bool4(x, y, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyzy
+        public Bool4 xyzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, z, y); }
+            get { return new Bool4(x, y, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xyzz
+        public Bool4 xyzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, y, z, z); }
+            get { return new Bool4(x, y, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzxx
+        public Bool4 xzxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, x, x); }
+            get { return new Bool4(x, z, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzxy
+        public Bool4 xzxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, x, y); }
+            get { return new Bool4(x, z, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzxz
+        public Bool4 xzxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, x, z); }
+            get { return new Bool4(x, z, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzyx
+        public Bool4 xzyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, y, x); }
+            get { return new Bool4(x, z, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzyy
+        public Bool4 xzyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, y, y); }
+            get { return new Bool4(x, z, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzyz
+        public Bool4 xzyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, y, z); }
+            get { return new Bool4(x, z, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzzx
+        public Bool4 xzzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, z, x); }
+            get { return new Bool4(x, z, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzzy
+        public Bool4 xzzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, z, y); }
+            get { return new Bool4(x, z, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 xzzz
+        public Bool4 xzzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(x, z, z, z); }
+            get { return new Bool4(x, z, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxxx
+        public Bool4 yxxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, x, x); }
+            get { return new Bool4(y, x, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxxy
+        public Bool4 yxxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, x, y); }
+            get { return new Bool4(y, x, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxxz
+        public Bool4 yxxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, x, z); }
+            get { return new Bool4(y, x, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxyx
+        public Bool4 yxyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, y, x); }
+            get { return new Bool4(y, x, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxyy
+        public Bool4 yxyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, y, y); }
+            get { return new Bool4(y, x, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxyz
+        public Bool4 yxyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, y, z); }
+            get { return new Bool4(y, x, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxzx
+        public Bool4 yxzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, z, x); }
+            get { return new Bool4(y, x, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxzy
+        public Bool4 yxzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, z, y); }
+            get { return new Bool4(y, x, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yxzz
+        public Bool4 yxzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, x, z, z); }
+            get { return new Bool4(y, x, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyxx
+        public Bool4 yyxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, x, x); }
+            get { return new Bool4(y, y, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyxy
+        public Bool4 yyxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, x, y); }
+            get { return new Bool4(y, y, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyxz
+        public Bool4 yyxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, x, z); }
+            get { return new Bool4(y, y, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyyx
+        public Bool4 yyyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, y, x); }
+            get { return new Bool4(y, y, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyyy
+        public Bool4 yyyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, y, y); }
+            get { return new Bool4(y, y, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyyz
+        public Bool4 yyyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, y, z); }
+            get { return new Bool4(y, y, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyzx
+        public Bool4 yyzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, z, x); }
+            get { return new Bool4(y, y, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyzy
+        public Bool4 yyzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, z, y); }
+            get { return new Bool4(y, y, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yyzz
+        public Bool4 yyzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, y, z, z); }
+            get { return new Bool4(y, y, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzxx
+        public Bool4 yzxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, x, x); }
+            get { return new Bool4(y, z, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzxy
+        public Bool4 yzxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, x, y); }
+            get { return new Bool4(y, z, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzxz
+        public Bool4 yzxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, x, z); }
+            get { return new Bool4(y, z, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzyx
+        public Bool4 yzyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, y, x); }
+            get { return new Bool4(y, z, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzyy
+        public Bool4 yzyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, y, y); }
+            get { return new Bool4(y, z, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzyz
+        public Bool4 yzyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, y, z); }
+            get { return new Bool4(y, z, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzzx
+        public Bool4 yzzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, z, x); }
+            get { return new Bool4(y, z, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzzy
+        public Bool4 yzzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, z, y); }
+            get { return new Bool4(y, z, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 yzzz
+        public Bool4 yzzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(y, z, z, z); }
+            get { return new Bool4(y, z, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxxx
+        public Bool4 zxxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, x, x); }
+            get { return new Bool4(z, x, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxxy
+        public Bool4 zxxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, x, y); }
+            get { return new Bool4(z, x, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxxz
+        public Bool4 zxxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, x, z); }
+            get { return new Bool4(z, x, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxyx
+        public Bool4 zxyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, y, x); }
+            get { return new Bool4(z, x, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxyy
+        public Bool4 zxyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, y, y); }
+            get { return new Bool4(z, x, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxyz
+        public Bool4 zxyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, y, z); }
+            get { return new Bool4(z, x, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxzx
+        public Bool4 zxzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, z, x); }
+            get { return new Bool4(z, x, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxzy
+        public Bool4 zxzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, z, y); }
+            get { return new Bool4(z, x, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zxzz
+        public Bool4 zxzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, x, z, z); }
+            get { return new Bool4(z, x, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyxx
+        public Bool4 zyxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, x, x); }
+            get { return new Bool4(z, y, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyxy
+        public Bool4 zyxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, x, y); }
+            get { return new Bool4(z, y, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyxz
+        public Bool4 zyxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, x, z); }
+            get { return new Bool4(z, y, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyyx
+        public Bool4 zyyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, y, x); }
+            get { return new Bool4(z, y, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyyy
+        public Bool4 zyyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, y, y); }
+            get { return new Bool4(z, y, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyyz
+        public Bool4 zyyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, y, z); }
+            get { return new Bool4(z, y, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyzx
+        public Bool4 zyzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, z, x); }
+            get { return new Bool4(z, y, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyzy
+        public Bool4 zyzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, z, y); }
+            get { return new Bool4(z, y, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zyzz
+        public Bool4 zyzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, y, z, z); }
+            get { return new Bool4(z, y, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzxx
+        public Bool4 zzxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, x, x); }
+            get { return new Bool4(z, z, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzxy
+        public Bool4 zzxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, x, y); }
+            get { return new Bool4(z, z, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzxz
+        public Bool4 zzxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, x, z); }
+            get { return new Bool4(z, z, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzyx
+        public Bool4 zzyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, y, x); }
+            get { return new Bool4(z, z, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzyy
+        public Bool4 zzyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, y, y); }
+            get { return new Bool4(z, z, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzyz
+        public Bool4 zzyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, y, z); }
+            get { return new Bool4(z, z, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzzx
+        public Bool4 zzzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, z, x); }
+            get { return new Bool4(z, z, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzzy
+        public Bool4 zzzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, z, y); }
+            get { return new Bool4(z, z, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool4 zzzz
+        public Bool4 zzzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool4(z, z, z, z); }
+            get { return new Bool4(z, z, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xxx
+        public Bool3 xxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, x, x); }
+            get { return new Bool3(x, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xxy
+        public Bool3 xxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, x, y); }
+            get { return new Bool3(x, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xxz
+        public Bool3 xxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, x, z); }
+            get { return new Bool3(x, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xyx
+        public Bool3 xyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, y, x); }
+            get { return new Bool3(x, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xyy
+        public Bool3 xyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, y, y); }
+            get { return new Bool3(x, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xyz
+        public Bool3 xyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, y, z); }
+            get { return new Bool3(x, y, z); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { x = value.x; y = value.y; z = value.z; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xzx
+        public Bool3 xzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, z, x); }
+            get { return new Bool3(x, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xzy
+        public Bool3 xzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, z, y); }
+            get { return new Bool3(x, z, y); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { x = value.x; z = value.y; y = value.z; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 xzz
+        public Bool3 xzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(x, z, z); }
+            get { return new Bool3(x, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yxx
+        public Bool3 yxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, x, x); }
+            get { return new Bool3(y, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yxy
+        public Bool3 yxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, x, y); }
+            get { return new Bool3(y, x, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yxz
+        public Bool3 yxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, x, z); }
+            get { return new Bool3(y, x, z); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { y = value.x; x = value.y; z = value.z; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yyx
+        public Bool3 yyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, y, x); }
+            get { return new Bool3(y, y, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yyy
+        public Bool3 yyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, y, y); }
+            get { return new Bool3(y, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yyz
+        public Bool3 yyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, y, z); }
+            get { return new Bool3(y, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yzx
+        public Bool3 yzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, z, x); }
+            get { return new Bool3(y, z, x); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { y = value.x; z = value.y; x = value.z; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yzy
+        public Bool3 yzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, z, y); }
+            get { return new Bool3(y, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 yzz
+        public Bool3 yzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(y, z, z); }
+            get { return new Bool3(y, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zxx
+        public Bool3 zxx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, x, x); }
+            get { return new Bool3(z, x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zxy
+        public Bool3 zxy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, x, y); }
+            get { return new Bool3(z, x, y); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { z = value.x; x = value.y; y = value.z; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zxz
+        public Bool3 zxz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, x, z); }
+            get { return new Bool3(z, x, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zyx
+        public Bool3 zyx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, y, x); }
+            get { return new Bool3(z, y, x); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { z = value.x; y = value.y; x = value.z; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zyy
+        public Bool3 zyy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, y, y); }
+            get { return new Bool3(z, y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zyz
+        public Bool3 zyz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, y, z); }
+            get { return new Bool3(z, y, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zzx
+        public Bool3 zzx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, z, x); }
+            get { return new Bool3(z, z, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zzy
+        public Bool3 zzy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, z, y); }
+            get { return new Bool3(z, z, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool3 zzz
+        public Bool3 zzz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool3(z, z, z); }
+            get { return new Bool3(z, z, z); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 xx
+        public Bool2 xx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(x, x); }
+            get { return new Bool2(x, x); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 xy
+        public Bool2 xy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(x, y); }
+            get { return new Bool2(x, y); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { x = value.x; y = value.y; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 xz
+        public Bool2 xz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(x, z); }
+            get { return new Bool2(x, z); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { x = value.x; z = value.y; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 yx
+        public Bool2 yx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(y, x); }
+            get { return new Bool2(y, x); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { y = value.x; x = value.y; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 yy
+        public Bool2 yy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(y, y); }
+            get { return new Bool2(y, y); }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 yz
+        public Bool2 yz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(y, z); }
+            get { return new Bool2(y, z); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { y = value.x; z = value.y; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 zx
+        public Bool2 zx
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(z, x); }
+            get { return new Bool2(z, x); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { z = value.x; x = value.y; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 zy
+        public Bool2 zy
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(z, y); }
+            get { return new Bool2(z, y); }
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set { z = value.x; y = value.y; }
         }
 
 
         [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
-        public bool2 zz
+        public Bool2 zz
         {
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            get { return new bool2(z, z); }
+            get { return new Bool2(z, z); }
         }
 
 
@@ -1120,7 +1120,7 @@ namespace GameLibrary.Mathematics
                 if ((uint)index >= 3)
                     throw new System.ArgumentException("index must be between[0...2]");
 #endif
-                fixed (bool3* array = &this) { return ((bool*)array)[index]; }
+                fixed (Bool3* array = &this) { return ((bool*)array)[index]; }
             }
             set
             {
@@ -1132,24 +1132,24 @@ namespace GameLibrary.Mathematics
             }
         }
 
-        /// <summary>Returns true if the bool3 is equal to a given bool3, false otherwise.</summary>
+        /// <summary>Returns true if the Bool3 is equal to a given Bool3, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public bool Equals(bool3 rhs) { return x == rhs.x && y == rhs.y && z == rhs.z; }
+        public bool Equals(Bool3 rhs) { return x == rhs.x && y == rhs.y && z == rhs.z; }
 
-        /// <summary>Returns true if the bool3 is equal to a given bool3, false otherwise.</summary>
-        public override bool Equals(object o) { return Equals((bool3)o); }
+        /// <summary>Returns true if the Bool3 is equal to a given Bool3, false otherwise.</summary>
+        public override bool Equals(object o) { return Equals((Bool3)o); }
 
 
-        /// <summary>Returns a hash code for the bool3.</summary>
+        /// <summary>Returns a hash code for the Bool3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode() { return (int)Math.hash(this); }
 
 
-        /// <summary>Returns a string representation of the bool3.</summary>
+        /// <summary>Returns a string representation of the Bool3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override string ToString()
         {
-            return string.Format("bool3({0}, {1}, {2})", x, y, z);
+            return string.Format("Bool3({0}, {1}, {2})", x, y, z);
         }
 
         internal sealed class DebuggerProxy
@@ -1157,7 +1157,7 @@ namespace GameLibrary.Mathematics
             public bool x;
             public bool y;
             public bool z;
-            public DebuggerProxy(bool3 v)
+            public DebuggerProxy(Bool3 v)
             {
                 x = v.x;
                 y = v.y;
@@ -1169,75 +1169,75 @@ namespace GameLibrary.Mathematics
 
     public static partial class Math
     {
-        /// <summary>Returns a bool3 vector constructed from three bool values.</summary>
+        /// <summary>Returns a Bool3 vector constructed from three bool values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 bool3(bool x, bool y, bool z) { return new bool3(x, y, z); }
+        public static Bool3 Bool3(bool x, bool y, bool z) { return new Bool3(x, y, z); }
 
-        /// <summary>Returns a bool3 vector constructed from a bool value and a bool2 vector.</summary>
+        /// <summary>Returns a Bool3 vector constructed from a bool value and a Bool2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 bool3(bool x, bool2 yz) { return new bool3(x, yz); }
+        public static Bool3 Bool3(bool x, Bool2 yz) { return new Bool3(x, yz); }
 
-        /// <summary>Returns a bool3 vector constructed from a bool2 vector and a bool value.</summary>
+        /// <summary>Returns a Bool3 vector constructed from a Bool2 vector and a bool value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 bool3(bool2 xy, bool z) { return new bool3(xy, z); }
+        public static Bool3 Bool3(Bool2 xy, bool z) { return new Bool3(xy, z); }
 
-        /// <summary>Returns a bool3 vector constructed from a bool3 vector.</summary>
+        /// <summary>Returns a Bool3 vector constructed from a Bool3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 bool3(bool3 xyz) { return new bool3(xyz); }
+        public static Bool3 Bool3(Bool3 xyz) { return new Bool3(xyz); }
 
-        /// <summary>Returns a bool3 vector constructed from a single bool value by assigning it to every component.</summary>
+        /// <summary>Returns a Bool3 vector constructed from a single bool value by assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 bool3(bool v) { return new bool3(v); }
+        public static Bool3 Bool3(bool v) { return new Bool3(v); }
 
-        /// <summary>Returns a uint hash code of a bool3 vector.</summary>
+        /// <summary>Returns a uint hash code of a Bool3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(bool3 v)
+        public static uint hash(Bool3 v)
         {
             return SumComponents(Select(UInt3(0xA1E92D39u, 0x4583C801u, 0x9536A0F5u), UInt3(0xAF816615u, 0x9AF8D62Du, 0xE3600729u), v));
         }
 
         /// <summary>
-        /// Returns a UInt3 vector hash code of a bool3 vector.
+        /// Returns a UInt3 vector hash code of a Bool3 vector.
         /// When multiple elements are to be hashes together, it can more efficient to calculate and combine wide hash
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 hashwide(bool3 v)
+        public static UInt3 hashwide(Bool3 v)
         {
             return (Select(UInt3(0x5F17300Du, 0x670D6809u, 0x7AF32C49u), UInt3(0xAE131389u, 0x5D1B165Bu, 0x87096CD7u), v));
         }
 
-        /// <summary>Returns the result of specified shuffling of the components from two bool3 vectors into a bool value.</summary>
+        /// <summary>Returns the result of specified shuffling of the components from two Bool3 vectors into a bool value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool shuffle(bool3 a, bool3 b, ShuffleComponent x)
+        public static bool shuffle(Bool3 a, Bool3 b, ShuffleComponent x)
         {
             return select_shuffle_component(a, b, x);
         }
 
-        /// <summary>Returns the result of specified shuffling of the components from two bool3 vectors into a bool2 vector.</summary>
+        /// <summary>Returns the result of specified shuffling of the components from two Bool3 vectors into a Bool2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 shuffle(bool3 a, bool3 b, ShuffleComponent x, ShuffleComponent y)
+        public static Bool2 shuffle(Bool3 a, Bool3 b, ShuffleComponent x, ShuffleComponent y)
         {
-            return bool2(
+            return Bool2(
                 select_shuffle_component(a, b, x),
                 select_shuffle_component(a, b, y));
         }
 
-        /// <summary>Returns the result of specified shuffling of the components from two bool3 vectors into a bool3 vector.</summary>
+        /// <summary>Returns the result of specified shuffling of the components from two Bool3 vectors into a Bool3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 shuffle(bool3 a, bool3 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z)
+        public static Bool3 shuffle(Bool3 a, Bool3 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z)
         {
-            return bool3(
+            return Bool3(
                 select_shuffle_component(a, b, x),
                 select_shuffle_component(a, b, y),
                 select_shuffle_component(a, b, z));
         }
 
-        /// <summary>Returns the result of specified shuffling of the components from two bool3 vectors into a bool4 vector.</summary>
+        /// <summary>Returns the result of specified shuffling of the components from two Bool3 vectors into a Bool4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 shuffle(bool3 a, bool3 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z, ShuffleComponent w)
+        public static Bool4 shuffle(Bool3 a, Bool3 b, ShuffleComponent x, ShuffleComponent y, ShuffleComponent z, ShuffleComponent w)
         {
-            return bool4(
+            return Bool4(
                 select_shuffle_component(a, b, x),
                 select_shuffle_component(a, b, y),
                 select_shuffle_component(a, b, z),
@@ -1245,7 +1245,7 @@ namespace GameLibrary.Mathematics
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        internal static bool select_shuffle_component(bool3 a, bool3 b, ShuffleComponent component)
+        internal static bool select_shuffle_component(Bool3 a, Bool3 b, ShuffleComponent component)
         {
             switch(component)
             {

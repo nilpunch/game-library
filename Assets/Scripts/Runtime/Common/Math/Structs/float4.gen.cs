@@ -126,9 +126,9 @@ namespace GameLibrary.Mathematics
             this.w = v ? SoftFloat.One : SoftFloat.Zero;
         }
 
-        /// <summary>Constructs a Float4 vector from a bool4 vector by componentwise conversion.</summary>
+        /// <summary>Constructs a Float4 vector from a Bool4 vector by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public Float4(bool4 v)
+        public Float4(Bool4 v)
         {
             this.x = v.x ? SoftFloat.One : SoftFloat.Zero;
             this.y = v.y ? SoftFloat.One : SoftFloat.Zero;
@@ -185,9 +185,9 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static explicit operator Float4(bool v) { return new Float4(v); }
 
-        /// <summary>Explicitly converts a bool4 vector to a Float4 vector by componentwise conversion.</summary>
+        /// <summary>Explicitly converts a Bool4 vector to a Float4 vector by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static explicit operator Float4(bool4 v) { return new Float4(v); }
+        public static explicit operator Float4(Bool4 v) { return new Float4(v); }
 
         /// <summary>Implicitly converts a single int value to a Float4 vector by converting it to float and assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -273,54 +273,54 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise less than operation on two Float4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator < (Float4 lhs, Float4 rhs) { return new bool4 (lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z, lhs.w < rhs.w); }
+        public static Bool4 operator < (Float4 lhs, Float4 rhs) { return new Bool4 (lhs.x < rhs.x, lhs.y < rhs.y, lhs.z < rhs.z, lhs.w < rhs.w); }
 
         /// <summary>Returns the result of a componentwise less than operation on a Float4 vector and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator < (Float4 lhs, SoftFloat rhs) { return new bool4 (lhs.x < rhs, lhs.y < rhs, lhs.z < rhs, lhs.w < rhs); }
+        public static Bool4 operator < (Float4 lhs, SoftFloat rhs) { return new Bool4 (lhs.x < rhs, lhs.y < rhs, lhs.z < rhs, lhs.w < rhs); }
 
         /// <summary>Returns the result of a componentwise less than operation on a float value and a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator < (SoftFloat lhs, Float4 rhs) { return new bool4 (lhs < rhs.x, lhs < rhs.y, lhs < rhs.z, lhs < rhs.w); }
+        public static Bool4 operator < (SoftFloat lhs, Float4 rhs) { return new Bool4 (lhs < rhs.x, lhs < rhs.y, lhs < rhs.z, lhs < rhs.w); }
 
 
         /// <summary>Returns the result of a componentwise less or equal operation on two Float4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator <= (Float4 lhs, Float4 rhs) { return new bool4 (lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z, lhs.w <= rhs.w); }
+        public static Bool4 operator <= (Float4 lhs, Float4 rhs) { return new Bool4 (lhs.x <= rhs.x, lhs.y <= rhs.y, lhs.z <= rhs.z, lhs.w <= rhs.w); }
 
         /// <summary>Returns the result of a componentwise less or equal operation on a Float4 vector and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator <= (Float4 lhs, SoftFloat rhs) { return new bool4 (lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs, lhs.w <= rhs); }
+        public static Bool4 operator <= (Float4 lhs, SoftFloat rhs) { return new Bool4 (lhs.x <= rhs, lhs.y <= rhs, lhs.z <= rhs, lhs.w <= rhs); }
 
         /// <summary>Returns the result of a componentwise less or equal operation on a float value and a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator <= (SoftFloat lhs, Float4 rhs) { return new bool4 (lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z, lhs <= rhs.w); }
+        public static Bool4 operator <= (SoftFloat lhs, Float4 rhs) { return new Bool4 (lhs <= rhs.x, lhs <= rhs.y, lhs <= rhs.z, lhs <= rhs.w); }
 
 
         /// <summary>Returns the result of a componentwise greater than operation on two Float4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator > (Float4 lhs, Float4 rhs) { return new bool4 (lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z, lhs.w > rhs.w); }
+        public static Bool4 operator > (Float4 lhs, Float4 rhs) { return new Bool4 (lhs.x > rhs.x, lhs.y > rhs.y, lhs.z > rhs.z, lhs.w > rhs.w); }
 
         /// <summary>Returns the result of a componentwise greater than operation on a Float4 vector and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator > (Float4 lhs, SoftFloat rhs) { return new bool4 (lhs.x > rhs, lhs.y > rhs, lhs.z > rhs, lhs.w > rhs); }
+        public static Bool4 operator > (Float4 lhs, SoftFloat rhs) { return new Bool4 (lhs.x > rhs, lhs.y > rhs, lhs.z > rhs, lhs.w > rhs); }
 
         /// <summary>Returns the result of a componentwise greater than operation on a float value and a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator > (SoftFloat lhs, Float4 rhs) { return new bool4 (lhs > rhs.x, lhs > rhs.y, lhs > rhs.z, lhs > rhs.w); }
+        public static Bool4 operator > (SoftFloat lhs, Float4 rhs) { return new Bool4 (lhs > rhs.x, lhs > rhs.y, lhs > rhs.z, lhs > rhs.w); }
 
 
         /// <summary>Returns the result of a componentwise greater or equal operation on two Float4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator >= (Float4 lhs, Float4 rhs) { return new bool4 (lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z, lhs.w >= rhs.w); }
+        public static Bool4 operator >= (Float4 lhs, Float4 rhs) { return new Bool4 (lhs.x >= rhs.x, lhs.y >= rhs.y, lhs.z >= rhs.z, lhs.w >= rhs.w); }
 
         /// <summary>Returns the result of a componentwise greater or equal operation on a Float4 vector and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator >= (Float4 lhs, SoftFloat rhs) { return new bool4 (lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs, lhs.w >= rhs); }
+        public static Bool4 operator >= (Float4 lhs, SoftFloat rhs) { return new Bool4 (lhs.x >= rhs, lhs.y >= rhs, lhs.z >= rhs, lhs.w >= rhs); }
 
         /// <summary>Returns the result of a componentwise greater or equal operation on a float value and a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator >= (SoftFloat lhs, Float4 rhs) { return new bool4 (lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w); }
+        public static Bool4 operator >= (SoftFloat lhs, Float4 rhs) { return new Bool4 (lhs >= rhs.x, lhs >= rhs.y, lhs >= rhs.z, lhs >= rhs.w); }
 
 
         /// <summary>Returns the result of a componentwise unary minus operation on a Float4 vector.</summary>
@@ -330,28 +330,28 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the result of a componentwise equality operation on two Float4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator == (Float4 lhs, Float4 rhs) { return new bool4 (lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z, lhs.w == rhs.w); }
+        public static Bool4 operator == (Float4 lhs, Float4 rhs) { return new Bool4 (lhs.x == rhs.x, lhs.y == rhs.y, lhs.z == rhs.z, lhs.w == rhs.w); }
 
         /// <summary>Returns the result of a componentwise equality operation on a Float4 vector and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator == (Float4 lhs, SoftFloat rhs) { return new bool4 (lhs.x == rhs, lhs.y == rhs, lhs.z == rhs, lhs.w == rhs); }
+        public static Bool4 operator == (Float4 lhs, SoftFloat rhs) { return new Bool4 (lhs.x == rhs, lhs.y == rhs, lhs.z == rhs, lhs.w == rhs); }
 
         /// <summary>Returns the result of a componentwise equality operation on a float value and a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator == (SoftFloat lhs, Float4 rhs) { return new bool4 (lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w); }
+        public static Bool4 operator == (SoftFloat lhs, Float4 rhs) { return new Bool4 (lhs == rhs.x, lhs == rhs.y, lhs == rhs.z, lhs == rhs.w); }
 
 
         /// <summary>Returns the result of a componentwise not equal operation on two Float4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator != (Float4 lhs, Float4 rhs) { return new bool4 (lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z, lhs.w != rhs.w); }
+        public static Bool4 operator != (Float4 lhs, Float4 rhs) { return new Bool4 (lhs.x != rhs.x, lhs.y != rhs.y, lhs.z != rhs.z, lhs.w != rhs.w); }
 
         /// <summary>Returns the result of a componentwise not equal operation on a Float4 vector and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator != (Float4 lhs, SoftFloat rhs) { return new bool4 (lhs.x != rhs, lhs.y != rhs, lhs.z != rhs, lhs.w != rhs); }
+        public static Bool4 operator != (Float4 lhs, SoftFloat rhs) { return new Bool4 (lhs.x != rhs, lhs.y != rhs, lhs.z != rhs, lhs.w != rhs); }
 
         /// <summary>Returns the result of a componentwise not equal operation on a float value and a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 operator != (SoftFloat lhs, Float4 rhs) { return new bool4 (lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w); }
+        public static Bool4 operator != (SoftFloat lhs, Float4 rhs) { return new Bool4 (lhs != rhs.x, lhs != rhs.y, lhs != rhs.z, lhs != rhs.w); }
 
 
 
@@ -3272,9 +3272,9 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Float4 Float4(bool v) { return new Float4(v); }
 
-        /// <summary>Return a Float4 vector constructed from a bool4 vector by componentwise conversion.</summary>
+        /// <summary>Return a Float4 vector constructed from a Bool4 vector by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 Float4(bool4 v) { return new Float4(v); }
+        public static Float4 Float4(Bool4 v) { return new Float4(v); }
 
         /// <summary>Returns a Float4 vector constructed from a single int value by converting it to float and assigning it to every component.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -219,17 +219,17 @@ namespace GameLibrary.Mathematics
         public static Float4 Asfloat(UInt4 x) { return Float4(Asfloat(x.x), Asfloat(x.y), Asfloat(x.z), Asfloat(x.w)); }
 
         /// <summary>
-        /// Returns a bitmask representation of a bool4. Storing one 1 bit per component
+        /// Returns a bitmask representation of a Bool4. Storing one 1 bit per component
         /// in LSB order, from lower to higher bits (so 4 bits in total).
         /// The component x is stored at bit 0,
         /// The component y is stored at bit 1,
         /// The component z is stored at bit 2,
         /// The component w is stored at bit 3
-        /// The bool4(x = true, y = true, z = false, w = true) would produce the value 1011 = 0xB
+        /// The Bool4(x = true, y = true, z = false, w = true) would produce the value 1011 = 0xB
         /// </summary>
-        /// <param name="value">The input bool4 to calculate the bitmask for</param>
-        /// <returns>A bitmask representation of the bool4, in LSB order</returns>
-        public static int Bitmask(bool4 value)
+        /// <param name="value">The input Bool4 to calculate the bitmask for</param>
+        /// <returns>A bitmask representation of the Bool4, in LSB order</returns>
+        public static int Bitmask(Bool4 value)
         {
             int mask = 0;
             if (value.x) mask |= 0x01;
@@ -244,51 +244,51 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Isfinite(SoftFloat x) { return x.IsFinite(); }
 
-        /// <summary>Returns a bool2 indicating for each component of a Float2 whether it is a finite floating point value.</summary>
+        /// <summary>Returns a Bool2 indicating for each component of a Float2 whether it is a finite floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 Isfinite(Float2 x) { return new bool2(Isfinite(x.x), Isfinite(x.y)); }
+        public static Bool2 Isfinite(Float2 x) { return new Bool2(Isfinite(x.x), Isfinite(x.y)); }
 
-        /// <summary>Returns a bool3 indicating for each component of a Float3 whether it is a finite floating point value.</summary>
+        /// <summary>Returns a Bool3 indicating for each component of a Float3 whether it is a finite floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 Isfinite(Float3 x) { return new bool3(Isfinite(x.x), Isfinite(x.y), Isfinite(x.z)); }
+        public static Bool3 Isfinite(Float3 x) { return new Bool3(Isfinite(x.x), Isfinite(x.y), Isfinite(x.z)); }
 
-        /// <summary>Returns a bool4 indicating for each component of a Float4 whether it is a finite floating point value.</summary>
+        /// <summary>Returns a Bool4 indicating for each component of a Float4 whether it is a finite floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 Isfinite(Float4 x) { return new bool4(Isfinite(x.x), Isfinite(x.y), Isfinite(x.z), Isfinite(x.w)); }
+        public static Bool4 Isfinite(Float4 x) { return new Bool4(Isfinite(x.x), Isfinite(x.y), Isfinite(x.z), Isfinite(x.w)); }
 
 
         /// <summary>Returns true if the input float is an infinite floating point value, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Isinf(SoftFloat x) { return !x.IsFinite(); }
 
-        /// <summary>Returns a bool2 indicating for each component of a Float2 whether it is an infinite floating point value.</summary>
+        /// <summary>Returns a Bool2 indicating for each component of a Float2 whether it is an infinite floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 Isinf(Float2 x) { return new bool2(Isinf(x.x), Isinf(x.y)); }
+        public static Bool2 Isinf(Float2 x) { return new Bool2(Isinf(x.x), Isinf(x.y)); }
 
-        /// <summary>Returns a bool3 indicating for each component of a Float3 whether it is an infinite floating point value.</summary>
+        /// <summary>Returns a Bool3 indicating for each component of a Float3 whether it is an infinite floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 Isinf(Float3 x) { return new bool3(Isinf(x.x), Isinf(x.y), Isinf(x.z)); }
+        public static Bool3 Isinf(Float3 x) { return new Bool3(Isinf(x.x), Isinf(x.y), Isinf(x.z)); }
 
-        /// <summary>Returns a bool4 indicating for each component of a Float4 whether it is an infinite floating point value.</summary>
+        /// <summary>Returns a Bool4 indicating for each component of a Float4 whether it is an infinite floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 Isinf(Float4 x) { return new bool4(Isinf(x.x), Isinf(x.y), Isinf(x.z), Isinf(x.w)); }
+        public static Bool4 Isinf(Float4 x) { return new Bool4(Isinf(x.x), Isinf(x.y), Isinf(x.z), Isinf(x.w)); }
 
 
         /// <summary>Returns true if the input float is a NaN (not a number) floating point value, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Isnan(SoftFloat x) { return (Asuint(x) & 0x7FFFFFFF) > 0x7F800000; }
 
-        /// <summary>Returns a bool2 indicating for each component of a Float2 whether it is a NaN (not a number) floating point value.</summary>
+        /// <summary>Returns a Bool2 indicating for each component of a Float2 whether it is a NaN (not a number) floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 Isnan(Float2 x) { return (Asuint(x) & 0x7FFFFFFF) > 0x7F800000; }
+        public static Bool2 Isnan(Float2 x) { return (Asuint(x) & 0x7FFFFFFF) > 0x7F800000; }
 
-        /// <summary>Returns a bool3 indicating for each component of a Float3 whether it is a NaN (not a number) floating point value.</summary>
+        /// <summary>Returns a Bool3 indicating for each component of a Float3 whether it is a NaN (not a number) floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 Isnan(Float3 x) { return (Asuint(x) & 0x7FFFFFFF) > 0x7F800000; }
+        public static Bool3 Isnan(Float3 x) { return (Asuint(x) & 0x7FFFFFFF) > 0x7F800000; }
 
-        /// <summary>Returns a bool4 indicating for each component of a Float4 whether it is a NaN (not a number) floating point value.</summary>
+        /// <summary>Returns a Bool4 indicating for each component of a Float4 whether it is a NaN (not a number) floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 Isnan(Float4 x) { return (Asuint(x) & 0x7FFFFFFF) > 0x7F800000; }
+        public static Bool4 Isnan(Float4 x) { return (Asuint(x) & 0x7FFFFFFF) > 0x7F800000; }
 
 
         /// <summary>
@@ -308,11 +308,11 @@ namespace GameLibrary.Mathematics
         /// </summary>
         /// <remarks>If a component of x is less than or equal to zero, then this function returns false in that component.</remarks>
         /// <param name="x"><see cref="Int2"/> input</param>
-        /// <returns><see cref="bool2"/> where true in a component indicates the same component in the input was a power of two.</returns>
+        /// <returns><see cref="Bool2"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 Ispow2(Int2 x)
+        public static Bool2 Ispow2(Int2 x)
         {
-            return new bool2(Ispow2(x.x), Ispow2(x.y));
+            return new Bool2(Ispow2(x.x), Ispow2(x.y));
         }
 
         /// <summary>
@@ -320,11 +320,11 @@ namespace GameLibrary.Mathematics
         /// </summary>
         /// <remarks>If a component of x is less than or equal to zero, then this function returns false in that component.</remarks>
         /// <param name="x"><see cref="Int3"/> input</param>
-        /// <returns><see cref="bool3"/> where true in a component indicates the same component in the input was a power of two.</returns>
+        /// <returns><see cref="Bool3"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 Ispow2(Int3 x)
+        public static Bool3 Ispow2(Int3 x)
         {
-            return new bool3(Ispow2(x.x), Ispow2(x.y), Ispow2(x.z));
+            return new Bool3(Ispow2(x.x), Ispow2(x.y), Ispow2(x.z));
         }
 
         /// <summary>
@@ -332,11 +332,11 @@ namespace GameLibrary.Mathematics
         /// </summary>
         /// <remarks>If a component of x is less than or equal to zero, then this function returns false in that component.</remarks>
         /// <param name="x"><see cref="Int4"/> input</param>
-        /// <returns><see cref="bool4"/> where true in a component indicates the same component in the input was a power of two.</returns>
+        /// <returns><see cref="Bool4"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 Ispow2(Int4 x)
+        public static Bool4 Ispow2(Int4 x)
         {
-            return new bool4(Ispow2(x.x), Ispow2(x.y), Ispow2(x.z), Ispow2(x.w));
+            return new Bool4(Ispow2(x.x), Ispow2(x.y), Ispow2(x.z), Ispow2(x.w));
         }
 
         /// <summary>
@@ -356,11 +356,11 @@ namespace GameLibrary.Mathematics
         /// </summary>
         /// <remarks>If a component of x is less than or equal to zero, then this function returns false in that component.</remarks>
         /// <param name="x"><see cref="UInt2"/> input</param>
-        /// <returns><see cref="bool2"/> where true in a component indicates the same component in the input was a power of two.</returns>
+        /// <returns><see cref="Bool2"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool2 Ispow2(UInt2 x)
+        public static Bool2 Ispow2(UInt2 x)
         {
-            return new bool2(Ispow2(x.x), Ispow2(x.y));
+            return new Bool2(Ispow2(x.x), Ispow2(x.y));
         }
 
         /// <summary>
@@ -368,11 +368,11 @@ namespace GameLibrary.Mathematics
         /// </summary>
         /// <remarks>If a component of x is less than or equal to zero, then this function returns false in that component.</remarks>
         /// <param name="x"><see cref="UInt3"/> input</param>
-        /// <returns><see cref="bool3"/> where true in a component indicates the same component in the input was a power of two.</returns>
+        /// <returns><see cref="Bool3"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool3 Ispow2(UInt3 x)
+        public static Bool3 Ispow2(UInt3 x)
         {
-            return new bool3(Ispow2(x.x), Ispow2(x.y), Ispow2(x.z));
+            return new Bool3(Ispow2(x.x), Ispow2(x.y), Ispow2(x.z));
         }
 
         /// <summary>
@@ -380,11 +380,11 @@ namespace GameLibrary.Mathematics
         /// </summary>
         /// <remarks>If a component of x is less than or equal to zero, then this function returns false in that component.</remarks>
         /// <param name="x"><see cref="UInt4"/> input</param>
-        /// <returns><see cref="bool4"/> where true in a component indicates the same component in the input was a power of two.</returns>
+        /// <returns><see cref="Bool4"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool4 Ispow2(UInt4 x)
+        public static Bool4 Ispow2(UInt4 x)
         {
-            return new bool4(Ispow2(x.x), Ispow2(x.y), Ispow2(x.z), Ispow2(x.w));
+            return new Bool4(Ispow2(x.x), Ispow2(x.y), Ispow2(x.z), Ispow2(x.w));
         }
 
         /// <summary>Returns the minimum of two int values.</summary>
@@ -1388,17 +1388,17 @@ namespace GameLibrary.Mathematics
         }
 
 
-        /// <summary>Returns true if any component of the input bool2 vector is true, false otherwise.</summary>
+        /// <summary>Returns true if any component of the input Bool2 vector is true, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Any(bool2 x) { return x.x || x.y; }
+        public static bool Any(Bool2 x) { return x.x || x.y; }
 
-        /// <summary>Returns true if any component of the input bool3 vector is true, false otherwise.</summary>
+        /// <summary>Returns true if any component of the input Bool3 vector is true, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Any(bool3 x) { return x.x || x.y || x.z; }
+        public static bool Any(Bool3 x) { return x.x || x.y || x.z; }
 
-        /// <summary>Returns true if any components of the input bool4 vector is true, false otherwise.</summary>
+        /// <summary>Returns true if any components of the input Bool4 vector is true, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Any(bool4 x) { return x.x || x.y || x.z || x.w; }
+        public static bool Any(Bool4 x) { return x.x || x.y || x.z || x.w; }
 
 
         /// <summary>Returns true if any component of the input Int2 vector is non-zero, false otherwise.</summary>
@@ -1440,17 +1440,17 @@ namespace GameLibrary.Mathematics
         public static bool Any(Float4 x) { return !x.x.IsZero() || !x.y.IsZero() || !x.z.IsZero() || !x.w.IsZero(); }
 
 
-        /// <summary>Returns true if all components of the input bool2 vector are true, false otherwise.</summary>
+        /// <summary>Returns true if all components of the input Bool2 vector are true, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool All(bool2 x) { return x.x && x.y; }
+        public static bool All(Bool2 x) { return x.x && x.y; }
 
-        /// <summary>Returns true if all components of the input bool3 vector are true, false otherwise.</summary>
+        /// <summary>Returns true if all components of the input Bool3 vector are true, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool All(bool3 x) { return x.x && x.y && x.z; }
+        public static bool All(Bool3 x) { return x.x && x.y && x.z; }
 
-        /// <summary>Returns true if all components of the input bool4 vector are true, false otherwise.</summary>
+        /// <summary>Returns true if all components of the input Bool4 vector are true, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool All(bool4 x) { return x.x && x.y && x.z && x.w; }
+        public static bool All(Bool4 x) { return x.x && x.y && x.z && x.w; }
 
 
         /// <summary>Returns true if all components of the input Int2 vector are non-zero, false otherwise.</summary>
@@ -1510,25 +1510,25 @@ namespace GameLibrary.Mathematics
 
 
         /// <summary>
-        /// Returns a componentwise selection between two Int2 vectors a and b based on a bool2 selection mask c.
+        /// Returns a componentwise selection between two Int2 vectors a and b based on a Bool2 selection mask c.
         /// Per component, the component from b is selected when c is true, otherwise the component from a is selected.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Select(Int2 a, Int2 b, bool2 c) { return new Int2(c.x ? b.x : a.x, c.y ? b.y : a.y); }
+        public static Int2 Select(Int2 a, Int2 b, Bool2 c) { return new Int2(c.x ? b.x : a.x, c.y ? b.y : a.y); }
 
         /// <summary>
-        /// Returns a componentwise selection between two Int3 vectors a and b based on a bool3 selection mask c.
+        /// Returns a componentwise selection between two Int3 vectors a and b based on a Bool3 selection mask c.
         /// Per component, the component from b is selected when c is true, otherwise the component from a is selected.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Select(Int3 a, Int3 b, bool3 c) { return new Int3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z); }
+        public static Int3 Select(Int3 a, Int3 b, Bool3 c) { return new Int3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z); }
 
         /// <summary>
-        /// Returns a componentwise selection between two Int4 vectors a and b based on a bool4 selection mask c.
+        /// Returns a componentwise selection between two Int4 vectors a and b based on a Bool4 selection mask c.
         /// Per component, the component from b is selected when c is true, otherwise the component from a is selected.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Select(Int4 a, Int4 b, bool4 c) { return new Int4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w); }
+        public static Int4 Select(Int4 a, Int4 b, Bool4 c) { return new Int4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w); }
 
 
         /// <summary>Returns b if c is true, a otherwise.</summary>
@@ -1549,25 +1549,25 @@ namespace GameLibrary.Mathematics
 
 
         /// <summary>
-        /// Returns a componentwise selection between two UInt2 vectors a and b based on a bool2 selection mask c.
+        /// Returns a componentwise selection between two UInt2 vectors a and b based on a Bool2 selection mask c.
         /// Per component, the component from b is selected when c is true, otherwise the component from a is selected.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 Select(UInt2 a, UInt2 b, bool2 c) { return new UInt2(c.x ? b.x : a.x, c.y ? b.y : a.y); }
+        public static UInt2 Select(UInt2 a, UInt2 b, Bool2 c) { return new UInt2(c.x ? b.x : a.x, c.y ? b.y : a.y); }
 
         /// <summary>
-        /// Returns a componentwise selection between two UInt3 vectors a and b based on a bool3 selection mask c.
+        /// Returns a componentwise selection between two UInt3 vectors a and b based on a Bool3 selection mask c.
         /// Per component, the component from b is selected when c is true, otherwise the component from a is selected.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 Select(UInt3 a, UInt3 b, bool3 c) { return new UInt3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z); }
+        public static UInt3 Select(UInt3 a, UInt3 b, Bool3 c) { return new UInt3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z); }
 
         /// <summary>
-        /// Returns a componentwise selection between two UInt4 vectors a and b based on a bool4 selection mask c.
+        /// Returns a componentwise selection between two UInt4 vectors a and b based on a Bool4 selection mask c.
         /// Per component, the component from b is selected when c is true, otherwise the component from a is selected.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 Select(UInt4 a, UInt4 b, bool4 c) { return new UInt4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w); }
+        public static UInt4 Select(UInt4 a, UInt4 b, Bool4 c) { return new UInt4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w); }
 
 
         /// <summary>Returns b if c is true, a otherwise.</summary>
@@ -1597,25 +1597,25 @@ namespace GameLibrary.Mathematics
 
 
         /// <summary>
-        /// Returns a componentwise selection between two Float2 vectors a and b based on a bool2 selection mask c.
+        /// Returns a componentwise selection between two Float2 vectors a and b based on a Bool2 selection mask c.
         /// Per component, the component from b is selected when c is true, otherwise the component from a is selected.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2 Select(Float2 a, Float2 b, bool2 c) { return new Float2(c.x ? b.x : a.x, c.y ? b.y : a.y); }
+        public static Float2 Select(Float2 a, Float2 b, Bool2 c) { return new Float2(c.x ? b.x : a.x, c.y ? b.y : a.y); }
 
         /// <summary>
-        /// Returns a componentwise selection between two Float3 vectors a and b based on a bool3 selection mask c.
+        /// Returns a componentwise selection between two Float3 vectors a and b based on a Bool3 selection mask c.
         /// Per component, the component from b is selected when c is true, otherwise the component from a is selected.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 Select(Float3 a, Float3 b, bool3 c) { return new Float3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z); }
+        public static Float3 Select(Float3 a, Float3 b, Bool3 c) { return new Float3(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z); }
 
         /// <summary>
-        /// Returns a componentwise selection between two Float4 vectors a and b based on a bool4 selection mask c.
+        /// Returns a componentwise selection between two Float4 vectors a and b based on a Bool4 selection mask c.
         /// Per component, the component from b is selected when c is true, otherwise the component from a is selected.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 Select(Float4 a, Float4 b, bool4 c) { return new Float4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w); }
+        public static Float4 Select(Float4 a, Float4 b, Bool4 c) { return new Float4(c.x ? b.x : a.x, c.y ? b.y : a.y, c.z ? b.z : a.z, c.w ? b.w : a.w); }
 
 
         /// <summary>Computes a step function. Returns 1.0f when x >= y, 0.0f otherwise.</summary>
@@ -2745,7 +2745,7 @@ namespace GameLibrary.Mathematics
         /// <param name="mask">Mask indicating which components are enabled.</param>
         /// <returns>Index to element after the last one stored.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static unsafe int Compress(int* output, int index, Int4 val, bool4 mask)
+        public static unsafe int Compress(int* output, int index, Int4 val, Bool4 mask)
         {
             if (mask.x)
                 output[index++] = val.x;
@@ -2774,7 +2774,7 @@ namespace GameLibrary.Mathematics
         /// <param name="mask">Mask indicating which components are enabled.</param>
         /// <returns>Index to element after the last one stored.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static unsafe int Compress(uint* output, int index, UInt4 val, bool4 mask)
+        public static unsafe int Compress(uint* output, int index, UInt4 val, Bool4 mask)
         {
             return Compress((int*)output, index, *(Int4*)&val, mask);
         }
@@ -2794,7 +2794,7 @@ namespace GameLibrary.Mathematics
         /// <param name="mask">Mask indicating which components are enabled.</param>
         /// <returns>Index to element after the last one stored.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static unsafe int Compress(float* output, int index, Float4 val, bool4 mask)
+        public static unsafe int Compress(float* output, int index, Float4 val, Bool4 mask)
         {
             return Compress((int*)output, index, *(Int4*)&val, mask);
         }
