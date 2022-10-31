@@ -3189,7 +3189,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Float4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Float4.</summary>
@@ -3287,9 +3287,9 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Float4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Float4 v)
+        public static uint Hash(Float4 v)
         {
-            return SumComponents(Asuint(v) * UInt4(0xE69626FFu, 0xBD010EEBu, 0x9CEDE1D1u, 0x43BE0B51u)) + 0xAF836EE1u;
+            return SumComponents(AsUInt(v) * UInt4(0xE69626FFu, 0xBD010EEBu, 0x9CEDE1D1u, 0x43BE0B51u)) + 0xAF836EE1u;
         }
 
         /// <summary>
@@ -3298,9 +3298,9 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 hashwide(Float4 v)
+        public static UInt4 HashWide(Float4 v)
         {
-            return (Asuint(v) * UInt4(0xB130C137u, 0x54834775u, 0x7C022221u, 0xA2D00EDFu)) + 0xA8977779u;
+            return (AsUInt(v) * UInt4(0xB130C137u, 0x54834775u, 0x7C022221u, 0xA2D00EDFu)) + 0xA8977779u;
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two Float4 vectors into a float value.</summary>

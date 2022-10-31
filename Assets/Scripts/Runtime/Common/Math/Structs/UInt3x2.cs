@@ -535,7 +535,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode()
         {
-            return (int)Math.hash(this);
+            return (int)Math.Hash(this);
         }
 
 
@@ -628,7 +628,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the UInt2x3 transpose of a UInt3x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2x3 transpose(UInt3x2 v)
+        public static UInt2x3 Transpose(UInt3x2 v)
         {
             return UInt2x3(
                 v.c0.x, v.c0.y, v.c0.z,
@@ -637,7 +637,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a UInt3x2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(UInt3x2 v)
+        public static uint Hash(UInt3x2 v)
         {
             return SumComponents(v.c0 * UInt3(0x515D90F5u, 0xEC9F68F3u, 0xF9EA92D5u) +
                                  v.c1 * UInt3(0xC2FAFCB9u, 0x616E9CA1u, 0xC5C5394Bu)) + 0xCAE78587u;
@@ -649,7 +649,7 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 hashwide(UInt3x2 v)
+        public static UInt3 HashWide(UInt3x2 v)
         {
             return (v.c0 * UInt3(0x7A1541C9u, 0xF83BD927u, 0x6A243BCBu) +
                     v.c1 * UInt3(0x509B84C9u, 0x91D13847u, 0x52F7230Fu)) + 0xCF286E83u;

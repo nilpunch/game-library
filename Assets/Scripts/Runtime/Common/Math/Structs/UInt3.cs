@@ -1356,7 +1356,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the UInt3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the UInt3.</summary>
@@ -1436,7 +1436,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a UInt3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(UInt3 v)
+        public static uint Hash(UInt3 v)
         {
             return SumComponents(v * UInt3(0xCD266C89u, 0xF1852A33u, 0x77E35E77u)) + 0x863E3729u;
         }
@@ -1447,7 +1447,7 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 hashwide(UInt3 v)
+        public static UInt3 HashWide(UInt3 v)
         {
             return (v * UInt3(0xE191B035u, 0x68586FAFu, 0xD4DFF6D3u)) + 0xCB634F4Du;
         }

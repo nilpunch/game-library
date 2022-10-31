@@ -29,16 +29,16 @@ namespace GameLibrary.Mathematics
         public Bool3(bool x, Bool2 yz)
         {
             this.x = x;
-            y = yz.x;
-            z = yz.y;
+            y = yz.X;
+            z = yz.Y;
         }
 
         /// <summary>Constructs a Bool3 vector from a Bool2 vector and a bool value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Bool3(Bool2 xy, bool z)
         {
-            x = xy.x;
-            y = xy.y;
+            x = xy.X;
+            y = xy.Y;
             this.z = z;
         }
 
@@ -1109,8 +1109,8 @@ namespace GameLibrary.Mathematics
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set
             {
-                x = value.x;
-                y = value.y;
+                x = value.X;
+                y = value.Y;
             }
         }
 
@@ -1123,8 +1123,8 @@ namespace GameLibrary.Mathematics
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set
             {
-                x = value.x;
-                z = value.y;
+                x = value.X;
+                z = value.Y;
             }
         }
 
@@ -1137,8 +1137,8 @@ namespace GameLibrary.Mathematics
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set
             {
-                y = value.x;
-                x = value.y;
+                y = value.X;
+                x = value.Y;
             }
         }
 
@@ -1159,8 +1159,8 @@ namespace GameLibrary.Mathematics
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set
             {
-                y = value.x;
-                z = value.y;
+                y = value.X;
+                z = value.Y;
             }
         }
 
@@ -1173,8 +1173,8 @@ namespace GameLibrary.Mathematics
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set
             {
-                z = value.x;
-                x = value.y;
+                z = value.X;
+                x = value.Y;
             }
         }
 
@@ -1187,8 +1187,8 @@ namespace GameLibrary.Mathematics
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             set
             {
-                z = value.x;
-                y = value.y;
+                z = value.X;
+                y = value.Y;
             }
         }
 
@@ -1246,7 +1246,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode()
         {
-            return (int)Math.hash(this);
+            return (int)Math.Hash(this);
         }
 
 
@@ -1311,7 +1311,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Bool3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Bool3 v)
+        public static uint Hash(Bool3 v)
         {
             return SumComponents(Select(UInt3(0xA1E92D39u, 0x4583C801u, 0x9536A0F5u),
                 UInt3(0xAF816615u, 0x9AF8D62Du, 0xE3600729u), v));
@@ -1323,7 +1323,7 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 hashwide(Bool3 v)
+        public static UInt3 HashWide(Bool3 v)
         {
             return (Select(UInt3(0x5F17300Du, 0x670D6809u, 0x7AF32C49u), UInt3(0xAE131389u, 0x5D1B165Bu, 0x87096CD7u),
                 v));

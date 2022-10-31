@@ -205,7 +205,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode()
         {
-            return (int)Math.hash(this);
+            return (int)Math.Hash(this);
         }
 
 
@@ -213,8 +213,8 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override string ToString()
         {
-            return string.Format("Bool2x4({0}, {1}, {2}, {3},  {4}, {5}, {6}, {7})", c0.x, c1.x, c2.x, c3.x, c0.y, c1.y,
-                c2.y, c3.y);
+            return string.Format("Bool2x4({0}, {1}, {2}, {3},  {4}, {5}, {6}, {7})", c0.X, c1.X, c2.X, c3.X, c0.Y, c1.Y,
+                c2.Y, c3.Y);
         }
     }
 
@@ -245,18 +245,18 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Bool4x2 transpose of a Bool2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool4x2 transpose(Bool2x4 v)
+        public static Bool4x2 Transpose(Bool2x4 v)
         {
             return Bool4x2(
-                v.c0.x, v.c0.y,
-                v.c1.x, v.c1.y,
-                v.c2.x, v.c2.y,
-                v.c3.x, v.c3.y);
+                v.c0.X, v.c0.Y,
+                v.c1.X, v.c1.Y,
+                v.c2.X, v.c2.Y,
+                v.c3.X, v.c3.Y);
         }
 
         /// <summary>Returns a uint hash code of a Bool2x4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Bool2x4 v)
+        public static uint Hash(Bool2x4 v)
         {
             return SumComponents(Select(UInt2(0x45A22087u, 0xFC104C3Bu), UInt2(0x5FFF6B19u, 0x5E6CBF3Bu), v.c0) +
                                  Select(UInt2(0xB546F2A5u, 0xBBCF63E7u), UInt2(0xC53F4755u, 0x6985C229u), v.c1) +
@@ -270,7 +270,7 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 hashwide(Bool2x4 v)
+        public static UInt2 HashWide(Bool2x4 v)
         {
             return (Select(UInt2(0x93C30C2Bu, 0xDCAF0351u), UInt2(0x6E050B01u, 0x750FDBF5u), v.c0) +
                     Select(UInt2(0x7F3DD499u, 0x52EAAEBBu), UInt2(0x4599C793u, 0x83B5E729u), v.c1) +

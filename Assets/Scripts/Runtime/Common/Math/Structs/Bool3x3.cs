@@ -141,7 +141,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Bool3x3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Bool3x3.</summary>
@@ -176,7 +176,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Bool3x3 transpose of a Bool3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool3x3 transpose(Bool3x3 v)
+        public static Bool3x3 Transpose(Bool3x3 v)
         {
             return Bool3x3(
                 v.c0.x, v.c0.y, v.c0.z,
@@ -186,7 +186,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Bool3x3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Bool3x3 v)
+        public static uint Hash(Bool3x3 v)
         {
             return SumComponents(Select(UInt3(0xE7579997u, 0xEF7D56C7u, 0x66F38F0Bu), UInt3(0x624256A3u, 0x5292ADE1u, 0xD2E590E5u), v.c0) +
                         Select(UInt3(0xF25BE857u, 0x9BC17CE7u, 0xC8B86851u), UInt3(0x64095221u, 0xADF428FFu, 0xA3977109u), v.c1) +
@@ -199,7 +199,7 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 hashwide(Bool3x3 v)
+        public static UInt3 HashWide(Bool3x3 v)
         {
             return (Select(UInt3(0x816EFB5Du, 0xA24E82B7u, 0x45A22087u), UInt3(0xFC104C3Bu, 0x5FFF6B19u, 0x5E6CBF3Bu), v.c0) +
                     Select(UInt3(0xB546F2A5u, 0xBBCF63E7u, 0xC53F4755u), UInt3(0x6985C229u, 0xE133B0B3u, 0xC3E0A3B9u), v.c1) +

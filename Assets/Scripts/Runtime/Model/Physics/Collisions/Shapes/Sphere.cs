@@ -2,9 +2,9 @@
 
 namespace GameLibrary.Physics
 {
-    public struct Sphere
+    public readonly struct Sphere
     {
-        Float3 Center { get; }
-        SoftFloat Radius { get; }
+        public readonly Float3 Center;
+        public readonly SoftFloat Radius;
     }
 }

@@ -142,7 +142,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Bool4x3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Bool4x3.</summary>
@@ -179,7 +179,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Bool3x4 transpose of a Bool4x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool3x4 transpose(Bool4x3 v)
+        public static Bool3x4 Transpose(Bool4x3 v)
         {
             return Bool3x4(
                 v.c0.x, v.c0.y, v.c0.z, v.c0.w,
@@ -189,7 +189,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Bool4x3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Bool4x3 v)
+        public static uint Hash(Bool4x3 v)
         {
             return SumComponents(Select(UInt4(0xEADF0775u, 0x747A9D7Bu, 0x4111F799u, 0xB5F05AF1u), UInt4(0xFD80290Bu, 0x8B65ADB7u, 0xDFF4F563u, 0x7069770Du), v.c0) +
                         Select(UInt4(0xD1224537u, 0xE99ED6F3u, 0x48125549u, 0xEEE2123Bu), UInt4(0xE3AD9FE5u, 0xCE1CF8BFu, 0x7BE39F3Bu, 0xFAB9913Fu), v.c1) +
@@ -202,7 +202,7 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 hashwide(Bool4x3 v)
+        public static UInt4 HashWide(Bool4x3 v)
         {
             return (Select(UInt4(0x9D1B1D9Bu, 0xF842F5C1u, 0xA47EC335u, 0xA477DF57u), UInt4(0xC4B1493Fu, 0xBA0966D3u, 0xAFBEE253u, 0x5B419C01u), v.c0) +
                     Select(UInt4(0x515D90F5u, 0xEC9F68F3u, 0xF9EA92D5u, 0xC2FAFCB9u), UInt4(0x616E9CA1u, 0xC5C5394Bu, 0xCAE78587u, 0x7A1541C9u), v.c1) +

@@ -293,7 +293,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Float2x2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Float2x2.</summary>
@@ -357,7 +357,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Float2x2 transpose of a Float2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2X2 transpose(Float2X2 v)
+        public static Float2X2 Transpose(Float2X2 v)
         {
             return Float2x2(
                 v.c0.x, v.c0.y,
@@ -366,7 +366,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the Float2x2 full inverse of a Float2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2X2 inverse(Float2X2 m)
+        public static Float2X2 Inverse(Float2X2 m)
         {
             SoftFloat a = m.c0.x;
             SoftFloat b = m.c1.x;
@@ -380,7 +380,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the determinant of a Float2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat determinant(Float2X2 m)
+        public static SoftFloat Determinant(Float2X2 m)
         {
             SoftFloat a = m.c0.x;
             SoftFloat b = m.c1.x;
@@ -392,10 +392,10 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Float2x2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Float2X2 v)
+        public static uint Hash(Float2X2 v)
         {
-            return SumComponents(Asuint(v.c0) * UInt2(0x9C9F0823u, 0x5A9CA13Bu) +
-                        Asuint(v.c1) * UInt2(0xAFCDD5EFu, 0xA88D187Du)) + 0xCF6EBA1Du;
+            return SumComponents(AsUInt(v.c0) * UInt2(0x9C9F0823u, 0x5A9CA13Bu) +
+                        AsUInt(v.c1) * UInt2(0xAFCDD5EFu, 0xA88D187Du)) + 0xCF6EBA1Du;
         }
 
         /// <summary>
@@ -404,10 +404,10 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 hashwide(Float2X2 v)
+        public static UInt2 HashWide(Float2X2 v)
         {
-            return (Asuint(v.c0) * UInt2(0x9D88E5A1u, 0xEADF0775u) +
-                    Asuint(v.c1) * UInt2(0x747A9D7Bu, 0x4111F799u)) + 0xB5F05AF1u;
+            return (AsUInt(v.c0) * UInt2(0x9D88E5A1u, 0xEADF0775u) +
+                    AsUInt(v.c1) * UInt2(0x747A9D7Bu, 0x4111F799u)) + 0xB5F05AF1u;
         }
 
     }

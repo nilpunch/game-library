@@ -360,7 +360,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Int2x2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Int2x2.</summary>
@@ -425,7 +425,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Int2x2 transpose of a Int2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2x2 transpose(Int2x2 v)
+        public static Int2x2 Transpose(Int2x2 v)
         {
             return Int2x2(
                 v.c0.x, v.c0.y,
@@ -434,7 +434,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the determinant of a Int2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int determinant(Int2x2 m)
+        public static int Determinant(Int2x2 m)
         {
             int a = m.c0.x;
             int b = m.c1.x;
@@ -446,10 +446,10 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Int2x2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Int2x2 v)
+        public static uint Hash(Int2x2 v)
         {
-            return SumComponents(Asuint(v.c0) * UInt2(0xE191B035u, 0x68586FAFu) +
-                        Asuint(v.c1) * UInt2(0xD4DFF6D3u, 0xCB634F4Du)) + 0x9B13B92Du;
+            return SumComponents(AsUInt(v.c0) * UInt2(0xE191B035u, 0x68586FAFu) +
+                        AsUInt(v.c1) * UInt2(0xD4DFF6D3u, 0xCB634F4Du)) + 0x9B13B92Du;
         }
 
         /// <summary>
@@ -458,10 +458,10 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 hashwide(Int2x2 v)
+        public static UInt2 HashWide(Int2x2 v)
         {
-            return (Asuint(v.c0) * UInt2(0x4ABF0813u, 0x86068063u) +
-                    Asuint(v.c1) * UInt2(0xD75513F9u, 0x5AB3E8CDu)) + 0x676E8407u;
+            return (AsUInt(v.c0) * UInt2(0x4ABF0813u, 0x86068063u) +
+                    AsUInt(v.c1) * UInt2(0xD75513F9u, 0x5AB3E8CDu)) + 0x676E8407u;
         }
 
     }

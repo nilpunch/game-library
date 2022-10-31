@@ -377,7 +377,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Int2x4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Int2x4.</summary>
@@ -441,7 +441,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Int4x2 transpose of a Int2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4x2 transpose(Int2x4 v)
+        public static Int4x2 Transpose(Int2x4 v)
         {
             return Int4x2(
                 v.c0.x, v.c0.y,
@@ -452,12 +452,12 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Int2x4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Int2x4 v)
+        public static uint Hash(Int2x4 v)
         {
-            return SumComponents(Asuint(v.c0) * UInt2(0x7AA07CD3u, 0xAF642BA9u) +
-                        Asuint(v.c1) * UInt2(0xA8F2213Bu, 0x9F3FDC37u) +
-                        Asuint(v.c2) * UInt2(0xAC60D0C3u, 0x9263662Fu) +
-                        Asuint(v.c3) * UInt2(0xE69626FFu, 0xBD010EEBu)) + 0x9CEDE1D1u;
+            return SumComponents(AsUInt(v.c0) * UInt2(0x7AA07CD3u, 0xAF642BA9u) +
+                        AsUInt(v.c1) * UInt2(0xA8F2213Bu, 0x9F3FDC37u) +
+                        AsUInt(v.c2) * UInt2(0xAC60D0C3u, 0x9263662Fu) +
+                        AsUInt(v.c3) * UInt2(0xE69626FFu, 0xBD010EEBu)) + 0x9CEDE1D1u;
         }
 
         /// <summary>
@@ -466,12 +466,12 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 hashwide(Int2x4 v)
+        public static UInt2 HashWide(Int2x4 v)
         {
-            return (Asuint(v.c0) * UInt2(0x43BE0B51u, 0xAF836EE1u) +
-                    Asuint(v.c1) * UInt2(0xB130C137u, 0x54834775u) +
-                    Asuint(v.c2) * UInt2(0x7C022221u, 0xA2D00EDFu) +
-                    Asuint(v.c3) * UInt2(0xA8977779u, 0x9F1C739Bu)) + 0x4B1BD187u;
+            return (AsUInt(v.c0) * UInt2(0x43BE0B51u, 0xAF836EE1u) +
+                    AsUInt(v.c1) * UInt2(0xB130C137u, 0x54834775u) +
+                    AsUInt(v.c2) * UInt2(0x7C022221u, 0xA2D00EDFu) +
+                    AsUInt(v.c3) * UInt2(0xA8977779u, 0x9F1C739Bu)) + 0x4B1BD187u;
         }
 
     }

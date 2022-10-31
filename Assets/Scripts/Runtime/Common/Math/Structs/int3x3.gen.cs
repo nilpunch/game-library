@@ -548,7 +548,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode()
         {
-            return (int)Math.hash(this);
+            return (int)Math.Hash(this);
         }
 
 
@@ -644,7 +644,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Int3x3 transpose of a Int3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3x3 transpose(Int3x3 v)
+        public static Int3x3 Transpose(Int3x3 v)
         {
             return Int3x3(
                 v.c0.x, v.c0.y, v.c0.z,
@@ -654,7 +654,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the determinant of a Int3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int determinant(Int3x3 m)
+        public static int Determinant(Int3x3 m)
         {
             Int3 c0 = m.c0;
             Int3 c1 = m.c1;
@@ -669,11 +669,11 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Int3x3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Int3x3 v)
+        public static uint Hash(Int3x3 v)
         {
-            return SumComponents(Asuint(v.c0) * UInt3(0x93C30C2Bu, 0xDCAF0351u, 0x6E050B01u) +
-                                 Asuint(v.c1) * UInt3(0x750FDBF5u, 0x7F3DD499u, 0x52EAAEBBu) +
-                                 Asuint(v.c2) * UInt3(0x4599C793u, 0x83B5E729u, 0xC267163Fu)) + 0x67BC9149u;
+            return SumComponents(AsUInt(v.c0) * UInt3(0x93C30C2Bu, 0xDCAF0351u, 0x6E050B01u) +
+                                 AsUInt(v.c1) * UInt3(0x750FDBF5u, 0x7F3DD499u, 0x52EAAEBBu) +
+                                 AsUInt(v.c2) * UInt3(0x4599C793u, 0x83B5E729u, 0xC267163Fu)) + 0x67BC9149u;
         }
 
         /// <summary>
@@ -682,11 +682,11 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 hashwide(Int3x3 v)
+        public static UInt3 HashWide(Int3x3 v)
         {
-            return (Asuint(v.c0) * UInt3(0xAD7C5EC1u, 0x822A7D6Du, 0xB492BF15u) +
-                    Asuint(v.c1) * UInt3(0xD37220E3u, 0x7AA2C2BDu, 0xE16BC89Du) +
-                    Asuint(v.c2) * UInt3(0x7AA07CD3u, 0xAF642BA9u, 0xA8F2213Bu)) + 0x9F3FDC37u;
+            return (AsUInt(v.c0) * UInt3(0xAD7C5EC1u, 0x822A7D6Du, 0xB492BF15u) +
+                    AsUInt(v.c1) * UInt3(0xD37220E3u, 0x7AA2C2BDu, 0xE16BC89Du) +
+                    AsUInt(v.c2) * UInt3(0x7AA07CD3u, 0xAF642BA9u, 0xA8F2213Bu)) + 0x9F3FDC37u;
         }
     }
 }

@@ -53,8 +53,8 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public UInt2(Bool2 v)
         {
-            x = v.x ? 1u : 0u;
-            y = v.y ? 1u : 0u;
+            x = v.X ? 1u : 0u;
+            y = v.Y ? 1u : 0u;
         }
 
         /// <summary>Constructs a UInt2 vector from a single int value by converting it to uint and assigning it to every component.</summary>
@@ -596,7 +596,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the UInt2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the UInt2.</summary>
@@ -666,7 +666,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a UInt2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(UInt2 v)
+        public static uint Hash(UInt2 v)
         {
             return SumComponents(v * UInt2(0x4473BBB1u, 0xCBA11D5Fu)) + 0x685835CFu;
         }
@@ -677,7 +677,7 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 hashwide(UInt2 v)
+        public static UInt2 HashWide(UInt2 v)
         {
             return (v * UInt2(0xC3D32AE1u, 0xB966942Fu)) + 0xFE9856B3u;
         }

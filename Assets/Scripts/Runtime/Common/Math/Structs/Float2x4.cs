@@ -310,7 +310,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Float2x4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Float2x4.</summary>
@@ -374,7 +374,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Float4x2 transpose of a Float2x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4x2 transpose(Float2x4 v)
+        public static Float4x2 Transpose(Float2x4 v)
         {
             return Float4x2(
                 v.c0.x, v.c0.y,
@@ -385,12 +385,12 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Float2x4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Float2x4 v)
+        public static uint Hash(Float2x4 v)
         {
-            return SumComponents(Asuint(v.c0) * UInt2(0xD35C9B2Du, 0xA10D9E27u) +
-                        Asuint(v.c1) * UInt2(0x568DAAA9u, 0x7530254Fu) +
-                        Asuint(v.c2) * UInt2(0x9F090439u, 0x5E9F85C9u) +
-                        Asuint(v.c3) * UInt2(0x8C4CA03Fu, 0xB8D969EDu)) + 0xAC5DB57Bu;
+            return SumComponents(AsUInt(v.c0) * UInt2(0xD35C9B2Du, 0xA10D9E27u) +
+                        AsUInt(v.c1) * UInt2(0x568DAAA9u, 0x7530254Fu) +
+                        AsUInt(v.c2) * UInt2(0x9F090439u, 0x5E9F85C9u) +
+                        AsUInt(v.c3) * UInt2(0x8C4CA03Fu, 0xB8D969EDu)) + 0xAC5DB57Bu;
         }
 
         /// <summary>
@@ -399,12 +399,12 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 hashwide(Float2x4 v)
+        public static UInt2 HashWide(Float2x4 v)
         {
-            return (Asuint(v.c0) * UInt2(0xA91A02EDu, 0xB3C49313u) +
-                    Asuint(v.c1) * UInt2(0xF43A9ABBu, 0x84E7E01Bu) +
-                    Asuint(v.c2) * UInt2(0x8E055BE5u, 0x6E624EB7u) +
-                    Asuint(v.c3) * UInt2(0x7383ED49u, 0xDD49C23Bu)) + 0xEBD0D005u;
+            return (AsUInt(v.c0) * UInt2(0xA91A02EDu, 0xB3C49313u) +
+                    AsUInt(v.c1) * UInt2(0xF43A9ABBu, 0x84E7E01Bu) +
+                    AsUInt(v.c2) * UInt2(0x8E055BE5u, 0x6E624EB7u) +
+                    AsUInt(v.c3) * UInt2(0x7383ED49u, 0xDD49C23Bu)) + 0xEBD0D005u;
         }
 
     }

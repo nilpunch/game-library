@@ -292,7 +292,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Float3x4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Float3x4.</summary>
@@ -365,7 +365,7 @@ namespace GameLibrary.Mathematics
         //}
 
         // Fast matrix inverse for rigid transforms (Orthonormal basis and translation)
-        public static Float3x4 fastinverse(Float3x4 m)
+        public static Float3x4 FastInverse(Float3x4 m)
         {
             Float3 c0 = m.c0;
             Float3 c1 = m.c1;
@@ -383,12 +383,12 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Float3x4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Float3x4 v)
+        public static uint Hash(Float3x4 v)
         {
-            return SumComponents(Asuint(v.c0) * UInt3(0xF9EA92D5u, 0xC2FAFCB9u, 0x616E9CA1u) +
-                        Asuint(v.c1) * UInt3(0xC5C5394Bu, 0xCAE78587u, 0x7A1541C9u) +
-                        Asuint(v.c2) * UInt3(0xF83BD927u, 0x6A243BCBu, 0x509B84C9u) +
-                        Asuint(v.c3) * UInt3(0x91D13847u, 0x52F7230Fu, 0xCF286E83u)) + 0xE121E6ADu;
+            return SumComponents(AsUInt(v.c0) * UInt3(0xF9EA92D5u, 0xC2FAFCB9u, 0x616E9CA1u) +
+                        AsUInt(v.c1) * UInt3(0xC5C5394Bu, 0xCAE78587u, 0x7A1541C9u) +
+                        AsUInt(v.c2) * UInt3(0xF83BD927u, 0x6A243BCBu, 0x509B84C9u) +
+                        AsUInt(v.c3) * UInt3(0x91D13847u, 0x52F7230Fu, 0xCF286E83u)) + 0xE121E6ADu;
         }
 
         /// <summary>
@@ -397,12 +397,12 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 hashwide(Float3x4 v)
+        public static UInt3 HashWide(Float3x4 v)
         {
-            return (Asuint(v.c0) * UInt3(0xC9CA1249u, 0x69B60C81u, 0xE0EB6C25u) +
-                    Asuint(v.c1) * UInt3(0xF648BEABu, 0x6BDB2B07u, 0xEF63C699u) +
-                    Asuint(v.c2) * UInt3(0x9001903Fu, 0xA895B9CDu, 0x9D23B201u) +
-                    Asuint(v.c3) * UInt3(0x4B01D3E1u, 0x7461CA0Du, 0x79725379u)) + 0xD6258E5Bu;
+            return (AsUInt(v.c0) * UInt3(0xC9CA1249u, 0x69B60C81u, 0xE0EB6C25u) +
+                    AsUInt(v.c1) * UInt3(0xF648BEABu, 0x6BDB2B07u, 0xEF63C699u) +
+                    AsUInt(v.c2) * UInt3(0x9001903Fu, 0xA895B9CDu, 0x9D23B201u) +
+                    AsUInt(v.c3) * UInt3(0x4B01D3E1u, 0x7461CA0Du, 0x79725379u)) + 0xD6258E5Bu;
         }
 
     }

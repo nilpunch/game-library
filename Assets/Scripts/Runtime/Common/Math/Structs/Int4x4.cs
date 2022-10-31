@@ -382,7 +382,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Int4x4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Int4x4.</summary>
@@ -450,7 +450,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Int4x4 transpose of a Int4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4x4 transpose(Int4x4 v)
+        public static Int4x4 Transpose(Int4x4 v)
         {
             return Int4x4(
                 v.c0.x, v.c0.y, v.c0.z, v.c0.w,
@@ -460,7 +460,7 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>Returns the determinant of a Int4x4 matrix.</summary>
-        public static int determinant(Int4x4 m)
+        public static int Determinant(Int4x4 m)
         {
             Int4 c0 = m.c0;
             Int4 c1 = m.c1;
@@ -477,12 +477,12 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Int4x4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Int4x4 v)
+        public static uint Hash(Int4x4 v)
         {
-            return SumComponents(Asuint(v.c0) * UInt4(0x5D1B165Bu, 0x87096CD7u, 0x4C7F6DD1u, 0x4822A3E9u) +
-                        Asuint(v.c1) * UInt4(0xAAC3C25Du, 0xD21D0945u, 0x88FCAB2Du, 0x614DA60Du) +
-                        Asuint(v.c2) * UInt4(0x5BA2C50Bu, 0x8C455ACBu, 0xCD266C89u, 0xF1852A33u) +
-                        Asuint(v.c3) * UInt4(0x77E35E77u, 0x863E3729u, 0xE191B035u, 0x68586FAFu)) + 0xD4DFF6D3u;
+            return SumComponents(AsUInt(v.c0) * UInt4(0x5D1B165Bu, 0x87096CD7u, 0x4C7F6DD1u, 0x4822A3E9u) +
+                        AsUInt(v.c1) * UInt4(0xAAC3C25Du, 0xD21D0945u, 0x88FCAB2Du, 0x614DA60Du) +
+                        AsUInt(v.c2) * UInt4(0x5BA2C50Bu, 0x8C455ACBu, 0xCD266C89u, 0xF1852A33u) +
+                        AsUInt(v.c3) * UInt4(0x77E35E77u, 0x863E3729u, 0xE191B035u, 0x68586FAFu)) + 0xD4DFF6D3u;
         }
 
         /// <summary>
@@ -491,12 +491,12 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 hashwide(Int4x4 v)
+        public static UInt4 HashWide(Int4x4 v)
         {
-            return (Asuint(v.c0) * UInt4(0xCB634F4Du, 0x9B13B92Du, 0x4ABF0813u, 0x86068063u) +
-                    Asuint(v.c1) * UInt4(0xD75513F9u, 0x5AB3E8CDu, 0x676E8407u, 0xB36DE767u) +
-                    Asuint(v.c2) * UInt4(0x6FCA387Du, 0xAF0F3103u, 0xE4A056C7u, 0x841D8225u) +
-                    Asuint(v.c3) * UInt4(0xC9393C7Du, 0xD42EAFA3u, 0xD9AFD06Du, 0x97A65421u)) + 0x7809205Fu;
+            return (AsUInt(v.c0) * UInt4(0xCB634F4Du, 0x9B13B92Du, 0x4ABF0813u, 0x86068063u) +
+                    AsUInt(v.c1) * UInt4(0xD75513F9u, 0x5AB3E8CDu, 0x676E8407u, 0xB36DE767u) +
+                    AsUInt(v.c2) * UInt4(0x6FCA387Du, 0xAF0F3103u, 0xE4A056C7u, 0x841D8225u) +
+                    AsUInt(v.c3) * UInt4(0xC9393C7Du, 0xD42EAFA3u, 0xD9AFD06Du, 0x97A65421u)) + 0x7809205Fu;
         }
 
     }

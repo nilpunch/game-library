@@ -43,10 +43,10 @@ namespace GameLibrary.Mathematics
             Float3 v = m.c1;
             Float3 w = m.c2;
 
-            uint uSign = (Math.Asuint(u.x) & 0x80000000);
-            SoftFloat t = v.y + Math.Asfloat(Math.Asuint(w.z) ^ uSign);
+            uint uSign = (Math.AsUInt(u.x) & 0x80000000);
+            SoftFloat t = v.y + Math.AsFloat(Math.AsUInt(w.z) ^ uSign);
             UInt4 uMask = new UInt4((int)uSign >> 31);
-            UInt4 tMask = new UInt4(Math.Asint(t) >> 31);
+            UInt4 tMask = new UInt4(Math.AsInt(t) >> 31);
 
             SoftFloat tr = SoftFloat.One + Math.Abs(u.x);
 
@@ -55,10 +55,10 @@ namespace GameLibrary.Mathematics
                               (tMask & new UInt4(0x80000000, 0x80000000, 0x80000000, 0x00000000));
 
             value = new Float4(tr, u.y, w.x, v.z) +
-                     Math.Asfloat(Math.Asuint(new Float4(t, v.x, u.z, w.y)) ^ signFlips); // +---, +++-, ++-+, +-++
+                     Math.AsFloat(Math.AsUInt(new Float4(t, v.x, u.z, w.y)) ^ signFlips); // +---, +++-, ++-+, +-++
 
-            value = Math.Asfloat((Math.Asuint(value) & ~uMask) | (Math.Asuint(value.zwxy) & uMask));
-            value = Math.Asfloat((Math.Asuint(value.wzyx) & ~tMask) | (Math.Asuint(value) & tMask));
+            value = Math.AsFloat((Math.AsUInt(value) & ~uMask) | (Math.AsUInt(value.zwxy) & uMask));
+            value = Math.AsFloat((Math.AsUInt(value.wzyx) & ~tMask) | (Math.AsUInt(value) & tMask));
             value = Math.Normalize(value);
         }
 
@@ -69,10 +69,10 @@ namespace GameLibrary.Mathematics
             Float4 v = m.c1;
             Float4 w = m.c2;
 
-            uint uSign = (Math.Asuint(u.x) & 0x80000000);
-            SoftFloat t = v.y + Math.Asfloat(Math.Asuint(w.z) ^ uSign);
+            uint uSign = (Math.AsUInt(u.x) & 0x80000000);
+            SoftFloat t = v.y + Math.AsFloat(Math.AsUInt(w.z) ^ uSign);
             UInt4 uMask = new UInt4((int)uSign >> 31);
-            UInt4 tMask = new UInt4(Math.Asint(t) >> 31);
+            UInt4 tMask = new UInt4(Math.AsInt(t) >> 31);
 
             SoftFloat tr = SoftFloat.One + Math.Abs(u.x);
 
@@ -81,10 +81,10 @@ namespace GameLibrary.Mathematics
                               (tMask & new UInt4(0x80000000, 0x80000000, 0x80000000, 0x00000000));
 
             value = new Float4(tr, u.y, w.x, v.z) +
-                     Math.Asfloat(Math.Asuint(new Float4(t, v.x, u.z, w.y)) ^ signFlips); // +---, +++-, ++-+, +-++
+                     Math.AsFloat(Math.AsUInt(new Float4(t, v.x, u.z, w.y)) ^ signFlips); // +---, +++-, ++-+, +-++
 
-            value = Math.Asfloat((Math.Asuint(value) & ~uMask) | (Math.Asuint(value.zwxy) & uMask));
-            value = Math.Asfloat((Math.Asuint(value.wzyx) & ~tMask) | (Math.Asuint(value) & tMask));
+            value = Math.AsFloat((Math.AsUInt(value) & ~uMask) | (Math.AsUInt(value.zwxy) & uMask));
+            value = Math.AsFloat((Math.AsUInt(value.wzyx) & ~tMask) | (Math.AsUInt(value) & tMask));
 
             value = Math.Normalize(value);
         }
@@ -421,7 +421,7 @@ namespace GameLibrary.Mathematics
             const uint smallValue = 0x0554ad2e;
 
             bool accept = mn > SoftFloat.FromRaw(smallValue) && mx < SoftFloat.FromRaw(bigValue) &&
-                          Math.Isfinite(forwardLengthSq) && Math.Isfinite(upLengthSq) && Math.Isfinite(tLengthSq);
+                          Math.IsFinite(forwardLengthSq) && Math.IsFinite(upLengthSq) && Math.IsFinite(tLengthSq);
             return new Quaternion(Math.Select(new Float4(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One),
                 new Quaternion(new Float3X3(t, Math.Cross(forward, t), forward)).value, accept));
         }
@@ -548,7 +548,7 @@ namespace GameLibrary.Mathematics
         {
             Float4 x = q.value;
             SoftFloat len = Dot(x, x);
-            return new Quaternion(Select(Mathematics.Quaternion.Identity.value, x * Rsqrt(len), len > FLTMINNormal));
+            return new Quaternion(Select(Mathematics.Quaternion.Identity.value, x * Rsqrt(len), len > FloatMinNormal));
         }
 
         /// <summary>
@@ -560,7 +560,7 @@ namespace GameLibrary.Mathematics
         {
             Float4 x = q.value;
             SoftFloat len = Dot(x, x);
-            return new Quaternion(Select(defaultvalue.value, x * Rsqrt(len), len > FLTMINNormal));
+            return new Quaternion(Select(defaultvalue.value, x * Rsqrt(len), len > FloatMinNormal));
         }
 
         /// <summary>Returns the natural exponent of a quaternion. Assumes w is zero.</summary>
@@ -675,7 +675,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint Hash(Quaternion q)
         {
-            return hash(q.value);
+            return Hash(q.value);
         }
 
         /// <summary>
@@ -684,9 +684,9 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 Hashwide(Quaternion q)
+        public static UInt4 HashWide(Quaternion q)
         {
-            return hashwide(q.value);
+            return HashWide(q.value);
         }
 
 

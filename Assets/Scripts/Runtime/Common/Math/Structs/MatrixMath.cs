@@ -60,11 +60,11 @@ namespace GameLibrary.Mathematics
             UInt3 npn = new UInt3(0x80000000, 0x00000000, 0x80000000);
             UInt3 nnp = new UInt3(0x80000000, 0x80000000, 0x00000000);
             UInt3 pnn = new UInt3(0x00000000, 0x80000000, 0x80000000);
-            c0 = v2.y * Math.Asfloat(Math.Asuint(v.yxw) ^ npn) - v2.z * Math.Asfloat(Math.Asuint(v.zwx) ^ pnn) +
+            c0 = v2.y * Math.AsFloat(Math.AsUInt(v.yxw) ^ npn) - v2.z * Math.AsFloat(Math.AsUInt(v.zwx) ^ pnn) +
                  new Float3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero);
-            c1 = v2.z * Math.Asfloat(Math.Asuint(v.wzy) ^ nnp) - v2.x * Math.Asfloat(Math.Asuint(v.yxw) ^ npn) +
+            c1 = v2.z * Math.AsFloat(Math.AsUInt(v.wzy) ^ nnp) - v2.x * Math.AsFloat(Math.AsUInt(v.yxw) ^ npn) +
                  new Float3(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero);
-            c2 = v2.x * Math.Asfloat(Math.Asuint(v.zwx) ^ pnn) - v2.y * Math.Asfloat(Math.Asuint(v.wzy) ^ nnp) +
+            c2 = v2.x * Math.AsFloat(Math.AsUInt(v.zwx) ^ pnn) - v2.y * Math.AsFloat(Math.AsUInt(v.wzy) ^ nnp) +
                  new Float3(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
         }
 
@@ -89,9 +89,9 @@ namespace GameLibrary.Mathematics
             UInt3 pnp = new UInt3(0x00000000, 0x80000000, 0x00000000);
 
             return new Float3X3(
-                u.x * uInvCosa + Math.Asfloat(Math.Asuint(t.wzy) ^ ppn),
-                u.y * uInvCosa + Math.Asfloat(Math.Asuint(t.zwx) ^ npp),
-                u.z * uInvCosa + Math.Asfloat(Math.Asuint(t.yxw) ^ pnp)
+                u.x * uInvCosa + Math.AsFloat(Math.AsUInt(t.wzy) ^ ppn),
+                u.y * uInvCosa + Math.AsFloat(Math.AsUInt(t.zwx) ^ npp),
+                u.z * uInvCosa + Math.AsFloat(Math.AsUInt(t.yxw) ^ pnp)
             );
             /*
             return new Float3x3(
@@ -439,7 +439,7 @@ namespace GameLibrary.Mathematics
             const uint smallValue = 0x0554ad2e;
 
             bool accept = mn > SoftFloat.FromRaw(smallValue) && mx < SoftFloat.FromRaw(bigValue) &&
-                          Math.Isfinite(forwardLengthSq) && Math.Isfinite(upLengthSq) && Math.Isfinite(tLengthSq);
+                          Math.IsFinite(forwardLengthSq) && Math.IsFinite(upLengthSq) && Math.IsFinite(tLengthSq);
             return new Float3X3(
                 Math.Select(new Float3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero), t, accept),
                 Math.Select(new Float3(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero), Math.Cross(forward, t), accept),
@@ -502,9 +502,9 @@ namespace GameLibrary.Mathematics
             UInt4 mask = new UInt4(0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000000);
 
             return new Float4X4(
-                u.x * uInvCosa + Math.Asfloat((Math.Asuint(t.wzyx) ^ ppnp) & mask),
-                u.y * uInvCosa + Math.Asfloat((Math.Asuint(t.zwxx) ^ nppp) & mask),
-                u.z * uInvCosa + Math.Asfloat((Math.Asuint(t.yxwx) ^ pnpp) & mask),
+                u.x * uInvCosa + Math.AsFloat((Math.AsUInt(t.wzyx) ^ ppnp) & mask),
+                u.y * uInvCosa + Math.AsFloat((Math.AsUInt(t.zwxx) ^ nppp) & mask),
+                u.z * uInvCosa + Math.AsFloat((Math.AsUInt(t.yxwx) ^ pnpp) & mask),
                 new Float4(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One)
             );
         }

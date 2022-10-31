@@ -367,7 +367,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Int2x3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Int2x3.</summary>
@@ -431,7 +431,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Int3x2 transpose of a Int2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3x2 transpose(Int2x3 v)
+        public static Int3x2 Transpose(Int2x3 v)
         {
             return Int3x2(
                 v.c0.x, v.c0.y,
@@ -441,11 +441,11 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Int2x3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Int2x3 v)
+        public static uint Hash(Int2x3 v)
         {
-            return SumComponents(Asuint(v.c0) * UInt2(0xCAE78587u, 0x7A1541C9u) +
-                        Asuint(v.c1) * UInt2(0xF83BD927u, 0x6A243BCBu) +
-                        Asuint(v.c2) * UInt2(0x509B84C9u, 0x91D13847u)) + 0x52F7230Fu;
+            return SumComponents(AsUInt(v.c0) * UInt2(0xCAE78587u, 0x7A1541C9u) +
+                        AsUInt(v.c1) * UInt2(0xF83BD927u, 0x6A243BCBu) +
+                        AsUInt(v.c2) * UInt2(0x509B84C9u, 0x91D13847u)) + 0x52F7230Fu;
         }
 
         /// <summary>
@@ -454,11 +454,11 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 hashwide(Int2x3 v)
+        public static UInt2 HashWide(Int2x3 v)
         {
-            return (Asuint(v.c0) * UInt2(0xCF286E83u, 0xE121E6ADu) +
-                    Asuint(v.c1) * UInt2(0xC9CA1249u, 0x69B60C81u) +
-                    Asuint(v.c2) * UInt2(0xE0EB6C25u, 0xF648BEABu)) + 0x6BDB2B07u;
+            return (AsUInt(v.c0) * UInt2(0xCF286E83u, 0xE121E6ADu) +
+                    AsUInt(v.c1) * UInt2(0xC9CA1249u, 0x69B60C81u) +
+                    AsUInt(v.c2) * UInt2(0xE0EB6C25u, 0xF648BEABu)) + 0x6BDB2B07u;
         }
 
     }

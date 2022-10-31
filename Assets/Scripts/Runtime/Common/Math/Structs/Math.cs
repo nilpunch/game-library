@@ -58,22 +58,22 @@ namespace GameLibrary.Mathematics
         };
 
         /// <summary>The smallest positive normal number representable in a float.</summary>
-        public static SoftFloat FLTMINNormal => SoftFloat.FromRaw(0x00800000);
+        public static SoftFloat FloatMinNormal => SoftFloat.FromRaw(0x00800000);
 
         /// <summary>The mathematical constant e also known as Euler's number. Approximately 2.72.</summary>
         public static SoftFloat E => SoftFloat.FromRaw(0x402df854);
 
         /// <summary>The base 2 logarithm of e. Approximately 1.44.</summary>
-        public static SoftFloat LOG2E => SoftFloat.FromRaw(0x3fb8aa3b);
+        public static SoftFloat Log2E => SoftFloat.FromRaw(0x3fb8aa3b);
 
         /// <summary>The base 10 logarithm of e. Approximately 0.43.</summary>
-        public static SoftFloat LOG10E => SoftFloat.FromRaw(0x3ede5bd9);
+        public static SoftFloat Log10E => SoftFloat.FromRaw(0x3ede5bd9);
 
         /// <summary>The natural logarithm of 2. Approximately 0.69.</summary>
-        public static SoftFloat LN2 => SoftFloat.FromRaw(0x3f317218);
+        public static SoftFloat Ln2 => SoftFloat.FromRaw(0x3f317218);
 
         /// <summary>The natural logarithm of 10. Approximately 2.30.</summary>
-        public static SoftFloat LN10 => SoftFloat.FromRaw(0x40135d8e);
+        public static SoftFloat Ln10 => SoftFloat.FromRaw(0x40135d8e);
 
         /// <summary>The mathematical constant pi. Approximately 3.14.</summary>
         public static SoftFloat PI => SoftFloat.FromRaw(0x40490fdb);
@@ -112,32 +112,32 @@ namespace GameLibrary.Mathematics
         /// Additionally, there are multiple bit representations for Not a Number, so if you must test if your value
         /// is NAN, use isnan().
         /// </summary>
-        public static SoftFloat NAN => SoftFloat.NaN;
+        public static SoftFloat NaN => SoftFloat.NaN;
 
         /// <summary>Returns the bit pattern of a uint as an int.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Asint(uint x)
+        public static int AsInt(uint x)
         {
             return (int)x;
         }
 
         /// <summary>Returns the bit pattern of a UInt2 as an Int2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Asint(UInt2 x)
+        public static Int2 AsInt(UInt2 x)
         {
             return Int2((int)x.x, (int)x.y);
         }
 
         /// <summary>Returns the bit pattern of a UInt3 as an Int3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Asint(UInt3 x)
+        public static Int3 AsInt(UInt3 x)
         {
             return Int3((int)x.x, (int)x.y, (int)x.z);
         }
 
         /// <summary>Returns the bit pattern of a UInt4 as an Int4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Asint(UInt4 x)
+        public static Int4 AsInt(UInt4 x)
         {
             return Int4((int)x.x, (int)x.y, (int)x.z, (int)x.w);
         }
@@ -145,57 +145,57 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the bit pattern of a float as an int.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static int Asint(SoftFloat x)
+        public static int AsInt(SoftFloat x)
         {
             return (int)x.RawValue;
         }
 
         /// <summary>Returns the bit pattern of a Float2 as an Int2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int2 Asint(Float2 x)
+        public static Int2 AsInt(Float2 x)
         {
-            return Int2(Asint(x.x), Asint(x.y));
+            return Int2(AsInt(x.x), AsInt(x.y));
         }
 
         /// <summary>Returns the bit pattern of a Float3 as an Int3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int3 Asint(Float3 x)
+        public static Int3 AsInt(Float3 x)
         {
-            return Int3(Asint(x.x), Asint(x.y), Asint(x.z));
+            return Int3(AsInt(x.x), AsInt(x.y), AsInt(x.z));
         }
 
         /// <summary>Returns the bit pattern of a Float4 as an Int4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Int4 Asint(Float4 x)
+        public static Int4 AsInt(Float4 x)
         {
-            return Int4(Asint(x.x), Asint(x.y), Asint(x.z), Asint(x.w));
+            return Int4(AsInt(x.x), AsInt(x.y), AsInt(x.z), AsInt(x.w));
         }
 
 
         /// <summary>Returns the bit pattern of an int as a uint.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Asuint(int x)
+        public static uint AsUInt(int x)
         {
             return (uint)x;
         }
 
         /// <summary>Returns the bit pattern of an Int2 as a UInt2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 Asuint(Int2 x)
+        public static UInt2 AsUInt(Int2 x)
         {
             return UInt2((uint)x.x, (uint)x.y);
         }
 
         /// <summary>Returns the bit pattern of an Int3 as a UInt3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 Asuint(Int3 x)
+        public static UInt3 AsUInt(Int3 x)
         {
             return UInt3((uint)x.x, (uint)x.y, (uint)x.z);
         }
 
         /// <summary>Returns the bit pattern of an Int4 as a UInt4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 Asuint(Int4 x)
+        public static UInt4 AsUInt(Int4 x)
         {
             return UInt4((uint)x.x, (uint)x.y, (uint)x.z, (uint)x.w);
         }
@@ -203,36 +203,36 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the bit pattern of a float as a uint.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint Asuint(SoftFloat x)
+        public static uint AsUInt(SoftFloat x)
         {
-            return (uint)Asint(x);
+            return (uint)AsInt(x);
         }
 
         /// <summary>Returns the bit pattern of a Float2 as a UInt2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 Asuint(Float2 x)
+        public static UInt2 AsUInt(Float2 x)
         {
-            return UInt2(Asuint(x.x), Asuint(x.y));
+            return UInt2(AsUInt(x.x), AsUInt(x.y));
         }
 
         /// <summary>Returns the bit pattern of a Float3 as a UInt3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 Asuint(Float3 x)
+        public static UInt3 AsUInt(Float3 x)
         {
-            return UInt3(Asuint(x.x), Asuint(x.y), Asuint(x.z));
+            return UInt3(AsUInt(x.x), AsUInt(x.y), AsUInt(x.z));
         }
 
         /// <summary>Returns the bit pattern of a Float4 as a UInt4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 Asuint(Float4 x)
+        public static UInt4 AsUInt(Float4 x)
         {
-            return UInt4(Asuint(x.x), Asuint(x.y), Asuint(x.z), Asuint(x.w));
+            return UInt4(AsUInt(x.x), AsUInt(x.y), AsUInt(x.z), AsUInt(x.w));
         }
 
 
         /// <summary>Returns the bit pattern of a ulong as a long.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static long Aslong(ulong x)
+        public static long AsLong(ulong x)
         {
             return (long)x;
         }
@@ -240,7 +240,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the bit pattern of a long as a ulong.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static ulong Asulong(long x)
+        public static ulong AsULong(long x)
         {
             return (ulong)x;
         }
@@ -248,59 +248,59 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the bit pattern of an int as a float.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Asfloat(int x)
+        public static SoftFloat AsFloat(int x)
         {
             return SoftFloat.FromRaw((uint)x);
         }
 
         /// <summary>Returns the bit pattern of an Int2 as a Float2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2 Asfloat(Int2 x)
+        public static Float2 AsFloat(Int2 x)
         {
-            return Float2(Asfloat(x.x), Asfloat(x.y));
+            return Float2(AsFloat(x.x), AsFloat(x.y));
         }
 
         /// <summary>Returns the bit pattern of an Int3 as a Float3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 Asfloat(Int3 x)
+        public static Float3 AsFloat(Int3 x)
         {
-            return Float3(Asfloat(x.x), Asfloat(x.y), Asfloat(x.z));
+            return Float3(AsFloat(x.x), AsFloat(x.y), AsFloat(x.z));
         }
 
         /// <summary>Returns the bit pattern of an Int4 as a Float4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 Asfloat(Int4 x)
+        public static Float4 AsFloat(Int4 x)
         {
-            return Float4(Asfloat(x.x), Asfloat(x.y), Asfloat(x.z), Asfloat(x.w));
+            return Float4(AsFloat(x.x), AsFloat(x.y), AsFloat(x.z), AsFloat(x.w));
         }
 
 
         /// <summary>Returns the bit pattern of a uint as a float.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Asfloat(uint x)
+        public static SoftFloat AsFloat(uint x)
         {
-            return Asfloat((int)x);
+            return AsFloat((int)x);
         }
 
         /// <summary>Returns the bit pattern of a UInt2 as a Float2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float2 Asfloat(UInt2 x)
+        public static Float2 AsFloat(UInt2 x)
         {
-            return Float2(Asfloat(x.x), Asfloat(x.y));
+            return Float2(AsFloat(x.x), AsFloat(x.y));
         }
 
         /// <summary>Returns the bit pattern of a UInt3 as a Float3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 Asfloat(UInt3 x)
+        public static Float3 AsFloat(UInt3 x)
         {
-            return Float3(Asfloat(x.x), Asfloat(x.y), Asfloat(x.z));
+            return Float3(AsFloat(x.x), AsFloat(x.y), AsFloat(x.z));
         }
 
         /// <summary>Returns the bit pattern of a UInt4 as a Float4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4 Asfloat(UInt4 x)
+        public static Float4 AsFloat(UInt4 x)
         {
-            return Float4(Asfloat(x.x), Asfloat(x.y), Asfloat(x.z), Asfloat(x.w));
+            return Float4(AsFloat(x.x), AsFloat(x.y), AsFloat(x.z), AsFloat(x.w));
         }
 
         /// <summary>
@@ -327,88 +327,88 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns true if the input float is a finite floating point value, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Isfinite(SoftFloat x)
+        public static bool IsFinite(SoftFloat x)
         {
             return x.IsFinite();
         }
 
         /// <summary>Returns a Bool2 indicating for each component of a Float2 whether it is a finite floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool2 Isfinite(Float2 x)
+        public static Bool2 IsFinite(Float2 x)
         {
-            return new Bool2(Isfinite(x.x), Isfinite(x.y));
+            return new Bool2(IsFinite(x.x), IsFinite(x.y));
         }
 
         /// <summary>Returns a Bool3 indicating for each component of a Float3 whether it is a finite floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool3 Isfinite(Float3 x)
+        public static Bool3 IsFinite(Float3 x)
         {
-            return new Bool3(Isfinite(x.x), Isfinite(x.y), Isfinite(x.z));
+            return new Bool3(IsFinite(x.x), IsFinite(x.y), IsFinite(x.z));
         }
 
         /// <summary>Returns a Bool4 indicating for each component of a Float4 whether it is a finite floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool4 Isfinite(Float4 x)
+        public static Bool4 IsFinite(Float4 x)
         {
-            return new Bool4(Isfinite(x.x), Isfinite(x.y), Isfinite(x.z), Isfinite(x.w));
+            return new Bool4(IsFinite(x.x), IsFinite(x.y), IsFinite(x.z), IsFinite(x.w));
         }
 
 
         /// <summary>Returns true if the input float is an infinite floating point value, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Isinf(SoftFloat x)
+        public static bool IsInf(SoftFloat x)
         {
             return !x.IsFinite();
         }
 
         /// <summary>Returns a Bool2 indicating for each component of a Float2 whether it is an infinite floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool2 Isinf(Float2 x)
+        public static Bool2 IsInf(Float2 x)
         {
-            return new Bool2(Isinf(x.x), Isinf(x.y));
+            return new Bool2(IsInf(x.x), IsInf(x.y));
         }
 
         /// <summary>Returns a Bool3 indicating for each component of a Float3 whether it is an infinite floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool3 Isinf(Float3 x)
+        public static Bool3 IsInf(Float3 x)
         {
-            return new Bool3(Isinf(x.x), Isinf(x.y), Isinf(x.z));
+            return new Bool3(IsInf(x.x), IsInf(x.y), IsInf(x.z));
         }
 
         /// <summary>Returns a Bool4 indicating for each component of a Float4 whether it is an infinite floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool4 Isinf(Float4 x)
+        public static Bool4 IsInf(Float4 x)
         {
-            return new Bool4(Isinf(x.x), Isinf(x.y), Isinf(x.z), Isinf(x.w));
+            return new Bool4(IsInf(x.x), IsInf(x.y), IsInf(x.z), IsInf(x.w));
         }
 
 
         /// <summary>Returns true if the input float is a NaN (not a number) floating point value, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Isnan(SoftFloat x)
+        public static bool IsNaN(SoftFloat x)
         {
-            return (Asuint(x) & 0x7FFFFFFF) > 0x7F800000;
+            return (AsUInt(x) & 0x7FFFFFFF) > 0x7F800000;
         }
 
         /// <summary>Returns a Bool2 indicating for each component of a Float2 whether it is a NaN (not a number) floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool2 Isnan(Float2 x)
+        public static Bool2 IsNaN(Float2 x)
         {
-            return (Asuint(x) & 0x7FFFFFFF) > 0x7F800000;
+            return (AsUInt(x) & 0x7FFFFFFF) > 0x7F800000;
         }
 
         /// <summary>Returns a Bool3 indicating for each component of a Float3 whether it is a NaN (not a number) floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool3 Isnan(Float3 x)
+        public static Bool3 IsNaN(Float3 x)
         {
-            return (Asuint(x) & 0x7FFFFFFF) > 0x7F800000;
+            return (AsUInt(x) & 0x7FFFFFFF) > 0x7F800000;
         }
 
         /// <summary>Returns a Bool4 indicating for each component of a Float4 whether it is a NaN (not a number) floating point value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool4 Isnan(Float4 x)
+        public static Bool4 IsNaN(Float4 x)
         {
-            return (Asuint(x) & 0x7FFFFFFF) > 0x7F800000;
+            return (AsUInt(x) & 0x7FFFFFFF) > 0x7F800000;
         }
 
 
@@ -419,7 +419,7 @@ namespace GameLibrary.Mathematics
         /// <param name="x">Integer input.</param>
         /// <returns>bool where true indicates that input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Ispow2(int x)
+        public static bool IsPow2(int x)
         {
             return x > 0 && ((x & (x - 1)) == 0);
         }
@@ -431,9 +431,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="Int2"/> input</param>
         /// <returns><see cref="Bool2"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool2 Ispow2(Int2 x)
+        public static Bool2 IsPow2(Int2 x)
         {
-            return new Bool2(Ispow2(x.x), Ispow2(x.y));
+            return new Bool2(IsPow2(x.x), IsPow2(x.y));
         }
 
         /// <summary>
@@ -443,9 +443,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="Int3"/> input</param>
         /// <returns><see cref="Bool3"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool3 Ispow2(Int3 x)
+        public static Bool3 IsPow2(Int3 x)
         {
-            return new Bool3(Ispow2(x.x), Ispow2(x.y), Ispow2(x.z));
+            return new Bool3(IsPow2(x.x), IsPow2(x.y), IsPow2(x.z));
         }
 
         /// <summary>
@@ -455,9 +455,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="Int4"/> input</param>
         /// <returns><see cref="Bool4"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool4 Ispow2(Int4 x)
+        public static Bool4 IsPow2(Int4 x)
         {
-            return new Bool4(Ispow2(x.x), Ispow2(x.y), Ispow2(x.z), Ispow2(x.w));
+            return new Bool4(IsPow2(x.x), IsPow2(x.y), IsPow2(x.z), IsPow2(x.w));
         }
 
         /// <summary>
@@ -467,7 +467,7 @@ namespace GameLibrary.Mathematics
         /// <param name="x">Unsigned integer input.</param>
         /// <returns>bool where true indicates that input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static bool Ispow2(uint x)
+        public static bool IsPow2(uint x)
         {
             return x > 0 && ((x & (x - 1)) == 0);
         }
@@ -479,9 +479,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="UInt2"/> input</param>
         /// <returns><see cref="Bool2"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool2 Ispow2(UInt2 x)
+        public static Bool2 IsPow2(UInt2 x)
         {
-            return new Bool2(Ispow2(x.x), Ispow2(x.y));
+            return new Bool2(IsPow2(x.x), IsPow2(x.y));
         }
 
         /// <summary>
@@ -491,9 +491,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="UInt3"/> input</param>
         /// <returns><see cref="Bool3"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool3 Ispow2(UInt3 x)
+        public static Bool3 IsPow2(UInt3 x)
         {
-            return new Bool3(Ispow2(x.x), Ispow2(x.y), Ispow2(x.z));
+            return new Bool3(IsPow2(x.x), IsPow2(x.y), IsPow2(x.z));
         }
 
         /// <summary>
@@ -503,9 +503,9 @@ namespace GameLibrary.Mathematics
         /// <param name="x"><see cref="UInt4"/> input</param>
         /// <returns><see cref="Bool4"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool4 Ispow2(UInt4 x)
+        public static Bool4 IsPow2(UInt4 x)
         {
-            return new Bool4(Ispow2(x.x), Ispow2(x.y), Ispow2(x.z), Ispow2(x.w));
+            return new Bool4(IsPow2(x.x), IsPow2(x.y), IsPow2(x.z), IsPow2(x.w));
         }
 
         /// <summary>Returns the minimum of two int values.</summary>
@@ -1793,7 +1793,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Log10(SoftFloat x)
         {
-            return SoftFloatMath.Log(x) * LOG10E;
+            return SoftFloatMath.Log(x) * Log10E;
         }
 
         /// <summary>Returns the componentwise base-10 logarithm of a Float2 vector.</summary>
@@ -1977,7 +1977,7 @@ namespace GameLibrary.Mathematics
         static public Float2 NormalizeSafe(Float2 x, Float2 defaultvalue = new Float2())
         {
             SoftFloat len = Dot(x, x);
-            return Select(defaultvalue, x * Rsqrt(len), len > FLTMINNormal);
+            return Select(defaultvalue, x * Rsqrt(len), len > FloatMinNormal);
         }
 
         /// <summary>
@@ -1988,7 +1988,7 @@ namespace GameLibrary.Mathematics
         static public Float3 NormalizeSafe(Float3 x, Float3 defaultvalue = new Float3())
         {
             SoftFloat len = Dot(x, x);
-            return Select(defaultvalue, x * Rsqrt(len), len > FLTMINNormal);
+            return Select(defaultvalue, x * Rsqrt(len), len > FloatMinNormal);
         }
 
         /// <summary>
@@ -1999,7 +1999,7 @@ namespace GameLibrary.Mathematics
         static public Float4 NormalizeSafe(Float4 x, Float4 defaultvalue = new Float4())
         {
             SoftFloat len = Dot(x, x);
-            return Select(defaultvalue, x * Rsqrt(len), len > FLTMINNormal);
+            return Select(defaultvalue, x * Rsqrt(len), len > FloatMinNormal);
         }
 
 
@@ -2092,7 +2092,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the distance between two float values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Distancesq(SoftFloat x, SoftFloat y)
+        public static SoftFloat DistanceSqr(SoftFloat x, SoftFloat y)
         {
             SoftFloat ymx = y - x;
             return ymx * ymx;
@@ -2100,21 +2100,21 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the distance between two Float2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Distancesq(Float2 x, Float2 y)
+        public static SoftFloat DistanceSqr(Float2 x, Float2 y)
         {
             return LengthSqr(y - x);
         }
 
         /// <summary>Returns the distance between two Float3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Distancesq(Float3 x, Float3 y)
+        public static SoftFloat DistanceSqr(Float3 x, Float3 y)
         {
             return LengthSqr(y - x);
         }
 
         /// <summary>Returns the distance between two Float4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat Distancesq(Float4 x, Float4 y)
+        public static SoftFloat DistanceSqr(Float4 x, Float4 y)
         {
             return LengthSqr(y - x);
         }
@@ -2165,7 +2165,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Any(Bool2 x)
         {
-            return x.x || x.y;
+            return x.X || x.Y;
         }
 
         /// <summary>Returns true if any component of the input Bool3 vector is true, false otherwise.</summary>
@@ -2253,7 +2253,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool All(Bool2 x)
         {
-            return x.x && x.y;
+            return x.X && x.Y;
         }
 
         /// <summary>Returns true if all components of the input Bool3 vector are true, false otherwise.</summary>
@@ -2373,7 +2373,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int2 Select(Int2 a, Int2 b, Bool2 c)
         {
-            return new Int2(c.x ? b.x : a.x, c.y ? b.y : a.y);
+            return new Int2(c.X ? b.x : a.x, c.Y ? b.y : a.y);
         }
 
         /// <summary>
@@ -2433,7 +2433,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static UInt2 Select(UInt2 a, UInt2 b, Bool2 c)
         {
-            return new UInt2(c.x ? b.x : a.x, c.y ? b.y : a.y);
+            return new UInt2(c.X ? b.x : a.x, c.Y ? b.y : a.y);
         }
 
         /// <summary>
@@ -2508,7 +2508,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Float2 Select(Float2 a, Float2 b, Bool2 c)
         {
-            return new Float2(c.x ? b.x : a.x, c.y ? b.y : a.y);
+            return new Float2(c.X ? b.x : a.x, c.Y ? b.y : a.y);
         }
 
         /// <summary>
@@ -2683,7 +2683,7 @@ namespace GameLibrary.Mathematics
         {
             var proj = Project(a, b);
 
-            return Select(defaultValue, proj, All(Isfinite(proj)));
+            return Select(defaultValue, proj, All(IsFinite(proj)));
         }
 
         /// <summary>
@@ -2704,7 +2704,7 @@ namespace GameLibrary.Mathematics
         {
             var proj = Project(a, b);
 
-            return Select(defaultValue, proj, All(Isfinite(proj)));
+            return Select(defaultValue, proj, All(IsFinite(proj)));
         }
 
         /// <summary>
@@ -2725,7 +2725,7 @@ namespace GameLibrary.Mathematics
         {
             var proj = Project(a, b);
 
-            return Select(defaultValue, proj, All(Isfinite(proj)));
+            return Select(defaultValue, proj, All(IsFinite(proj)));
         }
 
 

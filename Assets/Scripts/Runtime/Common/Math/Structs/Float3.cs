@@ -1461,7 +1461,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode()
         {
-            return (int)Math.hash(this);
+            return (int)Math.Hash(this);
         }
 
 
@@ -1576,9 +1576,9 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Float3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Float3 v)
+        public static uint Hash(Float3 v)
         {
-            return SumComponents(Asuint(v) * UInt3(0x9B13B92Du, 0x4ABF0813u, 0x86068063u)) + 0xD75513F9u;
+            return SumComponents(AsUInt(v) * UInt3(0x9B13B92Du, 0x4ABF0813u, 0x86068063u)) + 0xD75513F9u;
         }
 
         /// <summary>
@@ -1587,9 +1587,9 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 hashwide(Float3 v)
+        public static UInt3 HashWide(Float3 v)
         {
-            return (Asuint(v) * UInt3(0x5AB3E8CDu, 0x676E8407u, 0xB36DE767u)) + 0x6FCA387Du;
+            return (AsUInt(v) * UInt3(0x5AB3E8CDu, 0x676E8407u, 0xB36DE767u)) + 0x6FCA387Du;
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two Float3 vectors into a float value.</summary>

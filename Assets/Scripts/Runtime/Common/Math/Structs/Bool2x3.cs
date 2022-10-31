@@ -201,7 +201,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode()
         {
-            return (int)Math.hash(this);
+            return (int)Math.Hash(this);
         }
 
 
@@ -209,7 +209,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override string ToString()
         {
-            return string.Format("Bool2x3({0}, {1}, {2},  {3}, {4}, {5})", c0.x, c1.x, c2.x, c0.y, c1.y, c2.y);
+            return string.Format("Bool2x3({0}, {1}, {2},  {3}, {4}, {5})", c0.X, c1.X, c2.X, c0.Y, c1.Y, c2.Y);
         }
     }
 
@@ -240,17 +240,17 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Bool3x2 transpose of a Bool2x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool3x2 transpose(Bool2x3 v)
+        public static Bool3x2 Transpose(Bool2x3 v)
         {
             return Bool3x2(
-                v.c0.x, v.c0.y,
-                v.c1.x, v.c1.y,
-                v.c2.x, v.c2.y);
+                v.c0.X, v.c0.Y,
+                v.c1.X, v.c1.Y,
+                v.c2.X, v.c2.Y);
         }
 
         /// <summary>Returns a uint hash code of a Bool2x3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Bool2x3 v)
+        public static uint Hash(Bool2x3 v)
         {
             return SumComponents(Select(UInt2(0x7BE39F3Bu, 0xFAB9913Fu), UInt2(0xB4501269u, 0xE04B89FDu), v.c0) +
                                  Select(UInt2(0xDB3DE101u, 0x7B6D1B4Bu), UInt2(0x58399E77u, 0x5EAC29C9u), v.c1) +
@@ -263,7 +263,7 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 hashwide(Bool2x3 v)
+        public static UInt2 HashWide(Bool2x3 v)
         {
             return (Select(UInt2(0xA47EC335u, 0xA477DF57u), UInt2(0xC4B1493Fu, 0xBA0966D3u), v.c0) +
                     Select(UInt2(0xAFBEE253u, 0x5B419C01u), UInt2(0x515D90F5u, 0xEC9F68F3u), v.c1) +

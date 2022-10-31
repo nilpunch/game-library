@@ -383,7 +383,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static uint Hash(RigidTransform t)
         {
-            return Hash(t._rot) + 0xC5C5394Bu * hash(t._pos);
+            return Hash(t._rot) + 0xC5C5394Bu * Hash(t._pos);
         }
 
         /// <summary>
@@ -392,9 +392,9 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 Hashwide(RigidTransform t)
+        public static UInt4 HashWide(RigidTransform t)
         {
-            return Hashwide(t._rot) + 0xC5C5394Bu * hashwide(t._pos).xyzz;
+            return HashWide(t._rot) + 0xC5C5394Bu * HashWide(t._pos).xyzz;
         }
     }
 }

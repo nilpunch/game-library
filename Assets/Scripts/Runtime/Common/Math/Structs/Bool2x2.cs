@@ -197,7 +197,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode()
         {
-            return (int)Math.hash(this);
+            return (int)Math.Hash(this);
         }
 
 
@@ -205,7 +205,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override string ToString()
         {
-            return string.Format("Bool2x2({0}, {1},  {2}, {3})", c0.x, c1.x, c0.y, c1.y);
+            return string.Format("Bool2x2({0}, {1},  {2}, {3})", c0.X, c1.X, c0.Y, c1.Y);
         }
     }
 
@@ -236,16 +236,16 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Bool2x2 transpose of a Bool2x2 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Bool2x2 transpose(Bool2x2 v)
+        public static Bool2x2 Transpose(Bool2x2 v)
         {
             return Bool2x2(
-                v.c0.x, v.c0.y,
-                v.c1.x, v.c1.y);
+                v.c0.X, v.c0.Y,
+                v.c1.X, v.c1.Y);
         }
 
         /// <summary>Returns a uint hash code of a Bool2x2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Bool2x2 v)
+        public static uint Hash(Bool2x2 v)
         {
             return SumComponents(Select(UInt2(0x7AF32C49u, 0xAE131389u), UInt2(0x5D1B165Bu, 0x87096CD7u), v.c0) +
                                  Select(UInt2(0x4C7F6DD1u, 0x4822A3E9u), UInt2(0xAAC3C25Du, 0xD21D0945u), v.c1));
@@ -257,7 +257,7 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 hashwide(Bool2x2 v)
+        public static UInt2 HashWide(Bool2x2 v)
         {
             return (Select(UInt2(0x88FCAB2Du, 0x614DA60Du), UInt2(0x5BA2C50Bu, 0x8C455ACBu), v.c0) +
                     Select(UInt2(0xCD266C89u, 0xF1852A33u), UInt2(0x77E35E77u, 0x863E3729u), v.c1));

@@ -320,7 +320,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Float4x4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Float4x4.</summary>
@@ -388,21 +388,21 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the result of rotating a Float3 vector by a Float4x4 matrix</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 rotate(Float4X4 a, Float3 b)
+        public static Float3 Rotate(Float4X4 a, Float3 b)
         {
             return (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z).xyz;
         }
 
         /// <summary>Return the result of transforming a Float3 point by a Float4x4 matrix</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3 transform(Float4X4 a, Float3 b)
+        public static Float3 Transform(Float4X4 a, Float3 b)
         {
             return (a.c0 * b.x + a.c1 * b.y + a.c2 * b.z + a.c3).xyz;
         }
 
         /// <summary>Return the Float4x4 transpose of a Float4x4 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4X4 transpose(Float4X4 v)
+        public static Float4X4 Transpose(Float4X4 v)
         {
             return Float4x4(
                 v.c0.x, v.c0.y, v.c0.z, v.c0.w,
@@ -412,7 +412,7 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>Returns the Float4x4 full inverse of a Float4x4 matrix.</summary>
-        public static Float4X4 inverse(Float4X4 m)
+        public static Float4X4 Inverse(Float4X4 m)
         {
             Float4 c0 = m.c0;
             Float4 c1 = m.c1;
@@ -475,7 +475,7 @@ namespace GameLibrary.Mathematics
         }
 
         // Fast matrix inverse for rigid transforms (Orthonormal basis and translation)
-        public static Float4X4 fastinverse(Float4X4 m)
+        public static Float4X4 FastInverse(Float4X4 m)
         {
             Float4 c0 = m.c0;
             Float4 c1 = m.c1;
@@ -500,7 +500,7 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>Returns the determinant of a Float4x4 matrix.</summary>
-        public static SoftFloat determinant(Float4X4 m)
+        public static SoftFloat Determinant(Float4X4 m)
         {
             Float4 c0 = m.c0;
             Float4 c1 = m.c1;
@@ -517,12 +517,12 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Float4x4 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Float4X4 v)
+        public static uint Hash(Float4X4 v)
         {
-            return SumComponents(Asuint(v.c0) * UInt4(0xC4B1493Fu, 0xBA0966D3u, 0xAFBEE253u, 0x5B419C01u) +
-                        Asuint(v.c1) * UInt4(0x515D90F5u, 0xEC9F68F3u, 0xF9EA92D5u, 0xC2FAFCB9u) +
-                        Asuint(v.c2) * UInt4(0x616E9CA1u, 0xC5C5394Bu, 0xCAE78587u, 0x7A1541C9u) +
-                        Asuint(v.c3) * UInt4(0xF83BD927u, 0x6A243BCBu, 0x509B84C9u, 0x91D13847u)) + 0x52F7230Fu;
+            return SumComponents(AsUInt(v.c0) * UInt4(0xC4B1493Fu, 0xBA0966D3u, 0xAFBEE253u, 0x5B419C01u) +
+                        AsUInt(v.c1) * UInt4(0x515D90F5u, 0xEC9F68F3u, 0xF9EA92D5u, 0xC2FAFCB9u) +
+                        AsUInt(v.c2) * UInt4(0x616E9CA1u, 0xC5C5394Bu, 0xCAE78587u, 0x7A1541C9u) +
+                        AsUInt(v.c3) * UInt4(0xF83BD927u, 0x6A243BCBu, 0x509B84C9u, 0x91D13847u)) + 0x52F7230Fu;
         }
 
         /// <summary>
@@ -531,12 +531,12 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt4 hashwide(Float4X4 v)
+        public static UInt4 HashWide(Float4X4 v)
         {
-            return (Asuint(v.c0) * UInt4(0xCF286E83u, 0xE121E6ADu, 0xC9CA1249u, 0x69B60C81u) +
-                    Asuint(v.c1) * UInt4(0xE0EB6C25u, 0xF648BEABu, 0x6BDB2B07u, 0xEF63C699u) +
-                    Asuint(v.c2) * UInt4(0x9001903Fu, 0xA895B9CDu, 0x9D23B201u, 0x4B01D3E1u) +
-                    Asuint(v.c3) * UInt4(0x7461CA0Du, 0x79725379u, 0xD6258E5Bu, 0xEE390C97u)) + 0x9C8A2F05u;
+            return (AsUInt(v.c0) * UInt4(0xCF286E83u, 0xE121E6ADu, 0xC9CA1249u, 0x69B60C81u) +
+                    AsUInt(v.c1) * UInt4(0xE0EB6C25u, 0xF648BEABu, 0x6BDB2B07u, 0xEF63C699u) +
+                    AsUInt(v.c2) * UInt4(0x9001903Fu, 0xA895B9CDu, 0x9D23B201u, 0x4B01D3E1u) +
+                    AsUInt(v.c3) * UInt4(0x7461CA0Du, 0x79725379u, 0xD6258E5Bu, 0xEE390C97u)) + 0x9C8A2F05u;
         }
 
     }

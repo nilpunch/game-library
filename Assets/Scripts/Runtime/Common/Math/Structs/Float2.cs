@@ -52,8 +52,8 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Float2(Bool2 v)
         {
-            x = v.x ? SoftFloat.One : SoftFloat.Zero;
-            y = v.y ? SoftFloat.One : SoftFloat.Zero;
+            x = v.X ? SoftFloat.One : SoftFloat.Zero;
+            y = v.Y ? SoftFloat.One : SoftFloat.Zero;
         }
 
         /// <summary>Constructs a Float2 vector from a single int value by converting it to float and assigning it to every component.</summary>
@@ -670,7 +670,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode()
         {
-            return (int)Math.hash(this);
+            return (int)Math.Hash(this);
         }
 
 
@@ -769,9 +769,9 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Float2 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Float2 v)
+        public static uint Hash(Float2 v)
         {
-            return SumComponents(Asuint(v) * UInt2(0xFA3A3285u, 0xAD55999Du)) + 0xDCDD5341u;
+            return SumComponents(AsUInt(v) * UInt2(0xFA3A3285u, 0xAD55999Du)) + 0xDCDD5341u;
         }
 
         /// <summary>
@@ -780,9 +780,9 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt2 hashwide(Float2 v)
+        public static UInt2 HashWide(Float2 v)
         {
-            return (Asuint(v) * UInt2(0x94DDD769u, 0xA1E92D39u)) + 0x4583C801u;
+            return (AsUInt(v) * UInt2(0x94DDD769u, 0xA1E92D39u)) + 0x4583C801u;
         }
 
         /// <summary>Returns the result of specified shuffling of the components from two Float2 vectors into a float value.</summary>

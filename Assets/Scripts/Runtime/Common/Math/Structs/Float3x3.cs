@@ -307,7 +307,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Float3x3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)Math.hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Float3x3.</summary>
@@ -373,7 +373,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Return the Float3x3 transpose of a Float3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3X3 transpose(Float3X3 v)
+        public static Float3X3 Transpose(Float3X3 v)
         {
             return Float3x3(
                 v.c0.x, v.c0.y, v.c0.z,
@@ -382,7 +382,7 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>Returns the Float3x3 full inverse of a Float3x3 matrix.</summary>
-        public static Float3X3 inverse(Float3X3 m)
+        public static Float3X3 Inverse(Float3X3 m)
         {
             Float3 c0 = m.c0;
             Float3 c1 = m.c1;
@@ -402,7 +402,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns the determinant of a Float3x3 matrix.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static SoftFloat determinant(Float3X3 m)
+        public static SoftFloat Determinant(Float3X3 m)
         {
             Float3 c0 = m.c0;
             Float3 c1 = m.c1;
@@ -417,11 +417,11 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a uint hash code of a Float3x3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static uint hash(Float3X3 v)
+        public static uint Hash(Float3X3 v)
         {
-            return SumComponents(Asuint(v.c0) * UInt3(0x713BD06Fu, 0x753AD6ADu, 0xD19764C7u) +
-                        Asuint(v.c1) * UInt3(0xB5D0BF63u, 0xF9102C5Fu, 0x9881FB9Fu) +
-                        Asuint(v.c2) * UInt3(0x56A1530Du, 0x804B722Du, 0x738E50E5u)) + 0x4FC93C25u;
+            return SumComponents(AsUInt(v.c0) * UInt3(0x713BD06Fu, 0x753AD6ADu, 0xD19764C7u) +
+                        AsUInt(v.c1) * UInt3(0xB5D0BF63u, 0xF9102C5Fu, 0x9881FB9Fu) +
+                        AsUInt(v.c2) * UInt3(0x56A1530Du, 0x804B722Du, 0x738E50E5u)) + 0x4FC93C25u;
         }
 
         /// <summary>
@@ -430,11 +430,11 @@ namespace GameLibrary.Mathematics
         /// that are only reduced to a narrow uint hash at the very end instead of at every step.
         /// </summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static UInt3 hashwide(Float3X3 v)
+        public static UInt3 HashWide(Float3X3 v)
         {
-            return (Asuint(v.c0) * UInt3(0xCD0445A5u, 0xD2B90D9Bu, 0xD35C9B2Du) +
-                    Asuint(v.c1) * UInt3(0xA10D9E27u, 0x568DAAA9u, 0x7530254Fu) +
-                    Asuint(v.c2) * UInt3(0x9F090439u, 0x5E9F85C9u, 0x8C4CA03Fu)) + 0xB8D969EDu;
+            return (AsUInt(v.c0) * UInt3(0xCD0445A5u, 0xD2B90D9Bu, 0xD35C9B2Du) +
+                    AsUInt(v.c1) * UInt3(0xA10D9E27u, 0x568DAAA9u, 0x7530254Fu) +
+                    AsUInt(v.c2) * UInt3(0x9F090439u, 0x5E9F85C9u, 0x8C4CA03Fu)) + 0xB8D969EDu;
         }
 
     }
