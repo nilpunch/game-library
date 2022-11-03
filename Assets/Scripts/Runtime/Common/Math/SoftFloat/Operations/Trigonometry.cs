@@ -1,6 +1,6 @@
 ﻿namespace GameLibrary.Mathematics
 {
-	public static partial class SoftFloatMath
+	public static partial class SoftMath
 	{
 		const uint PI = 0x40490fdb; // 3.1415926535897932384626433832795
 		const uint HalfPI = 0x3fc90fdb; // 1.5707963267948966192313216916398
@@ -9,7 +9,7 @@
 		const uint PITimes3Over4 = 0x4016cbe4; // 2.3561944901923449288469825374596
 
 		/// <summary>
-		/// Returns the sine of x
+		/// Returns the sine of x.
 		/// </summary>
 		public static SoftFloat Sin(SoftFloat x)
 		{
@@ -20,7 +20,7 @@
 
 			// move x into range
 			x %= SoftFloat.FromRaw(TwoPI);
-			if (x.IsNegative())
+			if (SoftFloat.IsNegative(x))
 			{
 				x += SoftFloat.FromRaw(TwoPI);
 			}
@@ -45,17 +45,17 @@
 		}
 
 		/// <summary>
-		/// Returns the cosine of x
+		/// Returns the cosine of x.
 		/// </summary>
 		public static SoftFloat Cos(SoftFloat x) => Sin(x + SoftFloat.FromRaw(HalfPI));
 
 		/// <summary>
-		/// Returns the tangent of x
+		/// Returns the tangent of x.
 		/// </summary>
 		public static SoftFloat Tan(SoftFloat x) => Sin(x) / Cos(x);
 
 		/// <summary>
-		/// Returns the square root of (x*x + y*y)
+		/// Returns the square root of (x*x + y*y).
 		/// </summary>
 		public static SoftFloat Hypot(SoftFloat x, SoftFloat y)
 		{
@@ -165,9 +165,7 @@
 			{
 				return w;
 			}
-
-			;
-		}
+        }
 
 
 		private static readonly uint[] s_atanHi = new uint[4]
@@ -196,9 +194,9 @@
 		};
 
 		/// <summary>
-		/// Returns the arctangent of x
+		/// Returns the arctangent of x.
 		/// </summary>
-		public unsafe static SoftFloat Atan(SoftFloat x)
+		public static SoftFloat Atan(SoftFloat x)
 		{
 			SoftFloat z;
 
@@ -209,7 +207,7 @@
 			if (ix >= 0x4c800000)
 			{
 				/* if |x| >= 2**26 */
-				if (x.IsNaN())
+				if (SoftFloat.IsNaN(x))
 				{
 					return x;
 				}
@@ -238,7 +236,7 @@
 			}
 			else
 			{
-				x = SoftFloat.Abs(x);
+				x = Abs(x);
 				if (ix < 0x3f980000)
 				{
 					/* |x| < 1.1875 */
@@ -289,11 +287,11 @@
 		}
 
 		/// <summary>
-		/// Returns the signed angle between the positive x axis, and the direction (x, y)
+		/// Returns the signed angle between the positive x axis, and the direction (x, y).
 		/// </summary>
 		public static SoftFloat Atan2(SoftFloat y, SoftFloat x)
 		{
-			if (x.IsNaN() || y.IsNaN())
+			if (SoftFloat.IsNaN(x) || SoftFloat.IsNaN(y))
 			{
 				return x + y;
 			}
@@ -379,7 +377,7 @@
 			/* z = atan(|y/x|) with correct underflow */
 			SoftFloat z = (m & 2) != 0 && iy + (26 << 23) < ix
 				? SoftFloat.Zero /*|y/x| < 0x1p-26, x < 0 */
-				: Atan(SoftFloat.Abs(y / x));
+				: Atan(Abs(y / x));
 
 			switch (m)
 			{
@@ -396,7 +394,7 @@
 		}
 
 		/// <summary>
-		/// Returns the arccosine of x
+		/// Returns the arccosine of x.
 		/// </summary>
 		public static SoftFloat Acos(SoftFloat x)
 		{
@@ -472,7 +470,7 @@
 		}
 
 		/// <summary>
-		/// Returns the arcsine of x
+		/// Returns the arcsine of x.
 		/// </summary>
 		public static SoftFloat Asin(SoftFloat x) => SoftFloat.FromRaw(HalfPI) - Acos(x);
 	}

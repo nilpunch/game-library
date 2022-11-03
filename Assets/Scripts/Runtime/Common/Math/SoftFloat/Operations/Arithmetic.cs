@@ -1,18 +1,85 @@
 ﻿namespace GameLibrary.Mathematics
 {
-	public static partial class SoftFloatMath
+	public static partial class SoftMath
 	{
+        /// <summary>
+        /// Returns the sign of the given soft float number.
+        /// </summary>
+        public static SoftFloat Sign(SoftFloat f)
+        {
+            if (SoftFloat.IsNaN(f) || SoftFloat.IsZero(f))
+            {
+                return SoftFloat.Zero;
+            }
+
+            if (SoftFloat.IsPositive(f))
+            {
+                return SoftFloat.One;
+            }
+
+            return SoftFloat.MinusOne;
+        }
+
+        /// <summary>
+        /// Returns the absolute value of the given soft float number.
+        /// </summary>
+        public static SoftFloat Abs(SoftFloat f)
+        {
+            if (SoftFloat.IsNaN(f))
+            {
+                // Leave NaN untouched
+                return f;
+            }
+
+            // Unset sign
+            return SoftFloat.FromRaw(f.RawValue & 0x7FFFFFFF);
+        }
+
+        /// <summary>
+        /// Returns the maximum of the two given soft float values. Returns NaN if either argument is NaN.
+        /// </summary>
+        public static SoftFloat Max(SoftFloat val1, SoftFloat val2)
+        {
+            if (val1 > val2)
+            {
+                return val1;
+            }
+
+            if (SoftFloat.IsNaN(val1))
+            {
+                return val1;
+            }
+            return val2;
+        }
+
+        /// <summary>
+        /// Returns the minimum of the two given soft float values. Returns NaN if either argument is NaN.
+        /// </summary>
+        public static SoftFloat Min(SoftFloat val1, SoftFloat val2)
+        {
+            if (val1 < val2)
+            {
+                return val1;
+            }
+
+            if (SoftFloat.IsNaN(val1))
+            {
+                return val1;
+            }
+            return val2;
+        }
+
 		/// <summary>
-		/// Returns the remainder when dividing x by y
+		/// Returns the remainder when dividing x by y.
 		/// </summary>
 		public static SoftFloat Remainder(SoftFloat x, SoftFloat y)
 		{
-			Remquo(x, y, out SoftFloat remainder, out _);
+			ReminderQuotient(x, y, out SoftFloat remainder, out _);
 			return remainder;
 		}
 
 		/// <summary>
-		/// Returns x modulo y
+		/// Returns x modulo y.
 		/// </summary>
 		public static SoftFloat Fmod(SoftFloat x, SoftFloat y)
 		{
@@ -23,7 +90,7 @@
 			uint sx = uxi & 0x80000000;
 			uint i;
 
-			if (uyi << 1 == 0 || y.IsNaN() || ex == 0xff)
+			if (uyi << 1 == 0 || SoftFloat.IsNaN(y) || ex == 0xff)
 			{
 				return (x * y) / (x * y);
 			}
@@ -174,7 +241,7 @@
 		}
 
 		/// <summary>
-		/// Rounds x down to the nearest integer
+		/// Rounds x down to the nearest integer.
 		/// </summary>
 		public static SoftFloat Floor(SoftFloat x)
 		{
@@ -217,7 +284,7 @@
 		}
 
 		/// <summary>
-		/// Rounds x up to the nearest integer
+		/// Rounds x up to the nearest integer.
 		/// </summary>
 		public static SoftFloat Ceil(SoftFloat x)
 		{
@@ -260,7 +327,7 @@
 		}
 
 		/// <summary>
-		/// Truncates x, removing its fractional parts
+		/// Truncates x, removing its fractional parts.
 		/// </summary>
 		public static SoftFloat Trunc(SoftFloat x)
 		{
@@ -308,7 +375,7 @@
 			if (((uint)ix & 0x7f800000) == 0x7f800000)
 			{
 				//return x * x + x; /* sqrt(NaN)=NaN, sqrt(+inf)=+inf, sqrt(-inf)=sNaN */
-				if (x.IsNaN() || x.IsNegativeInfinity())
+				if (SoftFloat.IsNaN(x) || SoftFloat.IsNegativeInfinity(x))
 				{
 					return SoftFloat.NaN;
 				}
@@ -390,9 +457,9 @@
 		}
 
 		/// <summary>
-		/// Returns the remainder and the quotient when dividing x by y, so that x == y * quotient + remainder
+		/// Returns the remainder and the quotient when dividing x by y, so that x == y * quotient + remainder.
 		/// </summary>
-		public static void Remquo(SoftFloat x, SoftFloat y, out SoftFloat remainder, out int quotient)
+		public static void ReminderQuotient(SoftFloat x, SoftFloat y, out SoftFloat remainder, out int quotient)
 		{
 			uint ux = x.RawValue;
 			uint uy = y.RawValue;
@@ -404,7 +471,7 @@
 			uint i;
 			var uxi = ux;
 
-			if ((uy << 1) == 0 || y.IsNaN() || ex == 0xff)
+			if ((uy << 1) == 0 || SoftFloat.IsNaN(y) || ex == 0xff)
 			{
 				SoftFloat m = (x * y);
 				remainder = m / m;

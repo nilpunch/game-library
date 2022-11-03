@@ -1,9 +1,9 @@
 ﻿namespace GameLibrary.Mathematics
 {
-	public static partial class SoftFloatMath
+	public static partial class SoftMath
 	{
 		/// <summary>
-		/// Returns e raised to the power x (e ~= 2.71828182845904523536)
+		/// Returns e raised to the power x (e ~= 2.71828182845904523536).
 		/// </summary>
 		public static SoftFloat Exp(SoftFloat x)
 		{
@@ -97,7 +97,7 @@
 		}
 
 		/// <summary>
-		/// Returns the natural logarithm (base e) of x
+		/// Returns the natural logarithm (base e) of x.
 		/// </summary>
 		public static SoftFloat Log(SoftFloat x)
 		{
@@ -163,7 +163,7 @@
 		}
 
 		/// <summary>
-		/// Returns the base 2 logarithm of x
+		/// Returns the base 2 logarithm of x.
 		/// </summary>
 		public static SoftFloat Log2(SoftFloat x)
 		{
@@ -250,7 +250,7 @@
 		}
 
 		/// <summary>
-		/// Returns x raised to the power y
+		/// Returns x raised to the power y.
 		/// </summary>
 		public static SoftFloat Pow(SoftFloat x, SoftFloat y)
 		{
@@ -400,7 +400,7 @@
 				return Sqrt(x);
 			}
 
-			ax = SoftFloat.Abs(x);
+			ax = Abs(x);
 			/* special value of x */
 			if (ix == 0x7f800000 || ix == 0 || ix == 0x3f800000)
 			{
@@ -564,9 +564,7 @@
 				t2 = zL - (((t1 - t) - SoftFloat.FromRaw(k == 0 ? dpH0U32 : dpH1U32)) - zH);
 			}
 
-			;
-
-			/* split up y into y1+y2 and compute (y1+y2)*(t1+t2) */
+            /* split up y into y1+y2 and compute (y1+y2)*(t1+t2) */
 			iS = (int)y.RawValue;
 			y1 = SoftFloat.FromRaw((uint)iS & 0xfffff000);
 			pL = (y - y1) * t1 + y * t2;

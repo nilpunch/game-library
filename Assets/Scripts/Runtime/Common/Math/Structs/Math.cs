@@ -329,7 +329,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsFinite(SoftFloat x)
         {
-            return x.IsFinite();
+            return SoftFloat.IsFinite(x);
         }
 
         /// <summary>Returns a Bool2 indicating for each component of a Float2 whether it is a finite floating point value.</summary>
@@ -358,7 +358,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsInf(SoftFloat x)
         {
-            return !x.IsFinite();
+            return !SoftFloat.IsFinite(x);
         }
 
         /// <summary>Returns a Bool2 indicating for each component of a Float2 whether it is an infinite floating point value.</summary>
@@ -586,7 +586,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Min(SoftFloat x, SoftFloat y)
         {
-            return y.IsNaN() || x < y ? x : y;
+            return SoftFloat.IsNaN(y) || x < y ? x : y;
         }
 
         /// <summary>Returns the componentwise minimum of two Float2 vectors.</summary>
@@ -689,7 +689,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Max(SoftFloat x, SoftFloat y)
         {
-            return y.IsNaN() || x > y ? x : y;
+            return SoftFloat.IsNaN(y) || x > y ? x : y;
         }
 
         /// <summary>Returns the componentwise maximum of two Float2 vectors.</summary>
@@ -1097,7 +1097,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Abs(SoftFloat x)
         {
-            return SoftFloat.Abs(x);
+            return SoftMath.Abs(x);
         }
 
         /// <summary>Returns the componentwise absolute value of a Float2 vector.</summary>
@@ -1213,7 +1213,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Tan(SoftFloat x)
         {
-            return SoftFloatMath.Tan(x);
+            return SoftMath.Tan(x);
         }
 
         /// <summary>Returns the componentwise tangent of a Float2 vector.</summary>
@@ -1242,7 +1242,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Atan(SoftFloat x)
         {
-            return SoftFloatMath.Atan(x);
+            return SoftMath.Atan(x);
         }
 
         /// <summary>Returns the componentwise arctangent of a Float2 vector.</summary>
@@ -1271,7 +1271,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Atan2(SoftFloat y, SoftFloat x)
         {
-            return SoftFloatMath.Atan2(y, x);
+            return SoftMath.Atan2(y, x);
         }
 
         /// <summary>Returns the componentwise 2-argument arctangent of a pair of floats2 vectors.</summary>
@@ -1300,7 +1300,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Cos(SoftFloat x)
         {
-            return SoftFloatMath.Cos(x);
+            return SoftMath.Cos(x);
         }
 
         /// <summary>Returns the componentwise cosine of a Float2 vector.</summary>
@@ -1329,7 +1329,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Acos(SoftFloat x)
         {
-            return SoftFloatMath.Acos(x);
+            return SoftMath.Acos(x);
         }
 
         /// <summary>Returns the componentwise arccosine of a Float2 vector.</summary>
@@ -1358,7 +1358,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Sin(SoftFloat x)
         {
-            return SoftFloatMath.Sin(x);
+            return SoftMath.Sin(x);
         }
 
         /// <summary>Returns the componentwise sine of a Float2 vector.</summary>
@@ -1387,7 +1387,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Asin(SoftFloat x)
         {
-            return SoftFloatMath.Asin(x);
+            return SoftMath.Asin(x);
         }
 
         /// <summary>Returns the componentwise arcsine of a Float2 vector.</summary>
@@ -1416,7 +1416,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Floor(SoftFloat x)
         {
-            return SoftFloatMath.Floor(x);
+            return SoftMath.Floor(x);
         }
 
         /// <summary>Returns the result of rounding each component of a Float2 vector value down to the nearest value less or equal to the original value.</summary>
@@ -1445,7 +1445,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Ceil(SoftFloat x)
         {
-            return SoftFloatMath.Ceil(x);
+            return SoftMath.Ceil(x);
         }
 
         /// <summary>Returns the result of rounding each component of a Float2 vector value up to the nearest value greater or equal to the original value.</summary>
@@ -1474,7 +1474,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Round(SoftFloat x)
         {
-            return SoftFloatMath.Round(x);
+            return SoftMath.Round(x);
         }
 
         /// <summary>Returns the result of rounding each component of a Float2 vector value to the nearest integral value.</summary>
@@ -1503,7 +1503,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Trunc(SoftFloat x)
         {
-            return SoftFloatMath.Trunc(x);
+            return SoftMath.Trunc(x);
         }
 
         /// <summary>Returns the result of a componentwise truncation of a Float2 value to an integral Float2 value.</summary>
@@ -1619,7 +1619,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Pow(SoftFloat x, SoftFloat y)
         {
-            return SoftFloatMath.Pow(x, y);
+            return SoftMath.Pow(x, y);
         }
 
         /// <summary>Returns the componentwise result of raising x to the power y.</summary>
@@ -1648,7 +1648,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Exp(SoftFloat x)
         {
-            return SoftFloatMath.Exp(x);
+            return SoftMath.Exp(x);
         }
 
         /// <summary>Returns the componentwise base-e exponential of x.</summary>
@@ -1677,7 +1677,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Exp2(SoftFloat x)
         {
-            return SoftFloatMath.Exp(x) * SoftFloat.FromRaw(0x3f317218);
+            return SoftMath.Exp(x) * SoftFloat.FromRaw(0x3f317218);
         }
 
         /// <summary>Returns the componentwise base-2 exponential of x.</summary>
@@ -1706,7 +1706,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Exp10(SoftFloat x)
         {
-            return SoftFloatMath.Exp(x) * SoftFloat.FromRaw(0x40135d8e);
+            return SoftMath.Exp(x) * SoftFloat.FromRaw(0x40135d8e);
         }
 
         /// <summary>Returns the componentwise base-10 exponential of x.</summary>
@@ -1735,7 +1735,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Log(SoftFloat x)
         {
-            return SoftFloatMath.Log(x);
+            return SoftMath.Log(x);
         }
 
         /// <summary>Returns the componentwise natural logarithm of a Float2 vector.</summary>
@@ -1764,7 +1764,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Log2(SoftFloat x)
         {
-            return SoftFloatMath.Log2(x);
+            return SoftMath.Log2(x);
         }
 
         /// <summary>Returns the componentwise base-2 logarithm of a Float2 vector.</summary>
@@ -1793,7 +1793,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Log10(SoftFloat x)
         {
-            return SoftFloatMath.Log(x) * Log10E;
+            return SoftMath.Log(x) * Log10E;
         }
 
         /// <summary>Returns the componentwise base-10 logarithm of a Float2 vector.</summary>
@@ -1893,7 +1893,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static SoftFloat Sqrt(SoftFloat x)
         {
-            return SoftFloatMath.Sqrt(x);
+            return SoftMath.Sqrt(x);
         }
 
         /// <summary>Returns the componentwise square root of a Float2 vector.</summary>
@@ -2231,21 +2231,21 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Any(Float2 x)
         {
-            return !x.x.IsZero() || !x.y.IsZero();
+            return !SoftFloat.IsZero(x.x) || !SoftFloat.IsZero(x.y);
         }
 
         /// <summary>Returns true if any component of the input Float3 vector is non-zero, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Any(Float3 x)
         {
-            return !x.x.IsZero() || !x.y.IsZero() || !x.z.IsZero();
+            return !SoftFloat.IsZero(x.x) || !SoftFloat.IsZero(x.y) || !SoftFloat.IsZero(x.z);
         }
 
         /// <summary>Returns true if any component of the input Float4 vector is non-zero, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool Any(Float4 x)
         {
-            return !x.x.IsZero() || !x.y.IsZero() || !x.z.IsZero() || !x.w.IsZero();
+            return !SoftFloat.IsZero(x.x) || !SoftFloat.IsZero(x.y) || !SoftFloat.IsZero(x.z) || !SoftFloat.IsZero(x.w);
         }
 
 
@@ -2319,21 +2319,21 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool All(Float2 x)
         {
-            return !x.x.IsZero() && !x.y.IsZero();
+            return !SoftFloat.IsZero(x.x) && !SoftFloat.IsZero(x.y);
         }
 
         /// <summary>Returns true if all components of the input Float3 vector are non-zero, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool All(Float3 x)
         {
-            return !x.x.IsZero() && !x.y.IsZero() && !x.z.IsZero();
+            return !SoftFloat.IsZero(x.x) && !SoftFloat.IsZero(x.y) && !SoftFloat.IsZero(x.z);
         }
 
         /// <summary>Returns true if all components of the input Float4 vector are non-zero, false otherwise.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool All(Float4 x)
         {
-            return !x.x.IsZero() && !x.y.IsZero() && !x.z.IsZero() && !x.w.IsZero();
+            return !SoftFloat.IsZero(x.x) && !SoftFloat.IsZero(x.y) && !SoftFloat.IsZero(x.z) && !SoftFloat.IsZero(x.w);
         }
 
 
