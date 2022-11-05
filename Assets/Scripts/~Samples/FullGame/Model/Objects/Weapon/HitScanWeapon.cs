@@ -16,7 +16,7 @@ namespace GameLibrary.Sample
 
         public void Shoot()
         {
-            var hit = _collisionsWorld.Raycast(Float3.zero, new Float3((SoftFloat)0, (SoftFloat)0, (SoftFloat)1));
+            var hit = _collisionsWorld.Raycast(Float3.Zero, new Float3((SoftFloat)0, (SoftFloat)0, (SoftFloat)1));
             if (!hit.Occure)
                 return;
 

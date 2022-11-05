@@ -12,9 +12,9 @@ namespace GameLibrary.Sample
             var graphicLibrary = new FakeGraphicLibrary();
 
             var viewLibrary = new ViewLibrary(graphicLibrary);
-            
+
             var model = new Model(viewLibrary);
-            
+
             var simulation = new DeterministicSimulation<Model, ModelSnapshot>(model);
 
             _gameLoop = new GameLoopsGroup(new IGameLoop[]
@@ -23,7 +23,7 @@ namespace GameLibrary.Sample
                 new RenderingLoop(graphicLibrary),
             });
         }
-        
+
         public void Update(long elapsedMilliseconds)
         {
             _gameLoop.Update(elapsedMilliseconds);

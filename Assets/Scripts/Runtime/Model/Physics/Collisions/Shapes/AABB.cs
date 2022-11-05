@@ -57,19 +57,19 @@ namespace GameLibrary.Physics
 
         public SoftFloat DistanceSqr(Float3 point)
         {
-            return Math.LengthSqr(Math.Max(Math.Abs(point - Center), Extents) - Extents);
+            return UnityMath.LengthSqr(UnityMath.Max(UnityMath.Abs(point - Center), Extents) - Extents);
         }
 
         public static AABB Transform(Float4X4 transform, AABB localBounds)
         {
-            Float3 center = Math.Transform(transform, localBounds.Center);
+            Float3 center = UnityMath.Transform(transform, localBounds.Center);
             Float3 extents = RotateExtents(localBounds.Extents, transform.c0.xyz, transform.c1.xyz, transform.c2.xyz);
             return new AABB(center, extents);
         }
 
         private static Float3 RotateExtents(Float3 extents, Float3 m0, Float3 m1, Float3 m2)
         {
-            return Math.Abs(m0 * extents.x) + Math.Abs(m1 * extents.y) + Math.Abs(m2 * extents.z);
+            return UnityMath.Abs(m0 * extents.x) + UnityMath.Abs(m1 * extents.y) + UnityMath.Abs(m2 * extents.z);
         }
     }
 }

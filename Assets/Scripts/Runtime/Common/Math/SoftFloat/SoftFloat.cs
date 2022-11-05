@@ -25,6 +25,7 @@ using System;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
+
 namespace GameLibrary.Mathematics
 {
 	// Internal representation is identical to IEEE binary32 floating point numbers
@@ -84,7 +85,7 @@ namespace GameLibrary.Mathematics
 			_rawValue = raw;
 		}
 
-        public static SoftFloat Zero => new SoftFloat(0);
+        public static SoftFloat Zero => new SoftFloat(RawZero);
 
         public static SoftFloat PositiveInfinity => new SoftFloat(RawPositiveInfinity);
 
