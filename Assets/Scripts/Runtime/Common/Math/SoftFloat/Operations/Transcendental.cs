@@ -1,4 +1,4 @@
-﻿namespace GameLibrary.Mathematics
+﻿namespace GameLibrary.Math
 {
 	public static partial class SoftMath
 	{

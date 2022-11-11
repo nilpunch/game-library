@@ -1,8 +1,9 @@
 using System.Runtime.CompilerServices;
+using GameLibrary.Math;
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
-    public static partial class UnityMath
+    public static partial class Math
     {
         /// <summary>Extrinsic rotation order. Specifies in which order rotations around the principal axes (x, y and z) are to be applied.</summary>
         public enum RotationOrder : byte

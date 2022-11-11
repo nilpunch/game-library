@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using GameLibrary.Lifetime;
-using GameLibrary.Mathematics;
+using GameLibrary.Math;
 
 namespace GameLibrary.Physics
 {

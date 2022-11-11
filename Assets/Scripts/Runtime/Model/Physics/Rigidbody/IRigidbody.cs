@@ -1,5 +1,5 @@
 ﻿using GameLibrary.Lifetime;
-using GameLibrary.Mathematics;
+using GameLibrary.Math;
 
 namespace GameLibrary.Physics
 {

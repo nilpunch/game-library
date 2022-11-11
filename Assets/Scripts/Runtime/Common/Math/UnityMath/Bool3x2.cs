@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 
 #pragma warning disable 0660, 0661
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
     [System.Serializable]
     public struct Bool3x2 : System.IEquatable<Bool3x2>
@@ -137,7 +137,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Bool3x2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)UnityMath.Hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Bool3x2.</summary>
@@ -149,7 +149,7 @@ namespace GameLibrary.Mathematics
 
     }
 
-    public static partial class UnityMath
+    public static partial class Math
     {
         /// <summary>Returns a Bool3x2 matrix constructed from two Bool3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

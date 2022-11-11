@@ -1,10 +1,11 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using GameLibrary.Math;
 
 #pragma warning disable 0660, 0661
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
     [Serializable]
     public struct UInt4x4 : IEquatable<UInt4x4>, IFormattable
@@ -57,20 +58,20 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public UInt4x4(bool v)
         {
-            c0 = UnityMath.Select(new UInt4(0u), new UInt4(1u), v);
-            c1 = UnityMath.Select(new UInt4(0u), new UInt4(1u), v);
-            c2 = UnityMath.Select(new UInt4(0u), new UInt4(1u), v);
-            c3 = UnityMath.Select(new UInt4(0u), new UInt4(1u), v);
+            c0 = Math.Select(new UInt4(0u), new UInt4(1u), v);
+            c1 = Math.Select(new UInt4(0u), new UInt4(1u), v);
+            c2 = Math.Select(new UInt4(0u), new UInt4(1u), v);
+            c3 = Math.Select(new UInt4(0u), new UInt4(1u), v);
         }
 
         /// <summary>Constructs a UInt4x4 matrix from a Bool4x4 matrix by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public UInt4x4(Bool4x4 v)
         {
-            c0 = UnityMath.Select(new UInt4(0u), new UInt4(1u), v.c0);
-            c1 = UnityMath.Select(new UInt4(0u), new UInt4(1u), v.c1);
-            c2 = UnityMath.Select(new UInt4(0u), new UInt4(1u), v.c2);
-            c3 = UnityMath.Select(new UInt4(0u), new UInt4(1u), v.c3);
+            c0 = Math.Select(new UInt4(0u), new UInt4(1u), v.c0);
+            c1 = Math.Select(new UInt4(0u), new UInt4(1u), v.c1);
+            c2 = Math.Select(new UInt4(0u), new UInt4(1u), v.c2);
+            c3 = Math.Select(new UInt4(0u), new UInt4(1u), v.c3);
         }
 
         /// <summary>Constructs a UInt4x4 matrix from a single int value by converting it to uint and assigning it to every component.</summary>
@@ -382,7 +383,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the UInt4x4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)UnityMath.Hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the UInt4x4.</summary>
@@ -401,7 +402,7 @@ namespace GameLibrary.Mathematics
 
     }
 
-    public static partial class UnityMath
+    public static partial class Math
     {
         /// <summary>Returns a UInt4x4 matrix constructed from four UInt4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

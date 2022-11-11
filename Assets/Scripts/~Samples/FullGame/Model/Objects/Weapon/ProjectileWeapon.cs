@@ -1,4 +1,4 @@
-using GameLibrary.Mathematics;
+using GameLibrary.Math;
 
 namespace GameLibrary.Sample
 {

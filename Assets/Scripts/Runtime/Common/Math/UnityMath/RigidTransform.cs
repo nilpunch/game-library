@@ -1,7 +1,8 @@
 using System;
 using System.Runtime.CompilerServices;
+using GameLibrary.Math;
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
     [Serializable]
     public struct RigidTransform
@@ -205,21 +206,21 @@ namespace GameLibrary.Mathematics
         /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         /// <param name="order">The order in which the rotations are applied.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static RigidTransform Euler(Float3 xyz, UnityMath.RotationOrder order = UnityMath.RotationOrder.ZXY)
+        public static RigidTransform Euler(Float3 xyz, Math.RotationOrder order = Math.RotationOrder.ZXY)
         {
             switch (order)
             {
-                case UnityMath.RotationOrder.XYZ:
+                case Math.RotationOrder.XYZ:
                     return EulerXYZ(xyz);
-                case UnityMath.RotationOrder.XZY:
+                case Math.RotationOrder.XZY:
                     return EulerXZY(xyz);
-                case UnityMath.RotationOrder.YXZ:
+                case Math.RotationOrder.YXZ:
                     return EulerYXZ(xyz);
-                case UnityMath.RotationOrder.YZX:
+                case Math.RotationOrder.YZX:
                     return EulerYZX(xyz);
-                case UnityMath.RotationOrder.ZXY:
+                case Math.RotationOrder.ZXY:
                     return EulerZXY(xyz);
-                case UnityMath.RotationOrder.ZYX:
+                case Math.RotationOrder.ZYX:
                     return EulerZYX(xyz);
                 default:
                     return Identity;
@@ -238,7 +239,7 @@ namespace GameLibrary.Mathematics
         /// <param name="order">The order in which the rotations are applied.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static RigidTransform Euler(SoftFloat x, SoftFloat y, SoftFloat z,
-            UnityMath.RotationOrder order = UnityMath.RotationOrder.Default)
+            Math.RotationOrder order = Math.RotationOrder.Default)
         {
             return Euler(new Float3(x, y, z), order);
         }
@@ -293,7 +294,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode()
         {
-            return (int)UnityMath.Hash(this);
+            return (int)Math.Hash(this);
         }
 
         /// <summary>Returns a string representation of the RigidTransform.</summary>
@@ -319,7 +320,7 @@ namespace GameLibrary.Mathematics
         }
     }
 
-    public static partial class UnityMath
+    public static partial class Math
     {
         /// <summary>Returns a RigidTransform constructed from a rotation represented by a unit quaternion and a translation represented by a Float3 vector.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

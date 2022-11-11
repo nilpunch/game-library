@@ -26,7 +26,7 @@ using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.Math
 {
 	// Internal representation is identical to IEEE binary32 floating point numbers
 	[DebuggerDisplay("{ToStringInv()}")]
@@ -62,17 +62,26 @@ namespace GameLibrary.Mathematics
 
         private static readonly int[] s_normalizeAmounts = new int[]
         {
-            0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 8, 8, 8, 8, 8, 8, 8, 16, 16, 16, 16, 16, 16, 16, 16, 24, 24, 24, 24, 24, 24,
-            24
+            0, 0, 0, 0, 0, 0, 0, 0, 0,
+            8, 8, 8, 8, 8, 8, 8, 8, 16,
+            16, 16, 16, 16, 16, 16, 16,
+            24, 24, 24, 24, 24, 24, 24
         };
 
-        private static readonly int[] s_debruijn32 = new int[64]
+        private static readonly int[] s_debruijn32_int = new int[64]
         {
             32, 8, 17, -1, -1, 14, -1, -1, -1, 20, -1, -1, -1, 28, -1, 18,
             -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 0, 26, 25, 24,
             4, 11, 23, 31, 3, 7, 10, 16, 22, 30, -1, -1, 2, 6, 13, 9,
             -1, 15, -1, 21, -1, 29, 19, -1, -1, -1, -1, -1, 1, 27, 5, 12
         };
+        
+        private static readonly int[] s_debruijn32_uint = new int[32]
+        {
+	        0, 31, 9, 30, 3, 8, 13, 29, 2, 5, 7, 21, 12, 24, 28, 19,
+	        1, 10, 4, 14, 6, 22, 25, 20, 11, 15, 23, 26, 16, 27, 17, 18
+        };
+	
 
         /// <summary>
 		/// Raw byte representation of an signed float number.
@@ -200,6 +209,127 @@ namespace GameLibrary.Mathematics
         }
 
         /// <summary>
+        /// Creates an soft float number from a float value.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator SoftFloat(float f)
+        {
+	        uint raw = ReinterpretFloatToInt32(f);
+	        return new SoftFloat(raw);
+        }
+
+        /// <summary>
+        /// Converts an soft float number to a float value.
+        /// </summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        public static explicit operator float(SoftFloat f)
+        {
+	        uint raw = f._rawValue;
+	        return ReinterpretIntToFloat32(raw);
+        }
+
+        /// <summary>
+        /// Creates an soft float number from an integer.
+        /// </summary>
+        public static explicit operator SoftFloat(int value)
+        {
+	        if (value == 0)
+	        {
+		        return Zero;
+	        }
+
+	        if (value == int.MinValue)
+	        {
+		        // special case
+		        return FromRaw(0xcf000000);
+	        }
+
+	        bool negative = value < 0;
+	        int u = System.Math.Abs(value);
+
+	        int shifts;
+
+	        int lzcnt = LeadingZeroesCount(u);
+	        if (lzcnt < 8)
+	        {
+		        int count = 8 - lzcnt;
+		        u >>= count;
+		        shifts = -count;
+	        }
+	        else
+	        {
+		        int count = lzcnt - 8;
+		        u <<= count;
+		        shifts = count;
+	        }
+
+	        uint exponent = (uint)(ExponentBias + MantissaBits - shifts);
+	        return FromParts(negative, exponent, (uint)u);
+        }
+
+        /// <summary>
+        /// Converts an soft float number to an integer.
+        /// </summary>
+        public static explicit operator int(SoftFloat f)
+        {
+	        if (f.Exponent < 0)
+	        {
+		        return 0;
+	        }
+
+	        int shift = MantissaBits - f.Exponent;
+	        var mantissa = (int)(f.RawMantissa | (1 << MantissaBits));
+	        int value = shift < 0 ? mantissa << -shift : mantissa >> shift;
+	        return IsPositive(f) ? value : -value;
+        }
+        
+        /// <summary>
+        /// Creates an soft float number from unsigned integer.
+        /// </summary>
+        public static explicit operator SoftFloat(uint value)
+        {
+	        if (value == 0)
+	        {
+		        return Zero;
+	        }
+
+	        int shifts;
+
+	        int lzcnt = LeadingZeroesCount(value);
+	        if (lzcnt < 8)
+	        {
+		        int count = 8 - lzcnt;
+		        value >>= count;
+		        shifts = -count;
+	        }
+	        else
+	        {
+		        int count = lzcnt - 8;
+		        value <<= count;
+		        shifts = count;
+	        }
+
+	        uint exponent = (uint)(ExponentBias + MantissaBits - shifts);
+	        return FromParts(false, exponent, value);
+        }
+
+        /// <summary>
+        /// Converts an soft float number to unsigned integer.
+        /// </summary>
+        public static explicit operator uint(SoftFloat f)
+        {
+	        if (f.Exponent < 0)
+	        {
+		        return 0;
+	        }
+
+	        int shift = MantissaBits - f.Exponent;
+	        uint mantissa = f.RawMantissa | (1 << MantissaBits);
+	        uint value = shift < 0 ? mantissa << -shift : mantissa >> shift;
+	        return value;
+        }
+
+        /// <summary>
 		/// Creates an soft float number from its parts: sign, exponent, mantissa.
 		/// </summary>
 		/// <param name="sign">Sign of the number: false = the number is positive, true = the number is negative.</param>
@@ -220,81 +350,6 @@ namespace GameLibrary.Mathematics
         {
             return new SoftFloat(raw);
         }
-
-        /// <summary>
-		/// Creates an soft float number from a float value.
-		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static explicit operator SoftFloat(float f)
-		{
-			uint raw = ReinterpretFloatToInt32(f);
-			return new SoftFloat(raw);
-		}
-
-        /// <summary>
-		/// Converts an soft float number to a float value.
-		/// </summary>
-		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static explicit operator float(SoftFloat f)
-		{
-			uint raw = f._rawValue;
-			return ReinterpretIntToFloat32(raw);
-		}
-
-        /// <summary>
-		/// Creates an soft float number from an integer.
-		/// </summary>
-		public static explicit operator SoftFloat(int value)
-		{
-			if (value == 0)
-			{
-				return Zero;
-			}
-
-			if (value == int.MinValue)
-			{
-				// special case
-				return FromRaw(0xcf000000);
-			}
-
-			bool negative = value < 0;
-			int u = Math.Abs(value);
-
-			int shifts;
-
-			int lzcnt = LeadingZeroCount(u);
-			if (lzcnt < 8)
-			{
-				int count = 8 - lzcnt;
-				u >>= count;
-				shifts = -count;
-			}
-			else
-			{
-				int count = lzcnt - 8;
-				u <<= count;
-				shifts = count;
-			}
-
-			uint exponent = (uint)(ExponentBias + MantissaBits - shifts);
-			return FromParts(negative, exponent, (uint)u);
-		}
-
-        /// <summary>
-		/// Converts an soft float number to an integer.
-		/// </summary>
-		public static explicit operator int(SoftFloat f)
-		{
-			if (f.Exponent < 0)
-			{
-				return 0;
-			}
-
-			int shift = MantissaBits - f.Exponent;
-			var mantissa = (int)(f.RawMantissa | (1 << MantissaBits));
-			int value = shift < 0 ? mantissa << -shift : mantissa >> shift;
-			return IsPositive(f) ? value : -value;
-		}
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static SoftFloat operator -(SoftFloat f) => new SoftFloat(f._rawValue ^ 0x80000000);
@@ -331,7 +386,7 @@ namespace GameLibrary.Mathematics
                     return NaN;
                 }
 
-				int shift = LeadingZeroCount(rawMan1 & 0x00ffffff) - 8;
+				int shift = LeadingZeroesCount(rawMan1 & 0x00ffffff) - 8;
 				rawMan1 <<= shift;
 				rawExp1 = 1 - shift;
 
@@ -412,7 +467,7 @@ namespace GameLibrary.Mathematics
                     return NaN;
                 }
 
-				int shift = LeadingZeroCount(rawMan2 & 0x00ffffff) - 8;
+				int shift = LeadingZeroesCount(rawMan2 & 0x00ffffff) - 8;
 				rawMan2 <<= shift;
 				rawExp2 = 1 - shift;
 
@@ -468,7 +523,7 @@ namespace GameLibrary.Mathematics
 
 			long longMan = (long)man1 * (long)man2;
 			int man = (int)(longMan >> MantissaBits);
-            uint absMan = (uint)Math.Abs(man);
+            uint absMan = (uint)System.Math.Abs(man);
 			int rawExp = rawExp1 + rawExp2 - ExponentBias;
 			uint sign = (uint)man & 0x80000000;
 			if ((absMan & 0x1000000) != 0)
@@ -527,7 +582,7 @@ namespace GameLibrary.Mathematics
                     return new SoftFloat((f1._rawValue ^ f2._rawValue) & SignMask);
                 }
 
-				int shift = LeadingZeroCount(rawMan1 & 0x00ffffff) - 8;
+				int shift = LeadingZeroesCount(rawMan1 & 0x00ffffff) - 8;
 				rawMan1 <<= shift;
 				rawExp1 = 1 - shift;
 
@@ -583,7 +638,7 @@ namespace GameLibrary.Mathematics
 					return new SoftFloat(((f1._rawValue ^ f2._rawValue) & SignMask) | RawPositiveInfinity);
 				}
 
-				int shift = LeadingZeroCount(rawMan2 & 0x00ffffff) - 8;
+				int shift = LeadingZeroesCount(rawMan2 & 0x00ffffff) - 8;
 				rawMan2 <<= shift;
 				rawExp2 = 1 - shift;
 
@@ -641,7 +696,7 @@ namespace GameLibrary.Mathematics
 			long longMan = ((long)man1 << MantissaBits) / (long)man2;
 			int man = (int)longMan;
 			//Debug.Assert(man != 0);
-			uint absMan = (uint)Math.Abs(man);
+			uint absMan = (uint)System.Math.Abs(man);
 			int rawExp = rawExp1 - rawExp2 + ExponentBias;
 			uint sign = (uint)man & 0x80000000;
 
@@ -788,7 +843,7 @@ namespace GameLibrary.Mathematics
                 }
 
                 int man = (man1 << 6) + ((man2 << 6) >> deltaExp);
-                int absMan = Math.Abs(man);
+                int absMan = System.Math.Abs(man);
                 if (absMan == 0)
                 {
                     return Zero;
@@ -796,7 +851,7 @@ namespace GameLibrary.Mathematics
 
                 int rawExp = rawExp1 - 6;
 
-                int amount = s_normalizeAmounts[LeadingZeroCount(absMan)];
+                int amount = s_normalizeAmounts[LeadingZeroesCount(absMan)];
                 rawExp -= amount;
                 absMan <<= amount;
 
@@ -838,7 +893,8 @@ namespace GameLibrary.Mathematics
         /// <summary>
         /// Returns the leading zero count of the given 32-bit integer.
         /// </summary>
-        private static int LeadingZeroCount(int x)
+        /// [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static int LeadingZeroesCount(int x)
         {
             x |= x >> 1;
             x |= x >> 2;
@@ -846,7 +902,26 @@ namespace GameLibrary.Mathematics
             x |= x >> 8;
             x |= x >> 16;
 
-            return s_debruijn32[(uint)x * 0x8c0b2891u >> 26];
+            return s_debruijn32_int[(uint)x * 0x8c0b2891u >> 26];
+        }
+        
+        /// <summary>Returns number of leading zeros in the binary representations of a uint value.</summary>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
+        private static int LeadingZeroesCount(uint x)
+        {
+	        if (x == 0)
+	        {
+		        return 32;
+	        }
+
+	        x |= x >> 1;
+	        x |= x >> 2;
+	        x |= x >> 4;
+	        x |= x >> 8;
+	        x |= x >> 16;
+	        x++;
+
+	        return s_debruijn32_uint[x * 0x076be629 >> 27];
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

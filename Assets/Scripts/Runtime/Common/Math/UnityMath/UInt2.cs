@@ -2,10 +2,11 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
+using GameLibrary.Math;
 
 #pragma warning disable 0660, 0661
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
     [DebuggerTypeProxy(typeof(DebuggerProxy))]
     [Serializable]
@@ -596,7 +597,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the UInt2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)UnityMath.Hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the UInt2.</summary>
@@ -626,7 +627,7 @@ namespace GameLibrary.Mathematics
 
     }
 
-    public static partial class UnityMath
+    public static partial class Math
     {
         /// <summary>Returns a UInt2 vector constructed from two uint values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

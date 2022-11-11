@@ -1,10 +1,11 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using GameLibrary.Math;
 
 #pragma warning disable 0660, 0661
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
     [Serializable]
     public struct Float4x3 : IEquatable<Float4x3>, IFormattable
@@ -50,18 +51,18 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Float4x3(bool v)
         {
-            c0 = UnityMath.Select(new Float4(SoftFloat.Zero), new Float4(SoftFloat.One), v);
-            c1 = UnityMath.Select(new Float4(SoftFloat.Zero), new Float4(SoftFloat.One), v);
-            c2 = UnityMath.Select(new Float4(SoftFloat.Zero), new Float4(SoftFloat.One), v);
+            c0 = Math.Select(new Float4(SoftFloat.Zero), new Float4(SoftFloat.One), v);
+            c1 = Math.Select(new Float4(SoftFloat.Zero), new Float4(SoftFloat.One), v);
+            c2 = Math.Select(new Float4(SoftFloat.Zero), new Float4(SoftFloat.One), v);
         }
 
         /// <summary>Constructs a Float4x3 matrix from a Bool4x3 matrix by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Float4x3(Bool4x3 v)
         {
-            c0 = UnityMath.Select(new Float4(SoftFloat.Zero), new Float4(SoftFloat.One), v.c0);
-            c1 = UnityMath.Select(new Float4(SoftFloat.Zero), new Float4(SoftFloat.One), v.c1);
-            c2 = UnityMath.Select(new Float4(SoftFloat.Zero), new Float4(SoftFloat.One), v.c2);
+            c0 = Math.Select(new Float4(SoftFloat.Zero), new Float4(SoftFloat.One), v.c0);
+            c1 = Math.Select(new Float4(SoftFloat.Zero), new Float4(SoftFloat.One), v.c1);
+            c2 = Math.Select(new Float4(SoftFloat.Zero), new Float4(SoftFloat.One), v.c2);
         }
 
         /// <summary>Constructs a Float4x3 matrix from a single int value by converting it to float and assigning it to every component.</summary>
@@ -302,7 +303,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Float4x3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)UnityMath.Hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Float4x3.</summary>
@@ -321,7 +322,7 @@ namespace GameLibrary.Mathematics
 
     }
 
-    public static partial class UnityMath
+    public static partial class Math
     {
         /// <summary>Returns a Float4x3 matrix constructed from three Float4 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

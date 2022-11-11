@@ -1,5 +1,5 @@
 ﻿using System;
-using GameLibrary.Mathematics;
+using GameLibrary.Math;
 
 namespace GameLibrary.Physics
 {

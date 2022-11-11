@@ -1,10 +1,10 @@
-﻿using GameLibrary.Mathematics;
+﻿using GameLibrary.Math;
 
 namespace GameLibrary.Physics
 {
     public readonly struct Sphere
     {
-        public readonly Float3 Center;
+        public readonly SoftVector3 Center;
         public readonly SoftFloat Radius;
     }
 }

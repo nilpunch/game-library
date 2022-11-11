@@ -1,10 +1,11 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using GameLibrary.Math;
 
 #pragma warning disable 0660, 0661
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
     [Serializable]
     public partial struct Float2X2 : IEquatable<Float2X2>, IFormattable
@@ -47,16 +48,16 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Float2X2(bool v)
         {
-            c0 = UnityMath.Select(new Float2(SoftFloat.Zero), new Float2(SoftFloat.One), v);
-            c1 = UnityMath.Select(new Float2(SoftFloat.Zero), new Float2(SoftFloat.One), v);
+            c0 = Math.Select(new Float2(SoftFloat.Zero), new Float2(SoftFloat.One), v);
+            c1 = Math.Select(new Float2(SoftFloat.Zero), new Float2(SoftFloat.One), v);
         }
 
         /// <summary>Constructs a Float2x2 matrix from a Bool2x2 matrix by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Float2X2(Bool2x2 v)
         {
-            c0 = UnityMath.Select(new Float2(SoftFloat.Zero), new Float2(SoftFloat.One), v.c0);
-            c1 = UnityMath.Select(new Float2(SoftFloat.Zero), new Float2(SoftFloat.One), v.c1);
+            c0 = Math.Select(new Float2(SoftFloat.Zero), new Float2(SoftFloat.One), v.c0);
+            c1 = Math.Select(new Float2(SoftFloat.Zero), new Float2(SoftFloat.One), v.c1);
         }
 
         /// <summary>Constructs a Float2x2 matrix from a single int value by converting it to float and assigning it to every component.</summary>
@@ -293,7 +294,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Float2x2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)UnityMath.Hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Float2x2.</summary>
@@ -312,7 +313,7 @@ namespace GameLibrary.Mathematics
 
     }
 
-    public static partial class UnityMath
+    public static partial class Math
     {
         /// <summary>Returns a Float2x2 matrix constructed from two Float2 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

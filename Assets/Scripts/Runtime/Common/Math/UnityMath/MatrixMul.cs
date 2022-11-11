@@ -1,8 +1,9 @@
 using System.Runtime.CompilerServices;
+using GameLibrary.Math;
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
-    partial class UnityMath
+    partial class Math
     {
         /// <summary>Returns the float value result of a matrix multiplication between a float value and a float value.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

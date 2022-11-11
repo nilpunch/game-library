@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using GameLibrary.Mathematics;
+using GameLibrary.Math;
 using GameLibrary.Physics;
 
 

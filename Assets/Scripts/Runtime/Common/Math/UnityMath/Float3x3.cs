@@ -1,10 +1,11 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using GameLibrary.Math;
 
 #pragma warning disable 0660, 0661
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
     [Serializable]
     public partial struct Float3X3 : IEquatable<Float3X3>, IFormattable
@@ -55,18 +56,18 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Float3X3(bool v)
         {
-            c0 = UnityMath.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v);
-            c1 = UnityMath.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v);
-            c2 = UnityMath.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v);
+            c0 = Math.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v);
+            c1 = Math.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v);
+            c2 = Math.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v);
         }
 
         /// <summary>Constructs a Float3x3 matrix from a Bool3x3 matrix by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Float3X3(Bool3x3 v)
         {
-            c0 = UnityMath.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v.c0);
-            c1 = UnityMath.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v.c1);
-            c2 = UnityMath.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v.c2);
+            c0 = Math.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v.c0);
+            c1 = Math.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v.c1);
+            c2 = Math.Select(new Float3(SoftFloat.Zero), new Float3(SoftFloat.One), v.c2);
         }
 
         /// <summary>Constructs a Float3x3 matrix from a single int value by converting it to float and assigning it to every component.</summary>
@@ -307,7 +308,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Float3x3.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)UnityMath.Hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Float3x3.</summary>
@@ -326,7 +327,7 @@ namespace GameLibrary.Mathematics
 
     }
 
-    public static partial class UnityMath
+    public static partial class Math
     {
         /// <summary>Returns a Float3x3 matrix constructed from three Float3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

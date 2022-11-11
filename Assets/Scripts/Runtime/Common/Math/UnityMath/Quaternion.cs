@@ -1,7 +1,8 @@
 using System;
 using System.Runtime.CompilerServices;
+using GameLibrary.Math;
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
     [Serializable]
     public struct Quaternion : IEquatable<Quaternion>, IFormattable
@@ -43,23 +44,23 @@ namespace GameLibrary.Mathematics
             Float3 v = m.c1;
             Float3 w = m.c2;
 
-            uint uSign = (UnityMath.AsUInt(u.x) & 0x80000000);
-            SoftFloat t = v.y + UnityMath.AsFloat(UnityMath.AsUInt(w.z) ^ uSign);
+            uint uSign = (Math.AsUInt(u.x) & 0x80000000);
+            SoftFloat t = v.y + Math.AsFloat(Math.AsUInt(w.z) ^ uSign);
             UInt4 uMask = new UInt4((int)uSign >> 31);
-            UInt4 tMask = new UInt4(UnityMath.AsInt(t) >> 31);
+            UInt4 tMask = new UInt4(Math.AsInt(t) >> 31);
 
-            SoftFloat tr = SoftFloat.One + UnityMath.Abs(u.x);
+            SoftFloat tr = SoftFloat.One + Math.Abs(u.x);
 
             UInt4 signFlips = new UInt4(0x00000000, 0x80000000, 0x80000000, 0x80000000) ^
                               (uMask & new UInt4(0x00000000, 0x80000000, 0x00000000, 0x80000000)) ^
                               (tMask & new UInt4(0x80000000, 0x80000000, 0x80000000, 0x00000000));
 
             value = new Float4(tr, u.y, w.x, v.z) +
-                     UnityMath.AsFloat(UnityMath.AsUInt(new Float4(t, v.x, u.z, w.y)) ^ signFlips); // +---, +++-, ++-+, +-++
+                     Math.AsFloat(Math.AsUInt(new Float4(t, v.x, u.z, w.y)) ^ signFlips); // +---, +++-, ++-+, +-++
 
-            value = UnityMath.AsFloat((UnityMath.AsUInt(value) & ~uMask) | (UnityMath.AsUInt(value.zwxy) & uMask));
-            value = UnityMath.AsFloat((UnityMath.AsUInt(value.wzyx) & ~tMask) | (UnityMath.AsUInt(value) & tMask));
-            value = UnityMath.Normalize(value);
+            value = Math.AsFloat((Math.AsUInt(value) & ~uMask) | (Math.AsUInt(value.zwxy) & uMask));
+            value = Math.AsFloat((Math.AsUInt(value.wzyx) & ~tMask) | (Math.AsUInt(value) & tMask));
+            value = Math.Normalize(value);
         }
 
         /// <summary>Constructs a unit quaternion from an orthonormal Float4x4 matrix.</summary>
@@ -69,24 +70,24 @@ namespace GameLibrary.Mathematics
             Float4 v = m.c1;
             Float4 w = m.c2;
 
-            uint uSign = (UnityMath.AsUInt(u.x) & 0x80000000);
-            SoftFloat t = v.y + UnityMath.AsFloat(UnityMath.AsUInt(w.z) ^ uSign);
+            uint uSign = (Math.AsUInt(u.x) & 0x80000000);
+            SoftFloat t = v.y + Math.AsFloat(Math.AsUInt(w.z) ^ uSign);
             UInt4 uMask = new UInt4((int)uSign >> 31);
-            UInt4 tMask = new UInt4(UnityMath.AsInt(t) >> 31);
+            UInt4 tMask = new UInt4(Math.AsInt(t) >> 31);
 
-            SoftFloat tr = SoftFloat.One + UnityMath.Abs(u.x);
+            SoftFloat tr = SoftFloat.One + Math.Abs(u.x);
 
             UInt4 signFlips = new UInt4(0x00000000, 0x80000000, 0x80000000, 0x80000000) ^
                               (uMask & new UInt4(0x00000000, 0x80000000, 0x00000000, 0x80000000)) ^
                               (tMask & new UInt4(0x80000000, 0x80000000, 0x80000000, 0x00000000));
 
             value = new Float4(tr, u.y, w.x, v.z) +
-                     UnityMath.AsFloat(UnityMath.AsUInt(new Float4(t, v.x, u.z, w.y)) ^ signFlips); // +---, +++-, ++-+, +-++
+                     Math.AsFloat(Math.AsUInt(new Float4(t, v.x, u.z, w.y)) ^ signFlips); // +---, +++-, ++-+, +-++
 
-            value = UnityMath.AsFloat((UnityMath.AsUInt(value) & ~uMask) | (UnityMath.AsUInt(value.zwxy) & uMask));
-            value = UnityMath.AsFloat((UnityMath.AsUInt(value.wzyx) & ~tMask) | (UnityMath.AsUInt(value) & tMask));
+            value = Math.AsFloat((Math.AsUInt(value) & ~uMask) | (Math.AsUInt(value.zwxy) & uMask));
+            value = Math.AsFloat((Math.AsUInt(value.wzyx) & ~tMask) | (Math.AsUInt(value) & tMask));
 
-            value = UnityMath.Normalize(value);
+            value = Math.Normalize(value);
         }
 
         /// <summary>
@@ -97,7 +98,7 @@ namespace GameLibrary.Mathematics
         public static Quaternion AxisAngle(Float3 axis, SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            UnityMath.SinCos((SoftFloat)0.5f * angle, out sina, out cosa);
+            Math.SinCos((SoftFloat)0.5f * angle, out sina, out cosa);
             return new Quaternion(new Float4(axis * sina, cosa));
         }
 
@@ -111,7 +112,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateZ(xyz.z), mul(rotateY(xyz.y), rotateX(xyz.x)));
             Float3 s, c;
-            UnityMath.SinCos((SoftFloat)0.5f * xyz, out s, out c);
+            Math.SinCos((SoftFloat)0.5f * xyz, out s, out c);
             return new Quaternion(
                 // s.x * c.y * c.z - s.y * s.z * c.x,
                 // s.y * c.x * c.z + s.x * s.z * c.y,
@@ -132,7 +133,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateY(xyz.y), mul(rotateZ(xyz.z), rotateX(xyz.x)));
             Float3 s, c;
-            UnityMath.SinCos((SoftFloat)0.5f * xyz, out s, out c);
+            Math.SinCos((SoftFloat)0.5f * xyz, out s, out c);
             return new Quaternion(
                 // s.x * c.y * c.z + s.y * s.z * c.x,
                 // s.y * c.x * c.z + s.x * s.z * c.y,
@@ -153,7 +154,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateZ(xyz.z), mul(rotateX(xyz.x), rotateY(xyz.y)));
             Float3 s, c;
-            UnityMath.SinCos((SoftFloat)0.5f * xyz, out s, out c);
+            Math.SinCos((SoftFloat)0.5f * xyz, out s, out c);
             return new Quaternion(
                 // s.x * c.y * c.z - s.y * s.z * c.x,
                 // s.y * c.x * c.z + s.x * s.z * c.y,
@@ -174,7 +175,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateX(xyz.x), mul(rotateZ(xyz.z), rotateY(xyz.y)));
             Float3 s, c;
-            UnityMath.SinCos((SoftFloat)0.5f * xyz, out s, out c);
+            Math.SinCos((SoftFloat)0.5f * xyz, out s, out c);
             return new Quaternion(
                 // s.x * c.y * c.z - s.y * s.z * c.x,
                 // s.y * c.x * c.z - s.x * s.z * c.y,
@@ -196,7 +197,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateY(xyz.y), mul(rotateX(xyz.x), rotateZ(xyz.z)));
             Float3 s, c;
-            UnityMath.SinCos((SoftFloat)0.5f * xyz, out s, out c);
+            Math.SinCos((SoftFloat)0.5f * xyz, out s, out c);
             return new Quaternion(
                 // s.x * c.y * c.z + s.y * s.z * c.x,
                 // s.y * c.x * c.z - s.x * s.z * c.y,
@@ -217,7 +218,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateX(xyz.x), mul(rotateY(xyz.y), rotateZ(xyz.z)));
             Float3 s, c;
-            UnityMath.SinCos((SoftFloat)0.5f * xyz, out s, out c);
+            Math.SinCos((SoftFloat)0.5f * xyz, out s, out c);
             return new Quaternion(
                 // s.x * c.y * c.z + s.y * s.z * c.x,
                 // s.y * c.x * c.z - s.x * s.z * c.y,
@@ -316,21 +317,21 @@ namespace GameLibrary.Mathematics
         /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         /// <param name="order">The order in which the rotations are applied.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Quaternion Euler(Float3 xyz, UnityMath.RotationOrder order = UnityMath.RotationOrder.ZXY)
+        public static Quaternion Euler(Float3 xyz, Math.RotationOrder order = Math.RotationOrder.ZXY)
         {
             switch (order)
             {
-                case UnityMath.RotationOrder.XYZ:
+                case Math.RotationOrder.XYZ:
                     return EulerXYZ(xyz);
-                case UnityMath.RotationOrder.XZY:
+                case Math.RotationOrder.XZY:
                     return EulerXZY(xyz);
-                case UnityMath.RotationOrder.YXZ:
+                case Math.RotationOrder.YXZ:
                     return EulerYXZ(xyz);
-                case UnityMath.RotationOrder.YZX:
+                case Math.RotationOrder.YZX:
                     return EulerYZX(xyz);
-                case UnityMath.RotationOrder.ZXY:
+                case Math.RotationOrder.ZXY:
                     return EulerZXY(xyz);
-                case UnityMath.RotationOrder.ZYX:
+                case Math.RotationOrder.ZYX:
                     return EulerZYX(xyz);
                 default:
                     return Identity;
@@ -349,7 +350,7 @@ namespace GameLibrary.Mathematics
         /// <param name="order">The order in which the rotations are applied.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion Euler(SoftFloat x, SoftFloat y, SoftFloat z,
-            UnityMath.RotationOrder order = UnityMath.RotationOrder.Default)
+            Math.RotationOrder order = Math.RotationOrder.Default)
         {
             return Euler(new Float3(x, y, z), order);
         }
@@ -360,7 +361,7 @@ namespace GameLibrary.Mathematics
         public static Quaternion RotateX(SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            UnityMath.SinCos((SoftFloat)0.5f * angle, out sina, out cosa);
+            Math.SinCos((SoftFloat)0.5f * angle, out sina, out cosa);
             return new Quaternion(sina, SoftFloat.Zero, SoftFloat.Zero, cosa);
         }
 
@@ -370,7 +371,7 @@ namespace GameLibrary.Mathematics
         public static Quaternion RotateY(SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            UnityMath.SinCos((SoftFloat)0.5f * angle, out sina, out cosa);
+            Math.SinCos((SoftFloat)0.5f * angle, out sina, out cosa);
             return new Quaternion(SoftFloat.Zero, sina, SoftFloat.Zero, cosa);
         }
 
@@ -380,7 +381,7 @@ namespace GameLibrary.Mathematics
         public static Quaternion RotateZ(SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            UnityMath.SinCos((SoftFloat)0.5f * angle, out sina, out cosa);
+            Math.SinCos((SoftFloat)0.5f * angle, out sina, out cosa);
             return new Quaternion(SoftFloat.Zero, SoftFloat.Zero, sina, cosa);
         }
 
@@ -392,8 +393,8 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Quaternion LookRotation(Float3 forward, Float3 up)
         {
-            Float3 t = UnityMath.Normalize(UnityMath.Cross(up, forward));
-            return new Quaternion(new Float3X3(t, UnityMath.Cross(forward, t), forward));
+            Float3 t = Math.Normalize(Math.Cross(up, forward));
+            return new Quaternion(new Float3X3(t, Math.Cross(forward, t), forward));
         }
 
         /// <summary>
@@ -404,26 +405,26 @@ namespace GameLibrary.Mathematics
         /// </summary>
         public static Quaternion LookRotationSafe(Float3 forward, Float3 up)
         {
-            SoftFloat forwardLengthSq = UnityMath.Dot(forward, forward);
-            SoftFloat upLengthSq = UnityMath.Dot(up, up);
+            SoftFloat forwardLengthSq = Math.Dot(forward, forward);
+            SoftFloat upLengthSq = Math.Dot(up, up);
 
-            forward *= UnityMath.Rsqrt(forwardLengthSq);
-            up *= UnityMath.Rsqrt(upLengthSq);
+            forward *= Math.Rsqrt(forwardLengthSq);
+            up *= Math.Rsqrt(upLengthSq);
 
-            Float3 t = UnityMath.Cross(up, forward);
-            SoftFloat tLengthSq = UnityMath.Dot(t, t);
-            t *= UnityMath.Rsqrt(tLengthSq);
+            Float3 t = Math.Cross(up, forward);
+            SoftFloat tLengthSq = Math.Dot(t, t);
+            t *= Math.Rsqrt(tLengthSq);
 
-            SoftFloat mn = UnityMath.Min(UnityMath.Min(forwardLengthSq, upLengthSq), tLengthSq);
-            SoftFloat mx = UnityMath.Max(UnityMath.Max(forwardLengthSq, upLengthSq), tLengthSq);
+            SoftFloat mn = Math.Min(Math.Min(forwardLengthSq, upLengthSq), tLengthSq);
+            SoftFloat mx = Math.Max(Math.Max(forwardLengthSq, upLengthSq), tLengthSq);
 
             const uint bigValue = 0x799a130c;
             const uint smallValue = 0x0554ad2e;
 
             bool accept = mn > SoftFloat.FromRaw(smallValue) && mx < SoftFloat.FromRaw(bigValue) &&
-                          UnityMath.IsFinite(forwardLengthSq) && UnityMath.IsFinite(upLengthSq) && UnityMath.IsFinite(tLengthSq);
-            return new Quaternion(UnityMath.Select(new Float4(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One),
-                new Quaternion(new Float3X3(t, UnityMath.Cross(forward, t), forward)).value, accept));
+                          Math.IsFinite(forwardLengthSq) && Math.IsFinite(upLengthSq) && Math.IsFinite(tLengthSq);
+            return new Quaternion(Math.Select(new Float4(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One),
+                new Quaternion(new Float3X3(t, Math.Cross(forward, t), forward)).value, accept));
         }
 
         /// <summary>Returns true if the quaternion is equal to a given quaternion, false otherwise.</summary>
@@ -444,7 +445,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public override int GetHashCode()
         {
-            return (int)UnityMath.Hash(this);
+            return (int)Math.Hash(this);
         }
 
         /// <summary>Returns a string representation of the quaternion.</summary>
@@ -464,7 +465,7 @@ namespace GameLibrary.Mathematics
         }
     }
 
-    public static partial class UnityMath
+    public static partial class Math
     {
         /// <summary>Returns a quaternion constructed from four float values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -548,7 +549,7 @@ namespace GameLibrary.Mathematics
         {
             Float4 x = q.value;
             SoftFloat len = Dot(x, x);
-            return new Quaternion(Select(Mathematics.Quaternion.Identity.value, x * Rsqrt(len), len > FloatMinNormal));
+            return new Quaternion(Select(GameLibrary.UnityMath.Quaternion.Identity.value, x * Rsqrt(len), len > FloatMinNormal));
         }
 
         /// <summary>

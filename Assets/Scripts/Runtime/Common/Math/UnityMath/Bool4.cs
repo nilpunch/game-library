@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 #pragma warning disable 0660, 0661
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
     [DebuggerTypeProxy(typeof(DebuggerProxy))]
     [System.Serializable]
@@ -3028,7 +3028,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Bool4.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)UnityMath.Hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Bool4.</summary>
@@ -3055,7 +3055,7 @@ namespace GameLibrary.Mathematics
 
     }
 
-    public static partial class UnityMath
+    public static partial class Math
     {
         /// <summary>Returns a Bool4 vector constructed from four bool values.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

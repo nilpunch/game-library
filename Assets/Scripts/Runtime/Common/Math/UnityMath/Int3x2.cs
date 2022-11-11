@@ -1,10 +1,11 @@
 
 using System;
 using System.Runtime.CompilerServices;
+using GameLibrary.Math;
 
 #pragma warning disable 0660, 0661
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
     [Serializable]
     public struct Int3x2 : IEquatable<Int3x2>, IFormattable
@@ -45,16 +46,16 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Int3x2(bool v)
         {
-            c0 = UnityMath.Select(new Int3(0), new Int3(1), v);
-            c1 = UnityMath.Select(new Int3(0), new Int3(1), v);
+            c0 = Math.Select(new Int3(0), new Int3(1), v);
+            c1 = Math.Select(new Int3(0), new Int3(1), v);
         }
 
         /// <summary>Constructs a Int3x2 matrix from a Bool3x2 matrix by componentwise conversion.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public Int3x2(Bool3x2 v)
         {
-            c0 = UnityMath.Select(new Int3(0), new Int3(1), v.c0);
-            c1 = UnityMath.Select(new Int3(0), new Int3(1), v.c1);
+            c0 = Math.Select(new Int3(0), new Int3(1), v.c0);
+            c1 = Math.Select(new Int3(0), new Int3(1), v.c1);
         }
 
         /// <summary>Constructs a Int3x2 matrix from a single uint value by converting it to int and assigning it to every component.</summary>
@@ -358,7 +359,7 @@ namespace GameLibrary.Mathematics
 
         /// <summary>Returns a hash code for the Int3x2.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public override int GetHashCode() { return (int)UnityMath.Hash(this); }
+        public override int GetHashCode() { return (int)Math.Hash(this); }
 
 
         /// <summary>Returns a string representation of the Int3x2.</summary>
@@ -377,7 +378,7 @@ namespace GameLibrary.Mathematics
 
     }
 
-    public static partial class UnityMath
+    public static partial class Math
     {
         /// <summary>Returns a Int3x2 matrix constructed from two Int3 vectors.</summary>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]

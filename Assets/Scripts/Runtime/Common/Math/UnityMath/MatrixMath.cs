@@ -1,6 +1,7 @@
 using System.Runtime.CompilerServices;
+using GameLibrary.Math;
 
-namespace GameLibrary.Mathematics
+namespace GameLibrary.UnityMath
 {
     public partial struct Float2X2
     {
@@ -9,7 +10,7 @@ namespace GameLibrary.Mathematics
         public static Float2X2 Rotate(SoftFloat angle)
         {
             SoftFloat s, c;
-            UnityMath.SinCos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float2X2(c, -s,
                 s, c);
         }
@@ -60,11 +61,11 @@ namespace GameLibrary.Mathematics
             UInt3 npn = new UInt3(0x80000000, 0x00000000, 0x80000000);
             UInt3 nnp = new UInt3(0x80000000, 0x80000000, 0x00000000);
             UInt3 pnn = new UInt3(0x00000000, 0x80000000, 0x80000000);
-            c0 = v2.y * UnityMath.AsFloat(UnityMath.AsUInt(v.yxw) ^ npn) - v2.z * UnityMath.AsFloat(UnityMath.AsUInt(v.zwx) ^ pnn) +
+            c0 = v2.y * Math.AsFloat(Math.AsUInt(v.yxw) ^ npn) - v2.z * Math.AsFloat(Math.AsUInt(v.zwx) ^ pnn) +
                  new Float3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero);
-            c1 = v2.z * UnityMath.AsFloat(UnityMath.AsUInt(v.wzy) ^ nnp) - v2.x * UnityMath.AsFloat(UnityMath.AsUInt(v.yxw) ^ npn) +
+            c1 = v2.z * Math.AsFloat(Math.AsUInt(v.wzy) ^ nnp) - v2.x * Math.AsFloat(Math.AsUInt(v.yxw) ^ npn) +
                  new Float3(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero);
-            c2 = v2.x * UnityMath.AsFloat(UnityMath.AsUInt(v.zwx) ^ pnn) - v2.y * UnityMath.AsFloat(UnityMath.AsUInt(v.wzy) ^ nnp) +
+            c2 = v2.x * Math.AsFloat(Math.AsUInt(v.zwx) ^ pnn) - v2.y * Math.AsFloat(Math.AsUInt(v.wzy) ^ nnp) +
                  new Float3(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
         }
 
@@ -76,7 +77,7 @@ namespace GameLibrary.Mathematics
         public static Float3X3 AxisAngle(Float3 axis, SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            UnityMath.SinCos(angle, out sina, out cosa);
+            Math.SinCos(angle, out sina, out cosa);
 
             Float3 u = axis;
             Float3 uYZX = u.yzx;
@@ -89,9 +90,9 @@ namespace GameLibrary.Mathematics
             UInt3 pnp = new UInt3(0x00000000, 0x80000000, 0x00000000);
 
             return new Float3X3(
-                u.x * uInvCosa + UnityMath.AsFloat(UnityMath.AsUInt(t.wzy) ^ ppn),
-                u.y * uInvCosa + UnityMath.AsFloat(UnityMath.AsUInt(t.zwx) ^ npp),
-                u.z * uInvCosa + UnityMath.AsFloat(UnityMath.AsUInt(t.yxw) ^ pnp)
+                u.x * uInvCosa + Math.AsFloat(Math.AsUInt(t.wzy) ^ ppn),
+                u.y * uInvCosa + Math.AsFloat(Math.AsUInt(t.zwx) ^ npp),
+                u.z * uInvCosa + Math.AsFloat(Math.AsUInt(t.yxw) ^ pnp)
             );
             /*
             return new Float3x3(
@@ -112,7 +113,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateZ(xyz.z), mul(rotateY(xyz.y), rotateX(xyz.x)));
             Float3 s, c;
-            UnityMath.SinCos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float3X3(
                 c.y * c.z, c.z * s.x * s.y - c.x * s.z, c.x * c.z * s.y + s.x * s.z,
                 c.y * s.z, c.x * c.z + s.x * s.y * s.z, c.x * s.y * s.z - c.z * s.x,
@@ -130,7 +131,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateY(xyz.y), mul(rotateZ(xyz.z), rotateX(xyz.x))); }
             Float3 s, c;
-            UnityMath.SinCos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float3X3(
                 c.y * c.z, s.x * s.y - c.x * c.y * s.z, c.x * s.y + c.y * s.x * s.z,
                 s.z, c.x * c.z, -c.z * s.x,
@@ -148,7 +149,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateZ(xyz.z), mul(rotateX(xyz.x), rotateY(xyz.y)));
             Float3 s, c;
-            UnityMath.SinCos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float3X3(
                 c.y * c.z - s.x * s.y * s.z, -c.x * s.z, c.z * s.y + c.y * s.x * s.z,
                 c.z * s.x * s.y + c.y * s.z, c.x * c.z, s.y * s.z - c.y * c.z * s.x,
@@ -166,7 +167,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateX(xyz.x), mul(rotateZ(xyz.z), rotateY(xyz.y)));
             Float3 s, c;
-            UnityMath.SinCos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float3X3(
                 c.y * c.z, -s.z, c.z * s.y,
                 s.x * s.y + c.x * c.y * s.z, c.x * c.z, c.x * s.y * s.z - c.y * s.x,
@@ -185,7 +186,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateY(xyz.y), mul(rotateX(xyz.x), rotateZ(xyz.z)));
             Float3 s, c;
-            UnityMath.SinCos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float3X3(
                 c.y * c.z + s.x * s.y * s.z, c.z * s.x * s.y - c.y * s.z, c.x * s.y,
                 c.x * s.z, c.x * c.z, -s.x,
@@ -203,7 +204,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateX(xyz.x), mul(rotateY(xyz.y), rotateZ(xyz.z)));
             Float3 s, c;
-            UnityMath.SinCos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float3X3(
                 c.y * c.z, -c.y * s.z, s.y,
                 c.z * s.x * s.y + c.x * s.z, c.x * c.z - s.x * s.y * s.z, -c.y * s.x,
@@ -299,21 +300,21 @@ namespace GameLibrary.Mathematics
         /// <param name="xyz">A Float3 vector containing the rotation angles around the x-, y- and z-axis measures in radians.</param>
         /// <param name="order">The order in which the rotations are applied.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float3X3 Euler(Float3 xyz, UnityMath.RotationOrder order = UnityMath.RotationOrder.Default)
+        public static Float3X3 Euler(Float3 xyz, Math.RotationOrder order = Math.RotationOrder.Default)
         {
             switch (order)
             {
-                case UnityMath.RotationOrder.XYZ:
+                case Math.RotationOrder.XYZ:
                     return EulerXYZ(xyz);
-                case UnityMath.RotationOrder.XZY:
+                case Math.RotationOrder.XZY:
                     return EulerXZY(xyz);
-                case UnityMath.RotationOrder.YXZ:
+                case Math.RotationOrder.YXZ:
                     return EulerYXZ(xyz);
-                case UnityMath.RotationOrder.YZX:
+                case Math.RotationOrder.YZX:
                     return EulerYZX(xyz);
-                case UnityMath.RotationOrder.ZXY:
+                case Math.RotationOrder.ZXY:
                     return EulerZXY(xyz);
-                case UnityMath.RotationOrder.ZYX:
+                case Math.RotationOrder.ZYX:
                     return EulerZYX(xyz);
                 default:
                     return identity;
@@ -332,7 +333,7 @@ namespace GameLibrary.Mathematics
         /// <param name="order">The order in which the rotations are applied.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Float3X3 Euler(SoftFloat x, SoftFloat y, SoftFloat z,
-            UnityMath.RotationOrder order = UnityMath.RotationOrder.Default)
+            Math.RotationOrder order = Math.RotationOrder.Default)
         {
             return Euler(new Float3(x, y, z), order);
         }
@@ -344,7 +345,7 @@ namespace GameLibrary.Mathematics
         {
             // {{1, 0, 0}, {0, c_0, -s_0}, {0, s_0, c_0}}
             SoftFloat s, c;
-            UnityMath.SinCos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float3X3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero,
                 SoftFloat.Zero, c, -s,
                 SoftFloat.Zero, s, c);
@@ -357,7 +358,7 @@ namespace GameLibrary.Mathematics
         {
             // {{c_1, 0, s_1}, {0, 1, 0}, {-s_1, 0, c_1}}
             SoftFloat s, c;
-            UnityMath.SinCos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float3X3(c, SoftFloat.Zero, s,
                 SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero,
                 -s, SoftFloat.Zero, c);
@@ -370,7 +371,7 @@ namespace GameLibrary.Mathematics
         {
             // {{c_2, -s_2, 0}, {s_2, c_2, 0}, {0, 0, 1}}
             SoftFloat s, c;
-            UnityMath.SinCos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float3X3(c, -s, SoftFloat.Zero,
                 s, c, SoftFloat.Zero,
                 SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One);
@@ -409,8 +410,8 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Float3X3 LookRotation(Float3 forward, Float3 up)
         {
-            Float3 t = UnityMath.Normalize(UnityMath.Cross(up, forward));
-            return new Float3X3(t, UnityMath.Cross(forward, t), forward);
+            Float3 t = Math.Normalize(Math.Cross(up, forward));
+            return new Float3X3(t, Math.Cross(forward, t), forward);
         }
 
         /// <summary>
@@ -422,28 +423,28 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Float3X3 LookRotationSafe(Float3 forward, Float3 up)
         {
-            SoftFloat forwardLengthSq = UnityMath.Dot(forward, forward);
-            SoftFloat upLengthSq = UnityMath.Dot(up, up);
+            SoftFloat forwardLengthSq = Math.Dot(forward, forward);
+            SoftFloat upLengthSq = Math.Dot(up, up);
 
-            forward *= UnityMath.Rsqrt(forwardLengthSq);
-            up *= UnityMath.Rsqrt(upLengthSq);
+            forward *= Math.Rsqrt(forwardLengthSq);
+            up *= Math.Rsqrt(upLengthSq);
 
-            Float3 t = UnityMath.Cross(up, forward);
-            SoftFloat tLengthSq = UnityMath.Dot(t, t);
-            t *= UnityMath.Rsqrt(tLengthSq);
+            Float3 t = Math.Cross(up, forward);
+            SoftFloat tLengthSq = Math.Dot(t, t);
+            t *= Math.Rsqrt(tLengthSq);
 
-            SoftFloat mn = UnityMath.Min(UnityMath.Min(forwardLengthSq, upLengthSq), tLengthSq);
-            SoftFloat mx = UnityMath.Max(UnityMath.Max(forwardLengthSq, upLengthSq), tLengthSq);
+            SoftFloat mn = Math.Min(Math.Min(forwardLengthSq, upLengthSq), tLengthSq);
+            SoftFloat mx = Math.Max(Math.Max(forwardLengthSq, upLengthSq), tLengthSq);
 
             const uint bigValue = 0x799a130c;
             const uint smallValue = 0x0554ad2e;
 
             bool accept = mn > SoftFloat.FromRaw(smallValue) && mx < SoftFloat.FromRaw(bigValue) &&
-                          UnityMath.IsFinite(forwardLengthSq) && UnityMath.IsFinite(upLengthSq) && UnityMath.IsFinite(tLengthSq);
+                          Math.IsFinite(forwardLengthSq) && Math.IsFinite(upLengthSq) && Math.IsFinite(tLengthSq);
             return new Float3X3(
-                UnityMath.Select(new Float3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero), t, accept),
-                UnityMath.Select(new Float3(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero), UnityMath.Cross(forward, t), accept),
-                UnityMath.Select(new Float3(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One), forward, accept));
+                Math.Select(new Float3(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero), t, accept),
+                Math.Select(new Float3(SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero), Math.Cross(forward, t), accept),
+                Math.Select(new Float3(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One), forward, accept));
         }
 
         public static explicit operator Float3X3(Float4X4 f4X4) => new Float3X3(f4X4);
@@ -488,7 +489,7 @@ namespace GameLibrary.Mathematics
         public static Float4X4 AxisAngle(Float3 axis, SoftFloat angle)
         {
             SoftFloat sina, cosa;
-            UnityMath.SinCos(angle, out sina, out cosa);
+            Math.SinCos(angle, out sina, out cosa);
 
             Float4 u = new Float4(axis, SoftFloat.Zero);
             Float4 uYZX = u.yzxx;
@@ -502,9 +503,9 @@ namespace GameLibrary.Mathematics
             UInt4 mask = new UInt4(0xFFFFFFFF, 0xFFFFFFFF, 0xFFFFFFFF, 0x00000000);
 
             return new Float4X4(
-                u.x * uInvCosa + UnityMath.AsFloat((UnityMath.AsUInt(t.wzyx) ^ ppnp) & mask),
-                u.y * uInvCosa + UnityMath.AsFloat((UnityMath.AsUInt(t.zwxx) ^ nppp) & mask),
-                u.z * uInvCosa + UnityMath.AsFloat((UnityMath.AsUInt(t.yxwx) ^ pnpp) & mask),
+                u.x * uInvCosa + Math.AsFloat((Math.AsUInt(t.wzyx) ^ ppnp) & mask),
+                u.y * uInvCosa + Math.AsFloat((Math.AsUInt(t.zwxx) ^ nppp) & mask),
+                u.z * uInvCosa + Math.AsFloat((Math.AsUInt(t.yxwx) ^ pnpp) & mask),
                 new Float4(SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One)
             );
         }
@@ -519,7 +520,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateZ(xyz.z), mul(rotateY(xyz.y), rotateX(xyz.x)));
             Float3 s, c;
-            UnityMath.SinCos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float4X4(
                 c.y * c.z, c.z * s.x * s.y - c.x * s.z, c.x * c.z * s.y + s.x * s.z, SoftFloat.Zero,
                 c.y * s.z, c.x * c.z + s.x * s.y * s.z, c.x * s.y * s.z - c.z * s.x, SoftFloat.Zero,
@@ -538,7 +539,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateY(xyz.y), mul(rotateZ(xyz.z), rotateX(xyz.x))); }
             Float3 s, c;
-            UnityMath.SinCos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float4X4(
                 c.y * c.z, s.x * s.y - c.x * c.y * s.z, c.x * s.y + c.y * s.x * s.z, SoftFloat.Zero,
                 s.z, c.x * c.z, -c.z * s.x, SoftFloat.Zero,
@@ -557,7 +558,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateZ(xyz.z), mul(rotateX(xyz.x), rotateY(xyz.y)));
             Float3 s, c;
-            UnityMath.SinCos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float4X4(
                 c.y * c.z - s.x * s.y * s.z, -c.x * s.z, c.z * s.y + c.y * s.x * s.z, SoftFloat.Zero,
                 c.z * s.x * s.y + c.y * s.z, c.x * c.z, s.y * s.z - c.y * c.z * s.x, SoftFloat.Zero,
@@ -576,7 +577,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateX(xyz.x), mul(rotateZ(xyz.z), rotateY(xyz.y)));
             Float3 s, c;
-            UnityMath.SinCos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float4X4(
                 c.y * c.z, -s.z, c.z * s.y, SoftFloat.Zero,
                 s.x * s.y + c.x * c.y * s.z, c.x * c.z, c.x * s.y * s.z - c.y * s.x, SoftFloat.Zero,
@@ -596,7 +597,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateY(xyz.y), mul(rotateX(xyz.x), rotateZ(xyz.z)));
             Float3 s, c;
-            UnityMath.SinCos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float4X4(
                 c.y * c.z + s.x * s.y * s.z, c.z * s.x * s.y - c.y * s.z, c.x * s.y, SoftFloat.Zero,
                 c.x * s.z, c.x * c.z, -s.x, SoftFloat.Zero,
@@ -615,7 +616,7 @@ namespace GameLibrary.Mathematics
         {
             // return mul(rotateX(xyz.x), mul(rotateY(xyz.y), rotateZ(xyz.z)));
             Float3 s, c;
-            UnityMath.SinCos(xyz, out s, out c);
+            Math.SinCos(xyz, out s, out c);
             return new Float4X4(
                 c.y * c.z, -c.y * s.z, s.y, SoftFloat.Zero,
                 c.z * s.x * s.y + c.x * s.z, c.x * c.z - s.x * s.y * s.z, -c.y * s.x, SoftFloat.Zero,
@@ -704,21 +705,21 @@ namespace GameLibrary.Mathematics
         }
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
-        public static Float4X4 Euler(Float3 xyz, UnityMath.RotationOrder order = UnityMath.RotationOrder.Default)
+        public static Float4X4 Euler(Float3 xyz, Math.RotationOrder order = Math.RotationOrder.Default)
         {
             switch (order)
             {
-                case UnityMath.RotationOrder.XYZ:
+                case Math.RotationOrder.XYZ:
                     return EulerXYZ(xyz);
-                case UnityMath.RotationOrder.XZY:
+                case Math.RotationOrder.XZY:
                     return EulerXZY(xyz);
-                case UnityMath.RotationOrder.YXZ:
+                case Math.RotationOrder.YXZ:
                     return EulerYXZ(xyz);
-                case UnityMath.RotationOrder.YZX:
+                case Math.RotationOrder.YZX:
                     return EulerYZX(xyz);
-                case UnityMath.RotationOrder.ZXY:
+                case Math.RotationOrder.ZXY:
                     return EulerZXY(xyz);
-                case UnityMath.RotationOrder.ZYX:
+                case Math.RotationOrder.ZYX:
                     return EulerZYX(xyz);
                 default:
                     return identity;
@@ -737,7 +738,7 @@ namespace GameLibrary.Mathematics
         /// <param name="order">The order in which the rotations are applied.</param>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Float4X4 Euler(SoftFloat x, SoftFloat y, SoftFloat z,
-            UnityMath.RotationOrder order = UnityMath.RotationOrder.Default)
+            Math.RotationOrder order = Math.RotationOrder.Default)
         {
             return Euler(new Float3(x, y, z), order);
         }
@@ -749,7 +750,7 @@ namespace GameLibrary.Mathematics
         {
             // {{1, 0, 0}, {0, c_0, -s_0}, {0, s_0, c_0}}
             SoftFloat s, c;
-            UnityMath.SinCos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float4X4(SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero, SoftFloat.Zero,
                 SoftFloat.Zero, c, -s, SoftFloat.Zero,
                 SoftFloat.Zero, s, c, SoftFloat.Zero,
@@ -763,7 +764,7 @@ namespace GameLibrary.Mathematics
         {
             // {{c_1, 0, s_1}, {0, 1, 0}, {-s_1, 0, c_1}}
             SoftFloat s, c;
-            UnityMath.SinCos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float4X4(c, SoftFloat.Zero, s, SoftFloat.Zero,
                 SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero, SoftFloat.Zero,
                 -s, SoftFloat.Zero, c, SoftFloat.Zero,
@@ -777,7 +778,7 @@ namespace GameLibrary.Mathematics
         {
             // {{c_2, -s_2, 0}, {s_2, c_2, 0}, {0, 0, 1}}
             SoftFloat s, c;
-            UnityMath.SinCos(angle, out s, out c);
+            Math.SinCos(angle, out s, out c);
             return new Float4X4(c, -s, SoftFloat.Zero, SoftFloat.Zero,
                 s, c, SoftFloat.Zero, SoftFloat.Zero,
                 SoftFloat.Zero, SoftFloat.Zero, SoftFloat.One, SoftFloat.Zero,
@@ -830,7 +831,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Float4X4 LookAt(Float3 eye, Float3 target, Float3 up)
         {
-            Float3X3 rot = Float3X3.LookRotation(UnityMath.Normalize(target - eye), up);
+            Float3X3 rot = Float3X3.LookRotation(Math.Normalize(target - eye), up);
 
             Float4X4 matrix;
             matrix.c0 = new Float4(rot.c0, SoftFloat.Zero);
@@ -897,7 +898,7 @@ namespace GameLibrary.Mathematics
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Float4X4 PerspectiveFov(SoftFloat verticalFov, SoftFloat aspect, SoftFloat near, SoftFloat far)
         {
-            SoftFloat cotangent = SoftFloat.One / UnityMath.Tan(verticalFov * (SoftFloat)0.5f);
+            SoftFloat cotangent = SoftFloat.One / Math.Tan(verticalFov * (SoftFloat)0.5f);
             SoftFloat rcpdz = SoftFloat.One / (near - far);
 
             return new Float4X4(
@@ -948,7 +949,7 @@ namespace GameLibrary.Mathematics
         }
     }
 
-    partial class UnityMath
+    partial class Math
     {
         /// <summary>
         /// Extracts a Float3x3 from the upper left 3x3 of a Float4x4.
