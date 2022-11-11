@@ -46,7 +46,7 @@ namespace GameLibrary.Physics
             throw new NotImplementedException();
         }
 
-        public RaycastHit<TConcrete> Raycast(Float3 from, Float3 direction)
+        public RaycastHit<TConcrete> Raycast(SoftVector3 from, SoftVector3 direction)
         {
             RaycastHit raycastHit = _parent.Raycast(from, direction);
 

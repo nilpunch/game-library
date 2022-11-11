@@ -5,9 +5,9 @@ namespace GameLibrary.Physics
 {
     public interface IRigidbody : IAlive
     {
-        Float3 Velocity { get; set; }
+        SoftVector3 Velocity { get; set; }
 
-        Float3 Position { get; set; }
+        SoftVector3 Position { get; set; }
 
         ICollider Collider { get; }
 

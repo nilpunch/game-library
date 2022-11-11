@@ -13,8 +13,8 @@ namespace GameLibrary.Physics
 
         public bool IsAlive { get; private set; }
 
-        public Float3 Velocity { get; set; }
-        public Float3 Position { get; set; }
+        public SoftVector3 Velocity { get; set; }
+        public SoftVector3 Position { get; set; }
 
         public ICollider Collider { get; }
 

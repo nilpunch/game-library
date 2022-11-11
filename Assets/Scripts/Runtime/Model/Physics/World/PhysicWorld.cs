@@ -47,7 +47,7 @@ namespace GameLibrary.Physics
             return Array.Empty<CollisionManifold>();
         }
 
-        public RaycastHit Raycast(Float3 from, Float3 direction)
+        public RaycastHit Raycast(SoftVector3 from, SoftVector3 direction)
         {
             throw new NotImplementedException();
         }

@@ -6,6 +6,6 @@ namespace GameLibrary.Physics
     {
         CollisionManifold[] CollisionsWith(IRigidbody rigidbody);
 
-        RaycastHit Raycast(Float3 from, Float3 direction);
+        RaycastHit Raycast(SoftVector3 from, SoftVector3 direction);
     }
 }

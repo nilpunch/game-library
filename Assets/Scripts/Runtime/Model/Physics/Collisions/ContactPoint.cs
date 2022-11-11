@@ -4,7 +4,7 @@ namespace GameLibrary.Physics
 {
     public struct ContactPoint
     {
-        public Float3 Position { get; }
-        public Float3 Normal { get; }
+        public SoftVector3 Position { get; }
+        public SoftVector3 Normal { get; }
     }
 }

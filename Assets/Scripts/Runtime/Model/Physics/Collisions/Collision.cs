@@ -9,7 +9,7 @@ namespace GameLibrary.Physics
 
         public ContactPoint[] Contacts { get; }
 
-        public Float3 PenetrationNormal { get; }
+        public SoftVector3 PenetrationNormal { get; }
 
         public float PenetrationDepth { get; }
 
