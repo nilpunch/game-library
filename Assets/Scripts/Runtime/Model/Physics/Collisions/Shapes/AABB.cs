@@ -1,4 +1,4 @@
-using GameLibrary.Math;
+using GameLibrary.Mathematics;
 
 namespace GameLibrary.Physics
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-using GameLibrary.Math;
+using GameLibrary.Mathematics;
 using GameLibrary.Physics;
 
 
@@ -39,7 +39,7 @@ namespace GameLibrary.Sample
             DestroySelf();
         }
 
-        public void Throw(Float3 velocity)
+        public void Throw(SoftVector3 velocity)
         {
             _rigidbody.Velocity = velocity;
         }

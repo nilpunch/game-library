@@ -1,7 +1,9 @@
 {
-    "name": "GameLibrary.Mathematics",
+    "name": "UnityMath",
     "rootNamespace": "",
-    "references": [],
+    "references": [
+        "GUID:4e4e9db485367974ba99b2fb7f19741d"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": true,

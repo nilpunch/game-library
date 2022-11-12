@@ -1,6 +1,4 @@
-﻿using GameLibrary.Math;
-
-namespace GameLibrary.Physics
+﻿namespace GameLibrary.Physics
 {
     public class CollisionsLibrary : ICollisionsLibrary
     {

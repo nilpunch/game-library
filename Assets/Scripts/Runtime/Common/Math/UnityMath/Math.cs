@@ -1,5 +1,5 @@
 using System.Runtime.CompilerServices;
-using GameLibrary.Math;
+using GameLibrary.Mathematics;
 
 namespace GameLibrary.UnityMath
 {
@@ -429,8 +429,8 @@ namespace GameLibrary.UnityMath
         /// Checks if each component of the input is a power of two.
         /// </summary>
         /// <remarks>If a component of x is less than or equal to zero, then this function returns false in that component.</remarks>
-        /// <param name="x"><see cref="Int2"/> input</param>
-        /// <returns><see cref="Bool2"/> where true in a component indicates the same component in the input was a power of two.</returns>
+        /// <param name="x"><see cref="UnityMath.Int2"/> input</param>
+        /// <returns><see cref="UnityMath.Bool2"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Bool2 IsPow2(Int2 x)
         {
@@ -441,8 +441,8 @@ namespace GameLibrary.UnityMath
         /// Checks if each component of the input is a power of two.
         /// </summary>
         /// <remarks>If a component of x is less than or equal to zero, then this function returns false in that component.</remarks>
-        /// <param name="x"><see cref="Int3"/> input</param>
-        /// <returns><see cref="Bool3"/> where true in a component indicates the same component in the input was a power of two.</returns>
+        /// <param name="x"><see cref="UnityMath.Int3"/> input</param>
+        /// <returns><see cref="UnityMath.Bool3"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Bool3 IsPow2(Int3 x)
         {
@@ -453,8 +453,8 @@ namespace GameLibrary.UnityMath
         /// Checks if each component of the input is a power of two.
         /// </summary>
         /// <remarks>If a component of x is less than or equal to zero, then this function returns false in that component.</remarks>
-        /// <param name="x"><see cref="Int4"/> input</param>
-        /// <returns><see cref="Bool4"/> where true in a component indicates the same component in the input was a power of two.</returns>
+        /// <param name="x"><see cref="UnityMath.Int4"/> input</param>
+        /// <returns><see cref="UnityMath.Bool4"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Bool4 IsPow2(Int4 x)
         {
@@ -477,8 +477,8 @@ namespace GameLibrary.UnityMath
         /// Checks if each component of the input is a power of two.
         /// </summary>
         /// <remarks>If a component of x is less than or equal to zero, then this function returns false in that component.</remarks>
-        /// <param name="x"><see cref="UInt2"/> input</param>
-        /// <returns><see cref="Bool2"/> where true in a component indicates the same component in the input was a power of two.</returns>
+        /// <param name="x"><see cref="UnityMath.UInt2"/> input</param>
+        /// <returns><see cref="UnityMath.Bool2"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Bool2 IsPow2(UInt2 x)
         {
@@ -489,8 +489,8 @@ namespace GameLibrary.UnityMath
         /// Checks if each component of the input is a power of two.
         /// </summary>
         /// <remarks>If a component of x is less than or equal to zero, then this function returns false in that component.</remarks>
-        /// <param name="x"><see cref="UInt3"/> input</param>
-        /// <returns><see cref="Bool3"/> where true in a component indicates the same component in the input was a power of two.</returns>
+        /// <param name="x"><see cref="UnityMath.UInt3"/> input</param>
+        /// <returns><see cref="UnityMath.Bool3"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Bool3 IsPow2(UInt3 x)
         {
@@ -501,8 +501,8 @@ namespace GameLibrary.UnityMath
         /// Checks if each component of the input is a power of two.
         /// </summary>
         /// <remarks>If a component of x is less than or equal to zero, then this function returns false in that component.</remarks>
-        /// <param name="x"><see cref="UInt4"/> input</param>
-        /// <returns><see cref="Bool4"/> where true in a component indicates the same component in the input was a power of two.</returns>
+        /// <param name="x"><see cref="UnityMath.UInt4"/> input</param>
+        /// <returns><see cref="UnityMath.Bool4"/> where true in a component indicates the same component in the input was a power of two.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Bool4 IsPow2(UInt4 x)
         {
@@ -2618,7 +2618,7 @@ namespace GameLibrary.UnityMath
         /// <remarks>
         /// Some finite vectors a and b could generate a non-finite result. This is most likely when a's components
         /// are very large (close to Single.MaxValue) or when b's components are very small (close to FLT_MIN_NORMAL).
-        /// In these cases, you can call <see cref="projectsafe(Unity.Mathematics.Float2,Unity.Mathematics.Float2,Unity.Mathematics.Float2)"/>
+        /// In these cases, you can call <see cref="projectsafe(UnityMath.Float2,UnityMath.Float2,UnityMath.Float2)"/>
         /// which will use a given default value if the result is not finite.
         /// </remarks>
         /// <param name="a">Vector to project.</param>
@@ -2636,7 +2636,7 @@ namespace GameLibrary.UnityMath
         /// <remarks>
         /// Some finite vectors a and b could generate a non-finite result. This is most likely when a's components
         /// are very large (close to Single.MaxValue) or when b's components are very small (close to FLT_MIN_NORMAL).
-        /// In these cases, you can call <see cref="projectsafe(Unity.Mathematics.Float3,Unity.Mathematics.Float3,Unity.Mathematics.Float3)"/>
+        /// In these cases, you can call <see cref="projectsafe(UnityMath.Float3,UnityMath.Float3,UnityMath.Float3)"/>
         /// which will use a given default value if the result is not finite.
         /// </remarks>
         /// <param name="a">Vector to project.</param>
@@ -2654,7 +2654,7 @@ namespace GameLibrary.UnityMath
         /// <remarks>
         /// Some finite vectors a and b could generate a non-finite result. This is most likely when a's components
         /// are very large (close to Single.MaxValue) or when b's components are very small (close to FLT_MIN_NORMAL).
-        /// In these cases, you can call <see cref="projectsafe(Unity.Mathematics.Float4,Unity.Mathematics.Float4,Unity.Mathematics.Float4)"/>
+        /// In these cases, you can call <see cref="projectsafe(UnityMath.Float4,UnityMath.Float4,UnityMath.Float4)"/>
         /// which will use a given default value if the result is not finite.
         /// </remarks>
         /// <param name="a">Vector to project.</param>
@@ -2672,7 +2672,7 @@ namespace GameLibrary.UnityMath
         /// <remarks>
         /// This function performs extra checks to see if the result of projecting a onto b is finite. If you know that
         /// your inputs will generate a finite result or you don't care if the result is finite, then you can call
-        /// <see cref="project(Unity.Mathematics.Float2,Unity.Mathematics.Float2)"/> instead which is faster than this
+        /// <see cref="project(UnityMath.Float2,UnityMath.Float2)"/> instead which is faster than this
         /// function.
         /// </remarks>
         /// <param name="a">Vector to project.</param>
@@ -2693,7 +2693,7 @@ namespace GameLibrary.UnityMath
         /// <remarks>
         /// This function performs extra checks to see if the result of projecting a onto b is finite. If you know that
         /// your inputs will generate a finite result or you don't care if the result is finite, then you can call
-        /// <see cref="project(Unity.Mathematics.Float3,Unity.Mathematics.Float3)"/> instead which is faster than this
+        /// <see cref="project(UnityMath.Float3,UnityMath.Float3)"/> instead which is faster than this
         /// function.
         /// </remarks>
         /// <param name="a">Vector to project.</param>
@@ -2714,7 +2714,7 @@ namespace GameLibrary.UnityMath
         /// <remarks>
         /// This function performs extra checks to see if the result of projecting a onto b is finite. If you know that
         /// your inputs will generate a finite result or you don't care if the result is finite, then you can call
-        /// <see cref="project(Unity.Mathematics.Float4,Unity.Mathematics.Float4)"/> instead which is faster than this
+        /// <see cref="project(UnityMath.Float4,UnityMath.Float4)"/> instead which is faster than this
         /// function.
         /// </remarks>
         /// <param name="a">Vector to project.</param>
@@ -3486,7 +3486,7 @@ namespace GameLibrary.UnityMath
         /// <remarks>
         /// Components of x must be greater than 0, otherwise the result for that component is undefined.
         /// </remarks>
-        /// <param name="x"><see cref="Int2"/> to be used as input.</param>
+        /// <param name="x"><see cref="UnityMath.Int2"/> to be used as input.</param>
         /// <returns>Componentwise ceiling of the base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int2 CeilLog2(Int2 x)
@@ -3500,7 +3500,7 @@ namespace GameLibrary.UnityMath
         /// <remarks>
         /// Components of x must be greater than 0, otherwise the result for that component is undefined.
         /// </remarks>
-        /// <param name="x"><see cref="Int3"/> to be used as input.</param>
+        /// <param name="x"><see cref="UnityMath.Int3"/> to be used as input.</param>
         /// <returns>Componentwise ceiling of the base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int3 CeilLog2(Int3 x)
@@ -3514,7 +3514,7 @@ namespace GameLibrary.UnityMath
         /// <remarks>
         /// Components of x must be greater than 0, otherwise the result for that component is undefined.
         /// </remarks>
-        /// <param name="x"><see cref="Int4"/> to be used as input.</param>
+        /// <param name="x"><see cref="UnityMath.Int4"/> to be used as input.</param>
         /// <returns>Componentwise ceiling of the base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int4 CeilLog2(Int4 x)
@@ -3542,7 +3542,7 @@ namespace GameLibrary.UnityMath
         /// <remarks>
         /// Components of x must be greater than 0, otherwise the result for that component is undefined.
         /// </remarks>
-        /// <param name="x"><see cref="UInt2"/> to be used as input.</param>
+        /// <param name="x"><see cref="UnityMath.UInt2"/> to be used as input.</param>
         /// <returns>Componentwise ceiling of the base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int2 CeilLog2(UInt2 x)
@@ -3556,7 +3556,7 @@ namespace GameLibrary.UnityMath
         /// <remarks>
         /// Components of x must be greater than 0, otherwise the result for that component is undefined.
         /// </remarks>
-        /// <param name="x"><see cref="UInt3"/> to be used as input.</param>
+        /// <param name="x"><see cref="UnityMath.UInt3"/> to be used as input.</param>
         /// <returns>Componentwise ceiling of the base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int3 CeilLog2(UInt3 x)
@@ -3570,7 +3570,7 @@ namespace GameLibrary.UnityMath
         /// <remarks>
         /// Components of x must be greater than 0, otherwise the result for that component is undefined.
         /// </remarks>
-        /// <param name="x"><see cref="UInt4"/> to be used as input.</param>
+        /// <param name="x"><see cref="UnityMath.UInt4"/> to be used as input.</param>
         /// <returns>Componentwise ceiling of the base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int4 CeilLog2(UInt4 x)
@@ -3594,7 +3594,7 @@ namespace GameLibrary.UnityMath
         /// Computes the componentwise floor of the base-2 logarithm of x.
         /// </summary>
         /// <remarks>Components of x must be greater than zero, otherwise the result of the component is undefined.</remarks>
-        /// <param name="x"><see cref="Int2"/> to be used as input.</param>
+        /// <param name="x"><see cref="UnityMath.Int2"/> to be used as input.</param>
         /// <returns>Componentwise floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int2 FloorLog2(Int2 x)
@@ -3606,7 +3606,7 @@ namespace GameLibrary.UnityMath
         /// Computes the componentwise floor of the base-2 logarithm of x.
         /// </summary>
         /// <remarks>Components of x must be greater than zero, otherwise the result of the component is undefined.</remarks>
-        /// <param name="x"><see cref="Int3"/> to be used as input.</param>
+        /// <param name="x"><see cref="UnityMath.Int3"/> to be used as input.</param>
         /// <returns>Componentwise floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int3 FloorLog2(Int3 x)
@@ -3618,7 +3618,7 @@ namespace GameLibrary.UnityMath
         /// Computes the componentwise floor of the base-2 logarithm of x.
         /// </summary>
         /// <remarks>Components of x must be greater than zero, otherwise the result of the component is undefined.</remarks>
-        /// <param name="x"><see cref="Int4"/> to be used as input.</param>
+        /// <param name="x"><see cref="UnityMath.Int4"/> to be used as input.</param>
         /// <returns>Componentwise floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int4 FloorLog2(Int4 x)
@@ -3642,7 +3642,7 @@ namespace GameLibrary.UnityMath
         /// Computes the componentwise floor of the base-2 logarithm of x.
         /// </summary>
         /// <remarks>Components of x must be greater than zero, otherwise the result of the component is undefined.</remarks>
-        /// <param name="x"><see cref="UInt2"/> to be used as input.</param>
+        /// <param name="x"><see cref="UnityMath.UInt2"/> to be used as input.</param>
         /// <returns>Componentwise floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int2 FloorLog2(UInt2 x)
@@ -3654,7 +3654,7 @@ namespace GameLibrary.UnityMath
         /// Computes the componentwise floor of the base-2 logarithm of x.
         /// </summary>
         /// <remarks>Components of x must be greater than zero, otherwise the result of the component is undefined.</remarks>
-        /// <param name="x"><see cref="UInt3"/> to be used as input.</param>
+        /// <param name="x"><see cref="UnityMath.UInt3"/> to be used as input.</param>
         /// <returns>Componentwise floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int3 FloorLog2(UInt3 x)
@@ -3666,7 +3666,7 @@ namespace GameLibrary.UnityMath
         /// Computes the componentwise floor of the base-2 logarithm of x.
         /// </summary>
         /// <remarks>Components of x must be greater than zero, otherwise the result of the component is undefined.</remarks>
-        /// <param name="x"><see cref="UInt4"/> to be used as input.</param>
+        /// <param name="x"><see cref="UnityMath.UInt4"/> to be used as input.</param>
         /// <returns>Componentwise floor of base-2 logarithm of x.</returns>
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int4 FloorLog2(UInt4 x)

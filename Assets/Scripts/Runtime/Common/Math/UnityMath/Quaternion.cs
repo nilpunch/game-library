@@ -1,6 +1,6 @@
 using System;
 using System.Runtime.CompilerServices;
-using GameLibrary.Math;
+using GameLibrary.Mathematics;
 
 namespace GameLibrary.UnityMath
 {

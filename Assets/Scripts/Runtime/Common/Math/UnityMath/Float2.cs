@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.CompilerServices;
 using System.Diagnostics;
-using GameLibrary.Math;
+using GameLibrary.Mathematics;
 
 #pragma warning disable 0660, 0661
 

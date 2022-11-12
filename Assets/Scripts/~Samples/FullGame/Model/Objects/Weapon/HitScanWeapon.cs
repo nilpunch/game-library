@@ -1,4 +1,4 @@
-﻿using GameLibrary.Math;
+﻿using GameLibrary.Mathematics;
 using GameLibrary.Physics;
 
 namespace GameLibrary.Sample
@@ -16,7 +16,8 @@ namespace GameLibrary.Sample
 
         public void Shoot()
         {
-            var hit = _collisionsWorld.Raycast(Float3.Zero, new Float3((SoftFloat)0, (SoftFloat)0, (SoftFloat)1));
+            var hit = _collisionsWorld.Raycast(SoftVector3.Zero, SoftVector3.Forward);
+            
             if (!hit.Occure)
                 return;
 

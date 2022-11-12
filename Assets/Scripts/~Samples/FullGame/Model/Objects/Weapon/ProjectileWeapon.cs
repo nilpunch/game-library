@@ -1,4 +1,4 @@
-using GameLibrary.Math;
+using GameLibrary.Mathematics;
 
 namespace GameLibrary.Sample
 {
@@ -16,7 +16,7 @@ namespace GameLibrary.Sample
         public void Shoot()
         {
             var bullet = _bulletFactory.Create(_bulletsDamage);
-            bullet.Throw(new Float3((SoftFloat)0, (SoftFloat)0, (SoftFloat)1));
+            bullet.Throw(SoftVector3.Forward);
         }
     }
 }
