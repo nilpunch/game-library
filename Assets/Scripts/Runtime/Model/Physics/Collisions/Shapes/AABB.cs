@@ -57,7 +57,7 @@ namespace GameLibrary.Physics
 
         public SoftFloat DistanceSqr(SoftVector3 point)
         {
-            return SoftVector3.LengthSqr(SoftVector3.Max(SoftVector3.Abs(point - Center), Extents) - Extents);
+            return SoftVector3.LengthSqr(SoftVector3.MaxComponents(SoftVector3.AbsComponents(point - Center), Extents) - Extents);
         }
 
         // public static AABB Transform(Float4X4 transform, AABB localBounds)
@@ -69,7 +69,7 @@ namespace GameLibrary.Physics
 
         private static SoftVector3 RotateExtents(SoftVector3 extents, SoftVector3 m0, SoftVector3 m1, SoftVector3 m2)
         {
-            return SoftVector3.Abs(m0 * extents.X) + SoftVector3.Abs(m1 * extents.Y) + SoftVector3.Abs(m2 * extents.Z);
+            return SoftVector3.AbsComponents(m0 * extents.X) + SoftVector3.AbsComponents(m1 * extents.Y) + SoftVector3.AbsComponents(m2 * extents.Z);
         }
     }
 }
