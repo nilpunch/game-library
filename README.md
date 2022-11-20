@@ -6,7 +6,7 @@ Project follows:
 - API-first approach
 - Healthy DI composition (say **NO** to DI-containers)
 - SOLID
-- Sensible relationship of objects (maybe add UML at some time)
+- Polling and pushing should be done through contract methods (say **NO** to observers)
 
 And:
 - **NO** frameworks (IoC is bad practice)
