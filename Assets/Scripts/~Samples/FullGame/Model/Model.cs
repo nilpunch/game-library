@@ -12,18 +12,18 @@ namespace GameLibrary.Sample
             // Views
             var characterViewFactory = viewLibrary.CharacterViewFactory();
             var bulletViewFactory = viewLibrary.BulletViewFactory();
-            
+
             // Physics
-            var physicWorld = new PhysicWorld();
-            var charactersPhysicWorld = new SubPhysicWorld<ICharacter>(physicWorld);
-            
+            var physicWorld = new PhysicWorld<IRigidbody<IMatrixCollider>, IMatrixCollider>(null, null);
+            var charactersPhysicWorld = new SubPhysicWorld<IRigidbody<IMatrixCollider>, IMatrixCollider, ICharacter>(physicWorld);
+
             // Game Objects
             var bulletsGameObjects = new GameObjectsGroup();
-            
+
             var characterFactory = new CharacterFactory(charactersPhysicWorld, characterViewFactory);
             var charactersGameObjects = new GameObjectsGroup(new IGameObject[]
             {
-                characterFactory.Create(10, new ProjectileWeapon(1, 
+                characterFactory.Create(10, new ProjectileWeapon(1,
                     new BulletFactory(bulletsGameObjects, physicWorld, charactersPhysicWorld, bulletViewFactory))),
                 characterFactory.Create(10, new HitScanWeapon(1, charactersPhysicWorld)),
             });
@@ -31,15 +31,15 @@ namespace GameLibrary.Sample
             // Cleanup all dead objects
             var cleanup = new SimulationObjectGroup(new ISimulationObject[]
             {
-                new CleanupDeadObjects(physicWorld),
-                new CleanupDeadObjects(charactersPhysicWorld),
+                // new CleanupDeadObjects(physicWorld),
+                // new CleanupDeadObjects(charactersPhysicWorld),
                 new CleanupDeadObjects(charactersGameObjects),
             });
-            
+
             _gameLoop = new SimulationObjectGroup(new ISimulationObject[]
             {
                 cleanup,
-                physicWorld,
+                // physicWorld,
                 bulletsGameObjects,
                 charactersGameObjects
             });

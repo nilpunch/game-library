@@ -17,11 +17,11 @@ namespace GameLibrary.Sample
         public void Shoot()
         {
             var hit = _collisionsWorld.Raycast(SoftVector3.Zero, SoftVector3.Forward);
-            
+
             if (!hit.Occure)
                 return;
 
-            var character = hit.Object;
+            ICharacter character = hit.HitResult;
 
             if (character.IsAlive)
                 character.TakeDamage(_shootDamage);

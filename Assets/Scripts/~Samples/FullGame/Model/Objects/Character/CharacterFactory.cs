@@ -4,10 +4,10 @@ namespace GameLibrary.Sample
 {
     public class CharacterFactory : ICharacterFactory
     {
-        private readonly IPhysicWorld<ICharacter> _charactersWorld;
+        private readonly IPhysicWorld<ConcreteBody<IRigidbody<IMatrixCollider>, ICharacter>> _charactersWorld;
         private readonly ICharacterViewFactory _characterViewFactory;
 
-        public CharacterFactory(IPhysicWorld<ICharacter> charactersWorld, ICharacterViewFactory characterViewFactory)
+        public CharacterFactory(IPhysicWorld<ConcreteBody<IRigidbody<IMatrixCollider>, ICharacter>> charactersWorld, ICharacterViewFactory characterViewFactory)
         {
             _charactersWorld = charactersWorld;
             _characterViewFactory = characterViewFactory;
@@ -15,11 +15,11 @@ namespace GameLibrary.Sample
 
         public ICharacter Create(int health, IWeapon weapon)
         {
-            IRigidbody rigidbody =  new Rigidbody(new SphereCollider(new Sphere(), new CollisionsLibrary()));
+            var rigidbody = new Rigidbody<IMatrixCollider>(new SphereMatrixCollider(new Sphere(), new MatrixMatrixCollisionsLibrary()));
 
             ICharacter character = new Character(health, rigidbody, _characterViewFactory.Create(), weapon);
 
-            _charactersWorld.Add(rigidbody, character);
+            _charactersWorld.Add(new ConcreteBody<IRigidbody<IMatrixCollider>, ICharacter>(rigidbody, character));
 
             return character;
         }
