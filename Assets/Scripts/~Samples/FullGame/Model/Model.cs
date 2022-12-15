@@ -1,5 +1,7 @@
 ﻿using GameLibrary.Lifetime;
 using GameLibrary.Physics;
+using GameLibrary.Physics.SupportMapping;
+using GameLibrary.Physics.MatrixColliders;
 
 namespace GameLibrary.Sample
 {
@@ -14,8 +16,8 @@ namespace GameLibrary.Sample
             var bulletViewFactory = viewLibrary.BulletViewFactory();
 
             // Physics
-            var physicWorld = new PhysicWorld<IRigidbody<IMatrixCollider>, IMatrixCollider>(null, null);
-            var charactersPhysicWorld = new SubPhysicWorld<IRigidbody<IMatrixCollider>, IMatrixCollider, ICharacter>(physicWorld);
+            var physicWorld = new PhysicWorld<IRigidbody, ISupportMappingCollider>(new SupportMappingCollisionsDetector(20), new RigidbodyCollisionSolver());
+            var charactersPhysicWorld = new ConcreteSubPhysicWorld<IRigidbody, ISupportMappingCollider, ICharacter>(physicWorld);
 
             // Game Objects
             var bulletsGameObjects = new GameObjectsGroup();

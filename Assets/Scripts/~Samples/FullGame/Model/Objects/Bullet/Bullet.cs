@@ -9,11 +9,11 @@ namespace GameLibrary.Sample
     public class Bullet : IBullet, IGameObject
     {
         private readonly int _damage;
-        private readonly IRigidbody<IMatrixCollider> _rigidbody;
+        private readonly IRigidbody _rigidbody;
         private readonly IBulletView _view;
         private readonly ICollisionsWorld<ICharacter> _charactersToHit;
 
-        public Bullet(int damage, IRigidbody<IMatrixCollider> rigidbody, IBulletView view, ICollisionsWorld<ICharacter> charactersToHit)
+        public Bullet(int damage, IRigidbody rigidbody, IBulletView view, ICollisionsWorld<ICharacter> charactersToHit)
         {
             _damage = damage;
             _rigidbody = rigidbody;

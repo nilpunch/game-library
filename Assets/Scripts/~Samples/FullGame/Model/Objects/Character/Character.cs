@@ -5,13 +5,13 @@ namespace GameLibrary.Sample
 {
     public class Character : ICharacter
     {
-        private readonly IRigidbody<IMatrixCollider> _rigidbody;
+        private readonly IRigidbody _rigidbody;
         private readonly ICharacterView _characterView;
         private readonly IWeapon _weapon;
 
         private int _health;
 
-        public Character(int health, IRigidbody<IMatrixCollider> rigidbody, ICharacterView characterView, IWeapon weapon)
+        public Character(int health, IRigidbody rigidbody, ICharacterView characterView, IWeapon weapon)
         {
             _health = health;
             _rigidbody = rigidbody;
