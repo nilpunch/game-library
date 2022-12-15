@@ -16,17 +16,18 @@ namespace GameLibrary.Sample
             var bulletViewFactory = viewLibrary.BulletViewFactory();
 
             // Physics
-            var physicWorld = new PhysicWorld<IRigidbody, ISupportMappingCollider>(new SupportMappingCollisionsDetector(20), new RigidbodyCollisionSolver());
-            var charactersPhysicWorld = new ConcreteSubPhysicWorld<IRigidbody, ISupportMappingCollider, ICharacter>(physicWorld);
+            var collisionWorld = new SupportMappingCollisionsWorld(20);
+            var physicWorld = new PhysicWorld<IRigidbody>(collisionWorld, new RigidbodyCollisionSolver());
+            var charactersPhysicWorld = new ConcreteSubPhysicWorld<IRigidbody, ICharacter>(physicWorld);
 
             // Game Objects
             var bulletsGameObjects = new GameObjectsGroup();
 
-            var characterFactory = new CharacterFactory(charactersPhysicWorld, characterViewFactory);
+            var characterFactory = new CharacterFactory(charactersPhysicWorld, collisionWorld, characterViewFactory);
             var charactersGameObjects = new GameObjectsGroup(new IGameObject[]
             {
                 characterFactory.Create(10, new ProjectileWeapon(1,
-                    new BulletFactory(bulletsGameObjects, physicWorld, charactersPhysicWorld, bulletViewFactory))),
+                    new BulletFactory(bulletsGameObjects, physicWorld, collisionWorld, charactersPhysicWorld, bulletViewFactory))),
                 characterFactory.Create(10, new HitScanWeapon(1, charactersPhysicWorld)),
             });
 

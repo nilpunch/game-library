@@ -11,9 +11,9 @@ namespace GameLibrary.Sample
         private readonly int _damage;
         private readonly IRigidbody _rigidbody;
         private readonly IBulletView _view;
-        private readonly ICollisionsWorld<ICharacter> _charactersToHit;
+        private readonly IRaycastWorld<ICharacter> _charactersToHit;
 
-        public Bullet(int damage, IRigidbody rigidbody, IBulletView view, ICollisionsWorld<ICharacter> charactersToHit)
+        public Bullet(int damage, IRigidbody rigidbody, IBulletView view, IRaycastWorld<ICharacter> charactersToHit)
         {
             _damage = damage;
             _rigidbody = rigidbody;

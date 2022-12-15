@@ -7,16 +7,18 @@ namespace GameLibrary.Sample
     public class BulletFactory : IBulletFactory
     {
         private readonly IGameObjectsGroup _bulletsLoop;
-        private readonly IPhysicWorld<IRigidbody, ISupportMappingCollider> _physicWorld;
-        private readonly ICollisionsWorld<ICharacter> _charactersCollisions;
+        private readonly IPhysicWorld<IRigidbody> _bulletPhysicWorld;
+        private readonly ICollidersWorld<ISMCollider> _bulletCollidersWorld;
+        private readonly IRaycastWorld<ICharacter> _charactersRaycast;
         private readonly IBulletViewFactory _bulletViewFactory;
 
-        public BulletFactory(IGameObjectsGroup bulletsLoop, IPhysicWorld<IRigidbody, ISupportMappingCollider> physicWorld,
-            ICollisionsWorld<ICharacter> charactersCollisions, IBulletViewFactory bulletViewFactory)
+        public BulletFactory(IGameObjectsGroup bulletsLoop, IPhysicWorld<IRigidbody> bulletPhysicWorld, ICollidersWorld<ISMCollider> bulletCollidersWorld,
+            IRaycastWorld<ICharacter> charactersRaycast, IBulletViewFactory bulletViewFactory)
         {
             _bulletsLoop = bulletsLoop;
-            _physicWorld = physicWorld;
-            _charactersCollisions = charactersCollisions;
+            _bulletPhysicWorld = bulletPhysicWorld;
+            _bulletCollidersWorld = bulletCollidersWorld;
+            _charactersRaycast = charactersRaycast;
             _bulletViewFactory = bulletViewFactory;
         }
 
@@ -25,10 +27,11 @@ namespace GameLibrary.Sample
             var rigidbody =
                 new Rigidbody();
 
-            var bullet = new Bullet(damage, rigidbody, _bulletViewFactory.Create(), _charactersCollisions);
+            var bullet = new Bullet(damage, rigidbody, _bulletViewFactory.Create(), _charactersRaycast);
 
             _bulletsLoop.Add(bullet);
-            _physicWorld.Add(rigidbody, new SphereCollider(SoftVector3.Zero, SoftFloat.One));
+            _bulletPhysicWorld.Add(rigidbody);
+            _bulletCollidersWorld.Add(new DynamicCollider(rigidbody, new SphereCollider(SoftVector3.Zero, SoftFloat.One)));
 
             return bullet;
         }

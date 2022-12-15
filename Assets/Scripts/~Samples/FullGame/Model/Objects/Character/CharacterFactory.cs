@@ -6,12 +6,14 @@ namespace GameLibrary.Sample
 {
     public class CharacterFactory : ICharacterFactory
     {
-        private readonly IPhysicWorld<ConcreteBody<IRigidbody, ICharacter>, ISupportMappingCollider> _charactersWorld;
+        private readonly IPhysicWorld<ConcreteBody<IRigidbody, ICharacter>> _charactersWorld;
+        private readonly ICollidersWorld<ISMCollider> _characterColliders;
         private readonly ICharacterViewFactory _characterViewFactory;
 
-        public CharacterFactory(IPhysicWorld<ConcreteBody<IRigidbody, ICharacter>, ISupportMappingCollider> charactersWorld, ICharacterViewFactory characterViewFactory)
+        public CharacterFactory(IPhysicWorld<ConcreteBody<IRigidbody, ICharacter>> charactersWorld, ICollidersWorld<ISMCollider> characterColliders, ICharacterViewFactory characterViewFactory)
         {
             _charactersWorld = charactersWorld;
+            _characterColliders = characterColliders;
             _characterViewFactory = characterViewFactory;
         }
 
@@ -21,7 +23,8 @@ namespace GameLibrary.Sample
 
             ICharacter character = new Character(health, rigidbody, _characterViewFactory.Create(), weapon);
 
-            _charactersWorld.Add(new ConcreteBody<IRigidbody, ICharacter>(rigidbody, character), new SphereCollider(SoftVector3.Zero, SoftFloat.One));
+            _charactersWorld.Add(new ConcreteBody<IRigidbody, ICharacter>(rigidbody, character));
+            _characterColliders.Add(new DynamicCollider(rigidbody, new SphereCollider(SoftVector3.Zero, SoftFloat.One)));
 
             return character;
         }

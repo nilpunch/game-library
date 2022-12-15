@@ -6,17 +6,17 @@ namespace GameLibrary.Sample
     public class HitScanWeapon : IWeapon
     {
         private readonly int _shootDamage;
-        private readonly ICollisionsWorld<ICharacter> _collisionsWorld;
+        private readonly IRaycastWorld<ICharacter> _raycastWorld;
 
-        public HitScanWeapon(int shootDamage, ICollisionsWorld<ICharacter> collisionsWorld)
+        public HitScanWeapon(int shootDamage, IRaycastWorld<ICharacter> raycastWorld)
         {
             _shootDamage = shootDamage;
-            _collisionsWorld = collisionsWorld;
+            _raycastWorld = raycastWorld;
         }
 
         public void Shoot()
         {
-            var hit = _collisionsWorld.Raycast(SoftVector3.Zero, SoftVector3.Forward);
+            var hit = _raycastWorld.Raycast(SoftVector3.Zero, SoftVector3.Forward);
 
             if (!hit.Occure)
                 return;
