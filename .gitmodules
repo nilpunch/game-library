@@ -1,0 +1,8 @@
+[submodule "soft-math"]
+	path = soft-math
+	url = https://github.com/nilpunch/soft-math.git
+	branch = master
+[submodule "physics-library"]
+	path = physics-library
+	url = https://github.com/nilpunch/physics-library.git
+	branch = master
