@@ -11,14 +11,14 @@ namespace GameLibrary.Sample
         private readonly int _damage;
         private readonly IRigidbody _rigidbody;
         private readonly IBulletView _view;
-        private readonly IRaycastWorld<ICharacter> _charactersToHit;
+        private readonly IRaycastShooter<ICharacter> _characterRaycasts;
 
-        public Bullet(int damage, IRigidbody rigidbody, IBulletView view, IRaycastWorld<ICharacter> charactersToHit)
+        public Bullet(int damage, IRigidbody rigidbody, IBulletView view, IRaycastShooter<ICharacter> characterRaycasts)
         {
             _damage = damage;
             _rigidbody = rigidbody;
             _view = view;
-            _charactersToHit = charactersToHit;
+            _characterRaycasts = characterRaycasts;
         }
 
         public bool IsAlive { get; private set; } = true;
@@ -28,11 +28,11 @@ namespace GameLibrary.Sample
             if (!IsAlive)
                 throw new Exception();
 
-            // var interactedCharacters = _charactersToHit.CollisionsWith(_rigidbody);
-            // if (interactedCharacters.Length == 0)
-            //     return;
+            var characterHit = _characterRaycasts.Raycast(_rigidbody.Position, _rigidbody.Velocity);
+            if (!characterHit.Occure)
+                return;
 
-            ICharacter character = null; //interactedCharacters.First().First.Concrete;
+            ICharacter character = characterHit.HitResult;
             if (character.IsAlive)
                 character.TakeDamage(_damage);
 

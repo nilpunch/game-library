@@ -6,9 +6,9 @@ namespace GameLibrary.Sample
     public class HitScanWeapon : IWeapon
     {
         private readonly int _shootDamage;
-        private readonly IRaycastWorld<ICharacter> _raycastWorld;
+        private readonly IRaycastShooter<ICharacter> _raycastWorld;
 
-        public HitScanWeapon(int shootDamage, IRaycastWorld<ICharacter> raycastWorld)
+        public HitScanWeapon(int shootDamage, IRaycastShooter<ICharacter> raycastWorld)
         {
             _shootDamage = shootDamage;
             _raycastWorld = raycastWorld;

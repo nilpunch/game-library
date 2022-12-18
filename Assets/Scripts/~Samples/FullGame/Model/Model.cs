@@ -1,7 +1,7 @@
 ﻿using GameLibrary.Lifetime;
 using GameLibrary.Physics;
 using GameLibrary.Physics.SupportMapping;
-using GameLibrary.Physics.MatrixColliders;
+using GameLibrary.Physics.AnalyticColliders;
 
 namespace GameLibrary.Sample
 {
@@ -16,19 +16,28 @@ namespace GameLibrary.Sample
             var bulletViewFactory = viewLibrary.BulletViewFactory();
 
             // Physics
-            var collisionWorld = new SupportMappingCollisionsWorld(20);
-            var physicWorld = new PhysicWorld<IRigidbody>(collisionWorld, new RigidbodyCollisionSolver());
-            var charactersPhysicWorld = new ConcreteSubPhysicWorld<IRigidbody, ICharacter>(physicWorld);
+            var solidWalls = new RaycastWorld();
+            var charactersRaycast = new ConcreteRaycastSubWorld<ICharacter>(solidWalls);
+
+            var smCollisionWorld = new SMCollisionsWorld<IRigidbody>(20);
+            var analyticCollisionWorld = new AnalyticCollidersWorld<IRigidbody>();
+
+            var mergedCollisionWorlds = new MergedManifoldFinders<IRigidbody>(new IManifoldFinder<IRigidbody>[]
+            {
+                smCollisionWorld, analyticCollisionWorld
+            });
+
+            var physicWorld = new PhysicSimulation<IRigidbody>(mergedCollisionWorlds, new RigidbodyCollisionSolver());
 
             // Game Objects
             var bulletsGameObjects = new GameObjectsGroup();
 
-            var characterFactory = new CharacterFactory(charactersPhysicWorld, collisionWorld, characterViewFactory);
+            var characterFactory = new CharacterFactory(null, characterViewFactory);
             var charactersGameObjects = new GameObjectsGroup(new IGameObject[]
             {
                 characterFactory.Create(10, new ProjectileWeapon(1,
-                    new BulletFactory(bulletsGameObjects, physicWorld, collisionWorld, charactersPhysicWorld, bulletViewFactory))),
-                characterFactory.Create(10, new HitScanWeapon(1, charactersPhysicWorld)),
+                    new BulletFactory(bulletsGameObjects, null, charactersRaycast, bulletViewFactory))),
+                characterFactory.Create(10, new HitScanWeapon(1, null)),
             });
 
             // Cleanup all dead objects
