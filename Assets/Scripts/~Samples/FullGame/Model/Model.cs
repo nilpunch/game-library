@@ -16,18 +16,18 @@ namespace GameLibrary.Sample
             var bulletViewFactory = viewLibrary.BulletViewFactory();
 
             // Physics
-            var solidWalls = new RaycastWorld();
-            var charactersRaycast = new ConcreteRaycastSubWorld<ICharacter>(solidWalls);
+            var solidWallsRaycast = new RaycastWorld();
+            var charactersRaycast = new ConcreteRaycastSubWorld<ICharacter>(solidWallsRaycast);
 
             var smCollisionWorld = new SMCollisionsWorld<IRigidbody>(20);
             var analyticCollisionWorld = new AnalyticCollidersWorld<IRigidbody>();
 
-            var mergedCollisionWorlds = new MergedManifoldFinders<IRigidbody>(new IManifoldFinder<IRigidbody>[]
+            var mergedCollisions = new MergedCollisions<IRigidbody>(new ICollisions<IRigidbody>[]
             {
                 smCollisionWorld, analyticCollisionWorld
             });
 
-            var physicWorld = new PhysicSimulation<IRigidbody>(mergedCollisionWorlds, new RigidbodyCollisionSolver());
+            var physicSimulation = new PhysicSimulation<IRigidbody>(mergedCollisions, new RigidbodyCollisionsSolver());
 
             // Game Objects
             var bulletsGameObjects = new GameObjectsGroup();
