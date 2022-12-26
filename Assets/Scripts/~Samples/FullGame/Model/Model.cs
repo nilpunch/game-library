@@ -19,12 +19,12 @@ namespace GameLibrary.Sample
             var solidWallsRaycast = new RaycastWorld();
             var charactersRaycast = new ConcreteRaycastSubWorld<ICharacter>(solidWallsRaycast);
 
-            var smCollisionWorld = new SMCollisionsWorld<IRigidbody>(20);
-            var analyticCollisionWorld = new AnalyticCollidersWorld<IRigidbody>();
+            var smCollidersWorld = new SMCollidersWorld<IRigidbody>(40, 40);
+            var analyticCollidersWorld = new AnalyticCollidersWorld<IRigidbody>();
 
             var mergedCollisions = new MergedCollisions<IRigidbody>(new ICollisions<IRigidbody>[]
             {
-                smCollisionWorld, analyticCollisionWorld
+                smCollidersWorld, analyticCollidersWorld
             });
 
             var physicSimulation = new PhysicSimulation<IRigidbody>(mergedCollisions, new RigidbodyCollisionsSolver());
