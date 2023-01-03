@@ -10,7 +10,7 @@ Project follows:
 
 And:
 - **NO** frameworks (IoC is bad practice)
-- **NO** stupid architecture patterns (like ECS, MV*, Event Bus an so on)
+- **NO** harmful architecture patterns (like ECS, MV*, Event Bus an so on)
 - **NO** typecasting or any reflection whatsoevere
 - **NO** pure fabrication
 
