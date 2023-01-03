@@ -1,21 +1,20 @@
 ﻿using GameLibrary.Mathematics;
 using GameLibrary.Physics;
+using GameLibrary.Physics.Raycast;
 using GameLibrary.Physics.SupportMapping;
+using SphereCollider = GameLibrary.Physics.SupportMapping.SphereCollider;
 
 namespace GameLibrary.Sample
 {
     public class BulletFactory : IBulletFactory
     {
         private readonly IGameObjectsGroup _bulletsLoop;
-        private readonly ICollidersWorld<ISMCollider> _bulletCollidersWorld;
         private readonly IRaycastShooter<ICharacter> _charactersRaycast;
         private readonly IBulletViewFactory _bulletViewFactory;
 
-        public BulletFactory(IGameObjectsGroup bulletsLoop, ICollidersWorld<ISMCollider> bulletCollidersWorld,
-            IRaycastShooter<ICharacter> charactersRaycast, IBulletViewFactory bulletViewFactory)
+        public BulletFactory(IGameObjectsGroup bulletsLoop, IRaycastShooter<ICharacter> charactersRaycast, IBulletViewFactory bulletViewFactory)
         {
             _bulletsLoop = bulletsLoop;
-            _bulletCollidersWorld = bulletCollidersWorld;
             _charactersRaycast = charactersRaycast;
             _bulletViewFactory = bulletViewFactory;
         }
@@ -28,7 +27,6 @@ namespace GameLibrary.Sample
             var bullet = new Bullet(damage, rigidbody, _bulletViewFactory.Create(), _charactersRaycast);
 
             _bulletsLoop.Add(bullet);
-            _bulletCollidersWorld.Add(collider);
 
             return bullet;
         }

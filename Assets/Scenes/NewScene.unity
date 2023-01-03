@@ -462,8 +462,8 @@ MonoBehaviour:
   _boxExtents: {x: 1, y: 1, z: 1}
   _boxOrigin2: {fileID: 1514238275}
   _boxExtents2: {x: 1, y: 1, z: 1}
-  _gjkIterations: 5
-  _epaIterations: 40
+  _gjkIterations: 40
+  _epaIterations: 80
 --- !u!4 &1912379887
 Transform:
   m_ObjectHideFlags: 0

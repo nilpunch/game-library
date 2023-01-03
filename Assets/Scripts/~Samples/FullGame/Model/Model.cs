@@ -1,7 +1,7 @@
 ﻿using GameLibrary.Lifetime;
 using GameLibrary.Physics;
 using GameLibrary.Physics.SupportMapping;
-using GameLibrary.Physics.AnalyticColliders;
+using GameLibrary.Physics.Raycast;
 
 namespace GameLibrary.Sample
 {
@@ -35,9 +35,8 @@ namespace GameLibrary.Sample
             var characterFactory = new CharacterFactory(null, characterViewFactory);
             var charactersGameObjects = new GameObjectsGroup(new IGameObject[]
             {
-                characterFactory.Create(10, new ProjectileWeapon(1,
-                    new BulletFactory(bulletsGameObjects, null, charactersRaycast, bulletViewFactory))),
-                characterFactory.Create(10, new HitScanWeapon(1, null)),
+                characterFactory.Create(10, new ProjectileWeapon(1, new BulletFactory(bulletsGameObjects, charactersRaycast, bulletViewFactory))),
+                characterFactory.Create(10, new HitScanWeapon(1, charactersRaycast)),
             });
 
             // Cleanup all dead objects

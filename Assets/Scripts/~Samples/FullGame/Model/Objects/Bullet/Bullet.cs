@@ -2,6 +2,7 @@
 using System.Linq;
 using GameLibrary.Mathematics;
 using GameLibrary.Physics;
+using GameLibrary.Physics.Raycast;
 
 
 namespace GameLibrary.Sample
