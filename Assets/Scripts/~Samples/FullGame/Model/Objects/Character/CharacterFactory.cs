@@ -1,28 +1,33 @@
 ﻿using GameLibrary.Mathematics;
 using GameLibrary.Physics;
-using GameLibrary.Physics.SupportMapping;
+using GameLibrary.Physics.Raycast;
+using SphereCollider = GameLibrary.Physics.Raycast.SphereCollider;
 
 namespace GameLibrary.Sample
 {
     public class CharacterFactory : ICharacterFactory
     {
-        private readonly IConcreteCollidersWorld<ISMCollider, IRigidbody> _characterCollision;
+        private readonly int _health;
+        private readonly IWeaponFactory _weaponFactory;
+        private readonly IConcreteRaycastWorld<ICharacter> _characterRaycasts;
         private readonly ICharacterViewFactory _characterViewFactory;
 
-        public CharacterFactory(IConcreteCollidersWorld<ISMCollider, IRigidbody> characterCollision, ICharacterViewFactory characterViewFactory)
+        public CharacterFactory(int health, IWeaponFactory weaponFactory, IConcreteRaycastWorld<ICharacter> characterRaycasts, ICharacterViewFactory characterViewFactory)
         {
-            _characterCollision = characterCollision;
+            _health = health;
+            _weaponFactory = weaponFactory;
+            _characterRaycasts = characterRaycasts;
             _characterViewFactory = characterViewFactory;
         }
 
-        public ICharacter Create(int health, IWeapon weapon)
+        public ICharacter Create()
         {
             var rigidbody = new Rigidbody();
-            var collider = new DynamicCollider(rigidbody, new SphereCollider(SoftVector3.Zero, SoftFloat.One));
+            var collider = new DynamicCollider(rigidbody, new SphereCollider(new Sphere()));
 
-            ICharacter character = new Character(health, rigidbody, _characterViewFactory.Create(), weapon);
+            ICharacter character = new Character(_health, rigidbody, _characterViewFactory.Create(), _weaponFactory.Create());
 
-            _characterCollision.Add(new ConcreteCollider<ISMCollider, IRigidbody>(collider, rigidbody));
+            _characterRaycasts.Add(collider, character);
 
             return character;
         }

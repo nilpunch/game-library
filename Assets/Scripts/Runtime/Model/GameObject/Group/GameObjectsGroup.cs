@@ -1,14 +1,14 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using GameLibrary.Lifetime;
 
 namespace GameLibrary
 {
-    public class GameObjectsGroup : IGameObjectsGroup, ISimulationObject, IDeadObjectsStorage
+    public class GameObjectsGroup : IGameObjectsGroup, ISimulationObject
     {
-        private readonly List<IGameObject> _gameObjects = new();
+        private readonly List<IGameObject> _gameObjects;
 
-        public GameObjectsGroup()
+        public GameObjectsGroup() : this(Array.Empty<IGameObject>())
         {
         }
 
@@ -34,11 +34,6 @@ namespace GameLibrary
         public void Remove(IGameObject gameObject)
         {
             _gameObjects.Remove(gameObject);
-        }
-
-        public void CleanupDeadObjects()
-        {
-            _gameObjects.RemoveAll(gameObject => !gameObject.IsAlive);
         }
     }
 }

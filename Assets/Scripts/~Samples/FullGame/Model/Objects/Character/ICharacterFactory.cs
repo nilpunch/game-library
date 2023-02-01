@@ -2,6 +2,6 @@
 {
     public interface ICharacterFactory
     {
-        ICharacter Create(int health, IWeapon weapon);
+        ICharacter Create();
     }
 }

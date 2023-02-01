@@ -20,7 +20,7 @@ namespace GameLibrary.Sample
             var charactersRaycast = new ConcreteRaycastSubWorld<ICharacter>(solidWallsRaycast);
 
             var smCollidersWorld = new SMCollidersWorld<IRigidbody>(40, 40);
-            var analyticCollidersWorld = new AnalyticCollidersWorld<IRigidbody>();
+            var analyticCollidersWorld = new DoubleCastCollidersWorld<IRigidbody>();
 
             var mergedCollisions = new MergedCollisions<IRigidbody>(new ICollisions<IRigidbody>[]
             {
@@ -30,27 +30,28 @@ namespace GameLibrary.Sample
             var physicSimulation = new PhysicSimulation<IRigidbody>(mergedCollisions, new RigidbodyCollisionsSolver());
 
             // Game Objects
-            var bulletsGameObjects = new GameObjectsGroup();
+            var bulletsGameObjects = new SelfCleaningGameObjectsGroup();
 
-            var characterFactory = new CharacterFactory(null, characterViewFactory);
-            var charactersGameObjects = new GameObjectsGroup(new IGameObject[]
-            {
-                characterFactory.Create(10, new ProjectileWeapon(1, new BulletFactory(bulletsGameObjects, charactersRaycast, bulletViewFactory))),
-                characterFactory.Create(10, new HitScanWeapon(1, charactersRaycast)),
-            });
+            var soldierCharacterFactory =
+                new CharacterFactory(20,
+                    new ProjectileWeaponFactory(1,
+                        new BulletFactory(bulletsGameObjects, charactersRaycast, bulletViewFactory)),
+                charactersRaycast, characterViewFactory);
 
-            // Cleanup all dead objects
-            var cleanup = new SimulationObjectGroup(new ISimulationObject[]
+            var sniperCharacterFactory = new CharacterFactory(10,
+                new HitScanWeaponFactory(1, charactersRaycast),
+                charactersRaycast, characterViewFactory);
+
+            var charactersGameObjects = new SelfCleaningGameObjectsGroup(new IGameObject[]
             {
-                // new CleanupDeadObjects(physicWorld),
-                // new CleanupDeadObjects(charactersPhysicWorld),
-                new CleanupDeadObjects(charactersGameObjects),
+                soldierCharacterFactory.Create(),
+                soldierCharacterFactory.Create(),
+                sniperCharacterFactory.Create(),
             });
 
             _gameLoop = new SimulationObjectGroup(new ISimulationObject[]
             {
-                cleanup,
-                // physicWorld,
+                new SimulatePhysics(physicSimulation),
                 bulletsGameObjects,
                 charactersGameObjects
             });

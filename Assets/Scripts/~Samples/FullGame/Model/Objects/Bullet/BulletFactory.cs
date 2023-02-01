@@ -1,8 +1,6 @@
 ﻿using GameLibrary.Mathematics;
 using GameLibrary.Physics;
 using GameLibrary.Physics.Raycast;
-using GameLibrary.Physics.SupportMapping;
-using SphereCollider = GameLibrary.Physics.SupportMapping.SphereCollider;
 
 namespace GameLibrary.Sample
 {
@@ -22,8 +20,6 @@ namespace GameLibrary.Sample
         public IBullet Create(int damage)
         {
             var rigidbody = new Rigidbody();
-            var collider = new DynamicCollider(rigidbody, new SphereCollider(SoftVector3.Zero, SoftFloat.One));
-
             var bullet = new Bullet(damage, rigidbody, _bulletViewFactory.Create(), _charactersRaycast);
 
             _bulletsLoop.Add(bullet);
