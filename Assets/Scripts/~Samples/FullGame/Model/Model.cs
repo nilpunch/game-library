@@ -27,7 +27,7 @@ namespace GameLibrary.Sample
                 smCollidersWorld, analyticCollidersWorld
             });
 
-            var physicSimulation = new PhysicSimulation<IRigidbody>(mergedCollisions, new RigidbodyCollisionsSolver());
+            var physicSimulation = new PhysicSimulation<IRigidbody>(mergedCollisions, new RigidbodyPositionSolver());
 
             // Game Objects
             var bulletsGameObjects = new SelfCleaningGameObjectsGroup();

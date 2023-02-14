@@ -785,16 +785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f11d7e1ba78301489ee7d174fc24131, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _firstSphere: {fileID: 1171784389}
-  _firstRadius: 1
-  _secondSphere: {fileID: 1535181980}
-  _secondRadius: 1
-  _boxOrigin: {fileID: 2121874841}
-  _boxExtents: {x: 1, y: 1, z: 1}
-  _testPointHandle: {fileID: 466524543}
-  _gridScale: 3.32
-  _gridSize: 15
-  _rayLength: 1
 --- !u!4 &1278178038
 Transform:
   m_ObjectHideFlags: 0
@@ -991,7 +981,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1756853937
 Transform:
   m_ObjectHideFlags: 0
