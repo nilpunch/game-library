@@ -4,3 +4,6 @@
 [submodule "Assets/Plugins/soft-math"]
 	path = Assets/Plugins/soft-math
 	url = https://github.com/nilpunch/soft-math.git
+[submodule "Assets/Plugins/pluggable-math"]
+	path = Assets/Plugins/pluggable-math
+	url = https://github.com/nilpunch/pluggable-math.git
