@@ -1,4 +1,4 @@
-# game-library - Work in progress
+# game-library - On Hold
 
 Research project for making games using just OOP.
 
